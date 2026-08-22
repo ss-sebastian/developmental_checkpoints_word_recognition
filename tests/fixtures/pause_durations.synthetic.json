@@ -1,0 +1,7 @@
+{
+  "synthetic_fixture": true,
+  "allow_for_tests_only": true,
+  "values_ms": {
+    "__default__": [30, 40]
+  }
+}

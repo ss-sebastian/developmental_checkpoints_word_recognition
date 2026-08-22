@@ -1,0 +1,12 @@
+.venv/
+.DS_Store
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+outputs/
+
+# Pre-existing local MRI audit artifacts; unrelated to this Phase 1 repository.
+download_ds001894_longitudinal_vv_subset.sh
+ds001894_longitudinal_mri49_inventory.tsv
+ds001894_subset_storage_audit.md

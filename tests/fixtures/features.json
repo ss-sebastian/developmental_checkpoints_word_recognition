@@ -1,0 +1,8 @@
+{
+  "feature_names": ["syllabic", "consonantal", "voice"],
+  "phonemes": {
+    "a": [1, -1, 1],
+    "b": [-1, 1, 1],
+    "k": [-1, 1, -1]
+  }
+}
