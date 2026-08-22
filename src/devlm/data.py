@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import random
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
@@ -44,7 +45,7 @@ def _records(path: Path) -> Iterable[dict]:
         raise ValueError("IPA-CHILDES input must be .jsonl, .csv, or .tsv")
 
 
-def load_ipa_childes(path: str | Path) -> list[Session]:
+def load_ipa_childes(path: str | Path, progress: bool = False) -> list[Session]:
     """Load an already-exported IPA-CHILDES table and keep North American English.
 
     Required fields: corpus_id, session_id, target_child_age_months,
@@ -53,7 +54,9 @@ def load_ipa_childes(path: str | Path) -> list[Session]:
     """
     path = Path(path)
     grouped: dict[tuple[str, str], list[Utterance]] = {}
-    for row in _records(path):
+    for row_index, row in enumerate(_records(path), 1):
+        if progress and row_index % 100_000 == 0:
+            print(f"Loaded {row_index:,} IPA-CHILDES utterance rows...", file=sys.stderr, flush=True)
         language = str(row.get("language", "English")).strip().lower()
         dialect = str(row.get("dialect", "North American English")).strip().lower()
         if language not in {"english", "eng", "en"}:

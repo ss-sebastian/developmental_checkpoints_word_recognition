@@ -9,6 +9,7 @@ from pathlib import Path
 import numpy as np
 import torch
 from torch.nn import functional as F
+from tqdm import tqdm
 
 from .data import Session, load_ipa_childes, split_sessions
 from .features import FeatureTable
@@ -63,7 +64,7 @@ def validate(model: CausalPhonemeGRU, sessions: list[Session], table: FeatureTab
     model.eval()
     rng = np.random.default_rng(seed)
     total_loss = total_correct = total_targets = 0
-    for session in sessions:
+    for session in tqdm(sessions, desc="Validation", unit="session", leave=False, dynamic_ncols=True):
         stream = make_stream(session, table, vocabulary, cfg, rng)
         if not len(stream.target_ids):
             continue
@@ -85,9 +86,16 @@ def train(config: dict) -> dict:
     output_dir = Path(config["output_dir"])
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "metrics.jsonl").write_text("", encoding="utf-8")
+    print("Loading IPA feature table...", flush=True)
     table = FeatureTable.from_json(config["feature_table_path"])
-    sessions = load_ipa_childes(config["dataset_path"])
+    print("Loading and grouping IPA-CHILDES by session...", flush=True)
+    sessions = load_ipa_childes(config["dataset_path"], progress=True)
     train_sessions, val_sessions = split_sessions(sessions, float(config["validation_fraction"]), seed)
+    print(
+        f"Prepared {len(sessions):,} sessions: {len(train_sessions):,} train, "
+        f"{len(val_sessions):,} validation.",
+        flush=True,
+    )
     symbols = sorted({p for s in sessions for p in _phonemes(s, table)})
     vocabulary = {p: i for i, p in enumerate(symbols)}
     (output_dir / "phoneme_vocabulary.json").write_text(json.dumps(vocabulary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -105,6 +113,12 @@ def train(config: dict) -> dict:
         raise ValueError("target_checkpoint_count must be positive")
     estimated_total_frames = estimate_input_frames(train_sessions, table)
     checkpoint_interval_frames = max(1, math.ceil(estimated_total_frames / target_checkpoint_count))
+    print(
+        f"Planned exposure: {estimated_total_frames:,} frames "
+        f"({estimated_total_frames * FRAME_MS / 3_600_000:.3f} h); "
+        f"checkpoint/eval approximately every {checkpoint_interval_frames:,} frames.",
+        flush=True,
+    )
     next_checkpoint_frame = checkpoint_interval_frames
     last_checkpoint_frame = -1
     last_metrics = None
@@ -124,10 +138,17 @@ def train(config: dict) -> dict:
             handle.write(json.dumps(metadata) + "\n")
         last_metrics = metadata
         last_checkpoint_frame = counters.cumulative_frames_seen
+        tqdm.write(
+            f"Checkpoint step={counters.optimizer_step:,} "
+            f"frames={counters.cumulative_frames_seen:,} "
+            f"hours={metadata['equivalent_input_duration_hours']:.3f} "
+            f"val_loss={val_loss:.6f} val_accuracy={val_accuracy:.4f}"
+        )
         return metadata
 
     model.train()
-    for session in train_sessions:  # developmental age order, one continuous pass
+    progress = tqdm(train_sessions, desc="Training", unit="session", dynamic_ncols=True)
+    for session in progress:  # developmental age order, one continuous pass
         stream = make_stream(session, table, vocabulary, config, train_rng)
         if not len(stream.target_ids):
             continue
@@ -142,6 +163,12 @@ def train(config: dict) -> dict:
         counters.cumulative_frames_seen += len(stream.noisy_frames)
         counters.cumulative_phonemes_seen += len(stream.spans)
         counters.cumulative_utterances_seen += len(session.utterances)
+        progress.set_postfix(
+            step=counters.optimizer_step,
+            frames=counters.cumulative_frames_seen,
+            hours=f"{counters.cumulative_frames_seen * FRAME_MS / 3_600_000:.3f}",
+            loss=f"{float(loss.detach()):.4f}",
+        )
         if counters.cumulative_frames_seen >= next_checkpoint_frame:
             checkpoint()
             while next_checkpoint_frame <= counters.cumulative_frames_seen:

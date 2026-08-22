@@ -30,6 +30,8 @@ For real training, copy `configs/phase1.example.toml`, replace all required data
 
 The linked Colab notebook downloads and prepares its inputs under `/content`, trains entirely in local Colab runtime storage, then ZIPs and downloads every checkpoint together with the reproducibility metadata. It does not mount or write to Google Drive. Because `/content` is ephemeral, a runtime disconnection before the final download loses the local outputs.
 
+The CLI reports data-loading progress every 100,000 utterances, displays a live session-level training bar with optimizer step, observed frames, equivalent input hours, and current loss, and prints validation metrics whenever it writes a checkpoint. Colab invokes Python unbuffered so these updates appear while the cell is running.
+
 ## Timing and target semantics
 
 Timing is fixed: one frame is 10 ms; every phoneme occupies exactly five frames (50 ms); adjacent phonemes overlap by exactly one frame (10 ms). The overlap frame is the weighted sum of both articulatory feature vectors. The default symmetric envelope is `[1/3, 2/3, 1, 2/3, 1/3]`; a different five-value symmetric envelope can be supplied as `phoneme_envelope` and is normalized to peak 1.0. Temporal extent and overlap are not configurable in this version.

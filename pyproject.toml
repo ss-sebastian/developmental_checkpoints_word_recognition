@@ -7,7 +7,7 @@ name = "developmental-lm-phase1"
 version = "0.1.0"
 description = "Phase 1 continuous articulatory-stream next-phoneme model"
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.26", "torch>=2.1"]
+dependencies = ["numpy>=1.26", "torch>=2.1", "tqdm>=4.66"]
 
 [project.optional-dependencies]
 panphon = ["panphon>=0.22"]
