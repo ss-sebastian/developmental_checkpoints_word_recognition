@@ -7,7 +7,7 @@ from pathlib import Path
 REQUIRED = {
     "dataset_path", "feature_table_path", "pause_durations_path",
     "output_dir", "seed", "validation_fraction", "noise_sigma", "hidden_size", "num_layers", "dropout",
-    "learning_rate", "gradient_clip_norm", "checkpoint_every_steps",
+    "learning_rate", "gradient_clip_norm", "target_checkpoint_count",
 }
 
 

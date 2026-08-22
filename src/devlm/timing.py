@@ -30,3 +30,10 @@ class EmpiricalPauseSampler:
             raise ValueError(f"No empirical timing values for {label!r} and no __default__ fallback")
         milliseconds = float(self.rng.choice(candidates))
         return max(1, int(round(milliseconds / FRAME_MS)))
+
+    def expected_frames(self, label: str = "__default__") -> float:
+        candidates = self.values_ms.get(label, self.values_ms.get("__default__"))
+        if candidates is None:
+            raise ValueError(f"No empirical timing values for {label!r} and no __default__ fallback")
+        frame_values = np.maximum(1, np.rint(candidates / FRAME_MS))
+        return float(frame_values.mean())

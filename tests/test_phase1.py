@@ -17,6 +17,7 @@ from devlm.stream import (
     build_session_stream,
 )
 from devlm.timing import EmpiricalPauseSampler, FRAME_MS
+from devlm.train import estimate_input_frames
 
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -115,6 +116,13 @@ class Phase1Tests(unittest.TestCase):
     def test_phoneme_duration_file_is_not_required(self):
         config = load_config(Path(__file__).parent.parent / "configs" / "smoke.toml")
         self.assertNotIn("phoneme_durations_path", config)
+
+    def test_checkpoint_schedule_is_based_on_estimated_frames(self):
+        rng = np.random.default_rng(1)
+        pause_sampler = self.pause_sampler({"__default__": [30]}, rng)
+        session = self.session([("a book", ("a", "b")), ("a", ("a",))])
+        # Two overlapping phonemes = 9 frames; one phoneme = 5; pause = 3.
+        self.assertEqual(estimate_input_frames([session], self.features, pause_sampler), 17)
 
     def test_loader_filters_non_north_american_rows(self):
         rows = [

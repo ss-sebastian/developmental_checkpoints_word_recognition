@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import random
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -13,6 +14,7 @@ from .data import Session, load_ipa_childes, split_sessions
 from .features import FeatureTable
 from .model import CausalPhonemeGRU
 from .stream import FrameStream, build_session_stream
+from .stream import PHONEME_FRAMES, PHONEME_OVERLAP_FRAMES
 from .timing import EmpiricalPauseSampler, FRAME_MS
 
 
@@ -42,6 +44,19 @@ def make_stream(session: Session, table: FeatureTable, vocabulary: dict[str, int
         noise_sigma=float(cfg["noise_sigma"]),
         phoneme_envelope=cfg.get("phoneme_envelope"),
     )
+
+
+def estimate_input_frames(sessions: list[Session], table: FeatureTable, pause_sampler: EmpiricalPauseSampler) -> float:
+    """Estimate exposure for scheduling only; checkpoint metadata uses observed frames."""
+    total = 0.0
+    stride = PHONEME_FRAMES - PHONEME_OVERLAP_FRAMES
+    for session in sessions:
+        for utterance in session.utterances:
+            phonemes = utterance.phonemes or table.tokenize(utterance.ipa)
+            if phonemes:
+                total += PHONEME_FRAMES + (len(phonemes) - 1) * stride
+        total += max(0, len(session.utterances) - 1) * pause_sampler.expected_frames()
+    return total
 
 
 @torch.no_grad()
@@ -86,22 +101,31 @@ def train(config: dict) -> dict:
     model = CausalPhonemeGRU(table.width, int(config["hidden_size"]), int(config["num_layers"]), len(vocabulary), float(config["dropout"]))
     optimizer = torch.optim.Adam(model.parameters(), lr=float(config["learning_rate"]))
     counters, train_rng = Counters(), np.random.default_rng(seed)
-    checkpoint_every = int(config["checkpoint_every_steps"])
+    target_checkpoint_count = int(config["target_checkpoint_count"])
+    if target_checkpoint_count <= 0:
+        raise ValueError("target_checkpoint_count must be positive")
+    pause_estimator = EmpiricalPauseSampler.from_json(config["pause_durations_path"], np.random.default_rng(seed))
+    estimated_total_frames = estimate_input_frames(train_sessions, table, pause_estimator)
+    checkpoint_interval_frames = max(1, math.ceil(estimated_total_frames / target_checkpoint_count))
+    next_checkpoint_frame = checkpoint_interval_frames
+    last_checkpoint_frame = -1
     last_metrics = None
 
     def checkpoint() -> dict:
-        nonlocal last_metrics
+        nonlocal last_metrics, last_checkpoint_frame
         val_loss, val_accuracy = validate(model, val_sessions, table, vocabulary, config, seed + 1)
         metadata = {
             **asdict(counters),
             "equivalent_input_duration_hours": counters.cumulative_frames_seen * FRAME_MS / 3_600_000,
             "validation_next_phoneme_loss": val_loss,
             "validation_next_phoneme_accuracy": val_accuracy,
+            "planned_checkpoint_interval_frames": checkpoint_interval_frames,
         }
         torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(), "metadata": metadata, "config": config, "vocabulary": vocabulary}, output_dir / f"checkpoint_step_{counters.optimizer_step:08d}.pt")
         with (output_dir / "metrics.jsonl").open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(metadata) + "\n")
         last_metrics = metadata
+        last_checkpoint_frame = counters.cumulative_frames_seen
         return metadata
 
     model.train()
@@ -120,11 +144,13 @@ def train(config: dict) -> dict:
         counters.cumulative_frames_seen += len(stream.noisy_frames)
         counters.cumulative_phonemes_seen += len(stream.spans)
         counters.cumulative_utterances_seen += len(session.utterances)
-        if counters.optimizer_step % checkpoint_every == 0:
+        if counters.cumulative_frames_seen >= next_checkpoint_frame:
             checkpoint()
+            while next_checkpoint_frame <= counters.cumulative_frames_seen:
+                next_checkpoint_frame += checkpoint_interval_frames
         model.train()
     if counters.optimizer_step == 0:
         raise ValueError("Training split contains no next-phoneme targets")
-    if counters.optimizer_step % checkpoint_every:
+    if last_checkpoint_frame != counters.cumulative_frames_seen:
         checkpoint()
     return last_metrics or {}
