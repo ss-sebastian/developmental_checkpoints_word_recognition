@@ -72,23 +72,37 @@ def estimate_input_frames(sessions: list[Session], table: FeatureTable) -> int:
     return total
 
 
+def chunk_slices(total_frames: int, chunk_frames: int):
+    if chunk_frames <= 0:
+        raise ValueError("sequence_chunk_frames must be positive")
+    for start in range(0, total_frames, chunk_frames):
+        yield start, min(total_frames, start + chunk_frames)
+
+
 @torch.no_grad()
 def validate(model: CausalPhonemeGRU, sessions: list[Session], table: FeatureTable, vocabulary: dict[str, int], cfg: dict, seed: int) -> tuple[float, float]:
     model.eval()
     device = next(model.parameters()).device
     rng = np.random.default_rng(seed)
     total_loss = total_correct = total_targets = 0
+    chunk_frames = int(cfg.get("sequence_chunk_frames", 4096))
     for session in tqdm(sessions, desc="Validation", unit="session", leave=False, dynamic_ncols=True):
         stream = make_stream(session, table, vocabulary, cfg, rng)
         if not len(stream.target_ids):
             continue
-        frames = torch.from_numpy(stream.noisy_frames).unsqueeze(0).to(device)
-        logits, _ = model(frames)
-        selected = logits[0, torch.from_numpy(stream.target_frames).to(device)]
-        targets = torch.from_numpy(stream.target_ids).to(device)
-        total_loss += float(F.cross_entropy(selected, targets, reduction="sum"))
-        total_correct += int((selected.argmax(-1) == targets).sum())
-        total_targets += len(targets)
+        hidden = None
+        for start, end in chunk_slices(len(stream.noisy_frames), chunk_frames):
+            frames = torch.from_numpy(stream.noisy_frames[start:end]).unsqueeze(0).to(device).contiguous()
+            logits, hidden = model(frames, hidden)
+            target_mask = (stream.target_frames >= start) & (stream.target_frames < end)
+            if not target_mask.any():
+                continue
+            local_frames = torch.from_numpy(stream.target_frames[target_mask] - start).to(device)
+            targets = torch.from_numpy(stream.target_ids[target_mask]).to(device)
+            selected = logits[0, local_frames]
+            total_loss += float(F.cross_entropy(selected, targets, reduction="sum"))
+            total_correct += int((selected.argmax(-1) == targets).sum())
+            total_targets += len(targets)
     if not total_targets:
         raise ValueError("Validation split contains no next-phoneme targets")
     return total_loss / total_targets, total_correct / total_targets
@@ -166,33 +180,50 @@ def train(config: dict) -> dict:
         return metadata
 
     model.train()
+    chunk_frames = int(config.get("sequence_chunk_frames", 4096))
     progress = tqdm(train_sessions, desc="Training", unit="session", dynamic_ncols=True)
     for session in progress:  # developmental age order, one continuous pass
         stream = make_stream(session, table, vocabulary, config, train_rng)
         if not len(stream.target_ids):
             continue
-        logits, _ = model(torch.from_numpy(stream.noisy_frames).unsqueeze(0).to(device))
-        selected = logits[0, torch.from_numpy(stream.target_frames).to(device)]
-        loss = F.cross_entropy(selected, torch.from_numpy(stream.target_ids).to(device))
-        optimizer.zero_grad(set_to_none=True)
-        loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(), float(config["gradient_clip_norm"]))
-        optimizer.step()
-        counters.optimizer_step += 1
-        counters.cumulative_frames_seen += len(stream.noisy_frames)
-        counters.cumulative_phonemes_seen += len(stream.spans)
-        counters.cumulative_utterances_seen += len(session.utterances)
-        progress.set_postfix(
-            step=counters.optimizer_step,
-            frames=counters.cumulative_frames_seen,
-            hours=f"{counters.cumulative_frames_seen * FRAME_MS / 3_600_000:.3f}",
-            loss=f"{float(loss.detach()):.4f}",
-        )
-        if counters.cumulative_frames_seen >= next_checkpoint_frame:
-            checkpoint()
-            while next_checkpoint_frame <= counters.cumulative_frames_seen:
-                next_checkpoint_frame += checkpoint_interval_frames
-        model.train()
+        hidden = None
+        utterance_end_frames = {
+            max(span.end_frame for span in stream.spans if span.utterance_index == utterance_index)
+            for utterance_index in range(len(session.utterances))
+        }
+        for start, end in chunk_slices(len(stream.noisy_frames), chunk_frames):
+            frames = torch.from_numpy(stream.noisy_frames[start:end]).unsqueeze(0).to(device).contiguous()
+            logits, hidden = model(frames, hidden)
+            target_mask = (stream.target_frames >= start) & (stream.target_frames < end)
+            latest_loss = None
+            if target_mask.any():
+                local_frames = torch.from_numpy(stream.target_frames[target_mask] - start).to(device)
+                targets = torch.from_numpy(stream.target_ids[target_mask]).to(device)
+                selected = logits[0, local_frames]
+                loss = F.cross_entropy(selected, targets)
+                optimizer.zero_grad(set_to_none=True)
+                loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), float(config["gradient_clip_norm"]))
+                optimizer.step()
+                counters.optimizer_step += 1
+                latest_loss = float(loss.detach())
+            hidden = hidden.detach()
+            counters.cumulative_frames_seen += end - start
+            counters.cumulative_phonemes_seen += sum(start < span.end_frame <= end for span in stream.spans)
+            counters.cumulative_utterances_seen += sum(start < utterance_end <= end for utterance_end in utterance_end_frames)
+            postfix = {
+                "step": counters.optimizer_step,
+                "frames": counters.cumulative_frames_seen,
+                "hours": f"{counters.cumulative_frames_seen * FRAME_MS / 3_600_000:.3f}",
+            }
+            if latest_loss is not None:
+                postfix["loss"] = f"{latest_loss:.4f}"
+            progress.set_postfix(**postfix)
+            if counters.cumulative_frames_seen >= next_checkpoint_frame:
+                checkpoint()
+                while next_checkpoint_frame <= counters.cumulative_frames_seen:
+                    next_checkpoint_frame += checkpoint_interval_frames
+                model.train()
     if counters.optimizer_step == 0:
         raise ValueError("Training split contains no next-phoneme targets")
     if last_checkpoint_frame != counters.cumulative_frames_seen:

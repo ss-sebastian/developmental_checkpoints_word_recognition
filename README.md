@@ -30,6 +30,8 @@ For real training, copy `configs/phase1.example.toml`, replace all required data
 
 `device = "auto"` selects CUDA when available and otherwise uses CPU. The Colab notebook explicitly sets `device = "cuda"` so a missing GPU fails immediately instead of silently training on CPU. Model inputs, target indices, training, and validation all use the selected device.
 
+Long sessions are processed with truncated backpropagation through time using `sequence_chunk_frames = 4096`. GRU hidden state is carried across chunks and detached at chunk boundaries, preventing cuDNN sequence-length failures and limiting GPU memory use. Optimizer steps therefore count chunks containing prediction targets, while checkpoint/evaluation scheduling remains based on cumulative observed frames.
+
 The linked Colab notebook downloads and prepares its inputs under `/content`, trains entirely in local Colab runtime storage, then ZIPs and downloads every checkpoint together with the reproducibility metadata. It does not mount or write to Google Drive. Because `/content` is ephemeral, a runtime disconnection before the final download loses the local outputs.
 
 The CLI reports data-loading progress every 100,000 utterances, displays a live session-level training bar with optimizer step, observed frames, equivalent input hours, and current loss, and prints validation metrics whenever it writes a checkpoint. Colab invokes Python unbuffered so these updates appear while the cell is running.

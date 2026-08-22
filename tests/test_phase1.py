@@ -19,7 +19,7 @@ from devlm.stream import (
 )
 from devlm.prepare import normalize_huggingface_record
 from devlm.timing import FRAME_MS
-from devlm.train import estimate_input_frames, resolve_device
+from devlm.train import chunk_slices, estimate_input_frames, resolve_device
 
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -124,6 +124,9 @@ class Phase1Tests(unittest.TestCase):
 
     def test_explicit_cpu_device_resolution(self):
         self.assertEqual(resolve_device("cpu").type, "cpu")
+
+    def test_long_sequences_are_split_without_gaps(self):
+        self.assertEqual(list(chunk_slices(10, 4)), [(0, 4), (4, 8), (8, 10)])
 
     def test_huggingface_record_removes_word_boundaries(self):
         row = {
