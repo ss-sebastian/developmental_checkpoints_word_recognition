@@ -1,6 +1,6 @@
 # Developmental LM — Phase 1
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ss-sebastian/01_developmental_checkpoints_word_recognition/blob/main/colab/phase1_training.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ss-sebastian/developmental_checkpoints_word_recognition/blob/main/colab/phase1_training.ipynb)
 
 This directory implements **Phase 1 only**: a causal GRU trained solely by next-phoneme cross-entropy from noisy, continuous 10-ms articulatory-feature frames. It has no word-boundary input, semantic/behavioral supervision, pretrained model, or Phase 2 analysis.
 
