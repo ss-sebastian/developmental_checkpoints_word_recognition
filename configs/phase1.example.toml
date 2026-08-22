@@ -3,6 +3,7 @@ dataset_path = "/REPLACE/WITH/north_american_ipa_childes.jsonl"
 feature_table_path = "/REPLACE/WITH/ipa_feature_mapping.json"
 output_dir = "../outputs/phase1"
 seed = 20260822
+device = "auto"
 validation_fraction = 0.1
 noise_sigma = 0.05
 phoneme_envelope = [0.3333333333, 0.6666666667, 1.0, 0.6666666667, 0.3333333333]

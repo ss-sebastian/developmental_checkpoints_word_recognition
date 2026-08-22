@@ -31,7 +31,20 @@ def set_seeds(seed: int) -> None:
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
     torch.use_deterministic_algorithms(True)
+
+
+def resolve_device(requested: str = "auto") -> torch.device:
+    requested = requested.lower()
+    if requested == "auto":
+        return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if requested == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("device='cuda' was requested, but CUDA is not available in this runtime")
+    if requested not in {"cpu", "cuda"}:
+        raise ValueError("device must be 'auto', 'cpu', or 'cuda'")
+    return torch.device(requested)
 
 
 def _phonemes(session: Session, table: FeatureTable) -> tuple[str, ...]:
@@ -62,16 +75,17 @@ def estimate_input_frames(sessions: list[Session], table: FeatureTable) -> int:
 @torch.no_grad()
 def validate(model: CausalPhonemeGRU, sessions: list[Session], table: FeatureTable, vocabulary: dict[str, int], cfg: dict, seed: int) -> tuple[float, float]:
     model.eval()
+    device = next(model.parameters()).device
     rng = np.random.default_rng(seed)
     total_loss = total_correct = total_targets = 0
     for session in tqdm(sessions, desc="Validation", unit="session", leave=False, dynamic_ncols=True):
         stream = make_stream(session, table, vocabulary, cfg, rng)
         if not len(stream.target_ids):
             continue
-        frames = torch.from_numpy(stream.noisy_frames).unsqueeze(0)
+        frames = torch.from_numpy(stream.noisy_frames).unsqueeze(0).to(device)
         logits, _ = model(frames)
-        selected = logits[0, torch.from_numpy(stream.target_frames)]
-        targets = torch.from_numpy(stream.target_ids)
+        selected = logits[0, torch.from_numpy(stream.target_frames).to(device)]
+        targets = torch.from_numpy(stream.target_ids).to(device)
         total_loss += float(F.cross_entropy(selected, targets, reduction="sum"))
         total_correct += int((selected.argmax(-1) == targets).sum())
         total_targets += len(targets)
@@ -83,6 +97,11 @@ def validate(model: CausalPhonemeGRU, sessions: list[Session], table: FeatureTab
 def train(config: dict) -> dict:
     seed = int(config["seed"])
     set_seeds(seed)
+    device = resolve_device(str(config.get("device", "auto")))
+    if device.type == "cuda":
+        print(f"Training device: CUDA ({torch.cuda.get_device_name(device)})", flush=True)
+    else:
+        print("Training device: CPU", flush=True)
     output_dir = Path(config["output_dir"])
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "metrics.jsonl").write_text("", encoding="utf-8")
@@ -105,7 +124,7 @@ def train(config: dict) -> dict:
         "validation": [[s.corpus_id, s.session_id] for s in val_sessions],
     }
     (output_dir / "session_split.json").write_text(json.dumps(split_manifest, indent=2) + "\n", encoding="utf-8")
-    model = CausalPhonemeGRU(table.width, int(config["hidden_size"]), int(config["num_layers"]), len(vocabulary), float(config["dropout"]))
+    model = CausalPhonemeGRU(table.width, int(config["hidden_size"]), int(config["num_layers"]), len(vocabulary), float(config["dropout"])).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=float(config["learning_rate"]))
     counters, train_rng = Counters(), np.random.default_rng(seed)
     target_checkpoint_count = int(config["target_checkpoint_count"])
@@ -152,9 +171,9 @@ def train(config: dict) -> dict:
         stream = make_stream(session, table, vocabulary, config, train_rng)
         if not len(stream.target_ids):
             continue
-        logits, _ = model(torch.from_numpy(stream.noisy_frames).unsqueeze(0))
-        selected = logits[0, torch.from_numpy(stream.target_frames)]
-        loss = F.cross_entropy(selected, torch.from_numpy(stream.target_ids))
+        logits, _ = model(torch.from_numpy(stream.noisy_frames).unsqueeze(0).to(device))
+        selected = logits[0, torch.from_numpy(stream.target_frames).to(device)]
+        loss = F.cross_entropy(selected, torch.from_numpy(stream.target_ids).to(device))
         optimizer.zero_grad(set_to_none=True)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), float(config["gradient_clip_norm"]))

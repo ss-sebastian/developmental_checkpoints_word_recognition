@@ -28,6 +28,8 @@ python -m devlm.cli --config configs/smoke.toml
 
 For real training, copy `configs/phase1.example.toml`, replace all required data paths, and run the same CLI. The default noise standard deviation is `0.05`. Noise is added only where speech is active; utterance pauses remain exact all-zero vectors.
 
+`device = "auto"` selects CUDA when available and otherwise uses CPU. The Colab notebook explicitly sets `device = "cuda"` so a missing GPU fails immediately instead of silently training on CPU. Model inputs, target indices, training, and validation all use the selected device.
+
 The linked Colab notebook downloads and prepares its inputs under `/content`, trains entirely in local Colab runtime storage, then ZIPs and downloads every checkpoint together with the reproducibility metadata. It does not mount or write to Google Drive. Because `/content` is ephemeral, a runtime disconnection before the final download loses the local outputs.
 
 The CLI reports data-loading progress every 100,000 utterances, displays a live session-level training bar with optimizer step, observed frames, equivalent input hours, and current loss, and prints validation metrics whenever it writes a checkpoint. Colab invokes Python unbuffered so these updates appear while the cell is running.

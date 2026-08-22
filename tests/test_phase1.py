@@ -19,7 +19,7 @@ from devlm.stream import (
 )
 from devlm.prepare import normalize_huggingface_record
 from devlm.timing import FRAME_MS
-from devlm.train import estimate_input_frames
+from devlm.train import estimate_input_frames, resolve_device
 
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -121,6 +121,9 @@ class Phase1Tests(unittest.TestCase):
         session = self.session([("a book", ("a", "b")), ("a", ("a",))])
         # Two overlapping phonemes = 9 frames; one phoneme = 5; pause = 3.
         self.assertEqual(estimate_input_frames([session], self.features), 17)
+
+    def test_explicit_cpu_device_resolution(self):
+        self.assertEqual(resolve_device("cpu").type, "cpu")
 
     def test_huggingface_record_removes_word_boundaries(self):
         row = {
