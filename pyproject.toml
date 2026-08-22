@@ -11,6 +11,7 @@ dependencies = ["numpy>=1.26", "torch>=2.1"]
 
 [project.optional-dependencies]
 panphon = ["panphon>=0.22"]
+colab = ["datasets>=3.0"]
 
 [project.scripts]
 devlm-phase1 = "devlm.cli:main"

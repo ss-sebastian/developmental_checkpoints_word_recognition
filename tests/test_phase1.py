@@ -14,9 +14,11 @@ from devlm.stream import (
     DEFAULT_PHONEME_ENVELOPE,
     PHONEME_FRAMES,
     PHONEME_OVERLAP_FRAMES,
+    UTTERANCE_PAUSE_FRAMES,
     build_session_stream,
 )
-from devlm.timing import EmpiricalPauseSampler, FRAME_MS
+from devlm.prepare import normalize_huggingface_record
+from devlm.timing import FRAME_MS
 from devlm.train import estimate_input_frames
 
 
@@ -28,21 +30,17 @@ class Phase1Tests(unittest.TestCase):
         self.features = FeatureTable.from_json(FIXTURES / "features.json")
         self.vocab = {p: i for i, p in enumerate(sorted(self.features.mapping))}
 
-    def pause_sampler(self, values, rng):
-        return EmpiricalPauseSampler(values, rng)
-
     def session(self, utterances):
         return Session("c", "s", 20.0, tuple(
             Utterance("c", "s", 20.0, i + 1, "".join(ps), text, tuple(ps))
             for i, (text, ps) in enumerate(utterances)
         ))
 
-    def stream(self, utterances, seed=1, noise=0.05, pause_values=(30,), envelope=None):
+    def stream(self, utterances, seed=1, noise=0.05, envelope=None):
         rng = np.random.default_rng(seed)
         return build_session_stream(
             self.session(utterances), self.features, self.vocab,
-            self.pause_sampler({"__default__": list(pause_values)}, rng), rng,
-            noise_sigma=noise, phoneme_envelope=envelope,
+            rng, noise_sigma=noise, phoneme_envelope=envelope,
         )
 
     def test_word_boundary_has_no_cue(self):
@@ -52,9 +50,10 @@ class Phase1Tests(unittest.TestCase):
         self.assertTrue(stream.speech_mask[first.start_frame:second.end_frame].all())
 
     def test_utterance_boundary_is_zero_silence(self):
-        stream = self.stream([("a", ("a",)), ("book", ("b",))], noise=0, pause_values=(30,))
+        stream = self.stream([("a", ("a",)), ("book", ("b",))], noise=0)
         left, right = stream.spans
         silence = stream.clean_frames[left.end_frame:right.start_frame]
+        self.assertEqual(UTTERANCE_PAUSE_FRAMES, 3)
         self.assertEqual(len(silence), 3)
         self.assertTrue(np.array_equal(silence, np.zeros_like(silence)))
 
@@ -106,9 +105,9 @@ class Phase1Tests(unittest.TestCase):
         self.assertTrue(train_ids.isdisjoint(val_ids))
         self.assertEqual([s.target_child_age_months for s in train], sorted(s.target_child_age_months for s in train))
 
-    def test_seed_reproduces_pauses_and_initial_stream(self):
-        a = self.stream([("a", ("a",)), ("book", ("b",))], seed=44, pause_values=(20, 30, 40))
-        b = self.stream([("a", ("a",)), ("book", ("b",))], seed=44, pause_values=(20, 30, 40))
+    def test_seed_reproduces_initial_stream(self):
+        a = self.stream([("a", ("a",)), ("book", ("b",))], seed=44)
+        b = self.stream([("a", ("a",)), ("book", ("b",))], seed=44)
         self.assertEqual(a.spans, b.spans)
         self.assertTrue(np.array_equal(a.noisy_frames, b.noisy_frames))
         self.assertTrue(np.array_equal(a.target_ids, b.target_ids))
@@ -116,13 +115,22 @@ class Phase1Tests(unittest.TestCase):
     def test_phoneme_duration_file_is_not_required(self):
         config = load_config(Path(__file__).parent.parent / "configs" / "smoke.toml")
         self.assertNotIn("phoneme_durations_path", config)
+        self.assertNotIn("pause_durations_path", config)
 
     def test_checkpoint_schedule_is_based_on_estimated_frames(self):
-        rng = np.random.default_rng(1)
-        pause_sampler = self.pause_sampler({"__default__": [30]}, rng)
         session = self.session([("a book", ("a", "b")), ("a", ("a",))])
         # Two overlapping phonemes = 9 frames; one phoneme = 5; pause = 3.
-        self.assertEqual(estimate_input_frames([session], self.features, pause_sampler), 17)
+        self.assertEqual(estimate_input_frames([session], self.features), 17)
+
+    def test_huggingface_record_removes_word_boundaries(self):
+        row = {
+            "corpus_id": 47, "transcript_id": 2532, "id": 917951,
+            "target_child_age": 3.0, "processed_gloss": "a book",
+            "ipa_transcription": "ə WORD_BOUNDARY b ʊ k WORD_BOUNDARY",
+        }
+        normalized = normalize_huggingface_record(row)
+        self.assertEqual(normalized["phonemes"], ["ə", "b", "ʊ", "k"])
+        self.assertNotIn("WORD_BOUNDARY", normalized["ipa"])
 
     def test_loader_filters_non_north_american_rows(self):
         rows = [

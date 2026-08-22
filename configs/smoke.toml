@@ -1,7 +1,6 @@
 [phase1]
 dataset_path = "../tests/fixtures/ipa_childes.synthetic.jsonl"
 feature_table_path = "../tests/fixtures/features.json"
-pause_durations_path = "../tests/fixtures/pause_durations.synthetic.json"
 output_dir = "../outputs/smoke"
 seed = 7
 validation_fraction = 0.25

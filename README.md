@@ -4,15 +4,14 @@
 
 This directory implements **Phase 1 only**: a causal GRU trained solely by next-phoneme cross-entropy from noisy, continuous 10-ms articulatory-feature frames. It has no word-boundary input, semantic/behavioral supervision, pretrained model, or Phase 2 analysis.
 
-## Required real data (not included)
+## Real data preparation
 
-Real training intentionally refuses to guess missing scientific inputs. Supply:
+For local training, supply:
 
 1. A North American English IPA-CHILDES export (`.jsonl`, `.csv`, or `.tsv`) with `corpus_id`, `session_id`, `target_child_age_months`, `utterance_order`, `ipa`, and `text`. Optional `language` and `dialect` fields are filtered when present. A JSON-list `phonemes` field is strongly recommended because IPA segmentation conventions differ across exports.
-2. A complete, reproducible feature table JSON: `{"feature_names": [...], "phonemes": {"IPA": [numeric, ...]}}`. `FeatureTable.from_panphon(...)` can generate and save this mapping when the optional PanPhon dependency is installed.
-3. An empirical utterance-pause JSON of the form `{"values_ms": {"__default__": [observations...]}}`. Values are sampled directly and rounded to 10-ms frames. The tiny pause file under `tests/fixtures/` is synthetic and authorized only for tests/smoke checks; it is not a scientific default.
+2. A complete, reproducible feature table JSON: `{"feature_names": [...], "phonemes": {"IPA": [numeric, ...]}}`.
 
-An empirical phoneme-duration file is **not required and is not read by the current model**. Every phoneme has the fixed timing specified below.
+The Colab notebook instead downloads the public Hugging Face `phonemetransformers/IPA-CHILDES` EnglishNA subset directly, removes every `WORD_BOUNDARY` marker, converts it to the loader schema, and generates the feature table from its observed inventory using PanPhon. Multi-segment IPA-CHILDES phoneme tokens (for example, diphthongs) use the mean of their PanPhon segment vectors. No phoneme-duration or pause-duration file is required.
 
 The loader preserves text, IPA, target-child age, corpus/session IDs, and utterance order. Sessions are split before training and validation, then the training sessions retain developmental age order. Checkpoints are indexed by exposure counters—not invented human ages.
 
@@ -29,16 +28,16 @@ python -m devlm.cli --config configs/smoke.toml
 
 For real training, copy `configs/phase1.example.toml`, replace all required data paths, and run the same CLI. The default noise standard deviation is `0.05`. Noise is added only where speech is active; utterance pauses remain exact all-zero vectors.
 
-The linked Colab notebook uploads the three real-data inputs into `/content`, trains entirely in local Colab runtime storage, then ZIPs and downloads every checkpoint together with the reproducibility metadata. It does not mount or write to Google Drive. Because `/content` is ephemeral, a runtime disconnection before the final download loses the local outputs.
+The linked Colab notebook downloads and prepares its inputs under `/content`, trains entirely in local Colab runtime storage, then ZIPs and downloads every checkpoint together with the reproducibility metadata. It does not mount or write to Google Drive. Because `/content` is ephemeral, a runtime disconnection before the final download loses the local outputs.
 
 ## Timing and target semantics
 
 Timing is fixed: one frame is 10 ms; every phoneme occupies exactly five frames (50 ms); adjacent phonemes overlap by exactly one frame (10 ms). The overlap frame is the weighted sum of both articulatory feature vectors. The default symmetric envelope is `[1/3, 2/3, 1, 2/3, 1/3]`; a different five-value symmetric envelope can be supplied as `phoneme_envelope` and is normalized to peak 1.0. Temporal extent and overlap are not configurable in this version.
 
-Words are concatenated without silence, zeros, separators, or special symbols. Only adjacent CHILDES utterances receive empirically sampled all-zero pauses.
+Words are concatenated without silence, zeros, separators, or special symbols. Only adjacent CHILDES utterances receive exactly three all-zero frames (30 ms). No noise is added to those frames.
 
 For target phoneme `i+1`, including when its onset is the one-frame overlap, the classifier reads the causal GRU state at frame `onset(i+1)-1`. Thus no frame containing the target's activation contributes to its prediction. The leakage invariant is enforced in stream construction and covered by a unit test.
 
 Each checkpoint stores model/optimizer state and: optimizer step, cumulative frames/phonemes/utterances, equivalent input hours (`frames × 10 ms`), validation next-phoneme loss, and validation next-phoneme accuracy. The run is a single developmental pass; each session is one optimizer step in this minimal baseline.
 
-Checkpoint/evaluation timing is exposure-based rather than step-based. `target_checkpoint_count = 30` estimates a frame interval from the training split, fixed phoneme timing, and the empirical mean pause duration, aiming for roughly 30 checkpoints across the run. A full validation pass occurs only when a checkpoint is written and once at the end if needed; it does not run after every session. Recorded exposure counters always use observed frames, not the estimate.
+Checkpoint/evaluation timing is exposure-based rather than step-based. `target_checkpoint_count = 30` calculates an exact frame interval from the training split and fixed timing, aiming for roughly 30 checkpoints across the run. A full validation pass occurs only when a checkpoint is written and once at the end if needed; it does not run after every session.

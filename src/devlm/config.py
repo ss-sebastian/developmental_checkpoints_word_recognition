@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 REQUIRED = {
-    "dataset_path", "feature_table_path", "pause_durations_path",
+    "dataset_path", "feature_table_path",
     "output_dir", "seed", "validation_fraction", "noise_sigma", "hidden_size", "num_layers", "dropout",
     "learning_rate", "gradient_clip_norm", "target_checkpoint_count",
 }
@@ -18,7 +18,7 @@ def load_config(path: str | Path) -> dict:
     missing = REQUIRED - config.keys()
     if missing:
         raise ValueError(f"Missing configuration keys: {', '.join(sorted(missing))}")
-    for key in ("dataset_path", "feature_table_path", "pause_durations_path", "output_dir"):
+    for key in ("dataset_path", "feature_table_path", "output_dir"):
         candidate = Path(config[key])
         config[key] = str(candidate if candidate.is_absolute() else (path.parent / candidate).resolve())
     return config

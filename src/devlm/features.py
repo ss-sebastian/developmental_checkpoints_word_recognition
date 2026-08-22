@@ -34,9 +34,11 @@ class FeatureTable:
         mapping = {}
         for phoneme in sorted(set(phonemes)):
             vectors = ft.word_to_vector_list(phoneme, numeric=True)
-            if len(vectors) != 1:
-                raise ValueError(f"{phoneme!r} is not a single PanPhon segment")
-            mapping[phoneme] = [float(v) for v in vectors[0]]
+            if not vectors:
+                raise ValueError(f"PanPhon cannot represent IPA phoneme token {phoneme!r}")
+            # IPA-CHILDES treats some diphthongs/affricates as one phoneme token.
+            # Their component segment vectors are averaged into one continuous vector.
+            mapping[phoneme] = np.asarray(vectors, dtype=np.float32).mean(axis=0).astype(float).tolist()
         table = cls(names, mapping)
         if save_to:
             table.save(save_to)

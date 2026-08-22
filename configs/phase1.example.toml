@@ -1,7 +1,6 @@
 [phase1]
 dataset_path = "/REPLACE/WITH/north_american_ipa_childes.jsonl"
 feature_table_path = "/REPLACE/WITH/ipa_feature_mapping.json"
-pause_durations_path = "/REPLACE/WITH/empirical_utterance_pauses.json"
 output_dir = "../outputs/phase1"
 seed = 20260822
 validation_fraction = 0.1

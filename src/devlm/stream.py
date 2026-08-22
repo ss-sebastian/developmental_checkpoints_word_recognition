@@ -6,10 +6,11 @@ import numpy as np
 
 from .data import Session
 from .features import FeatureTable
-from .timing import EmpiricalPauseSampler, FRAME_MS
+from .timing import FRAME_MS
 
 PHONEME_FRAMES = 5
 PHONEME_OVERLAP_FRAMES = 1
+UTTERANCE_PAUSE_FRAMES = 3
 DEFAULT_PHONEME_ENVELOPE = np.asarray([1.0 / 3.0, 2.0 / 3.0, 1.0, 2.0 / 3.0, 1.0 / 3.0], dtype=np.float32)
 
 
@@ -45,8 +46,7 @@ def _normalized_envelope(values: list[float] | tuple[float, ...] | np.ndarray | 
 
 def build_session_stream(
     session: Session, features: FeatureTable, phoneme_to_id: dict[str, int],
-    pause_sampler: EmpiricalPauseSampler, rng: np.random.Generator,
-    noise_sigma: float = 0.05,
+    rng: np.random.Generator, noise_sigma: float = 0.05,
     phoneme_envelope: list[float] | tuple[float, ...] | np.ndarray | None = None,
 ) -> FrameStream:
     if noise_sigma < 0:
@@ -64,8 +64,7 @@ def build_session_stream(
             spans.append(PhonemeSpan(phoneme, ui, start, end))
             cursor = end if pi == len(phonemes) - 1 else end - PHONEME_OVERLAP_FRAMES
         if ui < len(session.utterances) - 1:
-            pause = pause_sampler.sample_frames("__default__")
-            cursor = spans[-1].end_frame + pause
+            cursor = spans[-1].end_frame + UTTERANCE_PAUSE_FRAMES
     total_frames = max(s.end_frame for s in spans)
     clean = np.zeros((total_frames, features.width), dtype=np.float32)
     speech = np.zeros(total_frames, dtype=bool)

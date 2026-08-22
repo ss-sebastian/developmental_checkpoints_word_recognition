@@ -14,8 +14,8 @@ from .data import Session, load_ipa_childes, split_sessions
 from .features import FeatureTable
 from .model import CausalPhonemeGRU
 from .stream import FrameStream, build_session_stream
-from .stream import PHONEME_FRAMES, PHONEME_OVERLAP_FRAMES
-from .timing import EmpiricalPauseSampler, FRAME_MS
+from .stream import PHONEME_FRAMES, PHONEME_OVERLAP_FRAMES, UTTERANCE_PAUSE_FRAMES
+from .timing import FRAME_MS
 
 
 @dataclass
@@ -38,24 +38,23 @@ def _phonemes(session: Session, table: FeatureTable) -> tuple[str, ...]:
 
 
 def make_stream(session: Session, table: FeatureTable, vocabulary: dict[str, int], cfg: dict, rng: np.random.Generator) -> FrameStream:
-    pauses = EmpiricalPauseSampler.from_json(cfg["pause_durations_path"], rng)
     return build_session_stream(
-        session, table, vocabulary, pauses, rng,
+        session, table, vocabulary, rng,
         noise_sigma=float(cfg["noise_sigma"]),
         phoneme_envelope=cfg.get("phoneme_envelope"),
     )
 
 
-def estimate_input_frames(sessions: list[Session], table: FeatureTable, pause_sampler: EmpiricalPauseSampler) -> float:
-    """Estimate exposure for scheduling only; checkpoint metadata uses observed frames."""
-    total = 0.0
+def estimate_input_frames(sessions: list[Session], table: FeatureTable) -> int:
+    """Calculate exact exposure under fixed phoneme and utterance timing."""
+    total = 0
     stride = PHONEME_FRAMES - PHONEME_OVERLAP_FRAMES
     for session in sessions:
         for utterance in session.utterances:
             phonemes = utterance.phonemes or table.tokenize(utterance.ipa)
             if phonemes:
                 total += PHONEME_FRAMES + (len(phonemes) - 1) * stride
-        total += max(0, len(session.utterances) - 1) * pause_sampler.expected_frames()
+        total += max(0, len(session.utterances) - 1) * UTTERANCE_PAUSE_FRAMES
     return total
 
 
@@ -104,8 +103,7 @@ def train(config: dict) -> dict:
     target_checkpoint_count = int(config["target_checkpoint_count"])
     if target_checkpoint_count <= 0:
         raise ValueError("target_checkpoint_count must be positive")
-    pause_estimator = EmpiricalPauseSampler.from_json(config["pause_durations_path"], np.random.default_rng(seed))
-    estimated_total_frames = estimate_input_frames(train_sessions, table, pause_estimator)
+    estimated_total_frames = estimate_input_frames(train_sessions, table)
     checkpoint_interval_frames = max(1, math.ceil(estimated_total_frames / target_checkpoint_count))
     next_checkpoint_frame = checkpoint_interval_frames
     last_checkpoint_frame = -1
