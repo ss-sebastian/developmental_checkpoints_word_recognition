@@ -1,0 +1,621 @@
+item_id	condition	binary_label	split	sentence	template_family	verb_lemma	object_lemma	violation_type	qc_notes
+PLAUS_0001	incongruent	0	train	Every day he bangs one approval	present_3s	bang	approval		unseen_phase1:approval
+PLAUS_0002	incongruent	0	train	Every day he claims one harm	present_3s	claim	harm		
+PLAUS_0003	incongruent	0	train	Every day he claims three harm	present_3s	claim	harm		
+PLAUS_0004	incongruent	0	train	Every day he claims two harm	present_3s	claim	harm		
+PLAUS_0005	incongruent	0	train	Every day he destroys two sides	present_3s	destroy	side		
+PLAUS_0006	incongruent	0	train	Every day he escapes two countries	present_3s	escape	country		
+PLAUS_0007	incongruent	0	train	Every day he greets two armies	present_3s	greet	army		
+PLAUS_0008	incongruent	0	train	Every day he inspects three trash	present_3s	inspect	trash		
+PLAUS_0009	incongruent	0	train	Every day he inspects two trash	present_3s	inspect	trash		
+PLAUS_0010	incongruent	0	train	Every day he spares one grass	present_3s	spare	grass		
+PLAUS_0011	incongruent	0	train	Every day she bangs one approval	present_3s	bang	approval		unseen_phase1:approval
+PLAUS_0012	incongruent	0	train	Every day she claims one harm	present_3s	claim	harm		
+PLAUS_0013	incongruent	0	train	Every day she claims two harm	present_3s	claim	harm		
+PLAUS_0014	incongruent	0	train	Every day she dances three computers	present_3s	dance	computer		
+PLAUS_0015	incongruent	0	train	Every day she destroys three sides	present_3s	destroy	side		
+PLAUS_0016	incongruent	0	train	Every day she escapes three countries	present_3s	escape	country		
+PLAUS_0017	incongruent	0	train	Every day she greets three armies	present_3s	greet	army		
+PLAUS_0018	incongruent	0	train	Every day she inspects one pin	present_3s	inspect	pin		
+PLAUS_0019	incongruent	0	train	Every day she inspects two pins	present_3s	inspect	pin		
+PLAUS_0020	incongruent	0	train	Every day she inspects two trash	present_3s	inspect	trash		
+PLAUS_0021	incongruent	0	train	Every day she rubs three mud	present_3s	rub	mud		
+PLAUS_0022	incongruent	0	train	Every day she shatters three tongues	present_3s	shatter	tongue		
+PLAUS_0023	incongruent	0	train	Every day she spares one grass	present_3s	spare	grass		
+PLAUS_0024	incongruent	0	train	Every day she spares three grasses	present_3s	spare	grass		
+PLAUS_0025	incongruent	0	train	Every day she spares two grasses	present_3s	spare	grass		
+PLAUS_0026	incongruent	0	train	Every day they bang four approvals	present_3s	bang	approval		unseen_phase1:approval
+PLAUS_0027	incongruent	0	train	Every day they bang three approvals	present_3s	bang	approval		unseen_phase1:approval
+PLAUS_0028	incongruent	0	train	Every day they bang two approvals	present_3s	bang	approval		unseen_phase1:approval
+PLAUS_0029	incongruent	0	train	Every day they claim one harm	present_3s	claim	harm		
+PLAUS_0030	incongruent	0	train	Every day they dance one computer	present_3s	dance	computer		
+PLAUS_0031	incongruent	0	train	Every day they dance two computers	present_3s	dance	computer		
+PLAUS_0032	incongruent	0	train	Every day they destroy three sides	present_3s	destroy	side		
+PLAUS_0033	incongruent	0	train	Every day they escape six countries	present_3s	escape	country		
+PLAUS_0034	incongruent	0	train	Every day they escape two countries	present_3s	escape	country		
+PLAUS_0035	incongruent	0	train	Every day they greet six armies	present_3s	greet	army		
+PLAUS_0036	incongruent	0	train	Every day they greet three armies	present_3s	greet	army		
+PLAUS_0037	incongruent	0	train	Every day they inspect one pin	present_3s	inspect	pin		
+PLAUS_0038	incongruent	0	train	Every day they inspect one trash	present_3s	inspect	trash		
+PLAUS_0039	incongruent	0	train	Every day they inspect three trash	present_3s	inspect	trash		
+PLAUS_0040	incongruent	0	train	Every day they inspect two trash	present_3s	inspect	trash		
+PLAUS_0041	incongruent	0	train	Every day they lean five bolts	present_3s	lean	bolt		
+PLAUS_0042	incongruent	0	train	Every day they lean two bolts	present_3s	lean	bolt		
+PLAUS_0043	incongruent	0	train	Every day they rub one mud	present_3s	rub	mud		
+PLAUS_0044	incongruent	0	train	Every day they rub six mud	present_3s	rub	mud		
+PLAUS_0045	incongruent	0	train	Every day they rub three mud	present_3s	rub	mud		
+PLAUS_0046	incongruent	0	train	Every day they shatter two tongues	present_3s	shatter	tongue		
+PLAUS_0047	incongruent	0	train	Every day they spare three grasses	present_3s	spare	grass		
+PLAUS_0048	incongruent	0	train	Every day they spare two grasses	present_3s	spare	grass		
+PLAUS_0049	incongruent	0	train	He does not bang three approvals	do_negation	bang	approval		unseen_phase1:approval
+PLAUS_0050	incongruent	0	train	He does not bang two approvals	do_negation	bang	approval		unseen_phase1:approval
+PLAUS_0051	incongruent	0	train	He does not claim one harm	do_negation	claim	harm		
+PLAUS_0052	incongruent	0	train	He does not dance one computer	do_negation	dance	computer		
+PLAUS_0053	incongruent	0	train	He does not dance two computers	do_negation	dance	computer		
+PLAUS_0054	incongruent	0	train	He does not destroy three sides	do_negation	destroy	side		
+PLAUS_0055	incongruent	0	train	He does not escape one country	do_negation	escape	country		
+PLAUS_0056	incongruent	0	train	He does not escape two countries	do_negation	escape	country		
+PLAUS_0057	incongruent	0	train	He does not greet one army	do_negation	greet	army		
+PLAUS_0058	incongruent	0	train	He does not greet two armies	do_negation	greet	army		
+PLAUS_0059	incongruent	0	train	He does not rub three mud	do_negation	rub	mud		
+PLAUS_0060	incongruent	0	train	He does not spare three grasses	do_negation	spare	grass		
+PLAUS_0061	incongruent	0	train	He is dancing three computers	be_progressive	dance	computer		
+PLAUS_0062	incongruent	0	train	He is destroying one side	be_progressive	destroy	side		
+PLAUS_0063	incongruent	0	train	He is destroying three sides	be_progressive	destroy	side		
+PLAUS_0064	incongruent	0	train	He is destroying two sides	be_progressive	destroy	side		
+PLAUS_0065	incongruent	0	train	He is greeting two armies	be_progressive	greet	army		
+PLAUS_0066	incongruent	0	train	He is leaning two bolts	be_progressive	lean	bolt		
+PLAUS_0067	incongruent	0	train	He is sparing two grasses	be_progressive	spare	grass		
+PLAUS_0068	incongruent	0	train	Last week he banged three approvals	simple_past	bang	approval		unseen_phase1:approval
+PLAUS_0069	incongruent	0	train	Last week he claimed one harm	simple_past	claim	harm		
+PLAUS_0070	incongruent	0	train	Last week he claimed two harm	simple_past	claim	harm		
+PLAUS_0071	incongruent	0	train	Last week he danced three computers	simple_past	dance	computer		
+PLAUS_0072	incongruent	0	train	Last week he destroyed one side	simple_past	destroy	side		
+PLAUS_0073	incongruent	0	train	Last week he destroyed three sides	simple_past	destroy	side		
+PLAUS_0074	incongruent	0	train	Last week he destroyed two sides	simple_past	destroy	side		
+PLAUS_0075	incongruent	0	train	Last week he escaped three countries	simple_past	escape	country		
+PLAUS_0076	incongruent	0	train	Last week he greeted two armies	simple_past	greet	army		
+PLAUS_0077	incongruent	0	train	Last week he inspected one trash	simple_past	inspect	trash		
+PLAUS_0078	incongruent	0	train	Last week he leaned three bolts	simple_past	lean	bolt		
+PLAUS_0079	incongruent	0	train	Last week he rubbed five mud	simple_past	rub	mud		
+PLAUS_0080	incongruent	0	train	Last week he rubbed one mud	simple_past	rub	mud		
+PLAUS_0081	incongruent	0	train	Last week he shattered three tongues	simple_past	shatter	tongue		
+PLAUS_0082	incongruent	0	train	Last week he shattered two tongues	simple_past	shatter	tongue		
+PLAUS_0083	incongruent	0	train	Last week he spared one grass	simple_past	spare	grass		
+PLAUS_0084	incongruent	0	train	Last week she banged one approval	simple_past	bang	approval		unseen_phase1:approval
+PLAUS_0085	incongruent	0	train	Last week she banged two approvals	simple_past	bang	approval		unseen_phase1:approval
+PLAUS_0086	incongruent	0	train	Last week she claimed two harm	simple_past	claim	harm		
+PLAUS_0087	incongruent	0	train	Last week she escaped three countries	simple_past	escape	country		
+PLAUS_0088	incongruent	0	train	Last week she greeted one army	simple_past	greet	army		
+PLAUS_0089	incongruent	0	train	Last week she greeted three armies	simple_past	greet	army		
+PLAUS_0090	incongruent	0	train	Last week she inspected three pins	simple_past	inspect	pin		
+PLAUS_0091	incongruent	0	train	Last week she leaned two bolts	simple_past	lean	bolt		
+PLAUS_0092	incongruent	0	train	Last week she rubbed three mud	simple_past	rub	mud		
+PLAUS_0093	incongruent	0	train	Last week she rubbed two mud	simple_past	rub	mud		
+PLAUS_0094	incongruent	0	train	Last week they banged one approval	simple_past	bang	approval		unseen_phase1:approval
+PLAUS_0095	incongruent	0	train	Last week they banged three approvals	simple_past	bang	approval		unseen_phase1:approval
+PLAUS_0096	incongruent	0	train	Last week they claimed two harm	simple_past	claim	harm		
+PLAUS_0097	incongruent	0	train	Last week they danced three computers	simple_past	dance	computer		
+PLAUS_0098	incongruent	0	train	Last week they destroyed one side	simple_past	destroy	side		
+PLAUS_0099	incongruent	0	train	Last week they destroyed three sides	simple_past	destroy	side		
+PLAUS_0100	incongruent	0	train	Last week they greeted one army	simple_past	greet	army		
+PLAUS_0101	incongruent	0	train	Last week they greeted three armies	simple_past	greet	army		
+PLAUS_0102	incongruent	0	train	Last week they greeted two armies	simple_past	greet	army		
+PLAUS_0103	incongruent	0	train	Last week they inspected one pin	simple_past	inspect	pin		
+PLAUS_0104	incongruent	0	train	Last week they inspected one trash	simple_past	inspect	trash		
+PLAUS_0105	incongruent	0	train	Last week they inspected two pins	simple_past	inspect	pin		
+PLAUS_0106	incongruent	0	train	Last week they leaned two bolts	simple_past	lean	bolt		
+PLAUS_0107	incongruent	0	train	Last week they rubbed one mud	simple_past	rub	mud		
+PLAUS_0108	incongruent	0	train	Last week they shattered one tongue	simple_past	shatter	tongue		
+PLAUS_0109	incongruent	0	train	Last week they shattered three tongues	simple_past	shatter	tongue		
+PLAUS_0110	incongruent	0	train	Last week they shattered two tongues	simple_past	shatter	tongue		
+PLAUS_0111	incongruent	0	train	Last week they spared three grasses	simple_past	spare	grass		
+PLAUS_0112	incongruent	0	train	Last week they spared two grasses	simple_past	spare	grass		
+PLAUS_0113	incongruent	0	train	She does not bang one approval	do_negation	bang	approval		unseen_phase1:approval
+PLAUS_0114	incongruent	0	train	She does not bang three approvals	do_negation	bang	approval		unseen_phase1:approval
+PLAUS_0115	incongruent	0	train	She does not destroy one side	do_negation	destroy	side		
+PLAUS_0116	incongruent	0	train	She does not destroy three sides	do_negation	destroy	side		
+PLAUS_0117	incongruent	0	train	She does not escape two countries	do_negation	escape	country		
+PLAUS_0118	incongruent	0	train	She does not greet two armies	do_negation	greet	army		
+PLAUS_0119	incongruent	0	train	She does not inspect one pin	do_negation	inspect	pin		
+PLAUS_0120	incongruent	0	train	She does not inspect two trash	do_negation	inspect	trash		
+PLAUS_0121	incongruent	0	train	She does not lean two bolts	do_negation	lean	bolt		
+PLAUS_0122	incongruent	0	train	She does not rub one mud	do_negation	rub	mud		
+PLAUS_0123	incongruent	0	train	She does not rub three mud	do_negation	rub	mud		
+PLAUS_0124	incongruent	0	train	She does not shatter one tongue	do_negation	shatter	tongue		
+PLAUS_0125	incongruent	0	train	She is banging three approvals	be_progressive	bang	approval		unseen_phase1:approval
+PLAUS_0126	incongruent	0	train	She is banging two approvals	be_progressive	bang	approval		unseen_phase1:approval
+PLAUS_0127	incongruent	0	train	She is claiming one harm	be_progressive	claim	harm		
+PLAUS_0128	incongruent	0	train	She is claiming three harm	be_progressive	claim	harm		
+PLAUS_0129	incongruent	0	train	She is claiming two harm	be_progressive	claim	harm		
+PLAUS_0130	incongruent	0	train	She is dancing three computers	be_progressive	dance	computer		
+PLAUS_0131	incongruent	0	train	She is destroying three sides	be_progressive	destroy	side		
+PLAUS_0132	incongruent	0	train	She is destroying two sides	be_progressive	destroy	side		
+PLAUS_0133	incongruent	0	train	She is greeting one army	be_progressive	greet	army		
+PLAUS_0134	incongruent	0	train	She is inspecting one trash	be_progressive	inspect	trash		
+PLAUS_0135	incongruent	0	train	She is inspecting three trash	be_progressive	inspect	trash		
+PLAUS_0136	incongruent	0	train	She is inspecting two trash	be_progressive	inspect	trash		
+PLAUS_0137	incongruent	0	train	She is leaning three bolts	be_progressive	lean	bolt		
+PLAUS_0138	incongruent	0	train	She is leaning two bolts	be_progressive	lean	bolt		
+PLAUS_0139	incongruent	0	train	She is rubbing one mud	be_progressive	rub	mud		
+PLAUS_0140	incongruent	0	train	She is rubbing three mud	be_progressive	rub	mud		
+PLAUS_0141	incongruent	0	train	She is shattering three tongues	be_progressive	shatter	tongue		
+PLAUS_0142	incongruent	0	train	She is sparing two grasses	be_progressive	spare	grass		
+PLAUS_0143	incongruent	0	train	They are claiming one harm	be_progressive	claim	harm		
+PLAUS_0144	incongruent	0	train	They are claiming three harm	be_progressive	claim	harm		
+PLAUS_0145	incongruent	0	train	They are claiming two harm	be_progressive	claim	harm		
+PLAUS_0146	incongruent	0	train	They are dancing four computers	be_progressive	dance	computer		
+PLAUS_0147	incongruent	0	train	They are dancing one computer	be_progressive	dance	computer		
+PLAUS_0148	incongruent	0	train	They are dancing two computers	be_progressive	dance	computer		
+PLAUS_0149	incongruent	0	train	They are greeting one army	be_progressive	greet	army		
+PLAUS_0150	incongruent	0	train	They are greeting three armies	be_progressive	greet	army		
+PLAUS_0151	incongruent	0	train	They are greeting two armies	be_progressive	greet	army		
+PLAUS_0152	incongruent	0	train	They are inspecting one pin	be_progressive	inspect	pin		
+PLAUS_0153	incongruent	0	train	They are inspecting two trash	be_progressive	inspect	trash		
+PLAUS_0154	incongruent	0	train	They are leaning five bolts	be_progressive	lean	bolt		
+PLAUS_0155	incongruent	0	train	They are leaning one bolt	be_progressive	lean	bolt		
+PLAUS_0156	incongruent	0	train	They are leaning three bolts	be_progressive	lean	bolt		
+PLAUS_0157	incongruent	0	train	They are leaning two bolts	be_progressive	lean	bolt		
+PLAUS_0158	incongruent	0	train	They are rubbing four mud	be_progressive	rub	mud		
+PLAUS_0159	incongruent	0	train	They are rubbing three mud	be_progressive	rub	mud		
+PLAUS_0160	incongruent	0	train	They are rubbing two mud	be_progressive	rub	mud		
+PLAUS_0161	incongruent	0	train	They are shattering three tongues	be_progressive	shatter	tongue		
+PLAUS_0162	incongruent	0	train	They are sparing one grass	be_progressive	spare	grass		
+PLAUS_0163	incongruent	0	train	They are sparing three grasses	be_progressive	spare	grass		
+PLAUS_0164	incongruent	0	train	They are sparing two grasses	be_progressive	spare	grass		
+PLAUS_0165	incongruent	0	train	They do not bang three approvals	do_negation	bang	approval		unseen_phase1:approval
+PLAUS_0166	incongruent	0	train	They do not claim one harm	do_negation	claim	harm		
+PLAUS_0167	incongruent	0	train	They do not claim three harm	do_negation	claim	harm		
+PLAUS_0168	incongruent	0	train	They do not dance one computer	do_negation	dance	computer		
+PLAUS_0169	incongruent	0	train	They do not dance two computers	do_negation	dance	computer		
+PLAUS_0170	incongruent	0	train	They do not escape one country	do_negation	escape	country		
+PLAUS_0171	incongruent	0	train	They do not escape three countries	do_negation	escape	country		
+PLAUS_0172	incongruent	0	train	They do not escape two countries	do_negation	escape	country		
+PLAUS_0173	incongruent	0	train	They do not greet three armies	do_negation	greet	army		
+PLAUS_0174	incongruent	0	train	They do not greet two armies	do_negation	greet	army		
+PLAUS_0175	incongruent	0	train	They do not inspect two trash	do_negation	inspect	trash		
+PLAUS_0176	incongruent	0	train	They do not lean one bolt	do_negation	lean	bolt		
+PLAUS_0177	incongruent	0	train	They do not lean three bolts	do_negation	lean	bolt		
+PLAUS_0178	incongruent	0	train	They do not lean two bolts	do_negation	lean	bolt		
+PLAUS_0179	incongruent	0	train	They do not rub three mud	do_negation	rub	mud		
+PLAUS_0180	incongruent	0	train	They do not shatter three tongues	do_negation	shatter	tongue		
+PLAUS_0181	strong_congruence	1	train	Every day he knocks three doors	present_3s	knock	door		
+PLAUS_0182	strong_congruence	1	train	Every day he screws one driver	present_3s	screw	driver		
+PLAUS_0183	strong_congruence	1	train	Every day he screws three drivers	present_3s	screw	driver		
+PLAUS_0184	strong_congruence	1	train	Every day he screws two drivers	present_3s	screw	driver		
+PLAUS_0185	strong_congruence	1	train	Every day he steps one stair	present_3s	step	stair		
+PLAUS_0186	strong_congruence	1	train	Every day he swaps four trades	present_3s	swap	trade		
+PLAUS_0187	strong_congruence	1	train	Every day he swaps one trade	present_3s	swap	trade		
+PLAUS_0188	strong_congruence	1	train	Every day he swaps two trades	present_3s	swap	trade		
+PLAUS_0189	strong_congruence	1	train	Every day she screws two drivers	present_3s	screw	driver		
+PLAUS_0190	strong_congruence	1	train	Every day she squints one eye	present_3s	squint	eye		
+PLAUS_0191	strong_congruence	1	train	Every day she squints three eyes	present_3s	squint	eye		
+PLAUS_0192	strong_congruence	1	train	Every day she steps one stair	present_3s	step	stair		
+PLAUS_0193	strong_congruence	1	train	Every day she swaps one trade	present_3s	swap	trade		
+PLAUS_0194	strong_congruence	1	train	Every day she swaps two trades	present_3s	swap	trade		
+PLAUS_0195	strong_congruence	1	train	Every day she swears one curse	present_3s	swear	curse		
+PLAUS_0196	strong_congruence	1	train	Every day they screw one driver	present_3s	screw	driver		
+PLAUS_0197	strong_congruence	1	train	Every day they screw two drivers	present_3s	screw	driver		
+PLAUS_0198	strong_congruence	1	train	Every day they squint two eyes	present_3s	squint	eye		
+PLAUS_0199	strong_congruence	1	train	Every day they step one stair	present_3s	step	stair		
+PLAUS_0200	strong_congruence	1	train	Every day they swap four trades	present_3s	swap	trade		
+PLAUS_0201	strong_congruence	1	train	Every day they swap one trade	present_3s	swap	trade		
+PLAUS_0202	strong_congruence	1	train	Every day they swap three trades	present_3s	swap	trade		
+PLAUS_0203	strong_congruence	1	train	Every day they swear one curse	present_3s	swear	curse		
+PLAUS_0204	strong_congruence	1	train	Every day they swear three curses	present_3s	swear	curse		
+PLAUS_0205	strong_congruence	1	train	He does not screw one driver	do_negation	screw	driver		
+PLAUS_0206	strong_congruence	1	train	He does not squint two eyes	do_negation	squint	eye		
+PLAUS_0207	strong_congruence	1	train	He does not step five stairs	do_negation	step	stair		
+PLAUS_0208	strong_congruence	1	train	He does not step one stair	do_negation	step	stair		
+PLAUS_0209	strong_congruence	1	train	He does not step three stairs	do_negation	step	stair		
+PLAUS_0210	strong_congruence	1	train	He does not step two stairs	do_negation	step	stair		
+PLAUS_0211	strong_congruence	1	train	He does not swap one trade	do_negation	swap	trade		
+PLAUS_0212	strong_congruence	1	train	He does not swear one curse	do_negation	swear	curse		
+PLAUS_0213	strong_congruence	1	train	He does not swear two curses	do_negation	swear	curse		
+PLAUS_0214	strong_congruence	1	train	He is knocking one door	be_progressive	knock	door		
+PLAUS_0215	strong_congruence	1	train	He is squinting five eyes	be_progressive	squint	eye		
+PLAUS_0216	strong_congruence	1	train	He is swapping one trade	be_progressive	swap	trade		
+PLAUS_0217	strong_congruence	1	train	He is swapping two trades	be_progressive	swap	trade		
+PLAUS_0218	strong_congruence	1	train	Last week he knocked one door	simple_past	knock	door		
+PLAUS_0219	strong_congruence	1	train	Last week he screwed three drivers	simple_past	screw	driver		
+PLAUS_0220	strong_congruence	1	train	Last week he squinted three eyes	simple_past	squint	eye		
+PLAUS_0221	strong_congruence	1	train	Last week he stepped one stair	simple_past	step	stair		
+PLAUS_0222	strong_congruence	1	train	Last week he stepped three stairs	simple_past	step	stair		
+PLAUS_0223	strong_congruence	1	train	Last week he swapped one trade	simple_past	swap	trade		
+PLAUS_0224	strong_congruence	1	train	Last week he swapped three trades	simple_past	swap	trade		
+PLAUS_0225	strong_congruence	1	train	Last week she screwed four drivers	simple_past	screw	driver		
+PLAUS_0226	strong_congruence	1	train	Last week she squinted one eye	simple_past	squint	eye		
+PLAUS_0227	strong_congruence	1	train	Last week she squinted three eyes	simple_past	squint	eye		
+PLAUS_0228	strong_congruence	1	train	Last week she squinted two eyes	simple_past	squint	eye		
+PLAUS_0229	strong_congruence	1	train	Last week she stepped one stair	simple_past	step	stair		
+PLAUS_0230	strong_congruence	1	train	Last week she swapped one trade	simple_past	swap	trade		
+PLAUS_0231	strong_congruence	1	train	Last week she swapped three trades	simple_past	swap	trade		
+PLAUS_0232	strong_congruence	1	train	Last week she swore one curse	simple_past	swear	curse		
+PLAUS_0233	strong_congruence	1	train	Last week they knocked two doors	simple_past	knock	door		
+PLAUS_0234	strong_congruence	1	train	Last week they screwed one driver	simple_past	screw	driver		
+PLAUS_0235	strong_congruence	1	train	Last week they screwed three drivers	simple_past	screw	driver		
+PLAUS_0236	strong_congruence	1	train	Last week they screwed two drivers	simple_past	screw	driver		
+PLAUS_0237	strong_congruence	1	train	Last week they squinted three eyes	simple_past	squint	eye		
+PLAUS_0238	strong_congruence	1	train	Last week they squinted two eyes	simple_past	squint	eye		
+PLAUS_0239	strong_congruence	1	train	Last week they stepped four stairs	simple_past	step	stair		
+PLAUS_0240	strong_congruence	1	train	Last week they swapped one trade	simple_past	swap	trade		
+PLAUS_0241	strong_congruence	1	train	Last week they swore one curse	simple_past	swear	curse		
+PLAUS_0242	strong_congruence	1	train	She does not knock three doors	do_negation	knock	door		
+PLAUS_0243	strong_congruence	1	train	She does not squint three eyes	do_negation	squint	eye		
+PLAUS_0244	strong_congruence	1	train	She does not step one stair	do_negation	step	stair		
+PLAUS_0245	strong_congruence	1	train	She does not step two stairs	do_negation	step	stair		
+PLAUS_0246	strong_congruence	1	train	She does not swap two trades	do_negation	swap	trade		
+PLAUS_0247	strong_congruence	1	train	She does not swear six curses	do_negation	swear	curse		
+PLAUS_0248	strong_congruence	1	train	She is knocking one door	be_progressive	knock	door		
+PLAUS_0249	strong_congruence	1	train	She is knocking three doors	be_progressive	knock	door		
+PLAUS_0250	strong_congruence	1	train	She is screwing one driver	be_progressive	screw	driver		
+PLAUS_0251	strong_congruence	1	train	She is screwing two drivers	be_progressive	screw	driver		
+PLAUS_0252	strong_congruence	1	train	She is squinting one eye	be_progressive	squint	eye		
+PLAUS_0253	strong_congruence	1	train	She is squinting six eyes	be_progressive	squint	eye		
+PLAUS_0254	strong_congruence	1	train	She is stepping three stairs	be_progressive	step	stair		
+PLAUS_0255	strong_congruence	1	train	She is swapping three trades	be_progressive	swap	trade		
+PLAUS_0256	strong_congruence	1	train	She is swapping two trades	be_progressive	swap	trade		
+PLAUS_0257	strong_congruence	1	train	She is swearing one curse	be_progressive	swear	curse		
+PLAUS_0258	strong_congruence	1	train	They are squinting three eyes	be_progressive	squint	eye		
+PLAUS_0259	strong_congruence	1	train	They are stepping five stairs	be_progressive	step	stair		
+PLAUS_0260	strong_congruence	1	train	They are stepping one stair	be_progressive	step	stair		
+PLAUS_0261	strong_congruence	1	train	They are stepping three stairs	be_progressive	step	stair		
+PLAUS_0262	strong_congruence	1	train	They are swapping one trade	be_progressive	swap	trade		
+PLAUS_0263	strong_congruence	1	train	They are swapping three trades	be_progressive	swap	trade		
+PLAUS_0264	strong_congruence	1	train	They are swapping two trades	be_progressive	swap	trade		
+PLAUS_0265	strong_congruence	1	train	They are swearing two curses	be_progressive	swear	curse		
+PLAUS_0266	strong_congruence	1	train	They do not knock three doors	do_negation	knock	door		
+PLAUS_0267	strong_congruence	1	train	They do not squint one eye	do_negation	squint	eye		
+PLAUS_0268	strong_congruence	1	train	They do not squint two eyes	do_negation	squint	eye		
+PLAUS_0269	strong_congruence	1	train	They do not swap one trade	do_negation	swap	trade		
+PLAUS_0270	strong_congruence	1	train	They do not swear five curses	do_negation	swear	curse		
+PLAUS_0271	weak_congruence	1	train	Every day he dances five halls	present_3s	dance	hall		
+PLAUS_0272	weak_congruence	1	train	Every day he dances four halls	present_3s	dance	hall		
+PLAUS_0273	weak_congruence	1	train	Every day he dances one hall	present_3s	dance	hall		
+PLAUS_0274	weak_congruence	1	train	Every day he dances three halls	present_3s	dance	hall		
+PLAUS_0275	weak_congruence	1	train	Every day he dances two halls	present_3s	dance	hall		
+PLAUS_0276	weak_congruence	1	train	Every day he fights one anger	present_3s	fight	anger		
+PLAUS_0277	weak_congruence	1	train	Every day he fights two anger	present_3s	fight	anger		
+PLAUS_0278	weak_congruence	1	train	Every day he screws two woods	present_3s	screw	wood		
+PLAUS_0279	weak_congruence	1	train	Every day he shows two times	present_3s	show	time		
+PLAUS_0280	weak_congruence	1	train	Every day he spares two ribs	present_3s	spare	rib		
+PLAUS_0281	weak_congruence	1	train	Every day he squints one glare	present_3s	squint	glare		
+PLAUS_0282	weak_congruence	1	train	Every day he squints two glare	present_3s	squint	glare		
+PLAUS_0283	weak_congruence	1	train	Every day she dances one hall	present_3s	dance	hall		
+PLAUS_0284	weak_congruence	1	train	Every day she dances three halls	present_3s	dance	hall		
+PLAUS_0285	weak_congruence	1	train	Every day she dances two halls	present_3s	dance	hall		
+PLAUS_0286	weak_congruence	1	train	Every day she fights one anger	present_3s	fight	anger		
+PLAUS_0287	weak_congruence	1	train	Every day she fights two anger	present_3s	fight	anger		
+PLAUS_0288	weak_congruence	1	train	Every day she screws two woods	present_3s	screw	wood		
+PLAUS_0289	weak_congruence	1	train	Every day she shows two times	present_3s	show	time		
+PLAUS_0290	weak_congruence	1	train	Every day she squints one glare	present_3s	squint	glare		
+PLAUS_0291	weak_congruence	1	train	Every day she squints two glare	present_3s	squint	glare		
+PLAUS_0292	weak_congruence	1	train	Every day they dance two halls	present_3s	dance	hall		
+PLAUS_0293	weak_congruence	1	train	Every day they fight one anger	present_3s	fight	anger		
+PLAUS_0294	weak_congruence	1	train	Every day they fight two anger	present_3s	fight	anger		
+PLAUS_0295	weak_congruence	1	train	He does not dance two halls	do_negation	dance	hall		
+PLAUS_0296	weak_congruence	1	train	He does not fight one anger	do_negation	fight	anger		
+PLAUS_0297	weak_congruence	1	train	He does not fight two anger	do_negation	fight	anger		
+PLAUS_0298	weak_congruence	1	train	He does not screw two woods	do_negation	screw	wood		
+PLAUS_0299	weak_congruence	1	train	He does not show two times	do_negation	show	time		
+PLAUS_0300	weak_congruence	1	train	He does not squint one glare	do_negation	squint	glare		
+PLAUS_0301	weak_congruence	1	train	He does not squint two glare	do_negation	squint	glare		
+PLAUS_0302	weak_congruence	1	train	He is dancing two halls	be_progressive	dance	hall		
+PLAUS_0303	weak_congruence	1	train	He is fighting one anger	be_progressive	fight	anger		
+PLAUS_0304	weak_congruence	1	train	He is fighting two anger	be_progressive	fight	anger		
+PLAUS_0305	weak_congruence	1	train	He is screwing two woods	be_progressive	screw	wood		
+PLAUS_0306	weak_congruence	1	train	He is showing two times	be_progressive	show	time		
+PLAUS_0307	weak_congruence	1	train	He is squinting one glare	be_progressive	squint	glare		
+PLAUS_0308	weak_congruence	1	train	He is squinting two glare	be_progressive	squint	glare		
+PLAUS_0309	weak_congruence	1	train	Last week he danced two halls	simple_past	dance	hall		
+PLAUS_0310	weak_congruence	1	train	Last week he screwed two woods	simple_past	screw	wood		
+PLAUS_0311	weak_congruence	1	train	Last week he showed two times	simple_past	show	time		
+PLAUS_0312	weak_congruence	1	train	Last week he squinted one glare	simple_past	squint	glare		
+PLAUS_0313	weak_congruence	1	train	Last week he squinted two glare	simple_past	squint	glare		
+PLAUS_0314	weak_congruence	1	train	Last week she danced two halls	simple_past	dance	hall		
+PLAUS_0315	weak_congruence	1	train	Last week she screwed two woods	simple_past	screw	wood		
+PLAUS_0316	weak_congruence	1	train	Last week she showed two times	simple_past	show	time		
+PLAUS_0317	weak_congruence	1	train	Last week she squinted one glare	simple_past	squint	glare		
+PLAUS_0318	weak_congruence	1	train	Last week she squinted three glare	simple_past	squint	glare		
+PLAUS_0319	weak_congruence	1	train	Last week she squinted two glare	simple_past	squint	glare		
+PLAUS_0320	weak_congruence	1	train	Last week they danced one hall	simple_past	dance	hall		
+PLAUS_0321	weak_congruence	1	train	Last week they danced three halls	simple_past	dance	hall		
+PLAUS_0322	weak_congruence	1	train	Last week they danced two halls	simple_past	dance	hall		
+PLAUS_0323	weak_congruence	1	train	Last week they screwed two woods	simple_past	screw	wood		
+PLAUS_0324	weak_congruence	1	train	Last week they showed two times	simple_past	show	time		
+PLAUS_0325	weak_congruence	1	train	Last week they spared two ribs	simple_past	spare	rib		
+PLAUS_0326	weak_congruence	1	train	Last week they squinted five glare	simple_past	squint	glare		
+PLAUS_0327	weak_congruence	1	train	Last week they squinted four glare	simple_past	squint	glare		
+PLAUS_0328	weak_congruence	1	train	Last week they squinted one glare	simple_past	squint	glare		
+PLAUS_0329	weak_congruence	1	train	Last week they squinted six glare	simple_past	squint	glare		
+PLAUS_0330	weak_congruence	1	train	Last week they squinted three glare	simple_past	squint	glare		
+PLAUS_0331	weak_congruence	1	train	Last week they squinted two glare	simple_past	squint	glare		
+PLAUS_0332	weak_congruence	1	train	She does not dance two halls	do_negation	dance	hall		
+PLAUS_0333	weak_congruence	1	train	She does not fight one anger	do_negation	fight	anger		
+PLAUS_0334	weak_congruence	1	train	She does not fight two anger	do_negation	fight	anger		
+PLAUS_0335	weak_congruence	1	train	She does not screw two woods	do_negation	screw	wood		
+PLAUS_0336	weak_congruence	1	train	She does not show two times	do_negation	show	time		
+PLAUS_0337	weak_congruence	1	train	She does not spare two ribs	do_negation	spare	rib		
+PLAUS_0338	weak_congruence	1	train	She does not squint one glare	do_negation	squint	glare		
+PLAUS_0339	weak_congruence	1	train	She does not squint two glare	do_negation	squint	glare		
+PLAUS_0340	weak_congruence	1	train	She is dancing two halls	be_progressive	dance	hall		
+PLAUS_0341	weak_congruence	1	train	She is fighting one anger	be_progressive	fight	anger		
+PLAUS_0342	weak_congruence	1	train	She is fighting two anger	be_progressive	fight	anger		
+PLAUS_0343	weak_congruence	1	train	She is showing two times	be_progressive	show	time		
+PLAUS_0344	weak_congruence	1	train	She is squinting one glare	be_progressive	squint	glare		
+PLAUS_0345	weak_congruence	1	train	She is squinting two glare	be_progressive	squint	glare		
+PLAUS_0346	weak_congruence	1	train	They are dancing one hall	be_progressive	dance	hall		
+PLAUS_0347	weak_congruence	1	train	They are dancing three halls	be_progressive	dance	hall		
+PLAUS_0348	weak_congruence	1	train	They are dancing two halls	be_progressive	dance	hall		
+PLAUS_0349	weak_congruence	1	train	They are fighting one anger	be_progressive	fight	anger		
+PLAUS_0350	weak_congruence	1	train	They are fighting two anger	be_progressive	fight	anger		
+PLAUS_0351	weak_congruence	1	train	They are screwing two woods	be_progressive	screw	wood		
+PLAUS_0352	weak_congruence	1	train	They are showing two times	be_progressive	show	time		
+PLAUS_0353	weak_congruence	1	train	They are sparing two ribs	be_progressive	spare	rib		
+PLAUS_0354	weak_congruence	1	train	They are squinting one glare	be_progressive	squint	glare		
+PLAUS_0355	weak_congruence	1	train	They are squinting two glare	be_progressive	squint	glare		
+PLAUS_0356	weak_congruence	1	train	They do not dance two halls	do_negation	dance	hall		
+PLAUS_0357	weak_congruence	1	train	They do not fight one anger	do_negation	fight	anger		
+PLAUS_0358	weak_congruence	1	train	They do not fight two anger	do_negation	fight	anger		
+PLAUS_0359	weak_congruence	1	train	They do not squint one glare	do_negation	squint	glare		
+PLAUS_0360	weak_congruence	1	train	They do not squint two glare	do_negation	squint	glare		
+PLAUS_0361	incongruent	0	validation	Every day he turns one sugar	present_3s	turn	sugar		
+PLAUS_0362	incongruent	0	validation	Every day he yawns two peace	present_3s	yawn	peace		
+PLAUS_0363	incongruent	0	validation	Every day she turns three sugars	present_3s	turn	sugar		
+PLAUS_0364	incongruent	0	validation	Every day she yawns one peace	present_3s	yawn	peace		
+PLAUS_0365	incongruent	0	validation	Every day she yawns one traffic	present_3s	yawn	traffic		
+PLAUS_0366	incongruent	0	validation	Every day she yawns three traffic	present_3s	yawn	traffic		
+PLAUS_0367	incongruent	0	validation	Every day they turn one sugar	present_3s	turn	sugar		
+PLAUS_0368	incongruent	0	validation	Every day they yawn one traffic	present_3s	yawn	traffic		
+PLAUS_0369	incongruent	0	validation	Every day they yawn three peace	present_3s	yawn	peace		
+PLAUS_0370	incongruent	0	validation	Every day they yawn three traffic	present_3s	yawn	traffic		
+PLAUS_0371	incongruent	0	validation	Every day they yawn two peace	present_3s	yawn	peace		
+PLAUS_0372	incongruent	0	validation	He does not shiver one power	do_negation	shiver	power		
+PLAUS_0373	incongruent	0	validation	He does not shiver two powers	do_negation	shiver	power		
+PLAUS_0374	incongruent	0	validation	He does not turn two sugars	do_negation	turn	sugar		
+PLAUS_0375	incongruent	0	validation	He does not yawn one peace	do_negation	yawn	peace		
+PLAUS_0376	incongruent	0	validation	He does not yawn three peace	do_negation	yawn	peace		
+PLAUS_0377	incongruent	0	validation	He is turning two sugars	be_progressive	turn	sugar		
+PLAUS_0378	incongruent	0	validation	He is yawning three peace	be_progressive	yawn	peace		
+PLAUS_0379	incongruent	0	validation	Last week he shivered one power	simple_past	shiver	power		
+PLAUS_0380	incongruent	0	validation	Last week he shivered two powers	simple_past	shiver	power		
+PLAUS_0381	incongruent	0	validation	Last week he yawned one peace	simple_past	yawn	peace		
+PLAUS_0382	incongruent	0	validation	Last week she turned three sugars	simple_past	turn	sugar		
+PLAUS_0383	incongruent	0	validation	Last week she turned two sugars	simple_past	turn	sugar		
+PLAUS_0384	incongruent	0	validation	Last week she yawned three traffic	simple_past	yawn	traffic		
+PLAUS_0385	incongruent	0	validation	Last week she yawned two peace	simple_past	yawn	peace		
+PLAUS_0386	incongruent	0	validation	Last week they shivered three powers	simple_past	shiver	power		
+PLAUS_0387	incongruent	0	validation	Last week they shivered two powers	simple_past	shiver	power		
+PLAUS_0388	incongruent	0	validation	Last week they turned five sugars	simple_past	turn	sugar		
+PLAUS_0389	incongruent	0	validation	Last week they turned four sugars	simple_past	turn	sugar		
+PLAUS_0390	incongruent	0	validation	Last week they turned three sugars	simple_past	turn	sugar		
+PLAUS_0391	incongruent	0	validation	Last week they turned two sugars	simple_past	turn	sugar		
+PLAUS_0392	incongruent	0	validation	She does not shiver three powers	do_negation	shiver	power		
+PLAUS_0393	incongruent	0	validation	She does not turn two sugars	do_negation	turn	sugar		
+PLAUS_0394	incongruent	0	validation	She does not yawn one peace	do_negation	yawn	peace		
+PLAUS_0395	incongruent	0	validation	She does not yawn three peace	do_negation	yawn	peace		
+PLAUS_0396	incongruent	0	validation	She does not yawn two peace	do_negation	yawn	peace		
+PLAUS_0397	incongruent	0	validation	She is shivering three powers	be_progressive	shiver	power		
+PLAUS_0398	incongruent	0	validation	She is turning one sugar	be_progressive	turn	sugar		
+PLAUS_0399	incongruent	0	validation	She is turning six sugars	be_progressive	turn	sugar		
+PLAUS_0400	incongruent	0	validation	She is yawning one peace	be_progressive	yawn	peace		
+PLAUS_0401	incongruent	0	validation	They are shivering three powers	be_progressive	shiver	power		
+PLAUS_0402	incongruent	0	validation	They are shivering two powers	be_progressive	shiver	power		
+PLAUS_0403	incongruent	0	validation	They are turning one sugar	be_progressive	turn	sugar		
+PLAUS_0404	incongruent	0	validation	They are turning three sugars	be_progressive	turn	sugar		
+PLAUS_0405	incongruent	0	validation	They do not shiver one power	do_negation	shiver	power		
+PLAUS_0406	incongruent	0	validation	They do not shiver two powers	do_negation	shiver	power		
+PLAUS_0407	incongruent	0	validation	They do not turn one sugar	do_negation	turn	sugar		
+PLAUS_0408	incongruent	0	validation	They do not yawn one peace	do_negation	yawn	peace		
+PLAUS_0409	incongruent	0	validation	They do not yawn one traffic	do_negation	yawn	traffic		
+PLAUS_0410	incongruent	0	validation	They do not yawn two peace	do_negation	yawn	peace		
+PLAUS_0411	strong_congruence	1	validation	Every day he chisels three hammers	present_3s	chisel	hammer		
+PLAUS_0412	strong_congruence	1	validation	Every day he chisels two hammers	present_3s	chisel	hammer		
+PLAUS_0413	strong_congruence	1	validation	Every day he nails two hammers	present_3s	nail	hammer		
+PLAUS_0414	strong_congruence	1	validation	Every day she chisels one hammer	present_3s	chisel	hammer		
+PLAUS_0415	strong_congruence	1	validation	Every day they chisel one hammer	present_3s	chisel	hammer		
+PLAUS_0416	strong_congruence	1	validation	Every day they chisel three hammers	present_3s	chisel	hammer		
+PLAUS_0417	strong_congruence	1	validation	Every day they nail one hammer	present_3s	nail	hammer		
+PLAUS_0418	strong_congruence	1	validation	Every day they nail two hammers	present_3s	nail	hammer		
+PLAUS_0419	strong_congruence	1	validation	He does not chisel five hammers	do_negation	chisel	hammer		
+PLAUS_0420	strong_congruence	1	validation	He does not nail one hammer	do_negation	nail	hammer		
+PLAUS_0421	strong_congruence	1	validation	He does not nail three hammers	do_negation	nail	hammer		
+PLAUS_0422	strong_congruence	1	validation	He is chiselling one hammer	be_progressive	chisel	hammer		
+PLAUS_0423	strong_congruence	1	validation	He is chiselling six hammers	be_progressive	chisel	hammer		
+PLAUS_0424	strong_congruence	1	validation	He is nailing one hammer	be_progressive	nail	hammer		
+PLAUS_0425	strong_congruence	1	validation	Last week he chiseled one hammer	simple_past	chisel	hammer		
+PLAUS_0426	strong_congruence	1	validation	Last week he chiseled three hammers	simple_past	chisel	hammer		
+PLAUS_0427	strong_congruence	1	validation	Last week he nailed one hammer	simple_past	nail	hammer		
+PLAUS_0428	strong_congruence	1	validation	Last week she chiseled one hammer	simple_past	chisel	hammer		
+PLAUS_0429	strong_congruence	1	validation	Last week she chiseled six hammers	simple_past	chisel	hammer		
+PLAUS_0430	strong_congruence	1	validation	Last week she nailed one hammer	simple_past	nail	hammer		
+PLAUS_0431	strong_congruence	1	validation	She does not chisel four hammers	do_negation	chisel	hammer		
+PLAUS_0432	strong_congruence	1	validation	She is chiselling three hammers	be_progressive	chisel	hammer		
+PLAUS_0433	strong_congruence	1	validation	She is nailing one hammer	be_progressive	nail	hammer		
+PLAUS_0434	strong_congruence	1	validation	They are chiselling three hammers	be_progressive	chisel	hammer		
+PLAUS_0435	strong_congruence	1	validation	They are nailing two hammers	be_progressive	nail	hammer		
+PLAUS_0436	weak_congruence	1	validation	Every day he blots two messes	present_3s	blot	mess		
+PLAUS_0437	weak_congruence	1	validation	Every day he spoils two brats	present_3s	spoil	brat		
+PLAUS_0438	weak_congruence	1	validation	Every day she blots two messes	present_3s	blot	mess		
+PLAUS_0439	weak_congruence	1	validation	Every day she spoils two brats	present_3s	spoil	brat		
+PLAUS_0440	weak_congruence	1	validation	He does not blot two messes	do_negation	blot	mess		
+PLAUS_0441	weak_congruence	1	validation	He does not spoil two brats	do_negation	spoil	brat		
+PLAUS_0442	weak_congruence	1	validation	He is blotting two messes	be_progressive	blot	mess		
+PLAUS_0443	weak_congruence	1	validation	He is spoiling two brats	be_progressive	spoil	brat		
+PLAUS_0444	weak_congruence	1	validation	Last week he blotted three messes	simple_past	blot	mess		
+PLAUS_0445	weak_congruence	1	validation	Last week he blotted two messes	simple_past	blot	mess		
+PLAUS_0446	weak_congruence	1	validation	Last week he spoiled two brats	simple_past	spoil	brat		
+PLAUS_0447	weak_congruence	1	validation	Last week she blotted three messes	simple_past	blot	mess		
+PLAUS_0448	weak_congruence	1	validation	Last week she blotted two messes	simple_past	blot	mess		
+PLAUS_0449	weak_congruence	1	validation	Last week she spoiled two brats	simple_past	spoil	brat		
+PLAUS_0450	weak_congruence	1	validation	Last week they blotted four messes	simple_past	blot	mess		
+PLAUS_0451	weak_congruence	1	validation	Last week they blotted three messes	simple_past	blot	mess		
+PLAUS_0452	weak_congruence	1	validation	Last week they blotted two messes	simple_past	blot	mess		
+PLAUS_0453	weak_congruence	1	validation	Last week they spoiled two brats	simple_past	spoil	brat		
+PLAUS_0454	weak_congruence	1	validation	She does not blot two messes	do_negation	blot	mess		
+PLAUS_0455	weak_congruence	1	validation	She does not spoil two brats	do_negation	spoil	brat		
+PLAUS_0456	weak_congruence	1	validation	She is blotting two messes	be_progressive	blot	mess		
+PLAUS_0457	weak_congruence	1	validation	She is spoiling two brats	be_progressive	spoil	brat		
+PLAUS_0458	weak_congruence	1	validation	They are blotting two messes	be_progressive	blot	mess		
+PLAUS_0459	weak_congruence	1	validation	They are spoiling two brats	be_progressive	spoil	brat		
+PLAUS_0460	weak_congruence	1	validation	They do not blot two messes	do_negation	blot	mess		
+PLAUS_0461	incongruent	0	test	Every day he decides three blenders	present_3s	decide	blender		
+PLAUS_0462	incongruent	0	test	Every day he demolishes two golds	present_3s	demolish	gold		unseen_phase1:demolish
+PLAUS_0463	incongruent	0	test	Every day he flips three beans	present_3s	flip	bean		
+PLAUS_0464	incongruent	0	test	Every day he flips two beans	present_3s	flip	bean		
+PLAUS_0465	incongruent	0	test	Every day he reaches one reason	present_3s	reach	reason		
+PLAUS_0466	incongruent	0	test	Every day he reaches three reasons	present_3s	reach	reason		
+PLAUS_0467	incongruent	0	test	Every day he reaches two reasons	present_3s	reach	reason		
+PLAUS_0468	incongruent	0	test	Every day she demolishes three golds	present_3s	demolish	gold		unseen_phase1:demolish
+PLAUS_0469	incongruent	0	test	Every day she flips one bean	present_3s	flip	bean		
+PLAUS_0470	incongruent	0	test	Every day she flutters one torture	present_3s	flutter	torture		
+PLAUS_0471	incongruent	0	test	Every day she reaches one reason	present_3s	reach	reason		
+PLAUS_0472	incongruent	0	test	Every day she reaches two reasons	present_3s	reach	reason		
+PLAUS_0473	incongruent	0	test	Every day she reaches two voices	present_3s	reach	voice		
+PLAUS_0474	incongruent	0	test	Every day they decide one blender	present_3s	decide	blender		
+PLAUS_0475	incongruent	0	test	Every day they demolish one gold	present_3s	demolish	gold		unseen_phase1:demolish
+PLAUS_0476	incongruent	0	test	Every day they flip five beans	present_3s	flip	bean		
+PLAUS_0477	incongruent	0	test	Every day they flip three beans	present_3s	flip	bean		
+PLAUS_0478	incongruent	0	test	Every day they flutter two tortures	present_3s	flutter	torture		
+PLAUS_0479	incongruent	0	test	Every day they reach three voices	present_3s	reach	voice		
+PLAUS_0480	incongruent	0	test	Every day they reach two reasons	present_3s	reach	reason		
+PLAUS_0481	incongruent	0	test	He does not decide three blenders	do_negation	decide	blender		
+PLAUS_0482	incongruent	0	test	He does not demolish one gold	do_negation	demolish	gold		unseen_phase1:demolish
+PLAUS_0483	incongruent	0	test	He does not reach one reason	do_negation	reach	reason		
+PLAUS_0484	incongruent	0	test	He does not reach one voice	do_negation	reach	voice		
+PLAUS_0485	incongruent	0	test	He does not reach three reasons	do_negation	reach	reason		
+PLAUS_0486	incongruent	0	test	He does not reach three voices	do_negation	reach	voice		
+PLAUS_0487	incongruent	0	test	He does not reach two reasons	do_negation	reach	reason		
+PLAUS_0488	incongruent	0	test	He is deciding three blenders	be_progressive	decide	blender		
+PLAUS_0489	incongruent	0	test	He is deciding two blenders	be_progressive	decide	blender		
+PLAUS_0490	incongruent	0	test	He is demolishing two golds	be_progressive	demolish	gold		unseen_phase1:demolish
+PLAUS_0491	incongruent	0	test	He is flipping one bean	be_progressive	flip	bean		
+PLAUS_0492	incongruent	0	test	He is fluttering three tortures	be_progressive	flutter	torture		
+PLAUS_0493	incongruent	0	test	He is reaching three voices	be_progressive	reach	voice		
+PLAUS_0494	incongruent	0	test	He is reaching two voices	be_progressive	reach	voice		
+PLAUS_0495	incongruent	0	test	Last week he decided three blenders	simple_past	decide	blender		
+PLAUS_0496	incongruent	0	test	Last week he demolished three golds	simple_past	demolish	gold		unseen_phase1:demolish
+PLAUS_0497	incongruent	0	test	Last week he fluttered three tortures	simple_past	flutter	torture		
+PLAUS_0498	incongruent	0	test	Last week she flipped one bean	simple_past	flip	bean		
+PLAUS_0499	incongruent	0	test	Last week she fluttered two tortures	simple_past	flutter	torture		
+PLAUS_0500	incongruent	0	test	Last week she reached two reasons	simple_past	reach	reason		
+PLAUS_0501	incongruent	0	test	Last week she reached two voices	simple_past	reach	voice		
+PLAUS_0502	incongruent	0	test	Last week they decided one blender	simple_past	decide	blender		
+PLAUS_0503	incongruent	0	test	Last week they demolished three golds	simple_past	demolish	gold		unseen_phase1:demolish
+PLAUS_0504	incongruent	0	test	Last week they flipped one bean	simple_past	flip	bean		
+PLAUS_0505	incongruent	0	test	Last week they flipped three beans	simple_past	flip	bean		
+PLAUS_0506	incongruent	0	test	Last week they reached one reason	simple_past	reach	reason		
+PLAUS_0507	incongruent	0	test	Last week they reached one voice	simple_past	reach	voice		
+PLAUS_0508	incongruent	0	test	Last week they reached three voices	simple_past	reach	voice		
+PLAUS_0509	incongruent	0	test	Last week they reached two reasons	simple_past	reach	reason		
+PLAUS_0510	incongruent	0	test	She does not decide three blenders	do_negation	decide	blender		
+PLAUS_0511	incongruent	0	test	She does not flip one bean	do_negation	flip	bean		
+PLAUS_0512	incongruent	0	test	She does not flip two beans	do_negation	flip	bean		
+PLAUS_0513	incongruent	0	test	She does not reach two reasons	do_negation	reach	reason		
+PLAUS_0514	incongruent	0	test	She is deciding one blender	be_progressive	decide	blender		
+PLAUS_0515	incongruent	0	test	She is deciding two blenders	be_progressive	decide	blender		
+PLAUS_0516	incongruent	0	test	She is flipping two beans	be_progressive	flip	bean		
+PLAUS_0517	incongruent	0	test	She is fluttering three tortures	be_progressive	flutter	torture		
+PLAUS_0518	incongruent	0	test	She is fluttering two tortures	be_progressive	flutter	torture		
+PLAUS_0519	incongruent	0	test	She is reaching one voice	be_progressive	reach	voice		
+PLAUS_0520	incongruent	0	test	She is reaching three reasons	be_progressive	reach	reason		
+PLAUS_0521	incongruent	0	test	She is reaching three voices	be_progressive	reach	voice		
+PLAUS_0522	incongruent	0	test	They are deciding three blenders	be_progressive	decide	blender		
+PLAUS_0523	incongruent	0	test	They are demolishing two golds	be_progressive	demolish	gold		unseen_phase1:demolish
+PLAUS_0524	incongruent	0	test	They are flipping six beans	be_progressive	flip	bean		
+PLAUS_0525	incongruent	0	test	They are flipping two beans	be_progressive	flip	bean		
+PLAUS_0526	incongruent	0	test	They are fluttering two tortures	be_progressive	flutter	torture		
+PLAUS_0527	incongruent	0	test	They are reaching four voices	be_progressive	reach	voice		
+PLAUS_0528	incongruent	0	test	They are reaching one voice	be_progressive	reach	voice		
+PLAUS_0529	incongruent	0	test	They are reaching three reasons	be_progressive	reach	reason		
+PLAUS_0530	incongruent	0	test	They are reaching three voices	be_progressive	reach	voice		
+PLAUS_0531	incongruent	0	test	They are reaching two reasons	be_progressive	reach	reason		
+PLAUS_0532	incongruent	0	test	They do not decide one blender	do_negation	decide	blender		
+PLAUS_0533	incongruent	0	test	They do not demolish three golds	do_negation	demolish	gold		unseen_phase1:demolish
+PLAUS_0534	incongruent	0	test	They do not demolish two golds	do_negation	demolish	gold		unseen_phase1:demolish
+PLAUS_0535	incongruent	0	test	They do not flip three beans	do_negation	flip	bean		
+PLAUS_0536	incongruent	0	test	They do not flip two beans	do_negation	flip	bean		
+PLAUS_0537	incongruent	0	test	They do not flutter one torture	do_negation	flutter	torture		
+PLAUS_0538	incongruent	0	test	They do not reach three reasons	do_negation	reach	reason		
+PLAUS_0539	incongruent	0	test	They do not reach two reasons	do_negation	reach	reason		
+PLAUS_0540	incongruent	0	test	They do not reach two voices	do_negation	reach	voice		
+PLAUS_0541	strong_congruence	1	test	Every day he celebrates one party	present_3s	celebrate	party		
+PLAUS_0542	strong_congruence	1	test	Every day he earns one money	present_3s	earn	money		
+PLAUS_0543	strong_congruence	1	test	Every day he earns two moneys	present_3s	earn	money		
+PLAUS_0544	strong_congruence	1	test	Every day she celebrates one party	present_3s	celebrate	party		
+PLAUS_0545	strong_congruence	1	test	Every day she celebrates three parties	present_3s	celebrate	party		
+PLAUS_0546	strong_congruence	1	test	Every day she earns one money	present_3s	earn	money		
+PLAUS_0547	strong_congruence	1	test	Every day she sails one boat	present_3s	sail	boat		
+PLAUS_0548	strong_congruence	1	test	Every day she sails two boats	present_3s	sail	boat		
+PLAUS_0549	strong_congruence	1	test	Every day they celebrate three parties	present_3s	celebrate	party		
+PLAUS_0550	strong_congruence	1	test	Every day they celebrate two parties	present_3s	celebrate	party		
+PLAUS_0551	strong_congruence	1	test	He does not celebrate one party	do_negation	celebrate	party		
+PLAUS_0552	strong_congruence	1	test	He does not celebrate six parties	do_negation	celebrate	party		
+PLAUS_0553	strong_congruence	1	test	He does not earn one money	do_negation	earn	money		
+PLAUS_0554	strong_congruence	1	test	He does not sail one boat	do_negation	sail	boat		
+PLAUS_0555	strong_congruence	1	test	He is celebrating one party	be_progressive	celebrate	party		
+PLAUS_0556	strong_congruence	1	test	He is earning three moneys	be_progressive	earn	money		
+PLAUS_0557	strong_congruence	1	test	He is sailing one boat	be_progressive	sail	boat		
+PLAUS_0558	strong_congruence	1	test	He is sailing two boats	be_progressive	sail	boat		
+PLAUS_0559	strong_congruence	1	test	Last week he celebrated one party	simple_past	celebrate	party		
+PLAUS_0560	strong_congruence	1	test	Last week he celebrated three parties	simple_past	celebrate	party		
+PLAUS_0561	strong_congruence	1	test	Last week he celebrated two parties	simple_past	celebrate	party		
+PLAUS_0562	strong_congruence	1	test	Last week he earned three moneys	simple_past	earn	money		
+PLAUS_0563	strong_congruence	1	test	Last week he sailed three boats	simple_past	sail	boat		
+PLAUS_0564	strong_congruence	1	test	Last week she celebrated three parties	simple_past	celebrate	party		
+PLAUS_0565	strong_congruence	1	test	Last week she sailed one boat	simple_past	sail	boat		
+PLAUS_0566	strong_congruence	1	test	Last week they celebrated one party	simple_past	celebrate	party		
+PLAUS_0567	strong_congruence	1	test	Last week they celebrated three parties	simple_past	celebrate	party		
+PLAUS_0568	strong_congruence	1	test	Last week they sailed one boat	simple_past	sail	boat		
+PLAUS_0569	strong_congruence	1	test	She does not celebrate two parties	do_negation	celebrate	party		
+PLAUS_0570	strong_congruence	1	test	She does not earn two moneys	do_negation	earn	money		
+PLAUS_0571	strong_congruence	1	test	She does not sail three boats	do_negation	sail	boat		
+PLAUS_0572	strong_congruence	1	test	She is celebrating one party	be_progressive	celebrate	party		
+PLAUS_0573	strong_congruence	1	test	She is earning two moneys	be_progressive	earn	money		
+PLAUS_0574	strong_congruence	1	test	She is sailing three boats	be_progressive	sail	boat		
+PLAUS_0575	strong_congruence	1	test	They are celebrating one party	be_progressive	celebrate	party		
+PLAUS_0576	strong_congruence	1	test	They are celebrating two parties	be_progressive	celebrate	party		
+PLAUS_0577	strong_congruence	1	test	They are earning three moneys	be_progressive	earn	money		
+PLAUS_0578	strong_congruence	1	test	They are sailing three boats	be_progressive	sail	boat		
+PLAUS_0579	strong_congruence	1	test	They do not celebrate one party	do_negation	celebrate	party		
+PLAUS_0580	strong_congruence	1	test	They do not sail one boat	do_negation	sail	boat		
+PLAUS_0581	weak_congruence	1	test	Every day he expresses five mails	present_3s	express	mail		
+PLAUS_0582	weak_congruence	1	test	Every day he expresses four mails	present_3s	express	mail		
+PLAUS_0583	weak_congruence	1	test	Every day he expresses one mail	present_3s	express	mail		
+PLAUS_0584	weak_congruence	1	test	Every day he expresses six mails	present_3s	express	mail		
+PLAUS_0585	weak_congruence	1	test	Every day he expresses three mails	present_3s	express	mail		
+PLAUS_0586	weak_congruence	1	test	Every day he expresses two mails	present_3s	express	mail		
+PLAUS_0587	weak_congruence	1	test	Every day she expresses five mails	present_3s	express	mail		
+PLAUS_0588	weak_congruence	1	test	Every day she expresses four mails	present_3s	express	mail		
+PLAUS_0589	weak_congruence	1	test	Every day she expresses one mail	present_3s	express	mail		
+PLAUS_0590	weak_congruence	1	test	Every day she expresses six mails	present_3s	express	mail		
+PLAUS_0591	weak_congruence	1	test	Every day she expresses three mails	present_3s	express	mail		
+PLAUS_0592	weak_congruence	1	test	Every day she expresses two mails	present_3s	express	mail		
+PLAUS_0593	weak_congruence	1	test	Every day they express two mails	present_3s	express	mail		
+PLAUS_0594	weak_congruence	1	test	He does not express one mail	do_negation	express	mail		
+PLAUS_0595	weak_congruence	1	test	He does not express three mails	do_negation	express	mail		
+PLAUS_0596	weak_congruence	1	test	He does not express two mails	do_negation	express	mail		
+PLAUS_0597	weak_congruence	1	test	He is expressing three mails	be_progressive	express	mail		
+PLAUS_0598	weak_congruence	1	test	He is expressing two mails	be_progressive	express	mail		
+PLAUS_0599	weak_congruence	1	test	Last week he expressed one mail	simple_past	express	mail		
+PLAUS_0600	weak_congruence	1	test	Last week he expressed three mails	simple_past	express	mail		
+PLAUS_0601	weak_congruence	1	test	Last week he expressed two mails	simple_past	express	mail		
+PLAUS_0602	weak_congruence	1	test	Last week she expressed one mail	simple_past	express	mail		
+PLAUS_0603	weak_congruence	1	test	Last week she expressed three mails	simple_past	express	mail		
+PLAUS_0604	weak_congruence	1	test	Last week she expressed two mails	simple_past	express	mail		
+PLAUS_0605	weak_congruence	1	test	Last week they expressed five mails	simple_past	express	mail		
+PLAUS_0606	weak_congruence	1	test	Last week they expressed one mail	simple_past	express	mail		
+PLAUS_0607	weak_congruence	1	test	Last week they expressed six mails	simple_past	express	mail		
+PLAUS_0608	weak_congruence	1	test	Last week they expressed three mails	simple_past	express	mail		
+PLAUS_0609	weak_congruence	1	test	Last week they expressed two mails	simple_past	express	mail		
+PLAUS_0610	weak_congruence	1	test	She does not express one mail	do_negation	express	mail		
+PLAUS_0611	weak_congruence	1	test	She does not express three mails	do_negation	express	mail		
+PLAUS_0612	weak_congruence	1	test	She does not express two mails	do_negation	express	mail		
+PLAUS_0613	weak_congruence	1	test	She is expressing one mail	be_progressive	express	mail		
+PLAUS_0614	weak_congruence	1	test	She is expressing two mails	be_progressive	express	mail		
+PLAUS_0615	weak_congruence	1	test	They are expressing one mail	be_progressive	express	mail		
+PLAUS_0616	weak_congruence	1	test	They are expressing six mails	be_progressive	express	mail		
+PLAUS_0617	weak_congruence	1	test	They are expressing three mails	be_progressive	express	mail		
+PLAUS_0618	weak_congruence	1	test	They are expressing two mails	be_progressive	express	mail		
+PLAUS_0619	weak_congruence	1	test	They do not express one mail	do_negation	express	mail		
+PLAUS_0620	weak_congruence	1	test	They do not express two mails	do_negation	express	mail		

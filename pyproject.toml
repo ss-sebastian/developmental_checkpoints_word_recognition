@@ -5,16 +5,24 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "developmental-lm-phase1"
 version = "0.1.0"
-description = "Phase 1 continuous articulatory-stream next-phoneme model"
+description = "Developmental phoneme GRU with frozen-checkpoint behavioral evaluation"
 requires-python = ">=3.11"
 dependencies = ["numpy>=1.26", "torch>=2.1", "tqdm>=4.66"]
 
 [project.optional-dependencies]
 panphon = ["panphon>=0.22"]
 colab = ["datasets>=3.0"]
+phase2 = ["matplotlib>=3.8", "phonemizer>=3.3"]
+stimuli = [
+  "phonemizer>=3.3", "scipy>=1.13", "xlrd>=2.0,<3",
+  "openpyxl>=3.1,<4", "lemminflect>=0.2.3,<0.3",
+]
 
 [project.scripts]
 devlm-phase1 = "devlm.cli:main"
+devlm-phase2 = "devlm.phase2.cli:main"
+devlm-construct-stimuli = "devlm.stimulus_construction.cli:main"
+devlm-task-adaptation = "devlm.adaptation.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

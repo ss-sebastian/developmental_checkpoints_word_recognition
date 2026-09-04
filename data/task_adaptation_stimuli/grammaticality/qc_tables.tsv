@@ -1,0 +1,55 @@
+table	condition_a	condition_b	variable	n_a	n_b	mean_a	mean_b	sd_a	sd_b	median_a	median_b	min_a	max_a	min_b	max_b	smd	ks_statistic	category	count
+continuous	finiteness_violation	grammatical	mean_content_subtlex_zipf	155	310	4.52975692321297	4.529262158752139	0.30436507528493595	0.35421130175232424	4.507080304166289	4.507080304166289	4.044457183487992	5.06551113037367	4.044457183487992	5.196456704371858	0.0014982418798437955	0.13548387096774195		
+continuous	finiteness_violation	grammatical	sentence_word_count	155	310	5.735483870967742	5.7387096774193544	0.4425049615223894	0.44004811398810817	6.0	6.0	5.0	6.0	5.0	6.0	-0.007310141547226947	0.0032258064516129032		
+continuous	finiteness_violation	grammatical	sentence_phoneme_count	155	310	20.10967741935484	20.080645161290324	2.6100896683991928	2.9630867482349394	20.0	20.0	16.0	28.0	15.0	29.0	0.010397731950918329	0.05806451612903226		
+continuous	finiteness_violation	plurality_violation	mean_content_subtlex_zipf	155	155	4.52975692321297	4.555545890619428	0.30436507528493595	0.3448589674114923	4.507080304166289	4.6247222328466515	4.044457183487992	5.06551113037367	3.8696281146864355	5.06551113037367	-0.07929142304523679	0.1870967741935484		
+continuous	finiteness_violation	plurality_violation	sentence_word_count	155	155	5.735483870967742	5.7612903225806456	0.4425049615223894	0.4276767648183376	6.0	6.0	5.0	6.0	5.0	6.0	-0.05930417726476497	0.025806451612903226		
+continuous	finiteness_violation	plurality_violation	sentence_phoneme_count	155	155	20.10967741935484	20.032258064516128	2.6100896683991928	3.311568378846412	20.0	20.0	16.0	28.0	14.0	28.0	0.02596630959820339	0.0967741935483871		
+continuous	grammatical	plurality_violation	mean_content_subtlex_zipf	310	155	4.529262158752139	4.555545890619428	0.35421130175232424	0.3448589674114923	4.507080304166289	4.6247222328466515	4.044457183487992	5.196456704371858	3.8696281146864355	5.06551113037367	-0.07518952312587725	0.15806451612903225		
+continuous	grammatical	plurality_violation	sentence_word_count	310	155	5.7387096774193544	5.7612903225806456	0.44004811398810817	0.4276767648183376	6.0	6.0	5.0	6.0	5.0	6.0	-0.052040343882955295	0.02258064516129032		
+continuous	grammatical	plurality_violation	sentence_phoneme_count	310	155	20.080645161290324	20.032258064516128	2.9630867482349394	3.311568378846412	20.0	20.0	15.0	29.0	14.0	28.0	0.015399298860358176	0.07419354838709677		
+categorical	finiteness_violation		template_family															be_progressive	41
+categorical	finiteness_violation		template_family															do_negation	39
+categorical	finiteness_violation		template_family															present_3s	39
+categorical	finiteness_violation		template_family															simple_past	36
+categorical	grammatical		template_family															be_progressive	81
+categorical	grammatical		template_family															do_negation	75
+categorical	grammatical		template_family															present_3s	80
+categorical	grammatical		template_family															simple_past	74
+categorical	plurality_violation		template_family															be_progressive	37
+categorical	plurality_violation		template_family															do_negation	35
+categorical	plurality_violation		template_family															present_3s	39
+categorical	plurality_violation		template_family															simple_past	44
+categorical	finiteness_violation		subject															he	48
+categorical	finiteness_violation		subject															she	51
+categorical	finiteness_violation		subject															they	56
+categorical	grammatical		subject															he	135
+categorical	grammatical		subject															she	108
+categorical	grammatical		subject															they	67
+categorical	plurality_violation		subject															he	55
+categorical	plurality_violation		subject															she	48
+categorical	plurality_violation		subject															they	52
+categorical	finiteness_violation		number_word															five	8
+categorical	finiteness_violation		number_word															four	18
+categorical	finiteness_violation		number_word															one	65
+categorical	finiteness_violation		number_word															six	12
+categorical	finiteness_violation		number_word															three	11
+categorical	finiteness_violation		number_word															two	41
+categorical	grammatical		number_word															five	5
+categorical	grammatical		number_word															four	49
+categorical	grammatical		number_word															one	89
+categorical	grammatical		number_word															six	20
+categorical	grammatical		number_word															three	73
+categorical	grammatical		number_word															two	74
+categorical	plurality_violation		number_word															five	6
+categorical	plurality_violation		number_word															four	11
+categorical	plurality_violation		number_word															one	35
+categorical	plurality_violation		number_word															six	12
+categorical	plurality_violation		number_word															three	11
+categorical	plurality_violation		number_word															two	80
+categorical	finiteness_violation		negation															0	116
+categorical	finiteness_violation		negation															1	39
+categorical	grammatical		negation															0	235
+categorical	grammatical		negation															1	75
+categorical	plurality_violation		negation															0	120
+categorical	plurality_violation		negation															1	35

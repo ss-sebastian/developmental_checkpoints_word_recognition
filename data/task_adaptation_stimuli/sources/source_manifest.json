@@ -1,0 +1,222 @@
+{
+  "checkpoint_files_loaded": 0,
+  "child_behavior_files_loaded": 0,
+  "construction_date": "2026-09-04",
+  "filtering_counts": {
+    "ds003604_excluded_vocabulary_by_task": {
+      "Grammaticality": 101,
+      "Meaning": 142,
+      "Plausibility": 102,
+      "Sound": 144
+    },
+    "eligible_words_by_task": {
+      "Grammaticality": 6741,
+      "Meaning": 17755,
+      "Plausibility": 18848,
+      "Sound": 4156
+    },
+    "grammaticality_pair_pool_by_condition": {
+      "strong_congruence": 56
+    },
+    "grammaticality_pair_replacements": {
+      "bloom-flower": "fold-letter",
+      "check-money": "feed-bird",
+      "comb-hair": "throw-ball",
+      "count-number": "notify-contact",
+      "eat-food": "fry-egg",
+      "lie-truth": "flip-coin",
+      "owe-money": "define-word",
+      "pay-money": "mix-drink",
+      "rattle-baby": "build-house",
+      "rattle-snake": "celebrate-birthday",
+      "reflect-mirror": "grab-bag",
+      "spend-money": "dig-hole",
+      "sweep-broom": "repair-television",
+      "switch-light": "draw-picture"
+    },
+    "grammaticality_supplemental_pairs": [
+      "build-house",
+      "celebrate-birthday",
+      "collect-stamp",
+      "define-word",
+      "dig-hole",
+      "draw-picture",
+      "fasten-belt",
+      "feed-bird",
+      "fill-cup",
+      "flip-coin",
+      "fold-letter",
+      "fry-egg",
+      "grab-bag",
+      "make-cake",
+      "mix-drink",
+      "notify-contact",
+      "paint-wall",
+      "peel-banana",
+      "raise-child",
+      "repair-television",
+      "rip-paper",
+      "salute-flag",
+      "sew-shirt",
+      "snatch-purse",
+      "suggest-idea",
+      "tell-story",
+      "throw-ball",
+      "tie-shoe",
+      "welcome-guest",
+      "wrap-gift"
+    ],
+    "meaning_pair_pool_by_condition": {
+      "high_association": 813,
+      "low_association": 3054,
+      "unrelated": 5000
+    },
+    "plausibility_pair_pool_by_condition": {
+      "incongruent": 5000,
+      "strong_congruence": 53,
+      "weak_congruence": 1337
+    },
+    "sound_pair_pool_by_condition": {
+      "onset": 64649,
+      "rhyme": 21768,
+      "unrelated": 4000
+    }
+  },
+  "model_outputs_used_for_selection": false,
+  "parsed_counts": {
+    "cmudict_all_roots": 117493,
+    "cmudict_unambiguous_words": 109745,
+    "ipa_childes_rows": 2564614,
+    "ipa_failures": 617,
+    "phase1_ipa_compatible_base_words": 33870,
+    "subtlex_pos_words": 74285,
+    "subtlex_words": 60383,
+    "usf_associations": 70699,
+    "usf_normed_cues": 4985
+  },
+  "resource_versions": {
+    "IPA-CHILDES": "phonemetransformers/IPA-CHILDES revision 2f4e63f61b3e4b11b470a511d6abcd18d1e3ad9e, Eng-NA/processed.csv",
+    "SUBTLEX-US": "Brysbaert & New 2009 frequency table plus Brysbaert, New & Keuleers 2012 official PoS/Zipf extension (OSF 7wx25, version 1)",
+    "USF": "Nelson, McEvoy & Schreiber Appendix A official files",
+    "cmudict": "cmusphinx/cmudict commit 74790861f652b15e4ac49015a90074ad62a27690",
+    "ds003604": "OpenNeuroDatasets/ds003604 commit 0aaf6a478e605a92e626ab9a49775da614a5b9e4"
+  },
+  "resources": [
+    {
+      "bytes": 3618488,
+      "download_date": "2026-09-04",
+      "path": "cmudict/cmudict.dict",
+      "sha256": "81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22"
+    },
+    {
+      "bytes": 19546,
+      "download_date": "2026-09-04",
+      "path": "ds003604/task-Gram_Stimulus_Characteristics.tsv",
+      "sha256": "5a90a879e72fe80b51dc1517f83efc89e8a9bf45e26e269bab47d3b08aec3883"
+    },
+    {
+      "bytes": 17467,
+      "download_date": "2026-09-04",
+      "path": "ds003604/task-Phon_Stimulus_Characteristics.tsv",
+      "sha256": "7687d51ddd2a9155818c62d8667abe692cf5e6375349af7f4fddb9a7ee307ed3"
+    },
+    {
+      "bytes": 19317,
+      "download_date": "2026-09-04",
+      "path": "ds003604/task-Plaus_Stimulus_Characteristics.tsv",
+      "sha256": "908330009c7b156fe8a7708c96a2e3e3510490faae9e6561e003a337c1892c61"
+    },
+    {
+      "bytes": 12842,
+      "download_date": "2026-09-04",
+      "path": "ds003604/task-Sem_Stimulus_Characteristics.tsv",
+      "sha256": "1b579470fc1f5f735ad8db68cb55ac50f5385e3c01134acdb6a59dc1eb7f0bcb"
+    },
+    {
+      "bytes": 855612809,
+      "download_date": "2026-09-04",
+      "path": "ipa_childes/Eng-NA_processed.csv",
+      "sha256": "f1d56546311381ac66add5853c6f0ac422ff3e823e2071ef7f34831f28b57a3e"
+    },
+    {
+      "bytes": 13081,
+      "download_date": "2026-09-04",
+      "path": "phase1/ipa_feature_mapping.json",
+      "sha256": "66e3acc82882d4ca88aec24a06f2cf91d8e04acb160ab1cc227e8f1e75c45c18"
+    },
+    {
+      "bytes": 509,
+      "download_date": "2026-09-04",
+      "path": "phase1/phoneme_vocabulary.json",
+      "sha256": "d808f5caa906525b5e74fa30c14cc0e77138c9113de593e9ad89b0be4138c1ed"
+    },
+    {
+      "bytes": 10760844,
+      "download_date": "2026-09-04",
+      "path": "subtlex_us/SUBTLEX-US frequency list with PoS and Zipf information.xlsx",
+      "sha256": "3a8cb93a4e28988c2ce722a63f6b8d394acdc42ebe2ab6e1f0e484ee0d4167a7"
+    },
+    {
+      "bytes": 9329664,
+      "download_date": "2026-09-04",
+      "path": "subtlex_us/SUBTLEXusfrequencyabove1.xls",
+      "sha256": "a401360f106d57c8646c7c794bb128e08246120963e563cd06ad2d0ece26246f"
+    },
+    {
+      "bytes": 2073894,
+      "download_date": "2026-09-04",
+      "path": "subtlex_us/SUBTLEXusfrequencyabove1.zip",
+      "sha256": "2993604372e1cbac8b65c7a949d9ec752954f468e2e9c215408b43c283c4074e"
+    },
+    {
+      "bytes": 1209794,
+      "download_date": "2026-09-04",
+      "path": "usf/Cue_Target_Pairs.A-B",
+      "sha256": "8054e6d4f804b35ddc0c21ae76455ab07d3b8b0d2378dbe1242f0f20d1ea0655"
+    },
+    {
+      "bytes": 1087020,
+      "download_date": "2026-09-04",
+      "path": "usf/Cue_Target_Pairs.C",
+      "sha256": "443c30bd97b339ddc743e29dc922397716e4486295f089468d50726de3df5de0"
+    },
+    {
+      "bytes": 1491469,
+      "download_date": "2026-09-04",
+      "path": "usf/Cue_Target_Pairs.D-F",
+      "sha256": "fbeced5dcc487b673f618296c1d48efdd52a260e384f97a9757dc430dccc338c"
+    },
+    {
+      "bytes": 1200876,
+      "download_date": "2026-09-04",
+      "path": "usf/Cue_Target_Pairs.G-K",
+      "sha256": "7a956a7db5a61ad55dcb28c3f576f1174a3c9d253617f09a2c24021e73a5d9c3"
+    },
+    {
+      "bytes": 1323493,
+      "download_date": "2026-09-04",
+      "path": "usf/Cue_Target_Pairs.L-O",
+      "sha256": "3aabf55bc66b9bf510d04655effd261fa2420a6431677853169044b99f3135b1"
+    },
+    {
+      "bytes": 1421166,
+      "download_date": "2026-09-04",
+      "path": "usf/Cue_Target_Pairs.P-R",
+      "sha256": "2253c07c1c23e8e6d6c3f48a24007c7e63833e907f2292816879b4af08849dcd"
+    },
+    {
+      "bytes": 1313193,
+      "download_date": "2026-09-04",
+      "path": "usf/Cue_Target_Pairs.S",
+      "sha256": "6602d847dc99693ef598279c8da73649f11db491da2ec9db3c206d376bda232e"
+    },
+    {
+      "bytes": 1248559,
+      "download_date": "2026-09-04",
+      "path": "usf/Cue_Target_Pairs.T-Z",
+      "sha256": "39d492c5cb63cb2347987c58a9a328619870f649d97796a34b25bf214a191264"
+    }
+  ],
+  "seed": 1729,
+  "source_only": true
+}

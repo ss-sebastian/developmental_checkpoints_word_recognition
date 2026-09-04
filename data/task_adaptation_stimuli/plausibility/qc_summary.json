@@ -1,0 +1,34 @@
+{
+  "candidate_count": 3100,
+  "condition_counts": {
+    "incongruent": 310,
+    "strong_congruence": 155,
+    "weak_congruence": 155
+  },
+  "ds003604_critical_vocabulary_overlap_count": 0,
+  "ds003604_exact_overlap_count": 0,
+  "final_count": 620,
+  "items_with_unseen_phase1_content_words": 27,
+  "label_counts_by_split": {
+    "test": {
+      "0": 80,
+      "1": 80
+    },
+    "train": {
+      "0": 180,
+      "1": 180
+    },
+    "validation": {
+      "0": 50,
+      "1": 50
+    }
+  },
+  "max_absolute_smd": 0.059353855083651444,
+  "qc_pass": true,
+  "smd_target": 0.1,
+  "split_counts": {
+    "test": 160,
+    "train": 360,
+    "validation": 100
+  }
+}

@@ -1,0 +1,14 @@
+item_id	task_name	stimulus_kind	prime_phonemes	target_phonemes	sentence_phonemes	binary_label	split_group	metadata_json
+synthetic_sound_01	Sound	word_pair	["a"]	["b"]		1	sound_group_01	{"synthetic":true}
+synthetic_sound_02	Sound	word_pair	["b"]	["k"]		0	sound_group_02	{"synthetic":true}
+synthetic_sound_03	Sound	word_pair	["k"]	["a"]		1	sound_group_03	{"synthetic":true}
+synthetic_sound_04	Sound	word_pair	["a","b"]	["k"]		0	sound_group_04	{"synthetic":true}
+synthetic_meaning_01	Meaning	word_pair	["a"]	["k"]		1	meaning_group_01	{"synthetic":true}
+synthetic_meaning_02	Meaning	word_pair	["k"]	["b"]		0	meaning_group_02	{"synthetic":true}
+synthetic_meaning_03	Meaning	word_pair	["b"]	["a"]		1	meaning_group_03	{"synthetic":true}
+synthetic_plausibility_01	Plausibility	sentence			["a","b","k"]	1	plausibility_group_01	{"synthetic":true}
+synthetic_plausibility_02	Plausibility	sentence			["k","b","a"]	0	plausibility_group_02	{"synthetic":true}
+synthetic_plausibility_03	Plausibility	sentence			["a","k","a"]	1	plausibility_group_03	{"synthetic":true}
+synthetic_grammaticality_01	Grammaticality	sentence			["b","a","k"]	1	grammaticality_group_01	{"synthetic":true}
+synthetic_grammaticality_02	Grammaticality	sentence			["k","a","b"]	0	grammaticality_group_02	{"synthetic":true}
+synthetic_grammaticality_03	Grammaticality	sentence			["b","k","b"]	1	grammaticality_group_03	{"synthetic":true}

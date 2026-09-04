@@ -1,0 +1,97 @@
+task	condition	comparison_type	variable	category	original_n	final_n	original_value	final_value	absolute_difference	note
+Sound	rhyme	continuous_mean	mean_orthographic_length		24	155	4.166666666666667	4.083870967741936	0.08279569892473138	Directly comparable source-design variable
+Sound	rhyme	continuous_mean	mean_phoneme_count		24	155	3.5	3.4838709677419355	0.016129032258064502	Directly comparable source-design variable
+Sound	rhyme	continuous_mean	mean_syllable_count		24	155	1.0	1.0	0.0	Directly comparable source-design variable
+Sound	onset	continuous_mean	mean_orthographic_length		24	155	3.9791666666666665	4.087096774193548	0.1079301075268817	Directly comparable source-design variable
+Sound	onset	continuous_mean	mean_phoneme_count		24	155	3.4583333333333335	3.4806451612903224	0.02231182795698894	Directly comparable source-design variable
+Sound	onset	continuous_mean	mean_syllable_count		24	155	1.0	1.0	0.0	Directly comparable source-design variable
+Sound	unrelated	continuous_mean	mean_orthographic_length		24	310	4.083333333333333	4.088709677419355	0.005376344086021945	Directly comparable source-design variable
+Sound	unrelated	continuous_mean	mean_phoneme_count		24	310	3.5	3.47741935483871	0.022580645161290214	Directly comparable source-design variable
+Sound	unrelated	continuous_mean	mean_syllable_count		24	310	1.0	1.0	0.0	Directly comparable source-design variable
+Meaning	high_association	continuous_mean	mean_orthographic_length		24	155	5.125	5.125806451612903	0.0008064516129033805	Directly comparable source-design variable
+Meaning	high_association	continuous_mean	mean_phoneme_count		24	155	4.125	4.151612903225806	0.026612903225806228	Directly comparable source-design variable
+Meaning	high_association	continuous_mean	mean_syllable_count		24	155	1.4791666666666667	1.435483870967742	0.04368279569892475	Directly comparable source-design variable
+Meaning	low_association	continuous_mean	mean_orthographic_length		24	155	5.125	5.141935483870967	0.016935483870967438	Directly comparable source-design variable
+Meaning	low_association	continuous_mean	mean_phoneme_count		24	155	4.104166666666667	4.148387096774194	0.04422043010752663	Directly comparable source-design variable
+Meaning	low_association	continuous_mean	mean_syllable_count		24	155	1.4375	1.435483870967742	0.002016129032258007	Directly comparable source-design variable
+Meaning	unrelated	continuous_mean	mean_orthographic_length		24	310	5.145833333333333	5.140322580645162	0.005510752688171472	Directly comparable source-design variable
+Meaning	unrelated	continuous_mean	mean_phoneme_count		24	310	4.208333333333333	4.164516129032258	0.043817204301075385	Directly comparable source-design variable
+Meaning	unrelated	continuous_mean	mean_syllable_count		24	310	1.4166666666666667	1.4435483870967742	0.026881720430107503	Directly comparable source-design variable
+Plausibility	strong_congruence	categorical_proportion	template_family	be_progressive	20	155	0.25	0.25806451612903225	0.008064516129032251	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	template_family	do_negation	20	155	0.25	0.2129032258064516	0.0370967741935484	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	template_family	present_3s	20	155	0.25	0.2709677419354839	0.020967741935483897	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	template_family	simple_past	20	155	0.25	0.25806451612903225	0.008064516129032251	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	subject	he	20	155	0.35	0.36129032258064514	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	subject	she	20	155	0.35	0.32903225806451614	0.02096774193548384	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	subject	they	20	155	0.3	0.3096774193548387	0.009677419354838734	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	number_word	five	20	155	0.0	0.03225806451612903	0.03225806451612903	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	number_word	four	20	155	0.0	0.03225806451612903	0.03225806451612903	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	number_word	one	20	155	0.45	0.41935483870967744	0.030645161290322576	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	number_word	six	20	155	0.0	0.03225806451612903	0.03225806451612903	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	number_word	three	20	155	0.3	0.2645161290322581	0.035483870967741915	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	strong_congruence	categorical_proportion	number_word	two	20	155	0.25	0.21935483870967742	0.030645161290322576	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	template_family	be_progressive	20	155	0.25	0.23870967741935484	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	template_family	do_negation	20	155	0.25	0.2129032258064516	0.0370967741935484	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	template_family	present_3s	20	155	0.25	0.2645161290322581	0.014516129032258074	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	template_family	simple_past	20	155	0.25	0.2838709677419355	0.03387096774193549	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	subject	he	20	155	0.35	0.34838709677419355	0.001612903225806428	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	subject	she	20	155	0.3	0.33548387096774196	0.03548387096774197	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	subject	they	20	155	0.35	0.3161290322580645	0.03387096774193549	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	number_word	five	20	155	0.0	0.03225806451612903	0.03225806451612903	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	number_word	four	20	155	0.0	0.03225806451612903	0.03225806451612903	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	number_word	one	20	155	0.25	0.21935483870967742	0.030645161290322576	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	number_word	six	20	155	0.0	0.03225806451612903	0.03225806451612903	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	number_word	three	20	155	0.15	0.11612903225806452	0.03387096774193547	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	weak_congruence	categorical_proportion	number_word	two	20	155	0.6	0.567741935483871	0.032258064516129004	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	template_family	be_progressive	20	310	0.25	0.2645161290322581	0.014516129032258074	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	template_family	do_negation	20	310	0.25	0.24516129032258063	0.004838709677419367	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	template_family	present_3s	20	310	0.25	0.25483870967741934	0.0048387096774193394	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	template_family	simple_past	20	310	0.25	0.23548387096774193	0.014516129032258074	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	subject	he	20	310	0.25	0.26129032258064516	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	subject	she	20	310	0.3	0.3032258064516129	0.0032258064516129115	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	subject	they	20	310	0.45	0.43548387096774194	0.014516129032258074	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	number_word	five	20	310	0.0	0.016129032258064516	0.016129032258064516	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	number_word	four	20	310	0.0	0.016129032258064516	0.016129032258064516	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	number_word	one	20	310	0.3	0.2838709677419355	0.016129032258064502	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	number_word	six	20	310	0.0	0.016129032258064516	0.016129032258064516	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	number_word	three	20	310	0.35	0.33548387096774196	0.014516129032258018	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Plausibility	incongruent	categorical_proportion	number_word	two	20	310	0.35	0.33225806451612905	0.01774193548387093	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	template_family	be_progressive	20	310	0.25	0.26129032258064516	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	template_family	do_negation	20	310	0.25	0.24193548387096775	0.008064516129032251	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	template_family	present_3s	20	310	0.25	0.25806451612903225	0.008064516129032251	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	template_family	simple_past	20	310	0.25	0.23870967741935484	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	subject	he	20	310	0.45	0.43548387096774194	0.014516129032258074	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	subject	she	20	310	0.35	0.34838709677419355	0.001612903225806428	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	subject	they	20	310	0.2	0.2161290322580645	0.016129032258064502	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	number_word	five	20	310	0.0	0.016129032258064516	0.016129032258064516	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	number_word	four	20	310	0.15	0.15806451612903225	0.008064516129032251	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	number_word	one	20	310	0.3	0.2870967741935484	0.01290322580645159	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	number_word	six	20	310	0.05	0.06451612903225806	0.01451612903225806	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	number_word	three	20	310	0.25	0.23548387096774193	0.014516129032258074	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	grammatical	categorical_proportion	number_word	two	20	310	0.25	0.23870967741935484	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	template_family	be_progressive	20	155	0.25	0.2645161290322581	0.014516129032258074	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	template_family	do_negation	20	155	0.25	0.25161290322580643	0.001612903225806428	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	template_family	present_3s	20	155	0.25	0.25161290322580643	0.001612903225806428	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	template_family	simple_past	20	155	0.25	0.23225806451612904	0.017741935483870958	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	subject	he	20	155	0.3	0.3096774193548387	0.009677419354838734	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	subject	she	20	155	0.35	0.32903225806451614	0.02096774193548384	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	subject	they	20	155	0.35	0.36129032258064514	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	number_word	five	20	155	0.05	0.05161290322580645	0.0016129032258064488	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	number_word	four	20	155	0.1	0.11612903225806452	0.016129032258064516	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	number_word	one	20	155	0.45	0.41935483870967744	0.030645161290322576	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	number_word	six	20	155	0.05	0.07741935483870968	0.027419354838709678	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	number_word	three	20	155	0.05	0.07096774193548387	0.02096774193548387	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	finiteness_violation	categorical_proportion	number_word	two	20	155	0.3	0.2645161290322581	0.035483870967741915	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	template_family	be_progressive	20	155	0.25	0.23870967741935484	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	template_family	do_negation	20	155	0.25	0.22580645161290322	0.02419354838709678	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	template_family	present_3s	20	155	0.25	0.25161290322580643	0.001612903225806428	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	template_family	simple_past	20	155	0.25	0.2838709677419355	0.03387096774193549	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	subject	he	20	155	0.35	0.3548387096774194	0.004838709677419395	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	subject	she	20	155	0.3	0.3096774193548387	0.009677419354838734	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	subject	they	20	155	0.35	0.33548387096774196	0.014516129032258018	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	number_word	five	20	155	0.05	0.03870967741935484	0.011290322580645162	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	number_word	four	20	155	0.05	0.07096774193548387	0.02096774193548387	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	number_word	one	20	155	0.25	0.22580645161290322	0.02419354838709678	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	number_word	six	20	155	0.05	0.07741935483870968	0.027419354838709678	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	number_word	three	20	155	0.05	0.07096774193548387	0.02096774193548387	Targeted to ds003604 within integer/lexical-disjointness tolerance
+Grammaticality	plurality_violation	categorical_proportion	number_word	two	20	155	0.55	0.5161290322580645	0.03387096774193554	Targeted to ds003604 within integer/lexical-disjointness tolerance

@@ -1,0 +1,621 @@
+item_id	condition	binary_label	split	sentence	template_family	verb_lemma	object_lemma	violation_type	qc_notes
+GRAM_0001	finiteness_violation	0	train	Every day he buckle one belt	present_3s	buckle	belt	omitted	
+GRAM_0002	finiteness_violation	0	train	Every day he crawl one baby	present_3s	crawl	baby	omitted	
+GRAM_0003	finiteness_violation	0	train	Every day he fold one letter	present_3s	fold	letter	omitted	
+GRAM_0004	finiteness_violation	0	train	Every day he screw one driver	present_3s	screw	driver	omitted	
+GRAM_0005	finiteness_violation	0	train	Every day she buckle one belt	present_3s	buckle	belt	omitted	
+GRAM_0006	finiteness_violation	0	train	Every day she buckle two belts	present_3s	buckle	belt	omitted	
+GRAM_0007	finiteness_violation	0	train	Every day she crawl one baby	present_3s	crawl	baby	omitted	
+GRAM_0008	finiteness_violation	0	train	Every day she crawl two babies	present_3s	crawl	baby	omitted	
+GRAM_0009	finiteness_violation	0	train	Every day she fold one letter	present_3s	fold	letter	omitted	
+GRAM_0010	finiteness_violation	0	train	Every day she fold two letters	present_3s	fold	letter	omitted	
+GRAM_0011	finiteness_violation	0	train	Every day she screw four drivers	present_3s	screw	driver	omitted	
+GRAM_0012	finiteness_violation	0	train	Every day she screw one driver	present_3s	screw	driver	omitted	
+GRAM_0013	finiteness_violation	0	train	Every day they buckles four belts	present_3s	buckle	belt	added	
+GRAM_0014	finiteness_violation	0	train	Every day they buckles one belt	present_3s	buckle	belt	added	
+GRAM_0015	finiteness_violation	0	train	Every day they crawls one baby	present_3s	crawl	baby	added	
+GRAM_0016	finiteness_violation	0	train	Every day they crawls six babies	present_3s	crawl	baby	added	
+GRAM_0017	finiteness_violation	0	train	Every day they folds one letter	present_3s	fold	letter	added	
+GRAM_0018	finiteness_violation	0	train	Every day they screws one driver	present_3s	screw	driver	added	
+GRAM_0019	finiteness_violation	0	train	Every day they screws two drivers	present_3s	screw	driver	added	
+GRAM_0020	finiteness_violation	0	train	He are buckling four belts	be_progressive	buckle	belt	substituted	
+GRAM_0021	finiteness_violation	0	train	He are buckling one belt	be_progressive	buckle	belt	substituted	
+GRAM_0022	finiteness_violation	0	train	He are crawling four babies	be_progressive	crawl	baby	substituted	
+GRAM_0023	finiteness_violation	0	train	He are crawling one baby	be_progressive	crawl	baby	substituted	
+GRAM_0024	finiteness_violation	0	train	He are crawling three babies	be_progressive	crawl	baby	substituted	
+GRAM_0025	finiteness_violation	0	train	He are crawling two babies	be_progressive	crawl	baby	substituted	
+GRAM_0026	finiteness_violation	0	train	He are folding five letters	be_progressive	fold	letter	substituted	
+GRAM_0027	finiteness_violation	0	train	He are folding four letters	be_progressive	fold	letter	substituted	
+GRAM_0028	finiteness_violation	0	train	He are folding one letter	be_progressive	fold	letter	substituted	
+GRAM_0029	finiteness_violation	0	train	He are nailing two hammers	be_progressive	nail	hammer	substituted	
+GRAM_0030	finiteness_violation	0	train	He are screwing four drivers	be_progressive	screw	driver	substituted	
+GRAM_0031	finiteness_violation	0	train	He are screwing one driver	be_progressive	screw	driver	substituted	
+GRAM_0032	finiteness_violation	0	train	He do not buckle one belt	do_negation	buckle	belt	substituted	
+GRAM_0033	finiteness_violation	0	train	He do not crawl five babies	do_negation	crawl	baby	substituted	
+GRAM_0034	finiteness_violation	0	train	He do not crawl one baby	do_negation	crawl	baby	substituted	
+GRAM_0035	finiteness_violation	0	train	He do not fold one letter	do_negation	fold	letter	substituted	
+GRAM_0036	finiteness_violation	0	train	He do not screw one driver	do_negation	screw	driver	substituted	
+GRAM_0037	finiteness_violation	0	train	He do not screw two drivers	do_negation	screw	driver	substituted	
+GRAM_0038	finiteness_violation	0	train	Last week he buckle one belt	simple_past	buckle	belt	omitted	
+GRAM_0039	finiteness_violation	0	train	Last week he crawl one baby	simple_past	crawl	baby	omitted	
+GRAM_0040	finiteness_violation	0	train	Last week he crawl two babies	simple_past	crawl	baby	omitted	
+GRAM_0041	finiteness_violation	0	train	Last week he fold one letter	simple_past	fold	letter	omitted	
+GRAM_0042	finiteness_violation	0	train	Last week he fold six letters	simple_past	fold	letter	omitted	
+GRAM_0043	finiteness_violation	0	train	Last week he screw four drivers	simple_past	screw	driver	omitted	
+GRAM_0044	finiteness_violation	0	train	Last week he screw one driver	simple_past	screw	driver	omitted	
+GRAM_0045	finiteness_violation	0	train	Last week he screw two drivers	simple_past	screw	driver	omitted	
+GRAM_0046	finiteness_violation	0	train	Last week she buckle one belt	simple_past	buckle	belt	omitted	
+GRAM_0047	finiteness_violation	0	train	Last week she buckling two belts	simple_past	buckle	belt	omitted	
+GRAM_0048	finiteness_violation	0	train	Last week she crawling two babies	simple_past	crawl	baby	omitted	
+GRAM_0049	finiteness_violation	0	train	Last week she fold five letters	simple_past	fold	letter	omitted	
+GRAM_0050	finiteness_violation	0	train	Last week she folding two letters	simple_past	fold	letter	omitted	
+GRAM_0051	finiteness_violation	0	train	Last week she screw one driver	simple_past	screw	driver	omitted	
+GRAM_0052	finiteness_violation	0	train	Last week they buckle four belts	simple_past	buckle	belt	omitted	
+GRAM_0053	finiteness_violation	0	train	Last week they buckle one belt	simple_past	buckle	belt	omitted	
+GRAM_0054	finiteness_violation	0	train	Last week they buckle two belts	simple_past	buckle	belt	omitted	
+GRAM_0055	finiteness_violation	0	train	Last week they crawl one baby	simple_past	crawl	baby	omitted	
+GRAM_0056	finiteness_violation	0	train	Last week they fold one letter	simple_past	fold	letter	omitted	
+GRAM_0057	finiteness_violation	0	train	Last week they fold two letters	simple_past	fold	letter	omitted	
+GRAM_0058	finiteness_violation	0	train	Last week they screw one driver	simple_past	screw	driver	omitted	
+GRAM_0059	finiteness_violation	0	train	Last week they screw two drivers	simple_past	screw	driver	omitted	
+GRAM_0060	finiteness_violation	0	train	She are buckling one belt	be_progressive	buckle	belt	substituted	
+GRAM_0061	finiteness_violation	0	train	She are buckling three belts	be_progressive	buckle	belt	substituted	
+GRAM_0062	finiteness_violation	0	train	She are crawling one baby	be_progressive	crawl	baby	substituted	
+GRAM_0063	finiteness_violation	0	train	She are crawling three babies	be_progressive	crawl	baby	substituted	
+GRAM_0064	finiteness_violation	0	train	She are crawling two babies	be_progressive	crawl	baby	substituted	
+GRAM_0065	finiteness_violation	0	train	She are folding one letter	be_progressive	fold	letter	substituted	
+GRAM_0066	finiteness_violation	0	train	She are folding two letters	be_progressive	fold	letter	substituted	
+GRAM_0067	finiteness_violation	0	train	She are screwing one driver	be_progressive	screw	driver	substituted	
+GRAM_0068	finiteness_violation	0	train	She are screwing two drivers	be_progressive	screw	driver	substituted	
+GRAM_0069	finiteness_violation	0	train	She do not buckle one belt	do_negation	buckle	belt	substituted	
+GRAM_0070	finiteness_violation	0	train	She do not buckle three belts	do_negation	buckle	belt	substituted	
+GRAM_0071	finiteness_violation	0	train	She do not buckle two belts	do_negation	buckle	belt	substituted	
+GRAM_0072	finiteness_violation	0	train	She do not crawl four babies	do_negation	crawl	baby	substituted	
+GRAM_0073	finiteness_violation	0	train	She do not crawl one baby	do_negation	crawl	baby	substituted	
+GRAM_0074	finiteness_violation	0	train	She do not crawl three babies	do_negation	crawl	baby	substituted	
+GRAM_0075	finiteness_violation	0	train	She do not fold one letter	do_negation	fold	letter	substituted	
+GRAM_0076	finiteness_violation	0	train	She do not screw five drivers	do_negation	screw	driver	substituted	
+GRAM_0077	finiteness_violation	0	train	She do not screw one driver	do_negation	screw	driver	substituted	
+GRAM_0078	finiteness_violation	0	train	She do not screw two drivers	do_negation	screw	driver	substituted	
+GRAM_0079	finiteness_violation	0	train	They does not buckle one belt	do_negation	buckle	belt	substituted	
+GRAM_0080	finiteness_violation	0	train	They does not crawl two babies	do_negation	crawl	baby	substituted	
+GRAM_0081	finiteness_violation	0	train	They does not fold one letter	do_negation	fold	letter	substituted	
+GRAM_0082	finiteness_violation	0	train	They does not screw one driver	do_negation	screw	driver	substituted	
+GRAM_0083	finiteness_violation	0	train	They is buckling one belt	be_progressive	buckle	belt	substituted	
+GRAM_0084	finiteness_violation	0	train	They is crawling one baby	be_progressive	crawl	baby	substituted	
+GRAM_0085	finiteness_violation	0	train	They is crawling six babies	be_progressive	crawl	baby	substituted	
+GRAM_0086	finiteness_violation	0	train	They is crawling two babies	be_progressive	crawl	baby	substituted	
+GRAM_0087	finiteness_violation	0	train	They is folding four letters	be_progressive	fold	letter	substituted	
+GRAM_0088	finiteness_violation	0	train	They is screwing one driver	be_progressive	screw	driver	substituted	
+GRAM_0089	finiteness_violation	0	train	They is screwing three drivers	be_progressive	screw	driver	substituted	
+GRAM_0090	finiteness_violation	0	train	They is screwing two drivers	be_progressive	screw	driver	substituted	
+GRAM_0091	grammatical	1	train	Every day he buckles four belts	present_3s	buckle	belt	none	
+GRAM_0092	grammatical	1	train	Every day he buckles one belt	present_3s	buckle	belt	none	
+GRAM_0093	grammatical	1	train	Every day he buckles two belts	present_3s	buckle	belt	none	
+GRAM_0094	grammatical	1	train	Every day he celebrates one birthday	present_3s	celebrate	birthday	none	
+GRAM_0095	grammatical	1	train	Every day he celebrates six birthdays	present_3s	celebrate	birthday	none	
+GRAM_0096	grammatical	1	train	Every day he celebrates three birthdays	present_3s	celebrate	birthday	none	
+GRAM_0097	grammatical	1	train	Every day he celebrates two parties	present_3s	celebrate	party	none	
+GRAM_0098	grammatical	1	train	Every day he crawls four babies	present_3s	crawl	baby	none	
+GRAM_0099	grammatical	1	train	Every day he crawls one baby	present_3s	crawl	baby	none	
+GRAM_0100	grammatical	1	train	Every day he folds one letter	present_3s	fold	letter	none	
+GRAM_0101	grammatical	1	train	Every day he grabs one bag	present_3s	grab	bag	none	
+GRAM_0102	grammatical	1	train	Every day he grabs three bags	present_3s	grab	bag	none	
+GRAM_0103	grammatical	1	train	Every day he mixes one drink	present_3s	mix	drink	none	
+GRAM_0104	grammatical	1	train	Every day he mixes three drinks	present_3s	mix	drink	none	
+GRAM_0105	grammatical	1	train	Every day he notifies four contacts	present_3s	notify	contact	none	
+GRAM_0106	grammatical	1	train	Every day he notifies one contact	present_3s	notify	contact	none	
+GRAM_0107	grammatical	1	train	Every day he sails four boats	present_3s	sail	boat	none	
+GRAM_0108	grammatical	1	train	Every day he sails one boat	present_3s	sail	boat	none	
+GRAM_0109	grammatical	1	train	Every day he sails three boats	present_3s	sail	boat	none	
+GRAM_0110	grammatical	1	train	Every day he sings one song	present_3s	sing	song	none	
+GRAM_0111	grammatical	1	train	Every day he sings three songs	present_3s	sing	song	none	
+GRAM_0112	grammatical	1	train	Every day he sings two songs	present_3s	sing	song	none	
+GRAM_0113	grammatical	1	train	Every day she buckles four belts	present_3s	buckle	belt	none	
+GRAM_0114	grammatical	1	train	Every day she buckles one belt	present_3s	buckle	belt	none	
+GRAM_0115	grammatical	1	train	Every day she buckles three belts	present_3s	buckle	belt	none	
+GRAM_0116	grammatical	1	train	Every day she buckles two belts	present_3s	buckle	belt	none	
+GRAM_0117	grammatical	1	train	Every day she celebrates two birthdays	present_3s	celebrate	birthday	none	
+GRAM_0118	grammatical	1	train	Every day she crawls two babies	present_3s	crawl	baby	none	
+GRAM_0119	grammatical	1	train	Every day she folds one letter	present_3s	fold	letter	none	
+GRAM_0120	grammatical	1	train	Every day she folds two letters	present_3s	fold	letter	none	
+GRAM_0121	grammatical	1	train	Every day she mixes two drinks	present_3s	mix	drink	none	
+GRAM_0122	grammatical	1	train	Every day she notifies one contact	present_3s	notify	contact	none	
+GRAM_0123	grammatical	1	train	Every day she sails one boat	present_3s	sail	boat	none	
+GRAM_0124	grammatical	1	train	Every day she sails two boats	present_3s	sail	boat	none	
+GRAM_0125	grammatical	1	train	Every day she sings two songs	present_3s	sing	song	none	
+GRAM_0126	grammatical	1	train	Every day they buckle one belt	present_3s	buckle	belt	none	
+GRAM_0127	grammatical	1	train	Every day they buckle three belts	present_3s	buckle	belt	none	
+GRAM_0128	grammatical	1	train	Every day they buckle two belts	present_3s	buckle	belt	none	
+GRAM_0129	grammatical	1	train	Every day they fold three letters	present_3s	fold	letter	none	
+GRAM_0130	grammatical	1	train	Every day they grab two bags	present_3s	grab	bag	none	
+GRAM_0131	grammatical	1	train	Every day they notify one contact	present_3s	notify	contact	none	
+GRAM_0132	grammatical	1	train	Every day they sail two boats	present_3s	sail	boat	none	
+GRAM_0133	grammatical	1	train	He does not buckle four belts	do_negation	buckle	belt	none	
+GRAM_0134	grammatical	1	train	He does not buckle one belt	do_negation	buckle	belt	none	
+GRAM_0135	grammatical	1	train	He does not buckle three belts	do_negation	buckle	belt	none	
+GRAM_0136	grammatical	1	train	He does not buckle two belts	do_negation	buckle	belt	none	
+GRAM_0137	grammatical	1	train	He does not fold three letters	do_negation	fold	letter	none	
+GRAM_0138	grammatical	1	train	He does not grab three bags	do_negation	grab	bag	none	
+GRAM_0139	grammatical	1	train	He does not grab two bags	do_negation	grab	bag	none	
+GRAM_0140	grammatical	1	train	He does not mix three drinks	do_negation	mix	drink	none	
+GRAM_0141	grammatical	1	train	He does not mix two drinks	do_negation	mix	drink	none	
+GRAM_0142	grammatical	1	train	He does not notify four contacts	do_negation	notify	contact	none	
+GRAM_0143	grammatical	1	train	He does not sail four boats	do_negation	sail	boat	none	
+GRAM_0144	grammatical	1	train	He does not sail one boat	do_negation	sail	boat	none	
+GRAM_0145	grammatical	1	train	He does not sail six boats	do_negation	sail	boat	none	
+GRAM_0146	grammatical	1	train	He does not sail three boats	do_negation	sail	boat	none	
+GRAM_0147	grammatical	1	train	He does not sail two boats	do_negation	sail	boat	none	
+GRAM_0148	grammatical	1	train	He does not sing one song	do_negation	sing	song	none	
+GRAM_0149	grammatical	1	train	He does not sing two songs	do_negation	sing	song	none	
+GRAM_0150	grammatical	1	train	He is buckling five belts	be_progressive	buckle	belt	none	
+GRAM_0151	grammatical	1	train	He is buckling four belts	be_progressive	buckle	belt	none	
+GRAM_0152	grammatical	1	train	He is buckling one belt	be_progressive	buckle	belt	none	
+GRAM_0153	grammatical	1	train	He is buckling six belts	be_progressive	buckle	belt	none	
+GRAM_0154	grammatical	1	train	He is buckling three belts	be_progressive	buckle	belt	none	
+GRAM_0155	grammatical	1	train	He is buckling two belts	be_progressive	buckle	belt	none	
+GRAM_0156	grammatical	1	train	He is celebrating four parties	be_progressive	celebrate	party	none	
+GRAM_0157	grammatical	1	train	He is celebrating three birthdays	be_progressive	celebrate	birthday	none	
+GRAM_0158	grammatical	1	train	He is celebrating two birthdays	be_progressive	celebrate	birthday	none	
+GRAM_0159	grammatical	1	train	He is crawling one baby	be_progressive	crawl	baby	none	
+GRAM_0160	grammatical	1	train	He is crawling six babies	be_progressive	crawl	baby	none	
+GRAM_0161	grammatical	1	train	He is crawling three babies	be_progressive	crawl	baby	none	
+GRAM_0162	grammatical	1	train	He is feeding three birds	be_progressive	feed	bird	none	
+GRAM_0163	grammatical	1	train	He is folding one letter	be_progressive	fold	letter	none	
+GRAM_0164	grammatical	1	train	He is folding three letters	be_progressive	fold	letter	none	
+GRAM_0165	grammatical	1	train	He is grabbing two bags	be_progressive	grab	bag	none	
+GRAM_0166	grammatical	1	train	He is mixing one drink	be_progressive	mix	drink	none	
+GRAM_0167	grammatical	1	train	He is mixing three drinks	be_progressive	mix	drink	none	
+GRAM_0168	grammatical	1	train	He is mixing two drinks	be_progressive	mix	drink	none	
+GRAM_0169	grammatical	1	train	He is notifying one contact	be_progressive	notify	contact	none	
+GRAM_0170	grammatical	1	train	He is notifying three contacts	be_progressive	notify	contact	none	
+GRAM_0171	grammatical	1	train	He is sailing one boat	be_progressive	sail	boat	none	
+GRAM_0172	grammatical	1	train	He is sailing six boats	be_progressive	sail	boat	none	
+GRAM_0173	grammatical	1	train	He is sailing three boats	be_progressive	sail	boat	none	
+GRAM_0174	grammatical	1	train	He is sailing two boats	be_progressive	sail	boat	none	
+GRAM_0175	grammatical	1	train	He is singing four songs	be_progressive	sing	song	none	
+GRAM_0176	grammatical	1	train	He is singing one song	be_progressive	sing	song	none	
+GRAM_0177	grammatical	1	train	He is singing three songs	be_progressive	sing	song	none	
+GRAM_0178	grammatical	1	train	He is singing two songs	be_progressive	sing	song	none	
+GRAM_0179	grammatical	1	train	Last week he buckled four belts	simple_past	buckle	belt	none	
+GRAM_0180	grammatical	1	train	Last week he celebrated one party	simple_past	celebrate	party	none	
+GRAM_0181	grammatical	1	train	Last week he crawled four babies	simple_past	crawl	baby	none	
+GRAM_0182	grammatical	1	train	Last week he crawled two babies	simple_past	crawl	baby	none	
+GRAM_0183	grammatical	1	train	Last week he folded two letters	simple_past	fold	letter	none	
+GRAM_0184	grammatical	1	train	Last week he grabbed one bag	simple_past	grab	bag	none	
+GRAM_0185	grammatical	1	train	Last week he grabbed three bags	simple_past	grab	bag	none	
+GRAM_0186	grammatical	1	train	Last week he mixed one drink	simple_past	mix	drink	none	
+GRAM_0187	grammatical	1	train	Last week he mixed three drinks	simple_past	mix	drink	none	
+GRAM_0188	grammatical	1	train	Last week he mixed two drinks	simple_past	mix	drink	none	
+GRAM_0189	grammatical	1	train	Last week he notified one contact	simple_past	notify	contact	none	
+GRAM_0190	grammatical	1	train	Last week he notified six contacts	simple_past	notify	contact	none	
+GRAM_0191	grammatical	1	train	Last week he notified three contacts	simple_past	notify	contact	none	
+GRAM_0192	grammatical	1	train	Last week he sailed four boats	simple_past	sail	boat	none	
+GRAM_0193	grammatical	1	train	Last week he sailed one boat	simple_past	sail	boat	none	
+GRAM_0194	grammatical	1	train	Last week he sailed three boats	simple_past	sail	boat	none	
+GRAM_0195	grammatical	1	train	Last week he sailed two boats	simple_past	sail	boat	none	
+GRAM_0196	grammatical	1	train	Last week he sang three songs	simple_past	sing	song	none	
+GRAM_0197	grammatical	1	train	Last week she buckled four belts	simple_past	buckle	belt	none	
+GRAM_0198	grammatical	1	train	Last week she buckled one belt	simple_past	buckle	belt	none	
+GRAM_0199	grammatical	1	train	Last week she buckled three belts	simple_past	buckle	belt	none	
+GRAM_0200	grammatical	1	train	Last week she buckled two belts	simple_past	buckle	belt	none	
+GRAM_0201	grammatical	1	train	Last week she celebrated five birthdays	simple_past	celebrate	birthday	none	
+GRAM_0202	grammatical	1	train	Last week she celebrated four birthdays	simple_past	celebrate	birthday	none	
+GRAM_0203	grammatical	1	train	Last week she celebrated six parties	simple_past	celebrate	party	none	
+GRAM_0204	grammatical	1	train	Last week she crawled one baby	simple_past	crawl	baby	none	
+GRAM_0205	grammatical	1	train	Last week she folded one letter	simple_past	fold	letter	none	
+GRAM_0206	grammatical	1	train	Last week she folded three letters	simple_past	fold	letter	none	
+GRAM_0207	grammatical	1	train	Last week she folded two letters	simple_past	fold	letter	none	
+GRAM_0208	grammatical	1	train	Last week she grabbed three bags	simple_past	grab	bag	none	
+GRAM_0209	grammatical	1	train	Last week she mixed three drinks	simple_past	mix	drink	none	
+GRAM_0210	grammatical	1	train	Last week she notified one contact	simple_past	notify	contact	none	
+GRAM_0211	grammatical	1	train	Last week she notified six contacts	simple_past	notify	contact	none	
+GRAM_0212	grammatical	1	train	Last week she sailed three boats	simple_past	sail	boat	none	
+GRAM_0213	grammatical	1	train	Last week she sang one song	simple_past	sing	song	none	
+GRAM_0214	grammatical	1	train	Last week she sang two songs	simple_past	sing	song	none	
+GRAM_0215	grammatical	1	train	Last week they buckled one belt	simple_past	buckle	belt	none	
+GRAM_0216	grammatical	1	train	Last week they buckled three belts	simple_past	buckle	belt	none	
+GRAM_0217	grammatical	1	train	Last week they buckled two belts	simple_past	buckle	belt	none	
+GRAM_0218	grammatical	1	train	Last week they celebrated one birthday	simple_past	celebrate	birthday	none	
+GRAM_0219	grammatical	1	train	Last week they crawled one baby	simple_past	crawl	baby	none	
+GRAM_0220	grammatical	1	train	Last week they folded one letter	simple_past	fold	letter	none	
+GRAM_0221	grammatical	1	train	Last week they notified three contacts	simple_past	notify	contact	none	
+GRAM_0222	grammatical	1	train	Last week they sailed two boats	simple_past	sail	boat	none	
+GRAM_0223	grammatical	1	train	Last week they sang two songs	simple_past	sing	song	none	
+GRAM_0224	grammatical	1	train	She does not buckle four belts	do_negation	buckle	belt	none	
+GRAM_0225	grammatical	1	train	She does not buckle one belt	do_negation	buckle	belt	none	
+GRAM_0226	grammatical	1	train	She does not buckle three belts	do_negation	buckle	belt	none	
+GRAM_0227	grammatical	1	train	She does not buckle two belts	do_negation	buckle	belt	none	
+GRAM_0228	grammatical	1	train	She does not crawl one baby	do_negation	crawl	baby	none	
+GRAM_0229	grammatical	1	train	She does not fold one letter	do_negation	fold	letter	none	
+GRAM_0230	grammatical	1	train	She does not fold three letters	do_negation	fold	letter	none	
+GRAM_0231	grammatical	1	train	She does not grab four bags	do_negation	grab	bag	none	
+GRAM_0232	grammatical	1	train	She does not mix three drinks	do_negation	mix	drink	none	
+GRAM_0233	grammatical	1	train	She does not sail four boats	do_negation	sail	boat	none	
+GRAM_0234	grammatical	1	train	She does not sail three boats	do_negation	sail	boat	none	
+GRAM_0235	grammatical	1	train	She does not sail two boats	do_negation	sail	boat	none	
+GRAM_0236	grammatical	1	train	She does not sing one song	do_negation	sing	song	none	
+GRAM_0237	grammatical	1	train	She does not sing two songs	do_negation	sing	song	none	
+GRAM_0238	grammatical	1	train	She is buckling one belt	be_progressive	buckle	belt	none	
+GRAM_0239	grammatical	1	train	She is buckling three belts	be_progressive	buckle	belt	none	
+GRAM_0240	grammatical	1	train	She is buckling two belts	be_progressive	buckle	belt	none	
+GRAM_0241	grammatical	1	train	She is celebrating three birthdays	be_progressive	celebrate	birthday	none	
+GRAM_0242	grammatical	1	train	She is celebrating three parties	be_progressive	celebrate	party	none	
+GRAM_0243	grammatical	1	train	She is crawling two babies	be_progressive	crawl	baby	none	
+GRAM_0244	grammatical	1	train	She is folding three letters	be_progressive	fold	letter	none	
+GRAM_0245	grammatical	1	train	She is grabbing three bags	be_progressive	grab	bag	none	
+GRAM_0246	grammatical	1	train	She is mixing one drink	be_progressive	mix	drink	none	
+GRAM_0247	grammatical	1	train	She is notifying four contacts	be_progressive	notify	contact	none	
+GRAM_0248	grammatical	1	train	She is notifying one contact	be_progressive	notify	contact	none	
+GRAM_0249	grammatical	1	train	She is sailing three boats	be_progressive	sail	boat	none	
+GRAM_0250	grammatical	1	train	She is singing five songs	be_progressive	sing	song	none	
+GRAM_0251	grammatical	1	train	She is singing three songs	be_progressive	sing	song	none	
+GRAM_0252	grammatical	1	train	She is singing two songs	be_progressive	sing	song	none	
+GRAM_0253	grammatical	1	train	They are buckling four belts	be_progressive	buckle	belt	none	
+GRAM_0254	grammatical	1	train	They are buckling one belt	be_progressive	buckle	belt	none	
+GRAM_0255	grammatical	1	train	They are buckling three belts	be_progressive	buckle	belt	none	
+GRAM_0256	grammatical	1	train	They are buckling two belts	be_progressive	buckle	belt	none	
+GRAM_0257	grammatical	1	train	They are crawling three babies	be_progressive	crawl	baby	none	
+GRAM_0258	grammatical	1	train	They are crawling two babies	be_progressive	crawl	baby	none	
+GRAM_0259	grammatical	1	train	They are mixing one drink	be_progressive	mix	drink	none	
+GRAM_0260	grammatical	1	train	They do not buckle four belts	do_negation	buckle	belt	none	
+GRAM_0261	grammatical	1	train	They do not buckle one belt	do_negation	buckle	belt	none	
+GRAM_0262	grammatical	1	train	They do not buckle six belts	do_negation	buckle	belt	none	
+GRAM_0263	grammatical	1	train	They do not buckle two belts	do_negation	buckle	belt	none	
+GRAM_0264	grammatical	1	train	They do not crawl three babies	do_negation	crawl	baby	none	
+GRAM_0265	grammatical	1	train	They do not fold one letter	do_negation	fold	letter	none	
+GRAM_0266	grammatical	1	train	They do not fold three letters	do_negation	fold	letter	none	
+GRAM_0267	grammatical	1	train	They do not fold two letters	do_negation	fold	letter	none	
+GRAM_0268	grammatical	1	train	They do not sing one song	do_negation	sing	song	none	
+GRAM_0269	grammatical	1	train	They do not sing three songs	do_negation	sing	song	none	
+GRAM_0270	grammatical	1	train	They do not sing two songs	do_negation	sing	song	none	
+GRAM_0271	plurality_violation	0	train	Every day he dumps five garbage	present_3s	dump	garbage	omitted	
+GRAM_0272	plurality_violation	0	train	Every day he dumps six garbage	present_3s	dump	garbage	omitted	
+GRAM_0273	plurality_violation	0	train	Every day he sails two boat	present_3s	sail	boat	omitted	
+GRAM_0274	plurality_violation	0	train	Every day he screws six driver	present_3s	screw	driver	omitted	
+GRAM_0275	plurality_violation	0	train	Every day he screws two driver	present_3s	screw	driver	omitted	
+GRAM_0276	plurality_violation	0	train	Every day he sounds one noises	present_3s	sound	noise	added	
+GRAM_0277	plurality_violation	0	train	Every day he sounds two noise	present_3s	sound	noise	omitted	
+GRAM_0278	plurality_violation	0	train	Every day he tackles six football	present_3s	tackle	football	omitted	
+GRAM_0279	plurality_violation	0	train	Every day he tackles two football	present_3s	tackle	football	omitted	
+GRAM_0280	plurality_violation	0	train	Every day she brushes two hair	present_3s	brush	hair	omitted	
+GRAM_0281	plurality_violation	0	train	Every day she dumps one garbage	present_3s	dump	garbage	added	
+GRAM_0282	plurality_violation	0	train	Every day she sails two boat	present_3s	sail	boat	omitted	
+GRAM_0283	plurality_violation	0	train	Every day she screws two driver	present_3s	screw	driver	omitted	
+GRAM_0284	plurality_violation	0	train	Every day she tackles two football	present_3s	tackle	football	omitted	
+GRAM_0285	plurality_violation	0	train	Every day they brush two hair	present_3s	brush	hair	omitted	
+GRAM_0286	plurality_violation	0	train	Every day they dump six garbage	present_3s	dump	garbage	omitted	
+GRAM_0287	plurality_violation	0	train	Every day they dump two garbage	present_3s	dump	garbage	omitted	
+GRAM_0288	plurality_violation	0	train	Every day they envy two jealousy	present_3s	envy	jealousy	omitted	unseen_phase1:jealousy
+GRAM_0289	plurality_violation	0	train	Every day they sail two boat	present_3s	sail	boat	omitted	
+GRAM_0290	plurality_violation	0	train	Every day they screw two driver	present_3s	screw	driver	omitted	
+GRAM_0291	plurality_violation	0	train	Every day they tackle one footballs	present_3s	tackle	football	added	
+GRAM_0292	plurality_violation	0	train	Every day they tackle two football	present_3s	tackle	football	omitted	
+GRAM_0293	plurality_violation	0	train	He does not brush two hair	do_negation	brush	hair	omitted	
+GRAM_0294	plurality_violation	0	train	He does not dump two garbage	do_negation	dump	garbage	omitted	
+GRAM_0295	plurality_violation	0	train	He does not screw four driver	do_negation	screw	driver	omitted	
+GRAM_0296	plurality_violation	0	train	He does not screw one drivers	do_negation	screw	driver	added	
+GRAM_0297	plurality_violation	0	train	He does not screw two driver	do_negation	screw	driver	omitted	
+GRAM_0298	plurality_violation	0	train	He does not sound two noise	do_negation	sound	noise	omitted	
+GRAM_0299	plurality_violation	0	train	He does not tackle one footballs	do_negation	tackle	football	added	
+GRAM_0300	plurality_violation	0	train	He is envying four jealousy	be_progressive	envy	jealousy	omitted	unseen_phase1:jealousy
+GRAM_0301	plurality_violation	0	train	He is envying two jealousy	be_progressive	envy	jealousy	omitted	unseen_phase1:jealousy
+GRAM_0302	plurality_violation	0	train	He is sailing two boat	be_progressive	sail	boat	omitted	
+GRAM_0303	plurality_violation	0	train	He is screwing two driver	be_progressive	screw	driver	omitted	
+GRAM_0304	plurality_violation	0	train	He is tackling one footballs	be_progressive	tackle	football	added	
+GRAM_0305	plurality_violation	0	train	Last week he brushed two hair	simple_past	brush	hair	omitted	
+GRAM_0306	plurality_violation	0	train	Last week he dumped two garbage	simple_past	dump	garbage	omitted	
+GRAM_0307	plurality_violation	0	train	Last week he envied two jealousy	simple_past	envy	jealousy	omitted	unseen_phase1:jealousy
+GRAM_0308	plurality_violation	0	train	Last week he sailed one boats	simple_past	sail	boat	added	
+GRAM_0309	plurality_violation	0	train	Last week he sailed two boat	simple_past	sail	boat	omitted	
+GRAM_0310	plurality_violation	0	train	Last week he screwed three driver	simple_past	screw	driver	omitted	
+GRAM_0311	plurality_violation	0	train	Last week he screwed two driver	simple_past	screw	driver	omitted	
+GRAM_0312	plurality_violation	0	train	Last week he sounded two noise	simple_past	sound	noise	omitted	
+GRAM_0313	plurality_violation	0	train	Last week he tackled four football	simple_past	tackle	football	omitted	
+GRAM_0314	plurality_violation	0	train	Last week he tackled two football	simple_past	tackle	football	omitted	
+GRAM_0315	plurality_violation	0	train	Last week she dumped six garbage	simple_past	dump	garbage	omitted	
+GRAM_0316	plurality_violation	0	train	Last week she dumped two garbage	simple_past	dump	garbage	omitted	
+GRAM_0317	plurality_violation	0	train	Last week she sailed two boat	simple_past	sail	boat	omitted	
+GRAM_0318	plurality_violation	0	train	Last week she screwed six driver	simple_past	screw	driver	omitted	
+GRAM_0319	plurality_violation	0	train	Last week she screwed two driver	simple_past	screw	driver	omitted	
+GRAM_0320	plurality_violation	0	train	Last week they brushed one hairs	simple_past	brush	hair	added	
+GRAM_0321	plurality_violation	0	train	Last week they brushed two hair	simple_past	brush	hair	omitted	
+GRAM_0322	plurality_violation	0	train	Last week they dumped five garbage	simple_past	dump	garbage	omitted	
+GRAM_0323	plurality_violation	0	train	Last week they dumped two garbage	simple_past	dump	garbage	omitted	
+GRAM_0324	plurality_violation	0	train	Last week they sailed two boat	simple_past	sail	boat	omitted	
+GRAM_0325	plurality_violation	0	train	Last week they sounded one noises	simple_past	sound	noise	added	
+GRAM_0326	plurality_violation	0	train	Last week they sounded two noise	simple_past	sound	noise	omitted	
+GRAM_0327	plurality_violation	0	train	Last week they tackled one footballs	simple_past	tackle	football	added	
+GRAM_0328	plurality_violation	0	train	Last week they tackled two football	simple_past	tackle	football	omitted	
+GRAM_0329	plurality_violation	0	train	She does not dump five garbage	do_negation	dump	garbage	omitted	
+GRAM_0330	plurality_violation	0	train	She does not dump two garbage	do_negation	dump	garbage	omitted	
+GRAM_0331	plurality_violation	0	train	She does not envy two jealousy	do_negation	envy	jealousy	omitted	unseen_phase1:jealousy
+GRAM_0332	plurality_violation	0	train	She does not screw four driver	do_negation	screw	driver	omitted	
+GRAM_0333	plurality_violation	0	train	She does not screw one drivers	do_negation	screw	driver	added	
+GRAM_0334	plurality_violation	0	train	She does not screw two driver	do_negation	screw	driver	omitted	
+GRAM_0335	plurality_violation	0	train	She does not sound one noises	do_negation	sound	noise	added	
+GRAM_0336	plurality_violation	0	train	She does not sound two noise	do_negation	sound	noise	omitted	
+GRAM_0337	plurality_violation	0	train	She is brushing two hair	be_progressive	brush	hair	omitted	
+GRAM_0338	plurality_violation	0	train	She is dumping one garbage	be_progressive	dump	garbage	added	
+GRAM_0339	plurality_violation	0	train	She is envying two jealousy	be_progressive	envy	jealousy	omitted	unseen_phase1:jealousy
+GRAM_0340	plurality_violation	0	train	She is sailing two boat	be_progressive	sail	boat	omitted	
+GRAM_0341	plurality_violation	0	train	She is screwing four driver	be_progressive	screw	driver	omitted	
+GRAM_0342	plurality_violation	0	train	She is screwing six driver	be_progressive	screw	driver	omitted	
+GRAM_0343	plurality_violation	0	train	She is tackling two football	be_progressive	tackle	football	omitted	
+GRAM_0344	plurality_violation	0	train	They are brushing two hair	be_progressive	brush	hair	omitted	
+GRAM_0345	plurality_violation	0	train	They are dumping one garbage	be_progressive	dump	garbage	added	
+GRAM_0346	plurality_violation	0	train	They are dumping two garbage	be_progressive	dump	garbage	omitted	
+GRAM_0347	plurality_violation	0	train	They are envying two jealousy	be_progressive	envy	jealousy	omitted	unseen_phase1:jealousy
+GRAM_0348	plurality_violation	0	train	They are sailing two boat	be_progressive	sail	boat	omitted	
+GRAM_0349	plurality_violation	0	train	They are screwing one drivers	be_progressive	screw	driver	added	
+GRAM_0350	plurality_violation	0	train	They are screwing two driver	be_progressive	screw	driver	omitted	
+GRAM_0351	plurality_violation	0	train	They are sounding one noises	be_progressive	sound	noise	added	
+GRAM_0352	plurality_violation	0	train	They are sounding two noise	be_progressive	sound	noise	omitted	
+GRAM_0353	plurality_violation	0	train	They are tackling four football	be_progressive	tackle	football	omitted	
+GRAM_0354	plurality_violation	0	train	They are tackling two football	be_progressive	tackle	football	omitted	
+GRAM_0355	plurality_violation	0	train	They do not brush two hair	do_negation	brush	hair	omitted	
+GRAM_0356	plurality_violation	0	train	They do not envy two jealousy	do_negation	envy	jealousy	omitted	unseen_phase1:jealousy
+GRAM_0357	plurality_violation	0	train	They do not sail two boat	do_negation	sail	boat	omitted	
+GRAM_0358	plurality_violation	0	train	They do not sound two noise	do_negation	sound	noise	omitted	
+GRAM_0359	plurality_violation	0	train	They do not tackle one footballs	do_negation	tackle	football	added	
+GRAM_0360	plurality_violation	0	train	They do not tackle two football	do_negation	tackle	football	omitted	
+GRAM_0361	finiteness_violation	0	validation	Every day he repair two televisions	present_3s	repair	television	omitted	
+GRAM_0362	finiteness_violation	0	validation	Every day she draw one picture	present_3s	draw	picture	omitted	
+GRAM_0363	finiteness_violation	0	validation	Every day she repair four televisions	present_3s	repair	television	omitted	
+GRAM_0364	finiteness_violation	0	validation	Every day she repair one television	present_3s	repair	television	omitted	
+GRAM_0365	finiteness_violation	0	validation	Every day they draws one picture	present_3s	draw	picture	added	
+GRAM_0366	finiteness_violation	0	validation	Every day they repairs five televisions	present_3s	repair	television	added	
+GRAM_0367	finiteness_violation	0	validation	Every day they repairs six televisions	present_3s	repair	television	added	
+GRAM_0368	finiteness_violation	0	validation	Every day they repairs two televisions	present_3s	repair	television	added	
+GRAM_0369	finiteness_violation	0	validation	He are drawing one picture	be_progressive	draw	picture	substituted	
+GRAM_0370	finiteness_violation	0	validation	He do not repair four televisions	do_negation	repair	television	substituted	
+GRAM_0371	finiteness_violation	0	validation	He do not repair one television	do_negation	repair	television	substituted	
+GRAM_0372	finiteness_violation	0	validation	Last week he repair four televisions	simple_past	repair	television	omitted	
+GRAM_0373	finiteness_violation	0	validation	Last week he repair three televisions	simple_past	repair	television	omitted	
+GRAM_0374	finiteness_violation	0	validation	Last week she repair one television	simple_past	repair	television	omitted	
+GRAM_0375	finiteness_violation	0	validation	Last week they repair one television	simple_past	repair	television	omitted	
+GRAM_0376	finiteness_violation	0	validation	Last week they repair two televisions	simple_past	repair	television	omitted	
+GRAM_0377	finiteness_violation	0	validation	She are repairing one television	be_progressive	repair	television	substituted	
+GRAM_0378	finiteness_violation	0	validation	She are repairing three televisions	be_progressive	repair	television	substituted	
+GRAM_0379	finiteness_violation	0	validation	She are repairing two televisions	be_progressive	repair	television	substituted	
+GRAM_0380	finiteness_violation	0	validation	They does not repair four televisions	do_negation	repair	television	substituted	
+GRAM_0381	finiteness_violation	0	validation	They does not repair two televisions	do_negation	repair	television	substituted	
+GRAM_0382	finiteness_violation	0	validation	They is drawing one picture	be_progressive	draw	picture	substituted	
+GRAM_0383	finiteness_violation	0	validation	They is drawing two pictures	be_progressive	draw	picture	substituted	
+GRAM_0384	finiteness_violation	0	validation	They is repairing one television	be_progressive	repair	television	substituted	
+GRAM_0385	finiteness_violation	0	validation	They is repairing two televisions	be_progressive	repair	television	substituted	
+GRAM_0386	grammatical	1	validation	Every day he draws two pictures	present_3s	draw	picture	none	
+GRAM_0387	grammatical	1	validation	Every day he launches four rockets	present_3s	launch	rocket	none	
+GRAM_0388	grammatical	1	validation	Every day he launches two rockets	present_3s	launch	rocket	none	
+GRAM_0389	grammatical	1	validation	Every day he repairs four televisions	present_3s	repair	television	none	
+GRAM_0390	grammatical	1	validation	Every day he repairs one television	present_3s	repair	television	none	
+GRAM_0391	grammatical	1	validation	Every day he repairs two televisions	present_3s	repair	television	none	
+GRAM_0392	grammatical	1	validation	Every day she digs four holes	present_3s	dig	hole	none	
+GRAM_0393	grammatical	1	validation	Every day she draws four pictures	present_3s	draw	picture	none	
+GRAM_0394	grammatical	1	validation	Every day she draws one picture	present_3s	draw	picture	none	
+GRAM_0395	grammatical	1	validation	Every day she draws two pictures	present_3s	draw	picture	none	
+GRAM_0396	grammatical	1	validation	Every day she launches three rockets	present_3s	launch	rocket	none	
+GRAM_0397	grammatical	1	validation	Every day she repairs one television	present_3s	repair	television	none	
+GRAM_0398	grammatical	1	validation	Every day she repairs two televisions	present_3s	repair	television	none	
+GRAM_0399	grammatical	1	validation	Every day they dig one hole	present_3s	dig	hole	none	
+GRAM_0400	grammatical	1	validation	Every day they repair one television	present_3s	repair	television	none	
+GRAM_0401	grammatical	1	validation	He does not dig four holes	do_negation	dig	hole	none	
+GRAM_0402	grammatical	1	validation	He does not draw four pictures	do_negation	draw	picture	none	
+GRAM_0403	grammatical	1	validation	He does not draw one picture	do_negation	draw	picture	none	
+GRAM_0404	grammatical	1	validation	He does not repair two televisions	do_negation	repair	television	none	
+GRAM_0405	grammatical	1	validation	He is drawing four pictures	be_progressive	draw	picture	none	
+GRAM_0406	grammatical	1	validation	He is drawing two pictures	be_progressive	draw	picture	none	
+GRAM_0407	grammatical	1	validation	He is launching one rocket	be_progressive	launch	rocket	none	
+GRAM_0408	grammatical	1	validation	He is repairing four televisions	be_progressive	repair	television	none	
+GRAM_0409	grammatical	1	validation	He is repairing one television	be_progressive	repair	television	none	
+GRAM_0410	grammatical	1	validation	Last week he dug four holes	simple_past	dig	hole	none	
+GRAM_0411	grammatical	1	validation	Last week he launched four rockets	simple_past	launch	rocket	none	
+GRAM_0412	grammatical	1	validation	Last week he repaired one television	simple_past	repair	television	none	
+GRAM_0413	grammatical	1	validation	Last week she drew six pictures	simple_past	draw	picture	none	
+GRAM_0414	grammatical	1	validation	Last week she drew two pictures	simple_past	draw	picture	none	
+GRAM_0415	grammatical	1	validation	Last week she launched one rocket	simple_past	launch	rocket	none	
+GRAM_0416	grammatical	1	validation	Last week she launched two rockets	simple_past	launch	rocket	none	
+GRAM_0417	grammatical	1	validation	Last week they swore two curses	simple_past	swear	curse	none	
+GRAM_0418	grammatical	1	validation	She does not dig one hole	do_negation	dig	hole	none	
+GRAM_0419	grammatical	1	validation	She does not draw one picture	do_negation	draw	picture	none	
+GRAM_0420	grammatical	1	validation	She does not draw three pictures	do_negation	draw	picture	none	
+GRAM_0421	grammatical	1	validation	She does not launch three rockets	do_negation	launch	rocket	none	
+GRAM_0422	grammatical	1	validation	She does not launch two rockets	do_negation	launch	rocket	none	
+GRAM_0423	grammatical	1	validation	She does not repair five televisions	do_negation	repair	television	none	
+GRAM_0424	grammatical	1	validation	She does not repair one television	do_negation	repair	television	none	
+GRAM_0425	grammatical	1	validation	She does not repair two televisions	do_negation	repair	television	none	
+GRAM_0426	grammatical	1	validation	She is drawing one picture	be_progressive	draw	picture	none	
+GRAM_0427	grammatical	1	validation	She is launching four rockets	be_progressive	launch	rocket	none	
+GRAM_0428	grammatical	1	validation	She is launching one rocket	be_progressive	launch	rocket	none	
+GRAM_0429	grammatical	1	validation	She is repairing three televisions	be_progressive	repair	television	none	
+GRAM_0430	grammatical	1	validation	They are digging one hole	be_progressive	dig	hole	none	
+GRAM_0431	grammatical	1	validation	They are launching one rocket	be_progressive	launch	rocket	none	
+GRAM_0432	grammatical	1	validation	They are repairing one television	be_progressive	repair	television	none	
+GRAM_0433	grammatical	1	validation	They are swearing two curses	be_progressive	swear	curse	none	
+GRAM_0434	grammatical	1	validation	They do not draw one picture	do_negation	draw	picture	none	
+GRAM_0435	grammatical	1	validation	They do not launch two rockets	do_negation	launch	rocket	none	
+GRAM_0436	plurality_violation	0	validation	Every day he repairs two television	present_3s	repair	television	omitted	
+GRAM_0437	plurality_violation	0	validation	Every day she repairs one televisions	present_3s	repair	television	added	
+GRAM_0438	plurality_violation	0	validation	Every day she repairs six television	present_3s	repair	television	omitted	
+GRAM_0439	plurality_violation	0	validation	Every day she repairs three television	present_3s	repair	television	omitted	
+GRAM_0440	plurality_violation	0	validation	Every day they repair one televisions	present_3s	repair	television	added	
+GRAM_0441	plurality_violation	0	validation	He does not repair one televisions	do_negation	repair	television	added	
+GRAM_0442	plurality_violation	0	validation	He does not repair two television	do_negation	repair	television	omitted	
+GRAM_0443	plurality_violation	0	validation	He is repairing one televisions	be_progressive	repair	television	added	
+GRAM_0444	plurality_violation	0	validation	He is repairing two television	be_progressive	repair	television	omitted	
+GRAM_0445	plurality_violation	0	validation	Last week he repaired three television	simple_past	repair	television	omitted	
+GRAM_0446	plurality_violation	0	validation	Last week he repaired two television	simple_past	repair	television	omitted	
+GRAM_0447	plurality_violation	0	validation	Last week she repaired two television	simple_past	repair	television	omitted	
+GRAM_0448	plurality_violation	0	validation	Last week they repaired four television	simple_past	repair	television	omitted	
+GRAM_0449	plurality_violation	0	validation	Last week they repaired one televisions	simple_past	repair	television	added	
+GRAM_0450	plurality_violation	0	validation	Last week they repaired six television	simple_past	repair	television	omitted	
+GRAM_0451	plurality_violation	0	validation	Last week they repaired two television	simple_past	repair	television	omitted	
+GRAM_0452	plurality_violation	0	validation	She does not repair three television	do_negation	repair	television	omitted	
+GRAM_0453	plurality_violation	0	validation	She does not repair two television	do_negation	repair	television	omitted	
+GRAM_0454	plurality_violation	0	validation	She is repairing four television	be_progressive	repair	television	omitted	
+GRAM_0455	plurality_violation	0	validation	She is repairing one televisions	be_progressive	repair	television	added	
+GRAM_0456	plurality_violation	0	validation	She is repairing six television	be_progressive	repair	television	omitted	
+GRAM_0457	plurality_violation	0	validation	She is repairing two television	be_progressive	repair	television	omitted	
+GRAM_0458	plurality_violation	0	validation	They are repairing one televisions	be_progressive	repair	television	added	
+GRAM_0459	plurality_violation	0	validation	They are repairing two television	be_progressive	repair	television	omitted	
+GRAM_0460	plurality_violation	0	validation	They do not repair three television	do_negation	repair	television	omitted	
+GRAM_0461	finiteness_violation	0	test	Every day he bounce one ball	present_3s	bounce	ball	omitted	
+GRAM_0462	finiteness_violation	0	test	Every day he bounce six balls	present_3s	bounce	ball	omitted	
+GRAM_0463	finiteness_violation	0	test	Every day he bounce three balls	present_3s	bounce	ball	omitted	
+GRAM_0464	finiteness_violation	0	test	Every day she bounce six balls	present_3s	bounce	ball	omitted	
+GRAM_0465	finiteness_violation	0	test	Every day she bounce two balls	present_3s	bounce	ball	omitted	
+GRAM_0466	finiteness_violation	0	test	Every day she throw two balls	present_3s	throw	ball	omitted	
+GRAM_0467	finiteness_violation	0	test	Every day they bounces four balls	present_3s	bounce	ball	added	
+GRAM_0468	finiteness_violation	0	test	Every day they bounces one ball	present_3s	bounce	ball	added	
+GRAM_0469	finiteness_violation	0	test	Every day they bounces six balls	present_3s	bounce	ball	added	
+GRAM_0470	finiteness_violation	0	test	Every day they bounces two balls	present_3s	bounce	ball	added	
+GRAM_0471	finiteness_violation	0	test	Every day they throws one ball	present_3s	throw	ball	added	
+GRAM_0472	finiteness_violation	0	test	Every day they throws six balls	present_3s	throw	ball	added	
+GRAM_0473	finiteness_violation	0	test	He are bouncing one ball	be_progressive	bounce	ball	substituted	
+GRAM_0474	finiteness_violation	0	test	He are throwing five balls	be_progressive	throw	ball	substituted	
+GRAM_0475	finiteness_violation	0	test	He do not bounce one ball	do_negation	bounce	ball	substituted	
+GRAM_0476	finiteness_violation	0	test	He do not bounce three balls	do_negation	bounce	ball	substituted	
+GRAM_0477	finiteness_violation	0	test	He do not bounce two balls	do_negation	bounce	ball	substituted	
+GRAM_0478	finiteness_violation	0	test	He do not throw one ball	do_negation	throw	ball	substituted	
+GRAM_0479	finiteness_violation	0	test	Last week he bounce four balls	simple_past	bounce	ball	omitted	
+GRAM_0480	finiteness_violation	0	test	Last week he bounce two balls	simple_past	bounce	ball	omitted	
+GRAM_0481	finiteness_violation	0	test	Last week he throwing five balls	simple_past	throw	ball	omitted	
+GRAM_0482	finiteness_violation	0	test	Last week she throw four balls	simple_past	throw	ball	omitted	
+GRAM_0483	finiteness_violation	0	test	Last week they bounce one ball	simple_past	bounce	ball	omitted	
+GRAM_0484	finiteness_violation	0	test	Last week they bounce six balls	simple_past	bounce	ball	omitted	
+GRAM_0485	finiteness_violation	0	test	Last week they bounce two balls	simple_past	bounce	ball	omitted	
+GRAM_0486	finiteness_violation	0	test	Last week they throw one ball	simple_past	throw	ball	omitted	
+GRAM_0487	finiteness_violation	0	test	Last week they throw two balls	simple_past	throw	ball	omitted	
+GRAM_0488	finiteness_violation	0	test	She are bouncing two balls	be_progressive	bounce	ball	substituted	
+GRAM_0489	finiteness_violation	0	test	She do not bounce one ball	do_negation	bounce	ball	substituted	
+GRAM_0490	finiteness_violation	0	test	She do not bounce six balls	do_negation	bounce	ball	substituted	
+GRAM_0491	finiteness_violation	0	test	She do not bounce three balls	do_negation	bounce	ball	substituted	
+GRAM_0492	finiteness_violation	0	test	She do not bounce two balls	do_negation	bounce	ball	substituted	
+GRAM_0493	finiteness_violation	0	test	She do not throw one ball	do_negation	throw	ball	substituted	
+GRAM_0494	finiteness_violation	0	test	She do not throw six balls	do_negation	throw	ball	substituted	
+GRAM_0495	finiteness_violation	0	test	They does not bounce five balls	do_negation	bounce	ball	substituted	
+GRAM_0496	finiteness_violation	0	test	They does not bounce four balls	do_negation	bounce	ball	substituted	
+GRAM_0497	finiteness_violation	0	test	They does not bounce one ball	do_negation	bounce	ball	substituted	
+GRAM_0498	finiteness_violation	0	test	They does not bounce six balls	do_negation	bounce	ball	substituted	
+GRAM_0499	finiteness_violation	0	test	They does not bounce two balls	do_negation	bounce	ball	substituted	
+GRAM_0500	finiteness_violation	0	test	They is bouncing two balls	be_progressive	bounce	ball	substituted	
+GRAM_0501	grammatical	1	test	Every day he bounces four balls	present_3s	bounce	ball	none	
+GRAM_0502	grammatical	1	test	Every day he bounces three balls	present_3s	bounce	ball	none	
+GRAM_0503	grammatical	1	test	Every day he builds one house	present_3s	build	house	none	
+GRAM_0504	grammatical	1	test	Every day he flips one coin	present_3s	flip	coin	none	
+GRAM_0505	grammatical	1	test	Every day he flips six coins	present_3s	flip	coin	none	
+GRAM_0506	grammatical	1	test	Every day he flips two coins	present_3s	flip	coin	none	
+GRAM_0507	grammatical	1	test	Every day he flushes one toilet	present_3s	flush	toilet	none	
+GRAM_0508	grammatical	1	test	Every day he throws three balls	present_3s	throw	ball	none	
+GRAM_0509	grammatical	1	test	Every day he throws two balls	present_3s	throw	ball	none	
+GRAM_0510	grammatical	1	test	Every day she bounces one ball	present_3s	bounce	ball	none	
+GRAM_0511	grammatical	1	test	Every day she bounces three balls	present_3s	bounce	ball	none	
+GRAM_0512	grammatical	1	test	Every day she builds four houses	present_3s	build	house	none	
+GRAM_0513	grammatical	1	test	Every day she flips four coins	present_3s	flip	coin	none	
+GRAM_0514	grammatical	1	test	Every day she flips one coin	present_3s	flip	coin	none	
+GRAM_0515	grammatical	1	test	Every day she flips three coins	present_3s	flip	coin	none	
+GRAM_0516	grammatical	1	test	Every day they bounce four balls	present_3s	bounce	ball	none	
+GRAM_0517	grammatical	1	test	Every day they bounce one ball	present_3s	bounce	ball	none	
+GRAM_0518	grammatical	1	test	Every day they bounce six balls	present_3s	bounce	ball	none	
+GRAM_0519	grammatical	1	test	Every day they bounce two balls	present_3s	bounce	ball	none	
+GRAM_0520	grammatical	1	test	Every day they flip four coins	present_3s	flip	coin	none	
+GRAM_0521	grammatical	1	test	Every day they flip three coins	present_3s	flip	coin	none	
+GRAM_0522	grammatical	1	test	Every day they flip two coins	present_3s	flip	coin	none	
+GRAM_0523	grammatical	1	test	Every day they throw two balls	present_3s	throw	ball	none	
+GRAM_0524	grammatical	1	test	He does not bounce four balls	do_negation	bounce	ball	none	
+GRAM_0525	grammatical	1	test	He does not flip four coins	do_negation	flip	coin	none	
+GRAM_0526	grammatical	1	test	He does not flip two coins	do_negation	flip	coin	none	
+GRAM_0527	grammatical	1	test	He does not flush four toilets	do_negation	flush	toilet	none	
+GRAM_0528	grammatical	1	test	He does not flush one toilet	do_negation	flush	toilet	none	
+GRAM_0529	grammatical	1	test	He does not flush six toilets	do_negation	flush	toilet	none	
+GRAM_0530	grammatical	1	test	He does not throw one ball	do_negation	throw	ball	none	
+GRAM_0531	grammatical	1	test	He does not throw three balls	do_negation	throw	ball	none	
+GRAM_0532	grammatical	1	test	He does not throw two balls	do_negation	throw	ball	none	
+GRAM_0533	grammatical	1	test	He is bouncing one ball	be_progressive	bounce	ball	none	
+GRAM_0534	grammatical	1	test	He is bouncing two balls	be_progressive	bounce	ball	none	
+GRAM_0535	grammatical	1	test	He is throwing six balls	be_progressive	throw	ball	none	
+GRAM_0536	grammatical	1	test	He is throwing three balls	be_progressive	throw	ball	none	
+GRAM_0537	grammatical	1	test	He is throwing two balls	be_progressive	throw	ball	none	
+GRAM_0538	grammatical	1	test	Last week he bounced four balls	simple_past	bounce	ball	none	
+GRAM_0539	grammatical	1	test	Last week he bounced one ball	simple_past	bounce	ball	none	
+GRAM_0540	grammatical	1	test	Last week he bounced six balls	simple_past	bounce	ball	none	
+GRAM_0541	grammatical	1	test	Last week he bounced two balls	simple_past	bounce	ball	none	
+GRAM_0542	grammatical	1	test	Last week he built four houses	simple_past	build	house	none	
+GRAM_0543	grammatical	1	test	Last week he flipped one coin	simple_past	flip	coin	none	
+GRAM_0544	grammatical	1	test	Last week he flipped three coins	simple_past	flip	coin	none	
+GRAM_0545	grammatical	1	test	Last week he threw three balls	simple_past	throw	ball	none	
+GRAM_0546	grammatical	1	test	Last week she bounced one ball	simple_past	bounce	ball	none	
+GRAM_0547	grammatical	1	test	Last week she bounced two balls	simple_past	bounce	ball	none	
+GRAM_0548	grammatical	1	test	Last week she built five houses	simple_past	build	house	none	
+GRAM_0549	grammatical	1	test	Last week she flipped three coins	simple_past	flip	coin	none	
+GRAM_0550	grammatical	1	test	Last week she flushed one toilet	simple_past	flush	toilet	none	
+GRAM_0551	grammatical	1	test	Last week she flushed three toilets	simple_past	flush	toilet	none	
+GRAM_0552	grammatical	1	test	Last week she threw four balls	simple_past	throw	ball	none	
+GRAM_0553	grammatical	1	test	Last week they bounced six balls	simple_past	bounce	ball	none	
+GRAM_0554	grammatical	1	test	Last week they built four houses	simple_past	build	house	none	
+GRAM_0555	grammatical	1	test	Last week they flipped one coin	simple_past	flip	coin	none	
+GRAM_0556	grammatical	1	test	Last week they flipped three coins	simple_past	flip	coin	none	
+GRAM_0557	grammatical	1	test	Last week they threw one ball	simple_past	throw	ball	none	
+GRAM_0558	grammatical	1	test	Last week they threw three balls	simple_past	throw	ball	none	
+GRAM_0559	grammatical	1	test	She does not flip six coins	do_negation	flip	coin	none	
+GRAM_0560	grammatical	1	test	She does not flip three coins	do_negation	flip	coin	none	
+GRAM_0561	grammatical	1	test	She does not flush four toilets	do_negation	flush	toilet	none	
+GRAM_0562	grammatical	1	test	She does not throw one ball	do_negation	throw	ball	none	
+GRAM_0563	grammatical	1	test	She is bouncing one ball	be_progressive	bounce	ball	none	
+GRAM_0564	grammatical	1	test	She is bouncing six balls	be_progressive	bounce	ball	none	
+GRAM_0565	grammatical	1	test	She is bouncing three balls	be_progressive	bounce	ball	none	
+GRAM_0566	grammatical	1	test	She is bouncing two balls	be_progressive	bounce	ball	none	
+GRAM_0567	grammatical	1	test	She is flipping three coins	be_progressive	flip	coin	none	
+GRAM_0568	grammatical	1	test	She is flipping two coins	be_progressive	flip	coin	none	
+GRAM_0569	grammatical	1	test	She is flushing six toilets	be_progressive	flush	toilet	none	
+GRAM_0570	grammatical	1	test	She is throwing two balls	be_progressive	throw	ball	none	
+GRAM_0571	grammatical	1	test	They are bouncing four balls	be_progressive	bounce	ball	none	
+GRAM_0572	grammatical	1	test	They are throwing four balls	be_progressive	throw	ball	none	
+GRAM_0573	grammatical	1	test	They are throwing three balls	be_progressive	throw	ball	none	
+GRAM_0574	grammatical	1	test	They are throwing two balls	be_progressive	throw	ball	none	
+GRAM_0575	grammatical	1	test	They do not bounce four balls	do_negation	bounce	ball	none	
+GRAM_0576	grammatical	1	test	They do not bounce six balls	do_negation	bounce	ball	none	
+GRAM_0577	grammatical	1	test	They do not bounce three balls	do_negation	bounce	ball	none	
+GRAM_0578	grammatical	1	test	They do not flip one coin	do_negation	flip	coin	none	
+GRAM_0579	grammatical	1	test	They do not flip three coins	do_negation	flip	coin	none	
+GRAM_0580	grammatical	1	test	They do not throw one ball	do_negation	throw	ball	none	
+GRAM_0581	plurality_violation	0	test	Every day he breathes five air	present_3s	breathe	air	omitted	
+GRAM_0582	plurality_violation	0	test	Every day he breathes three air	present_3s	breathe	air	omitted	
+GRAM_0583	plurality_violation	0	test	Every day he breathes two air	present_3s	breathe	air	omitted	
+GRAM_0584	plurality_violation	0	test	Every day he throws five ball	present_3s	throw	ball	omitted	
+GRAM_0585	plurality_violation	0	test	Every day he throws four ball	present_3s	throw	ball	omitted	
+GRAM_0586	plurality_violation	0	test	Every day he throws one balls	present_3s	throw	ball	added	
+GRAM_0587	plurality_violation	0	test	Every day she breathes one airs	present_3s	breathe	air	added	
+GRAM_0588	plurality_violation	0	test	Every day she breathes three air	present_3s	breathe	air	omitted	
+GRAM_0589	plurality_violation	0	test	Every day she breathes two air	present_3s	breathe	air	omitted	
+GRAM_0590	plurality_violation	0	test	Every day she throws two ball	present_3s	throw	ball	omitted	
+GRAM_0591	plurality_violation	0	test	Every day they breathe one airs	present_3s	breathe	air	added	
+GRAM_0592	plurality_violation	0	test	Every day they throw two ball	present_3s	throw	ball	omitted	
+GRAM_0593	plurality_violation	0	test	He does not breathe two air	do_negation	breathe	air	omitted	
+GRAM_0594	plurality_violation	0	test	He does not throw one balls	do_negation	throw	ball	added	
+GRAM_0595	plurality_violation	0	test	He does not throw two ball	do_negation	throw	ball	omitted	
+GRAM_0596	plurality_violation	0	test	He is breathing three air	be_progressive	breathe	air	omitted	
+GRAM_0597	plurality_violation	0	test	He is breathing two air	be_progressive	breathe	air	omitted	
+GRAM_0598	plurality_violation	0	test	He is throwing four ball	be_progressive	throw	ball	omitted	
+GRAM_0599	plurality_violation	0	test	He is throwing one balls	be_progressive	throw	ball	added	
+GRAM_0600	plurality_violation	0	test	Last week he breathed four air	simple_past	breathe	air	omitted	
+GRAM_0601	plurality_violation	0	test	Last week he breathed one airs	simple_past	breathe	air	added	
+GRAM_0602	plurality_violation	0	test	Last week he breathed two air	simple_past	breathe	air	omitted	
+GRAM_0603	plurality_violation	0	test	Last week he threw one balls	simple_past	throw	ball	added	
+GRAM_0604	plurality_violation	0	test	Last week she breathed one airs	simple_past	breathe	air	added	
+GRAM_0605	plurality_violation	0	test	Last week she breathed two air	simple_past	breathe	air	omitted	
+GRAM_0606	plurality_violation	0	test	Last week she threw two ball	simple_past	throw	ball	omitted	
+GRAM_0607	plurality_violation	0	test	Last week they breathed one airs	simple_past	breathe	air	added	
+GRAM_0608	plurality_violation	0	test	Last week they breathed three air	simple_past	breathe	air	omitted	
+GRAM_0609	plurality_violation	0	test	Last week they breathed two air	simple_past	breathe	air	omitted	
+GRAM_0610	plurality_violation	0	test	Last week they threw one balls	simple_past	throw	ball	added	
+GRAM_0611	plurality_violation	0	test	Last week they threw six ball	simple_past	throw	ball	omitted	
+GRAM_0612	plurality_violation	0	test	Last week they threw two ball	simple_past	throw	ball	omitted	
+GRAM_0613	plurality_violation	0	test	She does not breathe five air	do_negation	breathe	air	omitted	
+GRAM_0614	plurality_violation	0	test	She does not breathe one airs	do_negation	breathe	air	added	
+GRAM_0615	plurality_violation	0	test	She does not breathe three air	do_negation	breathe	air	omitted	
+GRAM_0616	plurality_violation	0	test	She does not breathe two air	do_negation	breathe	air	omitted	
+GRAM_0617	plurality_violation	0	test	She does not throw six ball	do_negation	throw	ball	omitted	
+GRAM_0618	plurality_violation	0	test	She does not throw two ball	do_negation	throw	ball	omitted	
+GRAM_0619	plurality_violation	0	test	They are breathing two air	be_progressive	breathe	air	omitted	
+GRAM_0620	plurality_violation	0	test	They are throwing three ball	be_progressive	throw	ball	omitted	

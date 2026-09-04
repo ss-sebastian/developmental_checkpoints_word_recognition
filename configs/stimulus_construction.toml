@@ -1,0 +1,5 @@
+[stimulus_construction]
+# Fixed once. The constructor refuses to overwrite an existing final split.
+seed = 1729
+source_root = "../data/task_adaptation_stimuli/sources/raw"
+output_root = "../data/task_adaptation_stimuli"

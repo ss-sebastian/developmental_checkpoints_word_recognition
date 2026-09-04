@@ -1,0 +1,24 @@
+task	verb_lemma	object_lemma	reason
+Plausibility	accelerate	speed	unnatural direct object; increase speed or accelerate a vehicle
+Plausibility	allow	permission	unnatural collocation; grant permission
+Plausibility	cover	girl	USF relation is sense-ambiguous and may reflect cover girl
+Plausibility	decide	tobacco	decide does not license this noun as a direct object
+Plausibility	defrost	ice	mass noun is incompatible with the fixed numbered-object frame
+Plausibility	glide	airplane	rare transitive use is unsuitable for a child judgment task
+Plausibility	twinkle	star	twinkle is intransitive in the intended event
+Plausibility	weave	hair	mass/count sense is incompatible with the numbered-object frame
+Plausibility	weigh	guard	event is plausible and therefore is not a valid incongruent item
+Grammaticality	bloom	flower	bloom is intransitive in the intended event
+Grammaticality	check	money	numbered money is unnatural and the intended verb sense is underspecified
+Grammaticality	comb	hair	hair is a mass noun in the intended grooming event and conflicts with the numbered-object frame
+Grammaticality	count	number	counting numbered instances of number is pragmatically unnatural in the fixed templates
+Grammaticality	eat	food	food is a mass noun in the intended event and conflicts with the numbered-object frame
+Grammaticality	lie	truth	lie does not license truth as a direct object; tell the truth is required
+Grammaticality	owe	money	mass noun is incompatible with the fixed numbered-object frame
+Grammaticality	pay	money	mass noun is incompatible with the fixed numbered-object frame
+Grammaticality	rattle	baby	possible transitive use is unsafe and pragmatically unsuitable for neutral child stimuli
+Grammaticality	rattle	snake	unnatural transitive event and potentially confusable with the compound rattlesnake
+Grammaticality	reflect	mirror	mirror is normally the reflector, not the direct object of reflect
+Grammaticality	spend	money	mass noun is incompatible with the fixed numbered-object frame
+Grammaticality	sweep	broom	broom is normally the instrument, not the direct object of sweep
+Grammaticality	switch	light	normally requires the particle on/off in the intended event

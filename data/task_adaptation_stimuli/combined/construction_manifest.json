@@ -1,0 +1,348 @@
+{
+  "candidate_counts": {
+    "Grammaticality": 3100,
+    "Meaning": 3100,
+    "Plausibility": 3100,
+    "Sound": 3100
+  },
+  "checkpoint_files_loaded": 0,
+  "child_behavior_files_loaded": 0,
+  "condition_counts": {
+    "Grammaticality": {
+      "test": {
+        "finiteness_violation": 40,
+        "grammatical": 80,
+        "plurality_violation": 40
+      },
+      "train": {
+        "finiteness_violation": 90,
+        "grammatical": 180,
+        "plurality_violation": 90
+      },
+      "validation": {
+        "finiteness_violation": 25,
+        "grammatical": 50,
+        "plurality_violation": 25
+      }
+    },
+    "Meaning": {
+      "test": {
+        "high_association": 40,
+        "low_association": 40,
+        "unrelated": 80
+      },
+      "train": {
+        "high_association": 90,
+        "low_association": 90,
+        "unrelated": 180
+      },
+      "validation": {
+        "high_association": 25,
+        "low_association": 25,
+        "unrelated": 50
+      }
+    },
+    "Plausibility": {
+      "test": {
+        "incongruent": 80,
+        "strong_congruence": 40,
+        "weak_congruence": 40
+      },
+      "train": {
+        "incongruent": 180,
+        "strong_congruence": 90,
+        "weak_congruence": 90
+      },
+      "validation": {
+        "incongruent": 50,
+        "strong_congruence": 25,
+        "weak_congruence": 25
+      }
+    },
+    "Sound": {
+      "test": {
+        "onset": 40,
+        "rhyme": 40,
+        "unrelated": 80
+      },
+      "train": {
+        "onset": 90,
+        "rhyme": 90,
+        "unrelated": 180
+      },
+      "validation": {
+        "onset": 25,
+        "rhyme": 25,
+        "unrelated": 50
+      }
+    }
+  },
+  "construction_date": "2026-09-04",
+  "final_counts": {
+    "Grammaticality": 620,
+    "Meaning": 620,
+    "Plausibility": 620,
+    "Sound": 620
+  },
+  "matching_qc": {
+    "Grammaticality": {
+      "candidate_count": 3100,
+      "condition_counts": {
+        "finiteness_violation": 155,
+        "grammatical": 310,
+        "plurality_violation": 155
+      },
+      "ds003604_critical_vocabulary_overlap_count": 0,
+      "ds003604_exact_overlap_count": 0,
+      "final_count": 620,
+      "items_with_unseen_phase1_content_words": 8,
+      "label_counts_by_split": {
+        "test": {
+          "0": 80,
+          "1": 80
+        },
+        "train": {
+          "0": 180,
+          "1": 180
+        },
+        "validation": {
+          "0": 50,
+          "1": 50
+        }
+      },
+      "max_absolute_smd": 0.07929142304523679,
+      "qc_pass": true,
+      "smd_target": 0.1,
+      "split_counts": {
+        "test": 160,
+        "train": 360,
+        "validation": 100
+      }
+    },
+    "Meaning": {
+      "candidate_count": 3100,
+      "condition_counts": {
+        "high_association": 155,
+        "low_association": 155,
+        "unrelated": 310
+      },
+      "ds003604_critical_vocabulary_overlap_count": 0,
+      "ds003604_exact_overlap_count": 0,
+      "final_count": 620,
+      "items_with_unseen_phase1_content_words": 62,
+      "label_counts_by_split": {
+        "test": {
+          "0": 80,
+          "1": 80
+        },
+        "train": {
+          "0": 180,
+          "1": 180
+        },
+        "validation": {
+          "0": 50,
+          "1": 50
+        }
+      },
+      "max_absolute_smd": 0.018559437899249912,
+      "qc_pass": true,
+      "smd_target": 0.1,
+      "split_counts": {
+        "test": 160,
+        "train": 360,
+        "validation": 100
+      }
+    },
+    "Plausibility": {
+      "candidate_count": 3100,
+      "condition_counts": {
+        "incongruent": 310,
+        "strong_congruence": 155,
+        "weak_congruence": 155
+      },
+      "ds003604_critical_vocabulary_overlap_count": 0,
+      "ds003604_exact_overlap_count": 0,
+      "final_count": 620,
+      "items_with_unseen_phase1_content_words": 27,
+      "label_counts_by_split": {
+        "test": {
+          "0": 80,
+          "1": 80
+        },
+        "train": {
+          "0": 180,
+          "1": 180
+        },
+        "validation": {
+          "0": 50,
+          "1": 50
+        }
+      },
+      "max_absolute_smd": 0.059353855083651444,
+      "qc_pass": true,
+      "smd_target": 0.1,
+      "split_counts": {
+        "test": 160,
+        "train": 360,
+        "validation": 100
+      }
+    },
+    "Sound": {
+      "candidate_count": 3100,
+      "condition_counts": {
+        "onset": 155,
+        "rhyme": 155,
+        "unrelated": 310
+      },
+      "ds003604_critical_vocabulary_overlap_count": 0,
+      "ds003604_exact_overlap_count": 0,
+      "final_count": 620,
+      "items_with_unseen_phase1_content_words": 189,
+      "label_counts_by_split": {
+        "test": {
+          "0": 80,
+          "1": 80
+        },
+        "train": {
+          "0": 180,
+          "1": 180
+        },
+        "validation": {
+          "0": 50,
+          "1": 50
+        }
+      },
+      "max_absolute_smd": 0.016929166530879045,
+      "qc_pass": true,
+      "smd_target": 0.1,
+      "split_counts": {
+        "test": 160,
+        "train": 360,
+        "validation": 100
+      }
+    }
+  },
+  "original_design_matching": "Condition counts are exact. Comparable lexical length/phoneme/syllable measures and sentence template/subject/number proportions are reported in combined/original_design_alignment.tsv. SUBTLEX Zipf is balanced internally but is not treated as numerically identical to the original raw-frequency scale.",
+  "output_hashes": {
+    "_invalid_draft_backup_20260903/combined/adaptation_all_tasks.tsv": "5bbe99f1d7c11d0b998f6d6f1cfe5db757535795b9ae849381e9a4ca90d0362c",
+    "_invalid_draft_backup_20260903/combined/split_summary.tsv": "01cf469da7582d457e349c94ee3d05b8db4b049476b113563c8161264d17f1bb",
+    "_invalid_draft_backup_20260903/grammaticality/candidates.tsv": "752cac7f92644161f16a260259039d0a7828571bc589c01ba250dcf95bf13b9a",
+    "_invalid_draft_backup_20260903/grammaticality/final_all.tsv": "b6b1e0d70684756e3e738e04373fa8367d9beaf89cb7e7971803b1f091119d58",
+    "_invalid_draft_backup_20260903/grammaticality/qc_tables.tsv": "4eccf65da38503726f3686c7b611f8510ce9477eb6308d20939da1348cbbe923",
+    "_invalid_draft_backup_20260903/grammaticality/review.tsv": "869b41f087f19eb93eb881b6d6bdf6ad4b1b192356ac9f9f07c8272c3b7f2232",
+    "_invalid_draft_backup_20260903/grammaticality/test.tsv": "bd16e51c68df3d7f121431d253b09153ffdc924634199913b5cd0f068a102c3d",
+    "_invalid_draft_backup_20260903/grammaticality/train.tsv": "c9f1143b1b1a9e025000c8e19e5f481b64edd76ead76799fffcbe4599de7c9b8",
+    "_invalid_draft_backup_20260903/grammaticality/validation.tsv": "a30660dc9fa228bf9060866f4a1131d9a67a65a6c7ac5a8a5a0810a64fb82937",
+    "_invalid_draft_backup_20260903/meaning/candidates.tsv": "8336611353982d3b78a142109c8d5e5234428147607f77a4a8ce9cddd6776c6e",
+    "_invalid_draft_backup_20260903/meaning/final_all.tsv": "36f82843917c14c19737cf3ebddd5a0e6b8cbb0f138acd93d3549a598e6a78bb",
+    "_invalid_draft_backup_20260903/meaning/qc_tables.tsv": "93009324d9040d5bf41baf74b55490b1932093a240d7a586d94994c007bf7bad",
+    "_invalid_draft_backup_20260903/meaning/review.tsv": "098f93a1b6aa6348ca82eef3b585d5553f052429aa353b782bbce6f09d9afcdf",
+    "_invalid_draft_backup_20260903/meaning/test.tsv": "7ef0151dbd6872334f45b439c4d5882d9f5183f9de942b2c2febb02bec4f960b",
+    "_invalid_draft_backup_20260903/meaning/train.tsv": "e6bf0474cf5744a5c72e44dc69ec766c67ac6ed75b6b0a67289a97a3b52aeb63",
+    "_invalid_draft_backup_20260903/meaning/validation.tsv": "7c79928709041d765b9f33acb346ed294aa36963323f64c750b53d82c7747ced",
+    "_invalid_draft_backup_20260903/openneuro_exclusion_vocabulary.tsv": "ae0e0d540b6ca350af50c489e077bf0c1b670e68f4ee5431421787350e95df1d",
+    "_invalid_draft_backup_20260903/plausibility/candidates.tsv": "5e263421562200706efe0f98c45a00ca33996226fd4978145f3e91347a5035d1",
+    "_invalid_draft_backup_20260903/plausibility/final_all.tsv": "b018a234f96a31102b8d6e17b702393d5fef5f98a1667db8f73c9f5776e90cf7",
+    "_invalid_draft_backup_20260903/plausibility/qc_tables.tsv": "f1df2cd6b82146e510b542beb23767ca4977a4f71f361d1859d580f6596bdb34",
+    "_invalid_draft_backup_20260903/plausibility/review.tsv": "1d90206dd12c73d02a1d7d7711ea61fd7fb78f42969aac3fb9cf3869eb49b5bb",
+    "_invalid_draft_backup_20260903/plausibility/test.tsv": "73c7149e3f6ec06a408bdc3f511cd5ebdcc1a12619218db75b55910267cf5f89",
+    "_invalid_draft_backup_20260903/plausibility/train.tsv": "2b2c785972e3719194a07d1eab0422cecbf9e1b66cad3b1f7392840a0da85566",
+    "_invalid_draft_backup_20260903/plausibility/validation.tsv": "885577a60879a8f2776d367d52bcf9a74e17ceb4104e86ed0ba6f6fa1d64c35f",
+    "_invalid_draft_backup_20260903/sound/candidates.tsv": "b631da8703152a04a8f3f053d883018aea0f0681b3c24b7c7e3e081ee5f9a578",
+    "_invalid_draft_backup_20260903/sound/final_all.tsv": "7d06effc5283734c88cab7974b0be46c3d96c58854f0f98a65b631fe40773d82",
+    "_invalid_draft_backup_20260903/sound/qc_tables.tsv": "c64ecb152334cb21f467139976c122997dec800538eb66b214f2043bfa310a90",
+    "_invalid_draft_backup_20260903/sound/review.tsv": "0e37a70d4172ea9d19fa483d52d209b9bef81ad4e14178bc1c4635ab535844c3",
+    "_invalid_draft_backup_20260903/sound/test.tsv": "59a377723112f1ebd64909471a34d57c7622e6e3d69fda2ec8d650b7decc4b54",
+    "_invalid_draft_backup_20260903/sound/train.tsv": "3da63a46cf383254abc21cd756db15018f441c8a0ba1b619fa7d5eb2a378c433",
+    "_invalid_draft_backup_20260903/sound/validation.tsv": "4789de866325b6ae43988c1102e0b83f904f43f54ac30ec375f6219b208c6f7a",
+    "_invalid_draft_backup_post_pos_20260903/combined/adaptation_all_tasks.tsv": "0d2b67d0e62e9b1aab960519e79f838526fc2a9cfdbc55ac71092d7cc8c6d569",
+    "_invalid_draft_backup_post_pos_20260903/combined/split_summary.tsv": "01cf469da7582d457e349c94ee3d05b8db4b049476b113563c8161264d17f1bb",
+    "_invalid_draft_backup_post_pos_20260903/grammaticality/candidates.tsv": "3cef1d995fcf544d454780f5c342967c02cd8d6899d2507582acfb2b6b570c33",
+    "_invalid_draft_backup_post_pos_20260903/grammaticality/final_all.tsv": "2d9b60376dd39bb474f3819ac1e0798944f51e0aa4f329276629a82770a5ceba",
+    "_invalid_draft_backup_post_pos_20260903/grammaticality/qc_tables.tsv": "fd20c05986c7aa567a8d3a21686ebbf430b5cbfae50a87195af8bbd2c6efa118",
+    "_invalid_draft_backup_post_pos_20260903/grammaticality/review.tsv": "ef95916793b2bca9fc74c0e78b1bf0e7151e76c391a007aa4240d91e0f86eba8",
+    "_invalid_draft_backup_post_pos_20260903/grammaticality/test.tsv": "7c220523e836d53ab2925878f1d1d5be11dcbb709e9a093bcc9e5090e141b521",
+    "_invalid_draft_backup_post_pos_20260903/grammaticality/train.tsv": "f05135f840c7c578cd53aaaba38aecbcbad130df8087e804d61d716cacdc07e3",
+    "_invalid_draft_backup_post_pos_20260903/grammaticality/validation.tsv": "a922ab0e351a83cb3bc97d38bc5bf60ecdf658950b234cefaa196a1ea198648a",
+    "_invalid_draft_backup_post_pos_20260903/meaning/candidates.tsv": "be468d2e085858240e12be42a541fadcb270e530732cad4b86edab3df04f298b",
+    "_invalid_draft_backup_post_pos_20260903/meaning/final_all.tsv": "e8dc206eedff24b6711cfea0b656d9a1d96f854c26d42b714b37d0acec8a581c",
+    "_invalid_draft_backup_post_pos_20260903/meaning/qc_tables.tsv": "a8e8e6f96479c264f6e592a7b9f874747cae69a2f00570dfe5bea2a39b11e018",
+    "_invalid_draft_backup_post_pos_20260903/meaning/review.tsv": "c1657b8be79b17ebcfde0b7b1de8560b22db5ee3eda7088c50c001bc9ae2cd7e",
+    "_invalid_draft_backup_post_pos_20260903/meaning/test.tsv": "c176b1df13d069a082fd7e84048830ce26a1411290e91d67004cdc85d3141db2",
+    "_invalid_draft_backup_post_pos_20260903/meaning/train.tsv": "1802a256ff319ea45e6e9796a060ac878f6e41c75b80175430aef82d73f8e2a9",
+    "_invalid_draft_backup_post_pos_20260903/meaning/validation.tsv": "364397366060c7bef9dab235a79a3f929f7f55f73b028276c1d06e89f4bbed7a",
+    "_invalid_draft_backup_post_pos_20260903/plausibility/candidates.tsv": "13cb201375a2912ba775515cef9fad5a9c3692a815658d2a55b7d21a05f4eabb",
+    "_invalid_draft_backup_post_pos_20260903/plausibility/final_all.tsv": "0830b0e07d8aabf1f5c0c20981c3d535a6d1a9a3e486c550034631e364e73beb",
+    "_invalid_draft_backup_post_pos_20260903/plausibility/qc_tables.tsv": "af5a6371c1efcd722be02b129436aae933d793c65e77e1106d0af20cc0ff2ccc",
+    "_invalid_draft_backup_post_pos_20260903/plausibility/review.tsv": "30cbfc4d73ab68b6e4624a2d9d1a7f819761593aa348e64be25ccb532f7436ab",
+    "_invalid_draft_backup_post_pos_20260903/plausibility/test.tsv": "04b8e50016a96c323018c72327d65e4f02f39e96866faab6f60075e792bce081",
+    "_invalid_draft_backup_post_pos_20260903/plausibility/train.tsv": "dea5b2a14dbe8aac1e8912edc2aaecf39619e91fbfe5fe3f36c1c43621d214db",
+    "_invalid_draft_backup_post_pos_20260903/plausibility/validation.tsv": "3c4d735062c3407162e312115719eebe49d42dc48da3b69b8f8702402ea98605",
+    "_invalid_draft_backup_post_pos_20260903/sound/candidates.tsv": "d05333ef56b1b20364bdd4119bd99b2bea0c7e61116c6e7c48945744dc1a2ddc",
+    "_invalid_draft_backup_post_pos_20260903/sound/final_all.tsv": "5ae7953cddf5777b168ab63259998aa10a01fbb6920d63216675e6d7bd553937",
+    "_invalid_draft_backup_post_pos_20260903/sound/qc_tables.tsv": "81ecb043ea703221ec949599d1a97a31a51990def09e2bc124fb591184c4f0c2",
+    "_invalid_draft_backup_post_pos_20260903/sound/review.tsv": "a0b7542e652d76f6d79f679f3437f446044943b122223a7ca5ff3097942abb64",
+    "_invalid_draft_backup_post_pos_20260903/sound/test.tsv": "59a377723112f1ebd64909471a34d57c7622e6e3d69fda2ec8d650b7decc4b54",
+    "_invalid_draft_backup_post_pos_20260903/sound/train.tsv": "024381f482f2c1a7a96d3082d2147ee27c3111172ae39df32240830b3616c567",
+    "_invalid_draft_backup_post_pos_20260903/sound/validation.tsv": "f5778d637bfcb64f36e18719bf419d9d856870455507a096ed05343a348a374e",
+    "combined/adaptation_all_tasks.tsv": "66bc0f587059c096c644bc28997478ae329abbb80c09fff54042798610029bfb",
+    "combined/original_design_alignment.tsv": "7f4420f9012f15b72b241af830f802e215b286daa28b23116b110e2acf255491",
+    "combined/split_summary.tsv": "01cf469da7582d457e349c94ee3d05b8db4b049476b113563c8161264d17f1bb",
+    "grammaticality/candidate_review.tsv": "02e1553b5c9171638c524b13d0396405a7483d150a97978498276f29be726525",
+    "grammaticality/candidates.tsv": "4e941c889ff3987579ac7170e967691f93089cea45f65517adedce0fa32155e0",
+    "grammaticality/final_all.tsv": "f14018b83f0ac3559d428549a2fbb5a7d1090899c0ae88c799256e8e00497563",
+    "grammaticality/original_reference.tsv": "48fccd125ead18017dcde441d8ed069ba685a4ce9bd8f96f17a0f556bab565b4",
+    "grammaticality/qc_tables.tsv": "9160005ea6ff1419bf3a2786fca443e54fabff981eaff2d41a2b2146a0e4fa7f",
+    "grammaticality/review.tsv": "464235ee4148dfb8417f25a13b129de4b0a394efc6fc570ebcaff1c77ee5bb7e",
+    "grammaticality/review_all.tsv": "6449b54f78f7ccc474e355549b892cf6f4c633fb5731cecab7bd3fe274aadddf",
+    "grammaticality/test.tsv": "3b5f45bc1fa6ec827c88e621cb3122dd179a57e4701fb3573daf1493cfca4504",
+    "grammaticality/train.tsv": "1ddf2b757d354c34c34c3f4e93ee369a6e15be359d290fa43afc95e1d79cab18",
+    "grammaticality/validation.tsv": "0f21a3930a3517fff9d3cd1c17c55eadd9ad98c2047c885d6b5077831b508425",
+    "meaning/candidates.tsv": "9f0d672ae932dff0b83923fa36f699969fa92d00c9f7755cbdd8634a7b8c4d92",
+    "meaning/final_all.tsv": "cc7ccf264e3df7a757e8d83e9e037eb2ffb68821820c348114489d5583c6c68c",
+    "meaning/qc_tables.tsv": "85684745ab1932af31c07eb503d1f0f29f604ea75203eb9716c366cb7bc7ff5e",
+    "meaning/review.tsv": "424bd1c279f47b5a2846954c87a03384d35699bef40899bba2255ccdff1c4e24",
+    "meaning/test.tsv": "179b9ad0da7f9704942fdd266c2bb4257dad8adb7547b31a5eed3f99a38a8160",
+    "meaning/train.tsv": "fb4c1c134ac219556069c295fc50d34a3eb4fc8c3a1931236845a9022a3bad67",
+    "meaning/validation.tsv": "c2258d2663b23c108133e39f89cd7548033267fe85884b11cc46b17fdfadf45d",
+    "plausibility/candidate_review.tsv": "37cc83ec9767fec50a97515a23dc41fed0a4aac117ddbabf48f3b1753864ad75",
+    "plausibility/candidates.tsv": "b2f3ad9b4d5bffc9be0b53d5b204b026ec07a96d3704466ce66b16f2f31cb8f2",
+    "plausibility/final_all.tsv": "d57202215d53fae505654548e97ea1a1890399b8f381b2862f32e62185dd264f",
+    "plausibility/original_reference.tsv": "3dbb457c4e8dc56cccf1a56f16f911e69b1ec9239b756fa320a434d0d82d47b9",
+    "plausibility/qc_tables.tsv": "3e3199b9cb1cd3fd278f19099a028b6dcee494a1b02e4d46a8929ebe730028f9",
+    "plausibility/review.tsv": "f796b7eec2f41e7cf0d8d8dec8c8d1208b76a06f3fef9c5b1db8f94c96a04435",
+    "plausibility/review_all.tsv": "3c1a5e8ff7ee4a51114d98e72ec00a2a9b2df83c2d52d0206f42288032f93d05",
+    "plausibility/test.tsv": "2c51eaadb28da30c5a47039b4cbae0afaaf09714860ef8af31f9bddaee248dce",
+    "plausibility/train.tsv": "961bf5f21abd1b664aef491a65c221511fd8044442f48d7881cb095904f2f047",
+    "plausibility/validation.tsv": "134eb187c6e334a0648aeb25cb2598c79bedea38e96a4003f503bc4e94b6e931",
+    "sound/candidates.tsv": "cbc1afc340913564736e199a85239210eed7b3dc586edacf237097eae6cd3836",
+    "sound/final_all.tsv": "ce18c7281f2129aabb9a0d47981f01f646f95407ecc45c387f12c2b690ef2866",
+    "sound/qc_tables.tsv": "751556b34c75121eabce528123fdb4219b1a114c0607a40fe0a3497fc763533b",
+    "sound/review.tsv": "def432b343c3a7eba6058b7edb99dfd810b5d19af5ccdb5106e57a8cafeaac6a",
+    "sound/test.tsv": "e5f44866d76fef0b1f652fdbfbc082a1b210731515fb13cb60d0d4976d78f9db",
+    "sound/train.tsv": "d1887364ba2fab576f8210f784624d391d3ed8b5c5f7bd7fa79742ff8e0e83a1",
+    "sound/validation.tsv": "1e61dcb98f03dd0081e8206858e64d17d113c83e53fbd39b6481c8a58873ac08",
+    "sources/openneuro_exclusion_vocabulary.tsv": "ae0e0d540b6ca350af50c489e077bf0c1b670e68f4ee5431421787350e95df1d",
+    "sources/raw/ds003604/task-Gram_Stimulus_Characteristics.tsv": "5a90a879e72fe80b51dc1517f83efc89e8a9bf45e26e269bab47d3b08aec3883",
+    "sources/raw/ds003604/task-Phon_Stimulus_Characteristics.tsv": "7687d51ddd2a9155818c62d8667abe692cf5e6375349af7f4fddb9a7ee307ed3",
+    "sources/raw/ds003604/task-Plaus_Stimulus_Characteristics.tsv": "908330009c7b156fe8a7708c96a2e3e3510490faae9e6561e003a337c1892c61",
+    "sources/raw/ds003604/task-Sem_Stimulus_Characteristics.tsv": "1b579470fc1f5f735ad8db68cb55ac50f5385e3c01134acdb6a59dc1eb7f0bcb",
+    "sources/sentence_pair_exclusions.tsv": "f1e1eed0663047efc2505357428915a2fe3e22a35800eb2a6956f93774728b57"
+  },
+  "phase1_resources_used": [
+    "IPA feature mapping",
+    "phoneme vocabulary",
+    "IPA-CHILDES word counts"
+  ],
+  "schema_version": 1,
+  "seed": 1729,
+  "selection_method": "Seeded constrained randomization from the 3,100-row candidate pools; sentence tasks are restricted to human-reviewed rows.",
+  "selection_was_model_blind": true,
+  "split_sizes": {
+    "test": 160,
+    "train": 360,
+    "validation": 100
+  },
+  "status": "complete",
+  "training_executed": false
+}

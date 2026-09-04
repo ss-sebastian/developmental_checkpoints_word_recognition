@@ -1,0 +1,621 @@
+item_id	condition	binary_label	split	word1	word2	word1_ipa	word2_ipa	qc_notes
+SOUND_0001	onset	1	train	ache	eight	"[""eɪ"", ""k""]"	"[""eɪ"", ""t""]"	
+SOUND_0002	onset	1	train	airs	es	"[""ɛ"", ""ɹ"", ""z""]"	"[""iː"", ""z""]"	
+SOUND_0003	onset	1	train	badge	bit	"[""b"", ""æ"", ""d̠ʒ""]"	"[""b"", ""ɪ"", ""t""]"	
+SOUND_0004	onset	1	train	barf	blah	"[""b"", ""ɑ"", ""ɹ"", ""f""]"	"[""b"", ""l"", ""ɑ""]"	unseen_phase1:barf
+SOUND_0005	onset	1	train	beams	begs	"[""b"", ""iː"", ""m"", ""z""]"	"[""b"", ""ɛ"", ""ɡ"", ""z""]"	
+SOUND_0006	onset	1	train	begs	bloods	"[""b"", ""ɛ"", ""ɡ"", ""z""]"	"[""b"", ""l"", ""ʌ"", ""d"", ""z""]"	unseen_phase1:bloods
+SOUND_0007	onset	1	train	biz	bolts	"[""b"", ""ɪ"", ""z""]"	"[""b"", ""oʊ"", ""l"", ""t"", ""s""]"	
+SOUND_0008	onset	1	train	blares	bot	"[""b"", ""l"", ""ɛ"", ""ɹ"", ""z""]"	"[""b"", ""ɑ"", ""t""]"	unseen_phase1:blares
+SOUND_0009	onset	1	train	blinks	blurt	"[""b"", ""l"", ""ɪ"", ""ŋ"", ""k"", ""s""]"	"[""b"", ""l"", ""ɜː"", ""t""]"	unseen_phase1:blurt
+SOUND_0010	onset	1	train	bolts	bot	"[""b"", ""oʊ"", ""l"", ""t"", ""s""]"	"[""b"", ""ɑ"", ""t""]"	
+SOUND_0011	onset	1	train	buds	bus	"[""b"", ""ʌ"", ""d"", ""z""]"	"[""b"", ""ʌ"", ""s""]"	
+SOUND_0012	onset	1	train	cash	cog	"[""k"", ""æ"", ""ʃ""]"	"[""k"", ""ɑ"", ""ɡ""]"	
+SOUND_0013	onset	1	train	clamp	clout	"[""k"", ""l"", ""æ"", ""m"", ""p""]"	"[""k"", ""l"", ""aʊ"", ""t""]"	unseen_phase1:clout
+SOUND_0014	onset	1	train	clasp	kind	"[""k"", ""l"", ""æ"", ""s"", ""p""]"	"[""k"", ""aɪ"", ""n"", ""d""]"	unseen_phase1:clasp
+SOUND_0015	onset	1	train	cops	crank	"[""k"", ""ɑ"", ""p"", ""s""]"	"[""k"", ""ɹ"", ""æ"", ""ŋ"", ""k""]"	
+SOUND_0016	onset	1	train	deem	dudes	"[""d"", ""iː"", ""m""]"	"[""d"", ""uː"", ""d"", ""z""]"	
+SOUND_0017	onset	1	train	don	drone	"[""d"", ""ɑ"", ""n""]"	"[""d"", ""ɹ"", ""oʊ"", ""n""]"	unseen_phase1:drone
+SOUND_0018	onset	1	train	fad	fats	"[""f"", ""æ"", ""d""]"	"[""f"", ""æ"", ""t"", ""s""]"	unseen_phase1:fad
+SOUND_0019	onset	1	train	fail	fled	"[""f"", ""eɪ"", ""l""]"	"[""f"", ""l"", ""ɛ"", ""d""]"	
+SOUND_0020	onset	1	train	farms	fur	"[""f"", ""ɑ"", ""ɹ"", ""m"", ""z""]"	"[""f"", ""ɜː""]"	
+SOUND_0021	onset	1	train	fray	frock	"[""f"", ""ɹ"", ""eɪ""]"	"[""f"", ""ɹ"", ""ɑ"", ""k""]"	unseen_phase1:frock
+SOUND_0022	onset	1	train	fur	phone	"[""f"", ""ɜː""]"	"[""f"", ""oʊ"", ""n""]"	
+SOUND_0023	onset	1	train	furs	phlegm	"[""f"", ""ɜː"", ""z""]"	"[""f"", ""l"", ""ɛ"", ""m""]"	
+SOUND_0024	onset	1	train	gents	jug	"[""d̠ʒ"", ""ɛ"", ""n"", ""t"", ""s""]"	"[""d̠ʒ"", ""ʌ"", ""ɡ""]"	unseen_phase1:gents
+SOUND_0025	onset	1	train	germ	gist	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""d̠ʒ"", ""ɪ"", ""s"", ""t""]"	
+SOUND_0026	onset	1	train	gist	jar	"[""d̠ʒ"", ""ɪ"", ""s"", ""t""]"	"[""d̠ʒ"", ""ɑ"", ""ɹ""]"	
+SOUND_0027	onset	1	train	gist	jerks	"[""d̠ʒ"", ""ɪ"", ""s"", ""t""]"	"[""d̠ʒ"", ""ɜː"", ""k"", ""s""]"	
+SOUND_0028	onset	1	train	gist	jog	"[""d̠ʒ"", ""ɪ"", ""s"", ""t""]"	"[""d̠ʒ"", ""ɑ"", ""ɡ""]"	
+SOUND_0029	onset	1	train	git	guise	"[""ɡ"", ""ɪ"", ""t""]"	"[""ɡ"", ""aɪ"", ""z""]"	unseen_phase1:guise
+SOUND_0030	onset	1	train	give	glows	"[""ɡ"", ""ɪ"", ""v""]"	"[""ɡ"", ""l"", ""oʊ"", ""z""]"	
+SOUND_0031	onset	1	train	glide	grab	"[""ɡ"", ""l"", ""aɪ"", ""d""]"	"[""ɡ"", ""ɹ"", ""æ"", ""b""]"	
+SOUND_0032	onset	1	train	gone	grain	"[""ɡ"", ""ɔ"", ""n""]"	"[""ɡ"", ""ɹ"", ""eɪ"", ""n""]"	
+SOUND_0033	onset	1	train	grad	grids	"[""ɡ"", ""ɹ"", ""æ"", ""d""]"	"[""ɡ"", ""ɹ"", ""ɪ"", ""d"", ""z""]"	unseen_phase1:grids
+SOUND_0034	onset	1	train	grad	guise	"[""ɡ"", ""ɹ"", ""æ"", ""d""]"	"[""ɡ"", ""aɪ"", ""z""]"	unseen_phase1:guise
+SOUND_0035	onset	1	train	grand	guts	"[""ɡ"", ""ɹ"", ""æ"", ""n"", ""d""]"	"[""ɡ"", ""ʌ"", ""t"", ""s""]"	
+SOUND_0036	onset	1	train	had	hype	"[""h"", ""æ"", ""d""]"	"[""h"", ""aɪ"", ""p""]"	unseen_phase1:hype
+SOUND_0037	onset	1	train	haze	hype	"[""h"", ""eɪ"", ""z""]"	"[""h"", ""aɪ"", ""p""]"	unseen_phase1:haze,hype
+SOUND_0038	onset	1	train	heals	high	"[""h"", ""iː"", ""l"", ""z""]"	"[""h"", ""aɪ""]"	
+SOUND_0039	onset	1	train	hex	hiss	"[""h"", ""ɛ"", ""k"", ""s""]"	"[""h"", ""ɪ"", ""s""]"	unseen_phase1:hex
+SOUND_0040	onset	1	train	highs	hoots	"[""h"", ""aɪ"", ""z""]"	"[""h"", ""uː"", ""t"", ""s""]"	unseen_phase1:highs
+SOUND_0041	onset	1	train	hips	hounds	"[""h"", ""ɪ"", ""p"", ""s""]"	"[""h"", ""aʊ"", ""n"", ""d"", ""z""]"	
+SOUND_0042	onset	1	train	hit	hunts	"[""h"", ""ɪ"", ""t""]"	"[""h"", ""ʌ"", ""n"", ""t"", ""s""]"	
+SOUND_0043	onset	1	train	hounds	hymn	"[""h"", ""aʊ"", ""n"", ""d"", ""z""]"	"[""h"", ""ɪ"", ""m""]"	unseen_phase1:hymn
+SOUND_0044	onset	1	train	jest	joints	"[""d̠ʒ"", ""ɛ"", ""s"", ""t""]"	"[""d̠ʒ"", ""ɔɪ"", ""n"", ""t"", ""s""]"	
+SOUND_0045	onset	1	train	jig	jocks	"[""d̠ʒ"", ""ɪ"", ""ɡ""]"	"[""d̠ʒ"", ""ɑ"", ""k"", ""s""]"	unseen_phase1:jocks
+SOUND_0046	onset	1	train	jig	jug	"[""d̠ʒ"", ""ɪ"", ""ɡ""]"	"[""d̠ʒ"", ""ʌ"", ""ɡ""]"	
+SOUND_0047	onset	1	train	jot	juke	"[""d̠ʒ"", ""ɑ"", ""t""]"	"[""d̠ʒ"", ""uː"", ""k""]"	unseen_phase1:jot,juke
+SOUND_0048	onset	1	train	lark	lib	"[""l"", ""ɑ"", ""ɹ"", ""k""]"	"[""l"", ""ɪ"", ""b""]"	unseen_phase1:lib
+SOUND_0049	onset	1	train	lbs	plight	"[""p"", ""aʊ"", ""n"", ""d"", ""z""]"	"[""p"", ""l"", ""aɪ"", ""t""]"	unseen_phase1:lbs,plight
+SOUND_0050	onset	1	train	leaf	lice	"[""l"", ""iː"", ""f""]"	"[""l"", ""aɪ"", ""s""]"	
+SOUND_0051	onset	1	train	man	moans	"[""m"", ""æ"", ""n""]"	"[""m"", ""oʊ"", ""n"", ""z""]"	
+SOUND_0052	onset	1	train	mashed	med	"[""m"", ""æ"", ""ʃ"", ""t""]"	"[""m"", ""ɛ"", ""d""]"	
+SOUND_0053	onset	1	train	may	moi	"[""m"", ""eɪ""]"	"[""m"", ""w"", ""ɑ""]"	
+SOUND_0054	onset	1	train	med	mic	"[""m"", ""ɛ"", ""d""]"	"[""m"", ""aɪ"", ""k""]"	
+SOUND_0055	onset	1	train	mid	moan	"[""m"", ""ɪ"", ""d""]"	"[""m"", ""oʊ"", ""n""]"	
+SOUND_0056	onset	1	train	mince	moi	"[""m"", ""ɪ"", ""n"", ""s""]"	"[""m"", ""w"", ""ɑ""]"	
+SOUND_0057	onset	1	train	mitt	mobs	"[""m"", ""ɪ"", ""t""]"	"[""m"", ""ɑ"", ""b"", ""z""]"	unseen_phase1:mobs
+SOUND_0058	onset	1	train	nag	night	"[""n"", ""æ"", ""ɡ""]"	"[""n"", ""aɪ"", ""t""]"	
+SOUND_0059	onset	1	train	needs	nine	"[""n"", ""iː"", ""d"", ""z""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0060	onset	1	train	nor	now	"[""n"", ""ɔ"", ""ɹ""]"	"[""n"", ""aʊ""]"	
+SOUND_0061	onset	1	train	par	paws	"[""p"", ""ɑ"", ""ɹ""]"	"[""p"", ""ɔ"", ""z""]"	
+SOUND_0062	onset	1	train	past	pups	"[""p"", ""æ"", ""s"", ""t""]"	"[""p"", ""ʌ"", ""p"", ""s""]"	
+SOUND_0063	onset	1	train	paved	poise	"[""p"", ""eɪ"", ""v"", ""d""]"	"[""p"", ""ɔɪ"", ""z""]"	
+SOUND_0064	onset	1	train	pay	pi	"[""p"", ""eɪ""]"	"[""p"", ""aɪ""]"	
+SOUND_0065	onset	1	train	piled	pours	"[""p"", ""aɪ"", ""l"", ""d""]"	"[""p"", ""ɔ"", ""ɹ"", ""z""]"	
+SOUND_0066	onset	1	train	pips	pray	"[""p"", ""ɪ"", ""p"", ""s""]"	"[""p"", ""ɹ"", ""eɪ""]"	unseen_phase1:pips
+SOUND_0067	onset	1	train	plumb	porn	"[""p"", ""l"", ""ʌ"", ""m""]"	"[""p"", ""ɔ"", ""ɹ"", ""n""]"	
+SOUND_0068	onset	1	train	pox	prep	"[""p"", ""ɑ"", ""k"", ""s""]"	"[""p"", ""ɹ"", ""ɛ"", ""p""]"	unseen_phase1:prep
+SOUND_0069	onset	1	train	rad	roots	"[""ɹ"", ""æ"", ""d""]"	"[""ɹ"", ""uː"", ""t"", ""s""]"	
+SOUND_0070	onset	1	train	rail	rots	"[""ɹ"", ""eɪ"", ""l""]"	"[""ɹ"", ""ɑ"", ""t"", ""s""]"	
+SOUND_0071	onset	1	train	rare	runs	"[""ɹ"", ""ɛ"", ""ɹ""]"	"[""ɹ"", ""ʌ"", ""n"", ""z""]"	
+SOUND_0072	onset	1	train	rats	risks	"[""ɹ"", ""æ"", ""t"", ""s""]"	"[""ɹ"", ""ɪ"", ""s"", ""k"", ""s""]"	
+SOUND_0073	onset	1	train	rims	rode	"[""ɹ"", ""ɪ"", ""m"", ""z""]"	"[""ɹ"", ""oʊ"", ""d""]"	
+SOUND_0074	onset	1	train	sane	seal	"[""s"", ""eɪ"", ""n""]"	"[""s"", ""iː"", ""l""]"	
+SOUND_0075	onset	1	train	scalps	soir	"[""s"", ""k"", ""æ"", ""l"", ""p"", ""s""]"	"[""s"", ""w"", ""ɑ"", ""ɹ""]"	unseen_phase1:scalps,soir
+SOUND_0076	onset	1	train	scouts	spry	"[""s"", ""k"", ""aʊ"", ""t"", ""s""]"	"[""s"", ""p"", ""ɹ"", ""aɪ""]"	unseen_phase1:spry
+SOUND_0077	onset	1	train	seas	spelled	"[""s"", ""iː"", ""z""]"	"[""s"", ""p"", ""ɛ"", ""l"", ""d""]"	
+SOUND_0078	onset	1	train	self	smokes	"[""s"", ""ɛ"", ""l"", ""f""]"	"[""s"", ""m"", ""oʊ"", ""k"", ""s""]"	
+SOUND_0079	onset	1	train	sink	smiles	"[""s"", ""ɪ"", ""ŋ"", ""k""]"	"[""s"", ""m"", ""aɪ"", ""l"", ""z""]"	
+SOUND_0080	onset	1	train	skins	sled	"[""s"", ""k"", ""ɪ"", ""n"", ""z""]"	"[""s"", ""l"", ""ɛ"", ""d""]"	
+SOUND_0081	onset	1	train	skins	slew	"[""s"", ""k"", ""ɪ"", ""n"", ""z""]"	"[""s"", ""l"", ""uː""]"	
+SOUND_0082	onset	1	train	soir	stub	"[""s"", ""w"", ""ɑ"", ""ɹ""]"	"[""s"", ""t"", ""ʌ"", ""b""]"	unseen_phase1:soir
+SOUND_0083	onset	1	train	spa	state	"[""s"", ""p"", ""ɑ""]"	"[""s"", ""t"", ""eɪ"", ""t""]"	
+SOUND_0084	onset	1	train	strand	sums	"[""s"", ""t"", ""ɹ"", ""æ"", ""n"", ""d""]"	"[""s"", ""ʌ"", ""m"", ""z""]"	unseen_phase1:strand,sums
+SOUND_0085	onset	1	train	teas	tout	"[""t"", ""iː"", ""z""]"	"[""t"", ""aʊ"", ""t""]"	
+SOUND_0086	onset	1	train	took	tux	"[""t"", ""ʊ"", ""k""]"	"[""t"", ""ʌ"", ""k"", ""s""]"	unseen_phase1:tux
+SOUND_0087	onset	1	train	used	yards	"[""j"", ""uː"", ""z"", ""d""]"	"[""j"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	
+SOUND_0088	onset	1	train	veil	views	"[""v"", ""eɪ"", ""l""]"	"[""v"", ""j"", ""uː"", ""z""]"	unseen_phase1:views
+SOUND_0089	onset	1	train	vile	vow	"[""v"", ""aɪ"", ""l""]"	"[""v"", ""aʊ""]"	
+SOUND_0090	onset	1	train	woe	words	"[""w"", ""oʊ""]"	"[""w"", ""ɜː"", ""d"", ""z""]"	
+SOUND_0091	rhyme	1	train	ache	make	"[""eɪ"", ""k""]"	"[""m"", ""eɪ"", ""k""]"	
+SOUND_0092	rhyme	1	train	ad	lad	"[""æ"", ""d""]"	"[""l"", ""æ"", ""d""]"	
+SOUND_0093	rhyme	1	train	airs	fares	"[""ɛ"", ""ɹ"", ""z""]"	"[""f"", ""ɛ"", ""ɹ"", ""z""]"	
+SOUND_0094	rhyme	1	train	bees	seas	"[""b"", ""iː"", ""z""]"	"[""s"", ""iː"", ""z""]"	
+SOUND_0095	rhyme	1	train	best	test	"[""b"", ""ɛ"", ""s"", ""t""]"	"[""t"", ""ɛ"", ""s"", ""t""]"	
+SOUND_0096	rhyme	1	train	bi	spry	"[""b"", ""aɪ""]"	"[""s"", ""p"", ""ɹ"", ""aɪ""]"	unseen_phase1:spry
+SOUND_0097	rhyme	1	train	bib	lib	"[""b"", ""ɪ"", ""b""]"	"[""l"", ""ɪ"", ""b""]"	unseen_phase1:lib
+SOUND_0098	rhyme	1	train	bind	mined	"[""b"", ""aɪ"", ""n"", ""d""]"	"[""m"", ""aɪ"", ""n"", ""d""]"	unseen_phase1:mined
+SOUND_0099	rhyme	1	train	blind	mined	"[""b"", ""l"", ""aɪ"", ""n"", ""d""]"	"[""m"", ""aɪ"", ""n"", ""d""]"	unseen_phase1:mined
+SOUND_0100	rhyme	1	train	blip	scrip	"[""b"", ""l"", ""ɪ"", ""p""]"	"[""s"", ""k"", ""ɹ"", ""ɪ"", ""p""]"	unseen_phase1:scrip
+SOUND_0101	rhyme	1	train	bluffed	cuffed	"[""b"", ""l"", ""ʌ"", ""f"", ""t""]"	"[""k"", ""ʌ"", ""f"", ""t""]"	unseen_phase1:bluffed
+SOUND_0102	rhyme	1	train	blur	per	"[""b"", ""l"", ""ɜː""]"	"[""p"", ""ɜː""]"	
+SOUND_0103	rhyme	1	train	blurt	pert	"[""b"", ""l"", ""ɜː"", ""t""]"	"[""p"", ""ɜː"", ""t""]"	unseen_phase1:blurt,pert
+SOUND_0104	rhyme	1	train	bore	soar	"[""b"", ""ɔ"", ""ɹ""]"	"[""s"", ""ɔ"", ""ɹ""]"	
+SOUND_0105	rhyme	1	train	bran	clan	"[""b"", ""ɹ"", ""æ"", ""n""]"	"[""k"", ""l"", ""æ"", ""n""]"	unseen_phase1:clan
+SOUND_0106	rhyme	1	train	brand	strand	"[""b"", ""ɹ"", ""æ"", ""n"", ""d""]"	"[""s"", ""t"", ""ɹ"", ""æ"", ""n"", ""d""]"	unseen_phase1:strand
+SOUND_0107	rhyme	1	train	brew	que	"[""b"", ""ɹ"", ""uː""]"	"[""k"", ""w"", ""ɛ""]"	
+SOUND_0108	rhyme	1	train	bump	jump	"[""b"", ""ʌ"", ""m"", ""p""]"	"[""d̠ʒ"", ""ʌ"", ""m"", ""p""]"	
+SOUND_0109	rhyme	1	train	card	yard	"[""k"", ""ɑ"", ""ɹ"", ""d""]"	"[""j"", ""ɑ"", ""ɹ"", ""d""]"	
+SOUND_0110	rhyme	1	train	caste	past	"[""k"", ""æ"", ""s"", ""t""]"	"[""p"", ""æ"", ""s"", ""t""]"	unseen_phase1:caste
+SOUND_0111	rhyme	1	train	chore	fore	"[""t̠ʃ"", ""ɔ"", ""ɹ""]"	"[""f"", ""ɔ"", ""ɹ""]"	
+SOUND_0112	rhyme	1	train	chore	oar	"[""t̠ʃ"", ""ɔ"", ""ɹ""]"	"[""ɔ"", ""ɹ""]"	
+SOUND_0113	rhyme	1	train	chore	tore	"[""t̠ʃ"", ""ɔ"", ""ɹ""]"	"[""t"", ""ɔ"", ""ɹ""]"	
+SOUND_0114	rhyme	1	train	chum	plumb	"[""t̠ʃ"", ""ʌ"", ""m""]"	"[""p"", ""l"", ""ʌ"", ""m""]"	
+SOUND_0115	rhyme	1	train	chunk	junk	"[""t̠ʃ"", ""ʌ"", ""ŋ"", ""k""]"	"[""d̠ʒ"", ""ʌ"", ""ŋ"", ""k""]"	
+SOUND_0116	rhyme	1	train	clamp	tramp	"[""k"", ""l"", ""æ"", ""m"", ""p""]"	"[""t"", ""ɹ"", ""æ"", ""m"", ""p""]"	
+SOUND_0117	rhyme	1	train	clams	jams	"[""k"", ""l"", ""æ"", ""m"", ""z""]"	"[""d̠ʒ"", ""æ"", ""m"", ""z""]"	
+SOUND_0118	rhyme	1	train	clock	shock	"[""k"", ""l"", ""ɑ"", ""k""]"	"[""ʃ"", ""ɑ"", ""k""]"	
+SOUND_0119	rhyme	1	train	clones	zones	"[""k"", ""l"", ""oʊ"", ""n"", ""z""]"	"[""z"", ""oʊ"", ""n"", ""z""]"	unseen_phase1:clones,zones
+SOUND_0120	rhyme	1	train	comes	sums	"[""k"", ""ʌ"", ""m"", ""z""]"	"[""s"", ""ʌ"", ""m"", ""z""]"	unseen_phase1:sums
+SOUND_0121	rhyme	1	train	cones	zones	"[""k"", ""oʊ"", ""n"", ""z""]"	"[""z"", ""oʊ"", ""n"", ""z""]"	unseen_phase1:zones
+SOUND_0122	rhyme	1	train	coon	toon	"[""k"", ""uː"", ""n""]"	"[""t"", ""uː"", ""n""]"	
+SOUND_0123	rhyme	1	train	cores	pours	"[""k"", ""ɔ"", ""ɹ"", ""z""]"	"[""p"", ""ɔ"", ""ɹ"", ""z""]"	unseen_phase1:cores
+SOUND_0124	rhyme	1	train	cot	hot	"[""k"", ""ɑ"", ""t""]"	"[""h"", ""ɑ"", ""t""]"	
+SOUND_0125	rhyme	1	train	crew	goo	"[""k"", ""ɹ"", ""uː""]"	"[""ɡ"", ""uː""]"	
+SOUND_0126	rhyme	1	train	cur	ur	"[""k"", ""ɜː""]"	"[""ɜː""]"	
+SOUND_0127	rhyme	1	train	dawns	yawns	"[""d"", ""ɔ"", ""n"", ""z""]"	"[""j"", ""ɔ"", ""n"", ""z""]"	
+SOUND_0128	rhyme	1	train	daze	haze	"[""d"", ""eɪ"", ""z""]"	"[""h"", ""eɪ"", ""z""]"	unseen_phase1:haze
+SOUND_0129	rhyme	1	train	daze	trays	"[""d"", ""eɪ"", ""z""]"	"[""t"", ""ɹ"", ""eɪ"", ""z""]"	
+SOUND_0130	rhyme	1	train	dips	pips	"[""d"", ""ɪ"", ""p"", ""s""]"	"[""p"", ""ɪ"", ""p"", ""s""]"	unseen_phase1:pips
+SOUND_0131	rhyme	1	train	dips	skips	"[""d"", ""ɪ"", ""p"", ""s""]"	"[""s"", ""k"", ""ɪ"", ""p"", ""s""]"	
+SOUND_0132	rhyme	1	train	dredge	hedge	"[""d"", ""ɹ"", ""ɛ"", ""d̠ʒ""]"	"[""h"", ""ɛ"", ""d̠ʒ""]"	unseen_phase1:dredge
+SOUND_0133	rhyme	1	train	dredge	sledge	"[""d"", ""ɹ"", ""ɛ"", ""d̠ʒ""]"	"[""s"", ""l"", ""ɛ"", ""d̠ʒ""]"	unseen_phase1:dredge
+SOUND_0134	rhyme	1	train	drum	plumb	"[""d"", ""ɹ"", ""ʌ"", ""m""]"	"[""p"", ""l"", ""ʌ"", ""m""]"	
+SOUND_0135	rhyme	1	train	dry	lye	"[""d"", ""ɹ"", ""aɪ""]"	"[""l"", ""aɪ""]"	unseen_phase1:lye
+SOUND_0136	rhyme	1	train	end	penned	"[""ɛ"", ""n"", ""d""]"	"[""p"", ""ɛ"", ""n"", ""d""]"	unseen_phase1:penned
+SOUND_0137	rhyme	1	train	fail	veil	"[""f"", ""eɪ"", ""l""]"	"[""v"", ""eɪ"", ""l""]"	
+SOUND_0138	rhyme	1	train	fees	seas	"[""f"", ""iː"", ""z""]"	"[""s"", ""iː"", ""z""]"	
+SOUND_0139	rhyme	1	train	fees	seize	"[""f"", ""iː"", ""z""]"	"[""s"", ""iː"", ""z""]"	
+SOUND_0140	rhyme	1	train	foil	oil	"[""f"", ""ɔɪ"", ""l""]"	"[""ɔɪ"", ""l""]"	
+SOUND_0141	rhyme	1	train	franc	sank	"[""f"", ""ɹ"", ""æ"", ""ŋ"", ""k""]"	"[""s"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:franc
+SOUND_0142	rhyme	1	train	glee	mee	"[""ɡ"", ""l"", ""iː""]"	"[""m"", ""iː""]"	
+SOUND_0143	rhyme	1	train	goo	slew	"[""ɡ"", ""uː""]"	"[""s"", ""l"", ""uː""]"	
+SOUND_0144	rhyme	1	train	grab	nab	"[""ɡ"", ""ɹ"", ""æ"", ""b""]"	"[""n"", ""æ"", ""b""]"	
+SOUND_0145	rhyme	1	train	grab	scab	"[""ɡ"", ""ɹ"", ""æ"", ""b""]"	"[""s"", ""k"", ""æ"", ""b""]"	
+SOUND_0146	rhyme	1	train	graph	staph	"[""ɡ"", ""ɹ"", ""æ"", ""f""]"	"[""s"", ""t"", ""æ"", ""f""]"	unseen_phase1:staph
+SOUND_0147	rhyme	1	train	hams	jams	"[""h"", ""æ"", ""m"", ""z""]"	"[""d̠ʒ"", ""æ"", ""m"", ""z""]"	
+SOUND_0148	rhyme	1	train	hash	sash	"[""h"", ""æ"", ""ʃ""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0149	rhyme	1	train	hee	pea	"[""h"", ""iː""]"	"[""p"", ""iː""]"	
+SOUND_0150	rhyme	1	train	high	try	"[""h"", ""aɪ""]"	"[""t"", ""ɹ"", ""aɪ""]"	
+SOUND_0151	rhyme	1	train	hind	mined	"[""h"", ""aɪ"", ""n"", ""d""]"	"[""m"", ""aɪ"", ""n"", ""d""]"	unseen_phase1:mined
+SOUND_0152	rhyme	1	train	hop	plop	"[""h"", ""ɑ"", ""p""]"	"[""p"", ""l"", ""ɑ"", ""p""]"	
+SOUND_0153	rhyme	1	train	hounds	lbs	"[""h"", ""aʊ"", ""n"", ""d"", ""z""]"	"[""p"", ""aʊ"", ""n"", ""d"", ""z""]"	unseen_phase1:lbs
+SOUND_0154	rhyme	1	train	hymn	rim	"[""h"", ""ɪ"", ""m""]"	"[""ɹ"", ""ɪ"", ""m""]"	unseen_phase1:hymn
+SOUND_0155	rhyme	1	train	hype	pipe	"[""h"", ""aɪ"", ""p""]"	"[""p"", ""aɪ"", ""p""]"	unseen_phase1:hype
+SOUND_0156	rhyme	1	train	jacked	lacked	"[""d̠ʒ"", ""æ"", ""k"", ""t""]"	"[""l"", ""æ"", ""k"", ""t""]"	unseen_phase1:jacked
+SOUND_0157	rhyme	1	train	jails	rails	"[""d̠ʒ"", ""eɪ"", ""l"", ""z""]"	"[""ɹ"", ""eɪ"", ""l"", ""z""]"	unseen_phase1:jails
+SOUND_0158	rhyme	1	train	jams	lambs	"[""d̠ʒ"", ""æ"", ""m"", ""z""]"	"[""l"", ""æ"", ""m"", ""z""]"	
+SOUND_0159	rhyme	1	train	jet	net	"[""d̠ʒ"", ""ɛ"", ""t""]"	"[""n"", ""ɛ"", ""t""]"	
+SOUND_0160	rhyme	1	train	jocks	pox	"[""d̠ʒ"", ""ɑ"", ""k"", ""s""]"	"[""p"", ""ɑ"", ""k"", ""s""]"	unseen_phase1:jocks
+SOUND_0161	rhyme	1	train	lag	wag	"[""l"", ""æ"", ""ɡ""]"	"[""w"", ""æ"", ""ɡ""]"	unseen_phase1:lag
+SOUND_0162	rhyme	1	train	lore	tore	"[""l"", ""ɔ"", ""ɹ""]"	"[""t"", ""ɔ"", ""ɹ""]"	
+SOUND_0163	rhyme	1	train	make	steak	"[""m"", ""eɪ"", ""k""]"	"[""s"", ""t"", ""eɪ"", ""k""]"	
+SOUND_0164	rhyme	1	train	moan	shone	"[""m"", ""oʊ"", ""n""]"	"[""ʃ"", ""ɑ"", ""n""]"	
+SOUND_0165	rhyme	1	train	moi	trois	"[""m"", ""w"", ""ɑ""]"	"[""t"", ""w"", ""ɑ""]"	unseen_phase1:trois
+SOUND_0166	rhyme	1	train	nor	tor	"[""n"", ""ɔ"", ""ɹ""]"	"[""t"", ""ɔ"", ""ɹ""]"	
+SOUND_0167	rhyme	1	train	phone	scone	"[""f"", ""oʊ"", ""n""]"	"[""s"", ""k"", ""oʊ"", ""n""]"	unseen_phase1:scone
+SOUND_0168	rhyme	1	train	plan	tan	"[""p"", ""l"", ""æ"", ""n""]"	"[""t"", ""æ"", ""n""]"	
+SOUND_0169	rhyme	1	train	plots	pots	"[""p"", ""l"", ""ɑ"", ""t"", ""s""]"	"[""p"", ""ɑ"", ""t"", ""s""]"	unseen_phase1:plots
+SOUND_0170	rhyme	1	train	prose	throes	"[""p"", ""ɹ"", ""oʊ"", ""z""]"	"[""θ"", ""ɹ"", ""oʊ"", ""z""]"	unseen_phase1:prose,throes
+SOUND_0171	rhyme	1	train	rust	trust	"[""ɹ"", ""ʌ"", ""s"", ""t""]"	"[""t"", ""ɹ"", ""ʌ"", ""s"", ""t""]"	
+SOUND_0172	rhyme	1	train	scarred	yard	"[""s"", ""k"", ""ɑ"", ""ɹ"", ""d""]"	"[""j"", ""ɑ"", ""ɹ"", ""d""]"	
+SOUND_0173	rhyme	1	train	shrill	swill	"[""ʃ"", ""ɹ"", ""ɪ"", ""l""]"	"[""s"", ""w"", ""ɪ"", ""l""]"	
+SOUND_0174	rhyme	1	train	sink	think	"[""s"", ""ɪ"", ""ŋ"", ""k""]"	"[""θ"", ""ɪ"", ""ŋ"", ""k""]"	
+SOUND_0175	rhyme	1	train	slag	wag	"[""s"", ""l"", ""æ"", ""ɡ""]"	"[""w"", ""æ"", ""ɡ""]"	
+SOUND_0176	rhyme	1	train	soar	war	"[""s"", ""ɔ"", ""ɹ""]"	"[""w"", ""ɔ"", ""ɹ""]"	
+SOUND_0177	rhyme	1	train	spout	stout	"[""s"", ""p"", ""aʊ"", ""t""]"	"[""s"", ""t"", ""aʊ"", ""t""]"	
+SOUND_0178	rhyme	1	train	squeal	teal	"[""s"", ""k"", ""w"", ""iː"", ""l""]"	"[""t"", ""iː"", ""l""]"	
+SOUND_0179	rhyme	1	train	squint	stint	"[""s"", ""k"", ""w"", ""ɪ"", ""n"", ""t""]"	"[""s"", ""t"", ""ɪ"", ""n"", ""t""]"	unseen_phase1:stint
+SOUND_0180	rhyme	1	train	tout	trout	"[""t"", ""aʊ"", ""t""]"	"[""t"", ""ɹ"", ""aʊ"", ""t""]"	
+SOUND_0181	unrelated	0	train	adds	cur	"[""æ"", ""d"", ""z""]"	"[""k"", ""ɜː""]"	
+SOUND_0182	unrelated	0	train	adds	juke	"[""æ"", ""d"", ""z""]"	"[""d̠ʒ"", ""uː"", ""k""]"	unseen_phase1:juke
+SOUND_0183	unrelated	0	train	adds	of	"[""æ"", ""d"", ""z""]"	"[""ʌ"", ""v""]"	
+SOUND_0184	unrelated	0	train	adds	out	"[""æ"", ""d"", ""z""]"	"[""aʊ"", ""t""]"	
+SOUND_0185	unrelated	0	train	adds	pray	"[""æ"", ""d"", ""z""]"	"[""p"", ""ɹ"", ""eɪ""]"	
+SOUND_0186	unrelated	0	train	adds	pups	"[""æ"", ""d"", ""z""]"	"[""p"", ""ʌ"", ""p"", ""s""]"	
+SOUND_0187	unrelated	0	train	adds	reps	"[""æ"", ""d"", ""z""]"	"[""ɹ"", ""ɛ"", ""p"", ""s""]"	unseen_phase1:reps
+SOUND_0188	unrelated	0	train	adds	slob	"[""æ"", ""d"", ""z""]"	"[""s"", ""l"", ""ɑ"", ""b""]"	
+SOUND_0189	unrelated	0	train	adds	tyke	"[""æ"", ""d"", ""z""]"	"[""t"", ""aɪ"", ""k""]"	
+SOUND_0190	unrelated	0	train	aim	nine	"[""eɪ"", ""m""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0191	unrelated	0	train	arms	sash	"[""ɑ"", ""ɹ"", ""m"", ""z""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0192	unrelated	0	train	barf	seal	"[""b"", ""ɑ"", ""ɹ"", ""f""]"	"[""s"", ""iː"", ""l""]"	unseen_phase1:barf
+SOUND_0193	unrelated	0	train	bark	nine	"[""b"", ""ɑ"", ""ɹ"", ""k""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0194	unrelated	0	train	bees	sash	"[""b"", ""iː"", ""z""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0195	unrelated	0	train	bib	nursed	"[""b"", ""ɪ"", ""b""]"	"[""n"", ""ɜː"", ""s"", ""d""]"	
+SOUND_0196	unrelated	0	train	bit	nine	"[""b"", ""ɪ"", ""t""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0197	unrelated	0	train	blah	sash	"[""b"", ""l"", ""ɑ""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0198	unrelated	0	train	blip	nursed	"[""b"", ""l"", ""ɪ"", ""p""]"	"[""n"", ""ɜː"", ""s"", ""d""]"	
+SOUND_0199	unrelated	0	train	bolts	nine	"[""b"", ""oʊ"", ""l"", ""t"", ""s""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0200	unrelated	0	train	bop	germ	"[""b"", ""ɑ"", ""p""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0201	unrelated	0	train	borne	sash	"[""b"", ""ɔ"", ""ɹ"", ""n""]"	"[""s"", ""æ"", ""ʃ""]"	unseen_phase1:borne
+SOUND_0202	unrelated	0	train	borne	swells	"[""b"", ""ɔ"", ""ɹ"", ""n""]"	"[""s"", ""w"", ""ɛ"", ""l"", ""z""]"	unseen_phase1:borne,swells
+SOUND_0203	unrelated	0	train	botched	rim	"[""b"", ""ɑ"", ""t̠ʃ"", ""t""]"	"[""ɹ"", ""ɪ"", ""m""]"	unseen_phase1:botched
+SOUND_0204	unrelated	0	train	both	cast	"[""b"", ""oʊ"", ""θ""]"	"[""k"", ""æ"", ""s"", ""t""]"	
+SOUND_0205	unrelated	0	train	both	clam	"[""b"", ""oʊ"", ""θ""]"	"[""k"", ""l"", ""æ"", ""m""]"	
+SOUND_0206	unrelated	0	train	both	clams	"[""b"", ""oʊ"", ""θ""]"	"[""k"", ""l"", ""æ"", ""m"", ""z""]"	
+SOUND_0207	unrelated	0	train	both	clog	"[""b"", ""oʊ"", ""θ""]"	"[""k"", ""l"", ""ɑ"", ""ɡ""]"	
+SOUND_0208	unrelated	0	train	both	dips	"[""b"", ""oʊ"", ""θ""]"	"[""d"", ""ɪ"", ""p"", ""s""]"	
+SOUND_0209	unrelated	0	train	both	drive	"[""b"", ""oʊ"", ""θ""]"	"[""d"", ""ɹ"", ""aɪ"", ""v""]"	
+SOUND_0210	unrelated	0	train	both	drugs	"[""b"", ""oʊ"", ""θ""]"	"[""d"", ""ɹ"", ""ʌ"", ""ɡ"", ""z""]"	
+SOUND_0211	unrelated	0	train	both	end	"[""b"", ""oʊ"", ""θ""]"	"[""ɛ"", ""n"", ""d""]"	
+SOUND_0212	unrelated	0	train	both	fees	"[""b"", ""oʊ"", ""θ""]"	"[""f"", ""iː"", ""z""]"	
+SOUND_0213	unrelated	0	train	both	flops	"[""b"", ""oʊ"", ""θ""]"	"[""f"", ""l"", ""ɑ"", ""p"", ""s""]"	
+SOUND_0214	unrelated	0	train	both	fruits	"[""b"", ""oʊ"", ""θ""]"	"[""f"", ""ɹ"", ""uː"", ""t"", ""s""]"	
+SOUND_0215	unrelated	0	train	both	funds	"[""b"", ""oʊ"", ""θ""]"	"[""f"", ""ʌ"", ""n"", ""d"", ""z""]"	
+SOUND_0216	unrelated	0	train	both	gems	"[""b"", ""oʊ"", ""θ""]"	"[""d̠ʒ"", ""ɛ"", ""m"", ""z""]"	
+SOUND_0217	unrelated	0	train	both	gulp	"[""b"", ""oʊ"", ""θ""]"	"[""ɡ"", ""ʌ"", ""l"", ""p""]"	
+SOUND_0218	unrelated	0	train	both	hips	"[""b"", ""oʊ"", ""θ""]"	"[""h"", ""ɪ"", ""p"", ""s""]"	
+SOUND_0219	unrelated	0	train	both	hiss	"[""b"", ""oʊ"", ""θ""]"	"[""h"", ""ɪ"", ""s""]"	
+SOUND_0220	unrelated	0	train	both	jest	"[""b"", ""oʊ"", ""θ""]"	"[""d̠ʒ"", ""ɛ"", ""s"", ""t""]"	
+SOUND_0221	unrelated	0	train	both	jugs	"[""b"", ""oʊ"", ""θ""]"	"[""d̠ʒ"", ""ʌ"", ""ɡ"", ""z""]"	
+SOUND_0222	unrelated	0	train	both	jump	"[""b"", ""oʊ"", ""θ""]"	"[""d̠ʒ"", ""ʌ"", ""m"", ""p""]"	
+SOUND_0223	unrelated	0	train	both	keeps	"[""b"", ""oʊ"", ""θ""]"	"[""k"", ""iː"", ""p"", ""s""]"	
+SOUND_0224	unrelated	0	train	both	lan	"[""b"", ""oʊ"", ""θ""]"	"[""l"", ""æ"", ""n""]"	
+SOUND_0225	unrelated	0	train	both	makes	"[""b"", ""oʊ"", ""θ""]"	"[""m"", ""eɪ"", ""k"", ""s""]"	
+SOUND_0226	unrelated	0	train	both	moms	"[""b"", ""oʊ"", ""θ""]"	"[""m"", ""ɑ"", ""m"", ""z""]"	
+SOUND_0227	unrelated	0	train	both	ni	"[""b"", ""oʊ"", ""θ""]"	"[""n"", ""aɪ""]"	
+SOUND_0228	unrelated	0	train	both	oils	"[""b"", ""oʊ"", ""θ""]"	"[""ɔɪ"", ""l"", ""z""]"	unseen_phase1:oils
+SOUND_0229	unrelated	0	train	both	pi	"[""b"", ""oʊ"", ""θ""]"	"[""p"", ""aɪ""]"	
+SOUND_0230	unrelated	0	train	both	prep	"[""b"", ""oʊ"", ""θ""]"	"[""p"", ""ɹ"", ""ɛ"", ""p""]"	unseen_phase1:prep
+SOUND_0231	unrelated	0	train	both	rink	"[""b"", ""oʊ"", ""θ""]"	"[""ɹ"", ""ɪ"", ""ŋ"", ""k""]"	
+SOUND_0232	unrelated	0	train	both	sharp	"[""b"", ""oʊ"", ""θ""]"	"[""ʃ"", ""ɑ"", ""ɹ"", ""p""]"	
+SOUND_0233	unrelated	0	train	both	shrunk	"[""b"", ""oʊ"", ""θ""]"	"[""ʃ"", ""ɹ"", ""ʌ"", ""ŋ"", ""k""]"	
+SOUND_0234	unrelated	0	train	both	spun	"[""b"", ""oʊ"", ""θ""]"	"[""s"", ""p"", ""ʌ"", ""n""]"	
+SOUND_0235	unrelated	0	train	both	state	"[""b"", ""oʊ"", ""θ""]"	"[""s"", ""t"", ""eɪ"", ""t""]"	
+SOUND_0236	unrelated	0	train	both	stops	"[""b"", ""oʊ"", ""θ""]"	"[""s"", ""t"", ""ɑ"", ""p"", ""s""]"	
+SOUND_0237	unrelated	0	train	both	surf	"[""b"", ""oʊ"", ""θ""]"	"[""s"", ""ɜː"", ""f""]"	
+SOUND_0238	unrelated	0	train	both	swell	"[""b"", ""oʊ"", ""θ""]"	"[""s"", ""w"", ""ɛ"", ""l""]"	
+SOUND_0239	unrelated	0	train	both	tar	"[""b"", ""oʊ"", ""θ""]"	"[""t"", ""ɑ"", ""ɹ""]"	
+SOUND_0240	unrelated	0	train	both	tides	"[""b"", ""oʊ"", ""θ""]"	"[""t"", ""aɪ"", ""d"", ""z""]"	unseen_phase1:tides
+SOUND_0241	unrelated	0	train	bran	germ	"[""b"", ""ɹ"", ""æ"", ""n""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0242	unrelated	0	train	brand	germ	"[""b"", ""ɹ"", ""æ"", ""n"", ""d""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0243	unrelated	0	train	buds	sash	"[""b"", ""ʌ"", ""d"", ""z""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0244	unrelated	0	train	buy	swank	"[""b"", ""aɪ""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0245	unrelated	0	train	camp	swells	"[""k"", ""æ"", ""m"", ""p""]"	"[""s"", ""w"", ""ɛ"", ""l"", ""z""]"	unseen_phase1:swells
+SOUND_0246	unrelated	0	train	card	swells	"[""k"", ""ɑ"", ""ɹ"", ""d""]"	"[""s"", ""w"", ""ɛ"", ""l"", ""z""]"	unseen_phase1:swells
+SOUND_0247	unrelated	0	train	cent	germ	"[""s"", ""ɛ"", ""n"", ""t""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0248	unrelated	0	train	chime	swank	"[""t̠ʃ"", ""aɪ"", ""m""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0249	unrelated	0	train	clasp	nine	"[""k"", ""l"", ""æ"", ""s"", ""p""]"	"[""n"", ""aɪ"", ""n""]"	unseen_phase1:clasp
+SOUND_0250	unrelated	0	train	clicked	germ	"[""k"", ""l"", ""ɪ"", ""k"", ""t""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0251	unrelated	0	train	clock	nine	"[""k"", ""l"", ""ɑ"", ""k""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0252	unrelated	0	train	clones	germ	"[""k"", ""l"", ""oʊ"", ""n"", ""z""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	unseen_phase1:clones
+SOUND_0253	unrelated	0	train	club	sash	"[""k"", ""l"", ""ʌ"", ""b""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0254	unrelated	0	train	cones	sash	"[""k"", ""oʊ"", ""n"", ""z""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0255	unrelated	0	train	cops	nine	"[""k"", ""ɑ"", ""p"", ""s""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0256	unrelated	0	train	crust	germ	"[""k"", ""ɹ"", ""ʌ"", ""s"", ""t""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0257	unrelated	0	train	cube	seal	"[""k"", ""j"", ""uː"", ""b""]"	"[""s"", ""iː"", ""l""]"	
+SOUND_0258	unrelated	0	train	d	swank	"[""d"", ""iː""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0259	unrelated	0	train	deem	swells	"[""d"", ""iː"", ""m""]"	"[""s"", ""w"", ""ɛ"", ""l"", ""z""]"	unseen_phase1:swells
+SOUND_0260	unrelated	0	train	der	swells	"[""d"", ""ɛ"", ""ɹ""]"	"[""s"", ""w"", ""ɛ"", ""l"", ""z""]"	unseen_phase1:swells
+SOUND_0261	unrelated	0	train	desks	germ	"[""d"", ""ɛ"", ""s"", ""k"", ""s""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0262	unrelated	0	train	dined	germ	"[""d"", ""aɪ"", ""n"", ""d""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	unseen_phase1:dined
+SOUND_0263	unrelated	0	train	doped	germ	"[""d"", ""oʊ"", ""p"", ""t""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	unseen_phase1:doped
+SOUND_0264	unrelated	0	train	downed	sash	"[""d"", ""aʊ"", ""n"", ""d""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0265	unrelated	0	train	downed	swells	"[""d"", ""aʊ"", ""n"", ""d""]"	"[""s"", ""w"", ""ɛ"", ""l"", ""z""]"	unseen_phase1:swells
+SOUND_0266	unrelated	0	train	drag	nine	"[""d"", ""ɹ"", ""æ"", ""ɡ""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0267	unrelated	0	train	dredge	swank	"[""d"", ""ɹ"", ""ɛ"", ""d̠ʒ""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:dredge,swank
+SOUND_0268	unrelated	0	train	earns	swank	"[""ɜː"", ""n"", ""z""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0269	unrelated	0	train	eyed	germ	"[""aɪ"", ""d""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0270	unrelated	0	train	faire	swank	"[""f"", ""ɛ"", ""ɹ""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:faire,swank
+SOUND_0271	unrelated	0	train	falls	nine	"[""f"", ""ɔ"", ""l"", ""z""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0272	unrelated	0	train	fart	germ	"[""f"", ""ɑ"", ""ɹ"", ""t""]"	"[""d̠ʒ"", ""ɜː"", ""m""]"	
+SOUND_0273	unrelated	0	train	fats	nine	"[""f"", ""æ"", ""t"", ""s""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0274	unrelated	0	train	garde	swank	"[""ɡ"", ""ɑ"", ""ɹ"", ""d""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0275	unrelated	0	train	germ	got	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""ɡ"", ""ɑ"", ""t""]"	
+SOUND_0276	unrelated	0	train	germ	highs	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""h"", ""aɪ"", ""z""]"	unseen_phase1:highs
+SOUND_0277	unrelated	0	train	germ	lore	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""l"", ""ɔ"", ""ɹ""]"	
+SOUND_0278	unrelated	0	train	germ	pips	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""p"", ""ɪ"", ""p"", ""s""]"	unseen_phase1:pips
+SOUND_0279	unrelated	0	train	germ	plop	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""p"", ""l"", ""ɑ"", ""p""]"	
+SOUND_0280	unrelated	0	train	germ	poise	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""p"", ""ɔɪ"", ""z""]"	
+SOUND_0281	unrelated	0	train	germ	quad	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""k"", ""w"", ""ɑ"", ""d""]"	
+SOUND_0282	unrelated	0	train	germ	rots	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""ɹ"", ""ɑ"", ""t"", ""s""]"	
+SOUND_0283	unrelated	0	train	germ	scones	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""s"", ""k"", ""oʊ"", ""n"", ""z""]"	unseen_phase1:scones
+SOUND_0284	unrelated	0	train	germ	sized	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""s"", ""aɪ"", ""z"", ""d""]"	
+SOUND_0285	unrelated	0	train	germ	slugs	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""s"", ""l"", ""ʌ"", ""ɡ"", ""z""]"	
+SOUND_0286	unrelated	0	train	germ	sort	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""s"", ""ɔ"", ""ɹ"", ""t""]"	
+SOUND_0287	unrelated	0	train	germ	spiked	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""s"", ""p"", ""aɪ"", ""k"", ""t""]"	
+SOUND_0288	unrelated	0	train	germ	stud	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""s"", ""t"", ""ʌ"", ""d""]"	unseen_phase1:stud
+SOUND_0289	unrelated	0	train	germ	swill	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""s"", ""w"", ""ɪ"", ""l""]"	
+SOUND_0290	unrelated	0	train	germ	tens	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""t"", ""ɛ"", ""n"", ""z""]"	
+SOUND_0291	unrelated	0	train	germ	thefts	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""θ"", ""ɛ"", ""f"", ""t"", ""s""]"	unseen_phase1:thefts
+SOUND_0292	unrelated	0	train	germ	tits	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""t"", ""ɪ"", ""t"", ""s""]"	unseen_phase1:tits
+SOUND_0293	unrelated	0	train	germ	towed	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""t"", ""oʊ"", ""d""]"	
+SOUND_0294	unrelated	0	train	germ	wails	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""w"", ""eɪ"", ""l"", ""z""]"	unseen_phase1:wails
+SOUND_0295	unrelated	0	train	germ	waxed	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""w"", ""æ"", ""k"", ""s"", ""t""]"	
+SOUND_0296	unrelated	0	train	germ	webs	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""w"", ""ɛ"", ""b"", ""z""]"	
+SOUND_0297	unrelated	0	train	germ	zones	"[""d̠ʒ"", ""ɜː"", ""m""]"	"[""z"", ""oʊ"", ""n"", ""z""]"	unseen_phase1:zones
+SOUND_0298	unrelated	0	train	glib	sash	"[""ɡ"", ""l"", ""ɪ"", ""b""]"	"[""s"", ""æ"", ""ʃ""]"	unseen_phase1:glib
+SOUND_0299	unrelated	0	train	glib	swank	"[""ɡ"", ""l"", ""ɪ"", ""b""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:glib,swank
+SOUND_0300	unrelated	0	train	gorge	sash	"[""ɡ"", ""ɔ"", ""ɹ"", ""d̠ʒ""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0301	unrelated	0	train	groves	sash	"[""ɡ"", ""ɹ"", ""oʊ"", ""v"", ""z""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0302	unrelated	0	train	guile	sash	"[""ɡ"", ""aɪ"", ""l""]"	"[""s"", ""æ"", ""ʃ""]"	unseen_phase1:guile
+SOUND_0303	unrelated	0	train	gunned	sash	"[""ɡ"", ""ʌ"", ""n"", ""d""]"	"[""s"", ""æ"", ""ʃ""]"	unseen_phase1:gunned
+SOUND_0304	unrelated	0	train	gush	swank	"[""ɡ"", ""ʌ"", ""ʃ""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0305	unrelated	0	train	hard	sash	"[""h"", ""ɑ"", ""ɹ"", ""d""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0306	unrelated	0	train	hit	swank	"[""h"", ""ɪ"", ""t""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0307	unrelated	0	train	home	nursed	"[""h"", ""oʊ"", ""m""]"	"[""n"", ""ɜː"", ""s"", ""d""]"	
+SOUND_0308	unrelated	0	train	horned	sash	"[""h"", ""ɔ"", ""ɹ"", ""n"", ""d""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0309	unrelated	0	train	horns	sash	"[""h"", ""ɔ"", ""ɹ"", ""n"", ""z""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0310	unrelated	0	train	jig	nine	"[""d̠ʒ"", ""ɪ"", ""ɡ""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0311	unrelated	0	train	jot	sash	"[""d̠ʒ"", ""ɑ"", ""t""]"	"[""s"", ""æ"", ""ʃ""]"	unseen_phase1:jot
+SOUND_0312	unrelated	0	train	jugs	seal	"[""d̠ʒ"", ""ʌ"", ""ɡ"", ""z""]"	"[""s"", ""iː"", ""l""]"	
+SOUND_0313	unrelated	0	train	junk	seal	"[""d̠ʒ"", ""ʌ"", ""ŋ"", ""k""]"	"[""s"", ""iː"", ""l""]"	
+SOUND_0314	unrelated	0	train	lit	nine	"[""l"", ""ɪ"", ""t""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0315	unrelated	0	train	lows	sash	"[""l"", ""oʊ"", ""z""]"	"[""s"", ""æ"", ""ʃ""]"	unseen_phase1:lows
+SOUND_0316	unrelated	0	train	mas	nine	"[""m"", ""æ"", ""s""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0317	unrelated	0	train	may	nine	"[""m"", ""eɪ""]"	"[""n"", ""aɪ"", ""n""]"	
+SOUND_0318	unrelated	0	train	mea	swank	"[""m"", ""iː""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0319	unrelated	0	train	mee	swank	"[""m"", ""iː""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0320	unrelated	0	train	mi	sash	"[""m"", ""aɪ""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0321	unrelated	0	train	mic	nursed	"[""m"", ""aɪ"", ""k""]"	"[""n"", ""ɜː"", ""s"", ""d""]"	
+SOUND_0322	unrelated	0	train	mid	sash	"[""m"", ""ɪ"", ""d""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0323	unrelated	0	train	milk	sash	"[""m"", ""ɪ"", ""l"", ""k""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0324	unrelated	0	train	mobs	nursed	"[""m"", ""ɑ"", ""b"", ""z""]"	"[""n"", ""ɜː"", ""s"", ""d""]"	unseen_phase1:mobs
+SOUND_0325	unrelated	0	train	ni	swells	"[""n"", ""aɪ""]"	"[""s"", ""w"", ""ɛ"", ""l"", ""z""]"	unseen_phase1:swells
+SOUND_0326	unrelated	0	train	nine	pale	"[""n"", ""aɪ"", ""n""]"	"[""p"", ""eɪ"", ""l""]"	
+SOUND_0327	unrelated	0	train	nine	press	"[""n"", ""aɪ"", ""n""]"	"[""p"", ""ɹ"", ""ɛ"", ""s""]"	
+SOUND_0328	unrelated	0	train	nine	proof	"[""n"", ""aɪ"", ""n""]"	"[""p"", ""ɹ"", ""uː"", ""f""]"	
+SOUND_0329	unrelated	0	train	nine	raise	"[""n"", ""aɪ"", ""n""]"	"[""ɹ"", ""eɪ"", ""z""]"	
+SOUND_0330	unrelated	0	train	nine	scrip	"[""n"", ""aɪ"", ""n""]"	"[""s"", ""k"", ""ɹ"", ""ɪ"", ""p""]"	unseen_phase1:scrip
+SOUND_0331	unrelated	0	train	nine	seems	"[""n"", ""aɪ"", ""n""]"	"[""s"", ""iː"", ""m"", ""z""]"	
+SOUND_0332	unrelated	0	train	nine	sink	"[""n"", ""aɪ"", ""n""]"	"[""s"", ""ɪ"", ""ŋ"", ""k""]"	
+SOUND_0333	unrelated	0	train	nine	sirs	"[""n"", ""aɪ"", ""n""]"	"[""s"", ""ɜː"", ""z""]"	unseen_phase1:sirs
+SOUND_0334	unrelated	0	train	nine	smokes	"[""n"", ""aɪ"", ""n""]"	"[""s"", ""m"", ""oʊ"", ""k"", ""s""]"	
+SOUND_0335	unrelated	0	train	nine	smut	"[""n"", ""aɪ"", ""n""]"	"[""s"", ""m"", ""ʌ"", ""t""]"	unseen_phase1:smut
+SOUND_0336	unrelated	0	train	nine	tests	"[""n"", ""aɪ"", ""n""]"	"[""t"", ""ɛ"", ""s"", ""t"", ""s""]"	
+SOUND_0337	unrelated	0	train	nursed	pap	"[""n"", ""ɜː"", ""s"", ""d""]"	"[""p"", ""æ"", ""p""]"	
+SOUND_0338	unrelated	0	train	par	sash	"[""p"", ""ɑ"", ""ɹ""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0339	unrelated	0	train	par	swank	"[""p"", ""ɑ"", ""ɹ""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0340	unrelated	0	train	phrase	seal	"[""f"", ""ɹ"", ""eɪ"", ""z""]"	"[""s"", ""iː"", ""l""]"	
+SOUND_0341	unrelated	0	train	plumb	sash	"[""p"", ""l"", ""ʌ"", ""m""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0342	unrelated	0	train	pup	swank	"[""p"", ""ʌ"", ""p""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0343	unrelated	0	train	quart	seal	"[""k"", ""w"", ""ɔ"", ""ɹ"", ""t""]"	"[""s"", ""iː"", ""l""]"	
+SOUND_0344	unrelated	0	train	que	sash	"[""k"", ""w"", ""ɛ""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0345	unrelated	0	train	rage	seal	"[""ɹ"", ""eɪ"", ""d̠ʒ""]"	"[""s"", ""iː"", ""l""]"	
+SOUND_0346	unrelated	0	train	rays	sash	"[""ɹ"", ""eɪ"", ""z""]"	"[""s"", ""æ"", ""ʃ""]"	
+SOUND_0347	unrelated	0	train	rays	swank	"[""ɹ"", ""eɪ"", ""z""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0348	unrelated	0	train	runs	swank	"[""ɹ"", ""ʌ"", ""n"", ""z""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0349	unrelated	0	train	sash	tip	"[""s"", ""æ"", ""ʃ""]"	"[""t"", ""ɪ"", ""p""]"	
+SOUND_0350	unrelated	0	train	sash	torn	"[""s"", ""æ"", ""ʃ""]"	"[""t"", ""ɔ"", ""ɹ"", ""n""]"	
+SOUND_0351	unrelated	0	train	sash	wench	"[""s"", ""æ"", ""ʃ""]"	"[""w"", ""ɛ"", ""n"", ""t̠ʃ""]"	unseen_phase1:wench
+SOUND_0352	unrelated	0	train	sash	wiles	"[""s"", ""æ"", ""ʃ""]"	"[""w"", ""aɪ"", ""l"", ""z""]"	unseen_phase1:wiles
+SOUND_0353	unrelated	0	train	seal	tor	"[""s"", ""iː"", ""l""]"	"[""t"", ""ɔ"", ""ɹ""]"	
+SOUND_0354	unrelated	0	train	seal	trout	"[""s"", ""iː"", ""l""]"	"[""t"", ""ɹ"", ""aʊ"", ""t""]"	
+SOUND_0355	unrelated	0	train	seal	wig	"[""s"", ""iː"", ""l""]"	"[""w"", ""ɪ"", ""ɡ""]"	
+SOUND_0356	unrelated	0	train	shone	swank	"[""ʃ"", ""ɑ"", ""n""]"	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	unseen_phase1:swank
+SOUND_0357	unrelated	0	train	swank	teal	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	"[""t"", ""iː"", ""l""]"	unseen_phase1:swank
+SOUND_0358	unrelated	0	train	swank	tout	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	"[""t"", ""aʊ"", ""t""]"	unseen_phase1:swank
+SOUND_0359	unrelated	0	train	swank	trays	"[""s"", ""w"", ""æ"", ""ŋ"", ""k""]"	"[""t"", ""ɹ"", ""eɪ"", ""z""]"	unseen_phase1:swank
+SOUND_0360	unrelated	0	train	swells	verb	"[""s"", ""w"", ""ɛ"", ""l"", ""z""]"	"[""v"", ""ɜː"", ""b""]"	unseen_phase1:swells
+SOUND_0361	onset	1	validation	blab	boob	"[""b"", ""l"", ""æ"", ""b""]"	"[""b"", ""uː"", ""b""]"	unseen_phase1:blab
+SOUND_0362	onset	1	validation	chap	chow	"[""t̠ʃ"", ""æ"", ""p""]"	"[""t̠ʃ"", ""aʊ""]"	
+SOUND_0363	onset	1	validation	comb	cool	"[""k"", ""oʊ"", ""m""]"	"[""k"", ""uː"", ""l""]"	
+SOUND_0364	onset	1	validation	date	dupe	"[""d"", ""eɪ"", ""t""]"	"[""d"", ""uː"", ""p""]"	unseen_phase1:dupe
+SOUND_0365	onset	1	validation	deemed	dis	"[""d"", ""iː"", ""m"", ""d""]"	"[""d"", ""ɪ"", ""s""]"	unseen_phase1:deemed
+SOUND_0366	onset	1	validation	digs	dyed	"[""d"", ""ɪ"", ""ɡ"", ""z""]"	"[""d"", ""aɪ"", ""d""]"	
+SOUND_0367	onset	1	validation	fend	fizz	"[""f"", ""ɛ"", ""n"", ""d""]"	"[""f"", ""ɪ"", ""z""]"	
+SOUND_0368	onset	1	validation	gab	gas	"[""ɡ"", ""æ"", ""b""]"	"[""ɡ"", ""æ"", ""s""]"	
+SOUND_0369	onset	1	validation	glaze	glum	"[""ɡ"", ""l"", ""eɪ"", ""z""]"	"[""ɡ"", ""l"", ""ʌ"", ""m""]"	
+SOUND_0370	onset	1	validation	gym	jail	"[""d̠ʒ"", ""ɪ"", ""m""]"	"[""d̠ʒ"", ""eɪ"", ""l""]"	
+SOUND_0371	onset	1	validation	half	hitch	"[""h"", ""æ"", ""f""]"	"[""h"", ""ɪ"", ""t̠ʃ""]"	
+SOUND_0372	onset	1	validation	hat	heed	"[""h"", ""æ"", ""t""]"	"[""h"", ""iː"", ""d""]"	
+SOUND_0373	onset	1	validation	knobs	nap	"[""n"", ""ɑ"", ""b"", ""z""]"	"[""n"", ""æ"", ""p""]"	
+SOUND_0374	onset	1	validation	ma	morn	"[""m"", ""ɑ""]"	"[""m"", ""ɔ"", ""ɹ"", ""n""]"	
+SOUND_0375	onset	1	validation	marks	more	"[""m"", ""ɑ"", ""ɹ"", ""k"", ""s""]"	"[""m"", ""ɔ"", ""ɹ""]"	
+SOUND_0376	onset	1	validation	mold	my	"[""m"", ""oʊ"", ""l"", ""d""]"	"[""m"", ""aɪ""]"	
+SOUND_0377	onset	1	validation	morn	mound	"[""m"", ""ɔ"", ""ɹ"", ""n""]"	"[""m"", ""aʊ"", ""n"", ""d""]"	
+SOUND_0378	onset	1	validation	none	noose	"[""n"", ""ʌ"", ""n""]"	"[""n"", ""uː"", ""s""]"	unseen_phase1:noose
+SOUND_0379	onset	1	validation	pies	put	"[""p"", ""aɪ"", ""z""]"	"[""p"", ""ʊ"", ""t""]"	
+SOUND_0380	onset	1	validation	place	plot	"[""p"", ""l"", ""eɪ"", ""s""]"	"[""p"", ""l"", ""ɑ"", ""t""]"	
+SOUND_0381	onset	1	validation	seat	sun	"[""s"", ""iː"", ""t""]"	"[""s"", ""ʌ"", ""n""]"	
+SOUND_0382	onset	1	validation	tea	tune	"[""t"", ""iː""]"	"[""t"", ""uː"", ""n""]"	
+SOUND_0383	onset	1	validation	thud	thump	"[""θ"", ""ʌ"", ""d""]"	"[""θ"", ""ʌ"", ""m"", ""p""]"	
+SOUND_0384	onset	1	validation	too	toys	"[""t"", ""uː""]"	"[""t"", ""ɔɪ"", ""z""]"	
+SOUND_0385	onset	1	validation	ver	vowed	"[""v"", ""ɜː""]"	"[""v"", ""aʊ"", ""d""]"	
+SOUND_0386	rhyme	1	validation	bag	tag	"[""b"", ""æ"", ""ɡ""]"	"[""t"", ""æ"", ""ɡ""]"	
+SOUND_0387	rhyme	1	validation	big	brig	"[""b"", ""ɪ"", ""ɡ""]"	"[""b"", ""ɹ"", ""ɪ"", ""ɡ""]"	
+SOUND_0388	rhyme	1	validation	bloom	room	"[""b"", ""l"", ""uː"", ""m""]"	"[""ɹ"", ""uː"", ""m""]"	
+SOUND_0389	rhyme	1	validation	blot	plot	"[""b"", ""l"", ""ɑ"", ""t""]"	"[""p"", ""l"", ""ɑ"", ""t""]"	
+SOUND_0390	rhyme	1	validation	brig	fig	"[""b"", ""ɹ"", ""ɪ"", ""ɡ""]"	"[""f"", ""ɪ"", ""ɡ""]"	
+SOUND_0391	rhyme	1	validation	broke	joke	"[""b"", ""ɹ"", ""oʊ"", ""k""]"	"[""d̠ʒ"", ""oʊ"", ""k""]"	
+SOUND_0392	rhyme	1	validation	brood	lewd	"[""b"", ""ɹ"", ""uː"", ""d""]"	"[""l"", ""uː"", ""d""]"	unseen_phase1:brood,lewd
+SOUND_0393	rhyme	1	validation	cad	sad	"[""k"", ""æ"", ""d""]"	"[""s"", ""æ"", ""d""]"	unseen_phase1:cad
+SOUND_0394	rhyme	1	validation	canned	hand	"[""k"", ""æ"", ""n"", ""d""]"	"[""h"", ""æ"", ""n"", ""d""]"	
+SOUND_0395	rhyme	1	validation	dupe	troop	"[""d"", ""uː"", ""p""]"	"[""t"", ""ɹ"", ""uː"", ""p""]"	unseen_phase1:dupe
+SOUND_0396	rhyme	1	validation	flake	take	"[""f"", ""l"", ""eɪ"", ""k""]"	"[""t"", ""eɪ"", ""k""]"	
+SOUND_0397	rhyme	1	validation	flicks	six	"[""f"", ""l"", ""ɪ"", ""k"", ""s""]"	"[""s"", ""ɪ"", ""k"", ""s""]"	unseen_phase1:flicks
+SOUND_0398	rhyme	1	validation	glass	lass	"[""ɡ"", ""l"", ""æ"", ""s""]"	"[""l"", ""æ"", ""s""]"	
+SOUND_0399	rhyme	1	validation	grind	mind	"[""ɡ"", ""ɹ"", ""aɪ"", ""n"", ""d""]"	"[""m"", ""aɪ"", ""n"", ""d""]"	
+SOUND_0400	rhyme	1	validation	holed	scold	"[""h"", ""oʊ"", ""l"", ""d""]"	"[""s"", ""k"", ""oʊ"", ""l"", ""d""]"	
+SOUND_0401	rhyme	1	validation	hoot	scoot	"[""h"", ""uː"", ""t""]"	"[""s"", ""k"", ""uː"", ""t""]"	
+SOUND_0402	rhyme	1	validation	knot	squat	"[""n"", ""ɑ"", ""t""]"	"[""s"", ""k"", ""w"", ""ɑ"", ""t""]"	
+SOUND_0403	rhyme	1	validation	lb	round	"[""ɛ"", ""l"", ""b"", ""iː""]"	"[""ɹ"", ""aʊ"", ""n"", ""d""]"	unseen_phase1:lb
+SOUND_0404	rhyme	1	validation	merge	scourge	"[""m"", ""ɜː"", ""d̠ʒ""]"	"[""s"", ""k"", ""ɜː"", ""d̠ʒ""]"	unseen_phase1:merge,scourge
+SOUND_0405	rhyme	1	validation	mil	still	"[""m"", ""ɪ"", ""l""]"	"[""s"", ""t"", ""ɪ"", ""l""]"	
+SOUND_0406	rhyme	1	validation	plot	spot	"[""p"", ""l"", ""ɑ"", ""t""]"	"[""s"", ""p"", ""ɑ"", ""t""]"	
+SOUND_0407	rhyme	1	validation	saps	slaps	"[""s"", ""æ"", ""p"", ""s""]"	"[""s"", ""l"", ""æ"", ""p"", ""s""]"	
+SOUND_0408	rhyme	1	validation	saps	snaps	"[""s"", ""æ"", ""p"", ""s""]"	"[""s"", ""n"", ""æ"", ""p"", ""s""]"	
+SOUND_0409	rhyme	1	validation	son	ton	"[""s"", ""ʌ"", ""n""]"	"[""t"", ""ʌ"", ""n""]"	
+SOUND_0410	rhyme	1	validation	sworn	worn	"[""s"", ""w"", ""ɔ"", ""ɹ"", ""n""]"	"[""w"", ""ɔ"", ""ɹ"", ""n""]"	unseen_phase1:sworn
+SOUND_0411	unrelated	0	validation	beep	own	"[""b"", ""iː"", ""p""]"	"[""oʊ"", ""n""]"	
+SOUND_0412	unrelated	0	validation	bled	heist	"[""b"", ""l"", ""ɛ"", ""d""]"	"[""h"", ""aɪ"", ""s"", ""t""]"	
+SOUND_0413	unrelated	0	validation	bull	heist	"[""b"", ""ʊ"", ""l""]"	"[""h"", ""aɪ"", ""s"", ""t""]"	
+SOUND_0414	unrelated	0	validation	chew	heist	"[""t̠ʃ"", ""uː""]"	"[""h"", ""aɪ"", ""s"", ""t""]"	
+SOUND_0415	unrelated	0	validation	coil	heist	"[""k"", ""ɔɪ"", ""l""]"	"[""h"", ""aɪ"", ""s"", ""t""]"	unseen_phase1:coil
+SOUND_0416	unrelated	0	validation	cons	heist	"[""k"", ""ɑ"", ""n"", ""z""]"	"[""h"", ""aɪ"", ""s"", ""t""]"	unseen_phase1:cons
+SOUND_0417	unrelated	0	validation	cults	own	"[""k"", ""ʌ"", ""l"", ""t"", ""s""]"	"[""oʊ"", ""n""]"	unseen_phase1:cults
+SOUND_0418	unrelated	0	validation	dart	own	"[""d"", ""ɑ"", ""ɹ"", ""t""]"	"[""oʊ"", ""n""]"	
+SOUND_0419	unrelated	0	validation	dis	own	"[""d"", ""ɪ"", ""s""]"	"[""oʊ"", ""n""]"	
+SOUND_0420	unrelated	0	validation	dud	heist	"[""d"", ""ʌ"", ""d""]"	"[""h"", ""aɪ"", ""s"", ""t""]"	
+SOUND_0421	unrelated	0	validation	eh	heist	"[""eɪ""]"	"[""h"", ""aɪ"", ""s"", ""t""]"	
+SOUND_0422	unrelated	0	validation	floor	tons	"[""f"", ""l"", ""ɔ"", ""ɹ""]"	"[""t"", ""ʌ"", ""n"", ""z""]"	
+SOUND_0423	unrelated	0	validation	fowl	own	"[""f"", ""aʊ"", ""l""]"	"[""oʊ"", ""n""]"	
+SOUND_0424	unrelated	0	validation	gags	heist	"[""ɡ"", ""æ"", ""ɡ"", ""z""]"	"[""h"", ""aɪ"", ""s"", ""t""]"	
+SOUND_0425	unrelated	0	validation	geek	own	"[""ɡ"", ""iː"", ""k""]"	"[""oʊ"", ""n""]"	
+SOUND_0426	unrelated	0	validation	gem	tones	"[""d̠ʒ"", ""ɛ"", ""m""]"	"[""t"", ""oʊ"", ""n"", ""z""]"	
+SOUND_0427	unrelated	0	validation	gook	tones	"[""ɡ"", ""ʊ"", ""k""]"	"[""t"", ""oʊ"", ""n"", ""z""]"	
+SOUND_0428	unrelated	0	validation	hast	own	"[""h"", ""eɪ"", ""s"", ""t""]"	"[""oʊ"", ""n""]"	
+SOUND_0429	unrelated	0	validation	heist	keep	"[""h"", ""aɪ"", ""s"", ""t""]"	"[""k"", ""iː"", ""p""]"	
+SOUND_0430	unrelated	0	validation	heist	ln	"[""h"", ""aɪ"", ""s"", ""t""]"	"[""ɛ"", ""l"", ""ɛ"", ""n""]"	unseen_phase1:ln
+SOUND_0431	unrelated	0	validation	heist	shield	"[""h"", ""aɪ"", ""s"", ""t""]"	"[""ʃ"", ""iː"", ""l"", ""d""]"	
+SOUND_0432	unrelated	0	validation	heist	wank	"[""h"", ""aɪ"", ""s"", ""t""]"	"[""w"", ""æ"", ""ŋ"", ""k""]"	
+SOUND_0433	unrelated	0	validation	heist	warn	"[""h"", ""aɪ"", ""s"", ""t""]"	"[""w"", ""ɔ"", ""ɹ"", ""n""]"	
+SOUND_0434	unrelated	0	validation	heist	woke	"[""h"", ""aɪ"", ""s"", ""t""]"	"[""w"", ""oʊ"", ""k""]"	
+SOUND_0435	unrelated	0	validation	heist	ya	"[""h"", ""aɪ"", ""s"", ""t""]"	"[""j"", ""ə""]"	
+SOUND_0436	unrelated	0	validation	helps	tones	"[""h"", ""ɛ"", ""l"", ""p"", ""s""]"	"[""t"", ""oʊ"", ""n"", ""z""]"	
+SOUND_0437	unrelated	0	validation	hilt	own	"[""h"", ""ɪ"", ""l"", ""t""]"	"[""oʊ"", ""n""]"	unseen_phase1:hilt
+SOUND_0438	unrelated	0	validation	link	own	"[""l"", ""ɪ"", ""ŋ"", ""k""]"	"[""oʊ"", ""n""]"	
+SOUND_0439	unrelated	0	validation	loves	own	"[""l"", ""ʌ"", ""v"", ""z""]"	"[""oʊ"", ""n""]"	
+SOUND_0440	unrelated	0	validation	my	tones	"[""m"", ""aɪ""]"	"[""t"", ""oʊ"", ""n"", ""z""]"	
+SOUND_0441	unrelated	0	validation	own	pas	"[""oʊ"", ""n""]"	"[""p"", ""æ"", ""s""]"	
+SOUND_0442	unrelated	0	validation	own	peas	"[""oʊ"", ""n""]"	"[""p"", ""iː"", ""z""]"	
+SOUND_0443	unrelated	0	validation	own	por	"[""oʊ"", ""n""]"	"[""p"", ""ɔ"", ""ɹ""]"	
+SOUND_0444	unrelated	0	validation	own	prank	"[""oʊ"", ""n""]"	"[""p"", ""ɹ"", ""æ"", ""ŋ"", ""k""]"	
+SOUND_0445	unrelated	0	validation	own	proud	"[""oʊ"", ""n""]"	"[""p"", ""ɹ"", ""aʊ"", ""d""]"	
+SOUND_0446	unrelated	0	validation	own	quits	"[""oʊ"", ""n""]"	"[""k"", ""w"", ""ɪ"", ""t"", ""s""]"	
+SOUND_0447	unrelated	0	validation	own	shrink	"[""oʊ"", ""n""]"	"[""ʃ"", ""ɹ"", ""ɪ"", ""ŋ"", ""k""]"	
+SOUND_0448	unrelated	0	validation	own	sift	"[""oʊ"", ""n""]"	"[""s"", ""ɪ"", ""f"", ""t""]"	unseen_phase1:sift
+SOUND_0449	unrelated	0	validation	own	sit	"[""oʊ"", ""n""]"	"[""s"", ""ɪ"", ""t""]"	
+SOUND_0450	unrelated	0	validation	own	slum	"[""oʊ"", ""n""]"	"[""s"", ""l"", ""ʌ"", ""m""]"	unseen_phase1:slum
+SOUND_0451	unrelated	0	validation	own	studs	"[""oʊ"", ""n""]"	"[""s"", ""t"", ""ʌ"", ""d"", ""z""]"	unseen_phase1:studs
+SOUND_0452	unrelated	0	validation	own	stunk	"[""oʊ"", ""n""]"	"[""s"", ""t"", ""ʌ"", ""ŋ"", ""k""]"	
+SOUND_0453	unrelated	0	validation	own	vamp	"[""oʊ"", ""n""]"	"[""v"", ""æ"", ""m"", ""p""]"	unseen_phase1:vamp
+SOUND_0454	unrelated	0	validation	own	veal	"[""oʊ"", ""n""]"	"[""v"", ""iː"", ""l""]"	
+SOUND_0455	unrelated	0	validation	pew	tones	"[""p"", ""j"", ""uː""]"	"[""t"", ""oʊ"", ""n"", ""z""]"	
+SOUND_0456	unrelated	0	validation	prick	tons	"[""p"", ""ɹ"", ""ɪ"", ""k""]"	"[""t"", ""ʌ"", ""n"", ""z""]"	
+SOUND_0457	unrelated	0	validation	scoop	tones	"[""s"", ""k"", ""uː"", ""p""]"	"[""t"", ""oʊ"", ""n"", ""z""]"	
+SOUND_0458	unrelated	0	validation	sued	tones	"[""s"", ""uː"", ""d""]"	"[""t"", ""oʊ"", ""n"", ""z""]"	
+SOUND_0459	unrelated	0	validation	tones	wok	"[""t"", ""oʊ"", ""n"", ""z""]"	"[""w"", ""ɑ"", ""k""]"	
+SOUND_0460	unrelated	0	validation	tons	weld	"[""t"", ""ʌ"", ""n"", ""z""]"	"[""w"", ""ɛ"", ""l"", ""d""]"	unseen_phase1:weld
+SOUND_0461	onset	1	test	aft	amp	"[""æ"", ""f"", ""t""]"	"[""æ"", ""m"", ""p""]"	unseen_phase1:amp
+SOUND_0462	onset	1	test	aft	at	"[""æ"", ""f"", ""t""]"	"[""æ"", ""t""]"	
+SOUND_0463	onset	1	test	age	ake	"[""eɪ"", ""d̠ʒ""]"	"[""eɪ"", ""k""]"	
+SOUND_0464	onset	1	test	base	brink	"[""b"", ""eɪ"", ""s""]"	"[""b"", ""ɹ"", ""ɪ"", ""ŋ"", ""k""]"	
+SOUND_0465	onset	1	test	beg	blunt	"[""b"", ""ɛ"", ""ɡ""]"	"[""b"", ""l"", ""ʌ"", ""n"", ""t""]"	unseen_phase1:blunt
+SOUND_0466	onset	1	test	bleu	burn	"[""b"", ""l"", ""uː""]"	"[""b"", ""ɜː"", ""n""]"	
+SOUND_0467	onset	1	test	blog	bra	"[""b"", ""l"", ""ɑ"", ""ɡ""]"	"[""b"", ""ɹ"", ""ɑ""]"	unseen_phase1:blog
+SOUND_0468	onset	1	test	blonde	boy	"[""b"", ""l"", ""ɑ"", ""n"", ""d""]"	"[""b"", ""ɔɪ""]"	
+SOUND_0469	onset	1	test	cakes	carbs	"[""k"", ""eɪ"", ""k"", ""s""]"	"[""k"", ""ɑ"", ""ɹ"", ""b"", ""z""]"	
+SOUND_0470	onset	1	test	calves	quo	"[""k"", ""æ"", ""v"", ""z""]"	"[""k"", ""w"", ""oʊ""]"	
+SOUND_0471	onset	1	test	carbs	con	"[""k"", ""ɑ"", ""ɹ"", ""b"", ""z""]"	"[""k"", ""ɑ"", ""n""]"	
+SOUND_0472	onset	1	test	carbs	crop	"[""k"", ""ɑ"", ""ɹ"", ""b"", ""z""]"	"[""k"", ""ɹ"", ""ɑ"", ""p""]"	
+SOUND_0473	onset	1	test	czar	zoo	"[""z"", ""ɑ"", ""ɹ""]"	"[""z"", ""uː""]"	
+SOUND_0474	onset	1	test	dah	deux	"[""d"", ""ɑ""]"	"[""d"", ""j"", ""uː""]"	unseen_phase1:deux
+SOUND_0475	onset	1	test	edge	em	"[""ɛ"", ""d̠ʒ""]"	"[""ɛ"", ""m""]"	
+SOUND_0476	onset	1	test	fact	feet	"[""f"", ""æ"", ""k"", ""t""]"	"[""f"", ""iː"", ""t""]"	
+SOUND_0477	onset	1	test	fate	flux	"[""f"", ""eɪ"", ""t""]"	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	unseen_phase1:flux
+SOUND_0478	onset	1	test	fin	flood	"[""f"", ""ɪ"", ""n""]"	"[""f"", ""l"", ""ʌ"", ""d""]"	
+SOUND_0479	onset	1	test	fix	foot	"[""f"", ""ɪ"", ""k"", ""s""]"	"[""f"", ""ʊ"", ""t""]"	
+SOUND_0480	onset	1	test	gays	gosh	"[""ɡ"", ""eɪ"", ""z""]"	"[""ɡ"", ""ɑ"", ""ʃ""]"	unseen_phase1:gays
+SOUND_0481	onset	1	test	grabs	grunt	"[""ɡ"", ""ɹ"", ""æ"", ""b"", ""z""]"	"[""ɡ"", ""ɹ"", ""ʌ"", ""n"", ""t""]"	
+SOUND_0482	onset	1	test	hem	huh	"[""h"", ""ɛ"", ""m""]"	"[""h"", ""ʌ""]"	
+SOUND_0483	onset	1	test	knit	nerve	"[""n"", ""ɪ"", ""t""]"	"[""n"", ""ɜː"", ""v""]"	
+SOUND_0484	onset	1	test	knit	note	"[""n"", ""ɪ"", ""t""]"	"[""n"", ""oʊ"", ""t""]"	
+SOUND_0485	onset	1	test	lain	loo	"[""l"", ""eɪ"", ""n""]"	"[""l"", ""uː""]"	unseen_phase1:lain
+SOUND_0486	onset	1	test	lobes	long	"[""l"", ""oʊ"", ""b"", ""z""]"	"[""l"", ""ɔ"", ""ŋ""]"	
+SOUND_0487	onset	1	test	ninth	nip	"[""n"", ""aɪ"", ""n"", ""θ""]"	"[""n"", ""ɪ"", ""p""]"	
+SOUND_0488	onset	1	test	pad	pays	"[""p"", ""æ"", ""d""]"	"[""p"", ""eɪ"", ""z""]"	
+SOUND_0489	onset	1	test	pep	posts	"[""p"", ""ɛ"", ""p""]"	"[""p"", ""oʊ"", ""s"", ""t"", ""s""]"	
+SOUND_0490	onset	1	test	saw	spunk	"[""s"", ""ɔ""]"	"[""s"", ""p"", ""ʌ"", ""ŋ"", ""k""]"	unseen_phase1:spunk
+SOUND_0491	onset	1	test	send	sound	"[""s"", ""ɛ"", ""n"", ""d""]"	"[""s"", ""aʊ"", ""n"", ""d""]"	
+SOUND_0492	onset	1	test	shores	shunt	"[""ʃ"", ""ɔ"", ""ɹ"", ""z""]"	"[""ʃ"", ""ʌ"", ""n"", ""t""]"	unseen_phase1:shores,shunt
+SOUND_0493	onset	1	test	siege	skit	"[""s"", ""iː"", ""d̠ʒ""]"	"[""s"", ""k"", ""ɪ"", ""t""]"	unseen_phase1:siege
+SOUND_0494	onset	1	test	sir	snide	"[""s"", ""ɜː""]"	"[""s"", ""n"", ""aɪ"", ""d""]"	unseen_phase1:snide
+SOUND_0495	onset	1	test	tack	tie	"[""t"", ""æ"", ""k""]"	"[""t"", ""aɪ""]"	
+SOUND_0496	onset	1	test	tell	trail	"[""t"", ""ɛ"", ""l""]"	"[""t"", ""ɹ"", ""eɪ"", ""l""]"	
+SOUND_0497	onset	1	test	vat	view	"[""v"", ""æ"", ""t""]"	"[""v"", ""j"", ""uː""]"	
+SOUND_0498	onset	1	test	vexed	vines	"[""v"", ""ɛ"", ""k"", ""s"", ""t""]"	"[""v"", ""aɪ"", ""n"", ""z""]"	
+SOUND_0499	onset	1	test	walls	work	"[""w"", ""ɔ"", ""l"", ""z""]"	"[""w"", ""ɜː"", ""k""]"	
+SOUND_0500	onset	1	test	you	young	"[""j"", ""uː""]"	"[""j"", ""ʌ"", ""ŋ""]"	
+SOUND_0501	rhyme	1	test	act	tact	"[""æ"", ""k"", ""t""]"	"[""t"", ""æ"", ""k"", ""t""]"	
+SOUND_0502	rhyme	1	test	aft	graft	"[""æ"", ""f"", ""t""]"	"[""ɡ"", ""ɹ"", ""æ"", ""f"", ""t""]"	unseen_phase1:graft
+SOUND_0503	rhyme	1	test	bleu	loo	"[""b"", ""l"", ""uː""]"	"[""l"", ""uː""]"	
+SOUND_0504	rhyme	1	test	bleu	view	"[""b"", ""l"", ""uː""]"	"[""v"", ""j"", ""uː""]"	
+SOUND_0505	rhyme	1	test	bleu	who	"[""b"", ""l"", ""uː""]"	"[""h"", ""uː""]"	
+SOUND_0506	rhyme	1	test	brink	pink	"[""b"", ""ɹ"", ""ɪ"", ""ŋ"", ""k""]"	"[""p"", ""ɪ"", ""ŋ"", ""k""]"	
+SOUND_0507	rhyme	1	test	brisk	risk	"[""b"", ""ɹ"", ""ɪ"", ""s"", ""k""]"	"[""ɹ"", ""ɪ"", ""s"", ""k""]"	unseen_phase1:brisk
+SOUND_0508	rhyme	1	test	but	hut	"[""b"", ""ʌ"", ""t""]"	"[""h"", ""ʌ"", ""t""]"	
+SOUND_0509	rhyme	1	test	came	lame	"[""k"", ""eɪ"", ""m""]"	"[""l"", ""eɪ"", ""m""]"	
+SOUND_0510	rhyme	1	test	cart	smart	"[""k"", ""ɑ"", ""ɹ"", ""t""]"	"[""s"", ""m"", ""ɑ"", ""ɹ"", ""t""]"	
+SOUND_0511	rhyme	1	test	do	zoo	"[""d"", ""uː""]"	"[""z"", ""uː""]"	
+SOUND_0512	rhyme	1	test	doo	flu	"[""d"", ""uː""]"	"[""f"", ""l"", ""uː""]"	
+SOUND_0513	rhyme	1	test	doo	loo	"[""d"", ""uː""]"	"[""l"", ""uː""]"	
+SOUND_0514	rhyme	1	test	dries	dyes	"[""d"", ""ɹ"", ""aɪ"", ""z""]"	"[""d"", ""aɪ"", ""z""]"	
+SOUND_0515	rhyme	1	test	fee	he	"[""f"", ""iː""]"	"[""h"", ""iː""]"	
+SOUND_0516	rhyme	1	test	fee	she	"[""f"", ""iː""]"	"[""ʃ"", ""iː""]"	
+SOUND_0517	rhyme	1	test	fin	tin	"[""f"", ""ɪ"", ""n""]"	"[""t"", ""ɪ"", ""n""]"	
+SOUND_0518	rhyme	1	test	fin	twin	"[""f"", ""ɪ"", ""n""]"	"[""t"", ""w"", ""ɪ"", ""n""]"	
+SOUND_0519	rhyme	1	test	flea	we	"[""f"", ""l"", ""iː""]"	"[""w"", ""iː""]"	
+SOUND_0520	rhyme	1	test	flip	skip	"[""f"", ""l"", ""ɪ"", ""p""]"	"[""s"", ""k"", ""ɪ"", ""p""]"	
+SOUND_0521	rhyme	1	test	fly	ly	"[""f"", ""l"", ""aɪ""]"	"[""l"", ""aɪ""]"	
+SOUND_0522	rhyme	1	test	fly	sly	"[""f"", ""l"", ""aɪ""]"	"[""s"", ""l"", ""aɪ""]"	
+SOUND_0523	rhyme	1	test	from	numb	"[""f"", ""ɹ"", ""ʌ"", ""m""]"	"[""n"", ""ʌ"", ""m""]"	
+SOUND_0524	rhyme	1	test	front	grunt	"[""f"", ""ɹ"", ""ʌ"", ""n"", ""t""]"	"[""ɡ"", ""ɹ"", ""ʌ"", ""n"", ""t""]"	
+SOUND_0525	rhyme	1	test	go	quo	"[""ɡ"", ""oʊ""]"	"[""k"", ""w"", ""oʊ""]"	
+SOUND_0526	rhyme	1	test	grew	shoe	"[""ɡ"", ""ɹ"", ""uː""]"	"[""ʃ"", ""uː""]"	
+SOUND_0527	rhyme	1	test	grew	you	"[""ɡ"", ""ɹ"", ""uː""]"	"[""j"", ""uː""]"	
+SOUND_0528	rhyme	1	test	grew	zoo	"[""ɡ"", ""ɹ"", ""uː""]"	"[""z"", ""uː""]"	
+SOUND_0529	rhyme	1	test	he	pee	"[""h"", ""iː""]"	"[""p"", ""iː""]"	
+SOUND_0530	rhyme	1	test	hold	sold	"[""h"", ""oʊ"", ""l"", ""d""]"	"[""s"", ""oʊ"", ""l"", ""d""]"	
+SOUND_0531	rhyme	1	test	key	we	"[""k"", ""iː""]"	"[""w"", ""iː""]"	
+SOUND_0532	rhyme	1	test	note	wrote	"[""n"", ""oʊ"", ""t""]"	"[""ɹ"", ""oʊ"", ""t""]"	
+SOUND_0533	rhyme	1	test	pie	pry	"[""p"", ""aɪ""]"	"[""p"", ""ɹ"", ""aɪ""]"	
+SOUND_0534	rhyme	1	test	rag	snag	"[""ɹ"", ""æ"", ""ɡ""]"	"[""s"", ""n"", ""æ"", ""ɡ""]"	
+SOUND_0535	rhyme	1	test	rates	waits	"[""ɹ"", ""eɪ"", ""t"", ""s""]"	"[""w"", ""eɪ"", ""t"", ""s""]"	
+SOUND_0536	rhyme	1	test	sat	stat	"[""s"", ""æ"", ""t""]"	"[""s"", ""t"", ""æ"", ""t""]"	unseen_phase1:stat
+SOUND_0537	rhyme	1	test	she	t	"[""ʃ"", ""iː""]"	"[""t"", ""iː""]"	
+SOUND_0538	rhyme	1	test	shot	slot	"[""ʃ"", ""ɑ"", ""t""]"	"[""s"", ""l"", ""ɑ"", ""t""]"	
+SOUND_0539	rhyme	1	test	smirk	work	"[""s"", ""m"", ""ɜː"", ""k""]"	"[""w"", ""ɜː"", ""k""]"	
+SOUND_0540	rhyme	1	test	starts	tarts	"[""s"", ""t"", ""ɑ"", ""ɹ"", ""t"", ""s""]"	"[""t"", ""ɑ"", ""ɹ"", ""t"", ""s""]"	
+SOUND_0541	unrelated	0	test	bathed	na	"[""b"", ""eɪ"", ""ð"", ""d""]"	"[""n"", ""ɑ""]"	
+SOUND_0542	unrelated	0	test	blog	na	"[""b"", ""l"", ""ɑ"", ""ɡ""]"	"[""n"", ""ɑ""]"	unseen_phase1:blog
+SOUND_0543	unrelated	0	test	bloke	na	"[""b"", ""l"", ""oʊ"", ""k""]"	"[""n"", ""ɑ""]"	unseen_phase1:bloke
+SOUND_0544	unrelated	0	test	brings	na	"[""b"", ""ɹ"", ""ɪ"", ""ŋ"", ""z""]"	"[""n"", ""ɑ""]"	
+SOUND_0545	unrelated	0	test	butt	cards	"[""b"", ""ʌ"", ""t""]"	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	
+SOUND_0546	unrelated	0	test	by	flux	"[""b"", ""aɪ""]"	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	unseen_phase1:flux
+SOUND_0547	unrelated	0	test	cards	chaps	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""t̠ʃ"", ""æ"", ""p"", ""s""]"	
+SOUND_0548	unrelated	0	test	cards	lust	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""l"", ""ʌ"", ""s"", ""t""]"	unseen_phase1:lust
+SOUND_0549	unrelated	0	test	cards	pee	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""p"", ""iː""]"	
+SOUND_0550	unrelated	0	test	cards	plea	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""p"", ""l"", ""iː""]"	
+SOUND_0551	unrelated	0	test	cards	putt	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""p"", ""ʌ"", ""t""]"	
+SOUND_0552	unrelated	0	test	cards	spy	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""s"", ""p"", ""aɪ""]"	
+SOUND_0553	unrelated	0	test	cards	teeth	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""t"", ""iː"", ""θ""]"	
+SOUND_0554	unrelated	0	test	cards	tempt	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""t"", ""ɛ"", ""m"", ""p"", ""t""]"	
+SOUND_0555	unrelated	0	test	cards	then	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""ð"", ""ɛ"", ""n""]"	
+SOUND_0556	unrelated	0	test	cards	tile	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""t"", ""aɪ"", ""l""]"	
+SOUND_0557	unrelated	0	test	cards	tin	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""t"", ""ɪ"", ""n""]"	
+SOUND_0558	unrelated	0	test	cards	tu	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""t"", ""uː""]"	
+SOUND_0559	unrelated	0	test	cards	twin	"[""k"", ""ɑ"", ""ɹ"", ""d"", ""z""]"	"[""t"", ""w"", ""ɪ"", ""n""]"	
+SOUND_0560	unrelated	0	test	crass	na	"[""k"", ""ɹ"", ""æ"", ""s""]"	"[""n"", ""ɑ""]"	unseen_phase1:crass
+SOUND_0561	unrelated	0	test	croak	na	"[""k"", ""ɹ"", ""oʊ"", ""k""]"	"[""n"", ""ɑ""]"	
+SOUND_0562	unrelated	0	test	dab	wuss	"[""d"", ""æ"", ""b""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0563	unrelated	0	test	dibs	flux	"[""d"", ""ɪ"", ""b"", ""z""]"	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	unseen_phase1:dibs,flux
+SOUND_0564	unrelated	0	test	dip	wuss	"[""d"", ""ɪ"", ""p""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0565	unrelated	0	test	dirt	flux	"[""d"", ""ɜː"", ""t""]"	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	unseen_phase1:flux
+SOUND_0566	unrelated	0	test	drip	wuss	"[""d"", ""ɹ"", ""ɪ"", ""p""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0567	unrelated	0	test	dwarfs	na	"[""d"", ""w"", ""ɔ"", ""ɹ"", ""f"", ""s""]"	"[""n"", ""ɑ""]"	
+SOUND_0568	unrelated	0	test	dweeb	flux	"[""d"", ""w"", ""iː"", ""b""]"	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	unseen_phase1:dweeb,flux
+SOUND_0569	unrelated	0	test	dyes	wuss	"[""d"", ""aɪ"", ""z""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0570	unrelated	0	test	fate	wuss	"[""f"", ""eɪ"", ""t""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0571	unrelated	0	test	flag	wuss	"[""f"", ""l"", ""æ"", ""ɡ""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0572	unrelated	0	test	flux	harm	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""h"", ""ɑ"", ""ɹ"", ""m""]"	unseen_phase1:flux
+SOUND_0573	unrelated	0	test	flux	hep	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""h"", ""ɛ"", ""p""]"	unseen_phase1:flux
+SOUND_0574	unrelated	0	test	flux	meet	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""m"", ""iː"", ""t""]"	unseen_phase1:flux
+SOUND_0575	unrelated	0	test	flux	nip	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""n"", ""ɪ"", ""p""]"	unseen_phase1:flux
+SOUND_0576	unrelated	0	test	flux	pain	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""p"", ""eɪ"", ""n""]"	unseen_phase1:flux
+SOUND_0577	unrelated	0	test	flux	paw	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""p"", ""ɔ""]"	unseen_phase1:flux
+SOUND_0578	unrelated	0	test	flux	prod	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""p"", ""ɹ"", ""ɑ"", ""d""]"	unseen_phase1:flux
+SOUND_0579	unrelated	0	test	flux	pros	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""p"", ""ɹ"", ""oʊ"", ""z""]"	unseen_phase1:flux
+SOUND_0580	unrelated	0	test	flux	rash	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""ɹ"", ""æ"", ""ʃ""]"	unseen_phase1:flux
+SOUND_0581	unrelated	0	test	flux	sham	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""ʃ"", ""æ"", ""m""]"	unseen_phase1:flux
+SOUND_0582	unrelated	0	test	flux	she	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""ʃ"", ""iː""]"	unseen_phase1:flux
+SOUND_0583	unrelated	0	test	flux	vent	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""v"", ""ɛ"", ""n"", ""t""]"	unseen_phase1:flux
+SOUND_0584	unrelated	0	test	flux	vet	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""v"", ""ɛ"", ""t""]"	unseen_phase1:flux
+SOUND_0585	unrelated	0	test	flux	wave	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""w"", ""eɪ"", ""v""]"	unseen_phase1:flux
+SOUND_0586	unrelated	0	test	flux	woes	"[""f"", ""l"", ""ʌ"", ""k"", ""s""]"	"[""w"", ""oʊ"", ""z""]"	unseen_phase1:flux,woes
+SOUND_0587	unrelated	0	test	free	wuss	"[""f"", ""ɹ"", ""iː""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0588	unrelated	0	test	heats	na	"[""h"", ""iː"", ""t"", ""s""]"	"[""n"", ""ɑ""]"	
+SOUND_0589	unrelated	0	test	held	na	"[""h"", ""ɛ"", ""l"", ""d""]"	"[""n"", ""ɑ""]"	
+SOUND_0590	unrelated	0	test	horn	wuss	"[""h"", ""ɔ"", ""ɹ"", ""n""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0591	unrelated	0	test	jib	na	"[""d̠ʒ"", ""ɪ"", ""b""]"	"[""n"", ""ɑ""]"	unseen_phase1:jib
+SOUND_0592	unrelated	0	test	kits	na	"[""k"", ""ɪ"", ""t"", ""s""]"	"[""n"", ""ɑ""]"	
+SOUND_0593	unrelated	0	test	lobes	na	"[""l"", ""oʊ"", ""b"", ""z""]"	"[""n"", ""ɑ""]"	
+SOUND_0594	unrelated	0	test	mates	na	"[""m"", ""eɪ"", ""t"", ""s""]"	"[""n"", ""ɑ""]"	
+SOUND_0595	unrelated	0	test	me	na	"[""m"", ""iː""]"	"[""n"", ""ɑ""]"	
+SOUND_0596	unrelated	0	test	mute	na	"[""m"", ""j"", ""uː"", ""t""]"	"[""n"", ""ɑ""]"	
+SOUND_0597	unrelated	0	test	mute	wuss	"[""m"", ""j"", ""uː"", ""t""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0598	unrelated	0	test	na	pipes	"[""n"", ""ɑ""]"	"[""p"", ""aɪ"", ""p"", ""s""]"	
+SOUND_0599	unrelated	0	test	na	see	"[""n"", ""ɑ""]"	"[""s"", ""iː""]"	
+SOUND_0600	unrelated	0	test	na	seeks	"[""n"", ""ɑ""]"	"[""s"", ""iː"", ""k"", ""s""]"	
+SOUND_0601	unrelated	0	test	na	sixth	"[""n"", ""ɑ""]"	"[""s"", ""ɪ"", ""k"", ""s"", ""θ""]"	
+SOUND_0602	unrelated	0	test	na	skit	"[""n"", ""ɑ""]"	"[""s"", ""k"", ""ɪ"", ""t""]"	
+SOUND_0603	unrelated	0	test	na	smiled	"[""n"", ""ɑ""]"	"[""s"", ""m"", ""aɪ"", ""l"", ""d""]"	
+SOUND_0604	unrelated	0	test	na	source	"[""n"", ""ɑ""]"	"[""s"", ""ɔ"", ""ɹ"", ""s""]"	
+SOUND_0605	unrelated	0	test	na	spread	"[""n"", ""ɑ""]"	"[""s"", ""p"", ""ɹ"", ""ɛ"", ""d""]"	
+SOUND_0606	unrelated	0	test	na	tank	"[""n"", ""ɑ""]"	"[""t"", ""æ"", ""ŋ"", ""k""]"	
+SOUND_0607	unrelated	0	test	na	tell	"[""n"", ""ɑ""]"	"[""t"", ""ɛ"", ""l""]"	
+SOUND_0608	unrelated	0	test	na	theft	"[""n"", ""ɑ""]"	"[""θ"", ""ɛ"", ""f"", ""t""]"	unseen_phase1:theft
+SOUND_0609	unrelated	0	test	na	ting	"[""n"", ""ɑ""]"	"[""t"", ""ɪ"", ""ŋ""]"	
+SOUND_0610	unrelated	0	test	na	vexed	"[""n"", ""ɑ""]"	"[""v"", ""ɛ"", ""k"", ""s"", ""t""]"	
+SOUND_0611	unrelated	0	test	na	vice	"[""n"", ""ɑ""]"	"[""v"", ""aɪ"", ""s""]"	
+SOUND_0612	unrelated	0	test	na	votes	"[""n"", ""ɑ""]"	"[""v"", ""oʊ"", ""t"", ""s""]"	
+SOUND_0613	unrelated	0	test	na	vows	"[""n"", ""ɑ""]"	"[""v"", ""aʊ"", ""z""]"	unseen_phase1:vows
+SOUND_0614	unrelated	0	test	na	wuss	"[""n"", ""ɑ""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0615	unrelated	0	test	puke	wuss	"[""p"", ""j"", ""uː"", ""k""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0616	unrelated	0	test	shores	smirk	"[""ʃ"", ""ɔ"", ""ɹ"", ""z""]"	"[""s"", ""m"", ""ɜː"", ""k""]"	unseen_phase1:shores
+SOUND_0617	unrelated	0	test	shores	spunk	"[""ʃ"", ""ɔ"", ""ɹ"", ""z""]"	"[""s"", ""p"", ""ʌ"", ""ŋ"", ""k""]"	unseen_phase1:shores,spunk
+SOUND_0618	unrelated	0	test	tank	wuss	"[""t"", ""æ"", ""ŋ"", ""k""]"	"[""w"", ""ʊ"", ""s""]"	
+SOUND_0619	unrelated	0	test	vows	wuss	"[""v"", ""aʊ"", ""z""]"	"[""w"", ""ʊ"", ""s""]"	unseen_phase1:vows
+SOUND_0620	unrelated	0	test	wuss	zing	"[""w"", ""ʊ"", ""s""]"	"[""z"", ""ɪ"", ""ŋ""]"	

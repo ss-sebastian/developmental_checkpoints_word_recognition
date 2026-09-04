@@ -1,0 +1,13 @@
+task	split	n_total	n_label_0	n_label_1
+Sound	train	360	180	180
+Sound	validation	100	50	50
+Sound	test	160	80	80
+Meaning	train	360	180	180
+Meaning	validation	100	50	50
+Meaning	test	160	80	80
+Plausibility	train	360	180	180
+Plausibility	validation	100	50	50
+Plausibility	test	160	80	80
+Grammaticality	train	360	180	180
+Grammaticality	validation	100	50	50
+Grammaticality	test	160	80	80

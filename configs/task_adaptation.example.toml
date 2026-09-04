@@ -1,0 +1,31 @@
+# Infrastructure example only. Every numerical value below is PROVISIONAL until
+# real adaptation datasets are selected. This file does not start training.
+[task_adaptation]
+task_name = "Sound"
+manifest_path = "../tests/fixtures/task_adaptation.synthetic.tsv"
+split_path = "../outputs/task_adaptation/sound_item_split.json"
+
+hidden_dim = 256
+
+learning_rate = 0.001
+weight_decay = 0.0
+optimizer_family = "AdamW" # PROVISIONAL; one family must later be shared by M01-M30.
+batch_size = 32
+
+# Same fixed opportunity for every checkpoint; future early stopping is based
+# only on validation-loss plateau, never on a target accuracy.
+max_epochs = 100
+patience = 10
+min_delta = 0.0001
+early_stopping_metric = "validation_loss"
+
+# `seed` governs the one saved item split. Initialization repeats are separate:
+# every listed seed must be paired across the complete M01-M30 checkpoint series.
+seed = 1729
+initialization_seeds = [1729, 2718, 3141] # PROVISIONAL robustness replicates, not CV folds.
+
+# These ratios and sizes are infrastructure placeholders, not scientific choices.
+train_fraction = 0.70
+validation_fraction = 0.15
+test_fraction = 0.15
+adaptation_sizes = [25, 50, 100, 200, 400]

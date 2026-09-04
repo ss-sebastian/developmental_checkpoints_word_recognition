@@ -5,6 +5,8 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 outputs/
+data/task_adaptation_stimuli/sources/raw/
+data/task_adaptation_stimuli/_invalid_draft_backup_*/
 
 # Pre-existing local MRI audit artifacts; unrelated to this Phase 1 repository.
 download_ds001894_longitudinal_vv_subset.sh
