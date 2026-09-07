@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "task": "Meaning",
+  "candidate_count": 3100,
+  "final_count": 1000,
+  "split_counts": {
+    "train": 580,
+    "validation": 160,
+    "test": 260
+  },
+  "condition_counts": {
+    "high_association": 250,
+    "low_association": 250,
+    "unrelated": 500
+  },
+  "label_counts_by_split": {
+    "train": {
+      "1": 290,
+      "0": 290
+    },
+    "validation": {
+      "1": 80,
+      "0": 80
+    },
+    "test": {
+      "1": 130,
+      "0": 130
+    }
+  },
+  "ds003604_exact_overlap_count": 0,
+  "ds003604_critical_vocabulary_overlap_count": 0,
+  "cross_split_critical_vocabulary_overlap_count": 0,
+  "max_absolute_smd": 0.032251064670365454,
+  "smd_target": 0.1,
+  "items_with_unseen_phase1_content_words": 93,
+  "selection_seed": 1729,
+  "selection_method": "single-seed mixed-integer constrained randomization from recorded 3100-item pool",
+  "model_outputs_used_for_selection": false,
+  "child_behavior_used_for_selection": false,
+  "final_all_sha256": "d88099d66f1da6cf5150333f9025a98ca5042502db59c7261a63eafc17c53136",
+  "ipa_childes_rows_scanned": 2564614
+}

@@ -46,22 +46,28 @@ def select_word_candidates(
     task: str,
     candidates: list[dict[str, object]],
     original_source_rows: list[dict[str, str]],
+    *,
+    condition_counts: dict[str, dict[str, int]] | None = None,
 ) -> list[dict[str, object]]:
     """Select the fixed word-task manifests from their recorded 5x pools."""
     if len(candidates) != 3100:
         raise RuntimeError(f"{task}: {len(candidates)} candidate rows; required 3,100")
+    custom_counts = condition_counts is not None
+    counts = condition_counts or CONDITION_COUNTS[task]
+    splits = tuple(counts)
+    expected_total = sum(sum(split_counts.values()) for split_counts in counts.values())
     rows = candidates
     n_rows = len(rows)
     words = sorted({str(row["word1"]) for row in rows} | {str(row["word2"]) for row in rows})
     word_index = {word: index for index, word in enumerate(words)}
-    n_x = n_rows * len(SPLITS)
-    n_variables = n_x + len(words) * len(SPLITS)
+    n_x = n_rows * len(splits)
+    n_variables = n_x + len(words) * len(splits)
 
     def x_index(row_index: int, split_index: int) -> int:
-        return row_index * len(SPLITS) + split_index
+        return row_index * len(splits) + split_index
 
     def y_index(word: str, split_index: int) -> int:
-        return n_x + word_index[word] * len(SPLITS) + split_index
+        return n_x + word_index[word] * len(splits) + split_index
 
     matrix_rows: list[int] = []
     matrix_cols: list[int] = []
@@ -79,22 +85,22 @@ def select_word_candidates(
         upper.append(high)
 
     for row_index in range(n_rows):
-        constraint({x_index(row_index, s): 1.0 for s in range(len(SPLITS))}, 0.0, 1.0)
-    for split_index, split in enumerate(SPLITS):
-        for condition_name, required in CONDITION_COUNTS[task][split].items():
+        constraint({x_index(row_index, s): 1.0 for s in range(len(splits))}, 0.0, 1.0)
+    for split_index, split in enumerate(splits):
+        for condition_name, required in counts[split].items():
             constraint({
                 x_index(row_index, split_index): 1.0
                 for row_index, row in enumerate(rows) if row["condition"] == condition_name
             }, required, required)
     for row_index, row in enumerate(rows):
-        for split_index in range(len(SPLITS)):
+        for split_index in range(len(splits)):
             for word in {str(row["word1"]), str(row["word2"])}:
                 constraint(
                     {x_index(row_index, split_index): 1.0, y_index(word, split_index): -1.0},
                     -np.inf, 0.0,
                 )
     for word in words:
-        constraint({y_index(word, s): 1.0 for s in range(len(SPLITS))}, 0.0, 1.0)
+        constraint({y_index(word, s): 1.0 for s in range(len(splits))}, 0.0, 1.0)
 
     features = (
         "mean_subtlex_zipf", "within_pair_subtlex_difference",
@@ -116,45 +122,61 @@ def select_word_candidates(
         else:
             target = float(np.mean([
                 np.mean([_word_feature(row, feature_name) for row in rows if row["condition"] == condition])
-                for condition in CONDITION_COUNTS[task]["train"]
+                for condition in counts["train"]
             ]))
         tolerance = 0.015 * scale
-        for condition_name in CONDITION_COUNTS[task]["train"]:
-            required = sum(CONDITION_COUNTS[task][split][condition_name] for split in SPLITS)
-            coefficients = {
-                x_index(row_index, split_index): _word_feature(row, feature_name)
-                for row_index, row in enumerate(rows) if row["condition"] == condition_name
-                for split_index in range(len(SPLITS))
-            }
-            constraint(coefficients, required * (target - tolerance), required * (target + tolerance))
+        # Matching only after pooling train/validation/test can conceal a large
+        # label-correlated distribution shift in an individual partition.  The
+        # readout is evaluated within partitions, so impose the same nuisance
+        # target separately in every split and condition.
+        for split_index, split in enumerate(splits):
+            for condition_name, required in counts[split].items():
+                coefficients = {
+                    x_index(row_index, split_index): _word_feature(row, feature_name)
+                    for row_index, row in enumerate(rows)
+                    if row["condition"] == condition_name
+                }
+                constraint(
+                    coefficients,
+                    required * (target - tolerance),
+                    required * (target + tolerance),
+                )
 
     matrix = coo_matrix(
         (matrix_data, (matrix_rows, matrix_cols)), shape=(len(lower), n_variables),
     ).tocsr()
     objective = np.zeros(n_variables, dtype=float)
     for row_index, row in enumerate(rows):
-        for split_index, split in enumerate(SPLITS):
-            objective[x_index(row_index, split_index)] = 1.0 + 1e-4 * _stable_unit(
-                task, str(row["item_id"]), split,
+        for split_index, split in enumerate(splits):
+            tie_break = _stable_unit(task, str(row["item_id"]), split)
+            # The number selected is fixed by the equality constraints, so a
+            # constant per-item cost has no effect.  For custom-sized builds,
+            # optimize the seeded tie-break at full scale and require an exact
+            # solution; otherwise the allowed MIP gap can swamp it and produce
+            # different valid manifests on repeated runs.
+            objective[x_index(row_index, split_index)] = (
+                tie_break if custom_counts else 1.0 + 1e-4 * tie_break
             )
     result = milp(
         c=objective,
         integrality=np.ones(n_variables, dtype=np.uint8),
         bounds=Bounds(np.zeros(n_variables), np.ones(n_variables)),
         constraints=LinearConstraint(matrix, np.asarray(lower), np.asarray(upper)),
-        options={"time_limit": 120.0, "mip_rel_gap": 1e-4},
+        options={"time_limit": 120.0, "mip_rel_gap": 0.0 if custom_counts else 1e-4},
     )
     if result.x is None:
         raise RuntimeError(f"{task}: constrained candidate selection failed: {result.message}")
     selected: list[dict[str, object]] = []
     for row_index, source in enumerate(rows):
-        for split_index, split in enumerate(SPLITS):
+        for split_index, split in enumerate(splits):
             if result.x[x_index(row_index, split_index)] > 0.5:
                 row = dict(source)
                 row["split"] = split
                 selected.append(row)
-    if len(selected) != 620:
-        raise RuntimeError(f"{task}: optimizer selected {len(selected)} rows; required 620")
+    if len(selected) != expected_total:
+        raise RuntimeError(
+            f"{task}: optimizer selected {len(selected)} rows; required {expected_total}"
+        )
     return selected
 
 
@@ -163,6 +185,10 @@ def select_reviewed_sentence_candidates(
     candidates: list[dict[str, object]],
     approved_item_ids: set[str],
     original_reference_rows: list[dict[str, object]],
+    *,
+    continuous_tolerance_scale: float = 0.015,
+    categorical_margin: int = 5,
+    diversity_slack_multiplier: int = 2,
 ) -> list[dict[str, object]]:
     """Select a fixed, balanced split only from human-reviewed candidates.
 
@@ -229,9 +255,30 @@ def select_reviewed_sentence_candidates(
     for word in words:
         constraint({y_index(word, s): 1.0 for s in range(len(SPLITS))}, 0.0, 1.0)
 
-    # Match nuisance-variable means across conditions. The common target is
-    # the midpoint of the feasible condition means; a 0.025 pooled-SD band
-    # makes pairwise mean differences comfortably smaller than |SMD|=.10.
+    # Preserve the effective lexical sample size.  Candidate rows are template
+    # variants, not independent lexical events; without a cap the optimizer can
+    # fill hundreds of slots with a handful of verb--object pairs.
+    for condition_name in CONDITION_COUNTS[task]["train"]:
+        required_total = sum(
+            CONDITION_COUNTS[task][split][condition_name] for split in SPLITS
+        )
+        pair_rows: dict[tuple[str, str], list[int]] = defaultdict(list)
+        for row_index, row in enumerate(rows):
+            if row["condition"] == condition_name:
+                pair_rows[(str(row["verb_lemma"]), str(row["object_lemma"]))].append(row_index)
+        # Two times the theoretical minimum leaves enough slack for strict
+        # cross-split vocabulary components while still preventing domination
+        # by a tiny number of repeated events.
+        max_per_pair = diversity_slack_multiplier * int(np.ceil(required_total / len(pair_rows)))
+        for row_indices in pair_rows.values():
+            constraint({
+                x_index(row_index, split_index): 1.0
+                for row_index in row_indices for split_index in range(len(SPLITS))
+            }, 0.0, float(max_per_pair))
+
+    # Match nuisance-variable means across conditions *inside every split*.
+    # A pooled-only constraint can pass QC while validation and test have
+    # opposite label-correlated shifts.
     features = (
         "mean_content_subtlex_zipf", "sentence_word_count", "sentence_phoneme_count",
     )
@@ -244,20 +291,19 @@ def select_reviewed_sentence_candidates(
             for condition_name in conditions
         ]
         target = float(np.mean(condition_means))
-        tolerance = 0.015 * scale
-        for condition_name in conditions:
-            required = sum(CONDITION_COUNTS[task][split][condition_name] for split in SPLITS)
-            coefficients = {
-                x_index(row_index, split_index): _feature(row, feature_name)
-                for row_index, row in enumerate(rows)
-                if row["condition"] == condition_name
-                for split_index in range(len(SPLITS))
-            }
-            constraint(
-                coefficients,
-                required * (target - tolerance),
-                required * (target + tolerance),
-            )
+        tolerance = continuous_tolerance_scale * scale
+        for split_index, split in enumerate(SPLITS):
+            for condition_name, required in CONDITION_COUNTS[task][split].items():
+                coefficients = {
+                    x_index(row_index, split_index): _feature(row, feature_name)
+                    for row_index, row in enumerate(rows)
+                    if row["condition"] == condition_name
+                }
+                constraint(
+                    coefficients,
+                    required * (target - tolerance),
+                    required * (target + tolerance),
+                )
 
     # Reproduce the original factorial sentence frame rather than allowing the
     # randomizer to overrepresent a convenient template, subject, or number.
@@ -266,49 +312,64 @@ def select_reviewed_sentence_candidates(
         "subject": ("she", "he", "they"),
         "number_word": ("one", "two", "three", "four", "five", "six"),
     }
-    for condition_name in CONDITION_COUNTS[task]["train"]:
-        required = sum(CONDITION_COUNTS[task][split][condition_name] for split in SPLITS)
-        reference = [row for row in original_reference_rows if row["condition"] == condition_name]
-        if not reference:
-            raise RuntimeError(f"{task}:{condition_name}: missing original reference rows")
-        for field, categories in categorical.items():
-            reference_counts = {
-                category: sum(str(row[field]).strip().lower() == category for row in reference)
-                for category in categories
-            }
-            raw_expected = {
-                category: required * reference_counts[category] / len(reference)
-                for category in categories
-            }
-            floors = {category: int(np.floor(value)) for category, value in raw_expected.items()}
-            remaining = required - sum(floors.values())
-            ranked = sorted(
-                categories,
-                key=lambda category: (
-                    -(raw_expected[category] - floors[category]),
-                    _stable_unit(task, condition_name, field, category),
-                ),
-            )
-            expected_counts = dict(floors)
-            for category in ranked[:remaining]:
-                expected_counts[category] += 1
-            for category, expected in expected_counts.items():
-                # Permit a five-item margin for the correlated template,
-                # subject, and number cells. This is the smallest tested band
-                # that remains feasible together with |SMD|<.10 and strict
-                # split-exclusive vocabulary.
-                margin = 5
-                coefficients = {
-                    x_index(row_index, split_index): 1.0
-                    for row_index, row in enumerate(rows)
-                    if row["condition"] == condition_name and str(row[field]) == category
-                    for split_index in range(len(SPLITS))
+    for split_index, split in enumerate(SPLITS):
+        for condition_name, required in CONDITION_COUNTS[task][split].items():
+            # Use one source-derived marginal target for every condition.  The
+            # task manipulation must not be accompanied by different template,
+            # subject, or number distributions.  Condition-specific empirical
+            # proportions are noisy and can reproduce an accidental confound.
+            reference = original_reference_rows
+            if not reference:
+                raise RuntimeError(f"{task}: missing original reference rows")
+            for field, categories in categorical.items():
+                reference_counts = {
+                    category: sum(str(row[field]).strip().lower() == category for row in reference)
+                    for category in categories
                 }
-                constraint(
-                    coefficients,
-                    max(0, expected - margin),
-                    expected + margin,
+                raw_expected = {
+                    category: required * reference_counts[category] / len(reference)
+                    for category in categories
+                }
+                floors = {category: int(np.floor(value)) for category, value in raw_expected.items()}
+                remaining = required - sum(floors.values())
+                ranked = sorted(
+                    categories,
+                    key=lambda category: (
+                        -(raw_expected[category] - floors[category]),
+                        _stable_unit(task, split, condition_name, field, category),
+                    ),
                 )
+                expected_counts = dict(floors)
+                for category in ranked[:remaining]:
+                    expected_counts[category] += 1
+                for category, expected in expected_counts.items():
+                    # One item accommodates integer rounding and correlations
+                    # among template, subject, and number within small cells.
+                    margin = categorical_margin
+                    coefficients = {
+                        x_index(row_index, split_index): 1.0
+                        for row_index, row in enumerate(rows)
+                        if row["condition"] == condition_name and str(row[field]) == category
+                    }
+                    constraint(
+                        coefficients,
+                        max(0, expected - margin),
+                        expected + margin,
+                    )
+        # The binary readout must not solve the task from a template, subject,
+        # or number imbalance.  Positive and negative halves are the same size
+        # in every split, so directly match each categorical marginal to within
+        # one item even when three-way subtype matching needs more slack.
+        for field, categories in categorical.items():
+            for category in categories:
+                coefficients = {
+                    x_index(row_index, split_index): (
+                        1.0 if int(row["binary_label"]) == 1 else -1.0
+                    )
+                    for row_index, row in enumerate(rows)
+                    if str(row[field]) == category
+                }
+                constraint(coefficients, -1.0, 1.0)
 
     matrix = coo_matrix(
         (matrix_data, (matrix_rows, matrix_cols)),

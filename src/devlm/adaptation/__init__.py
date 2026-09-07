@@ -2,6 +2,7 @@
 
 from .input import AdaptationBatch, build_adaptation_batch, build_adaptation_stream
 from .model import CHECKPOINT_IDS, FrozenGRUEncoder, instantiate_checkpoint_readouts, make_binary_readout, task_loss
+from .meaning_probe import MeaningProbeOptions, load_meaning_manifest, run_meaning_probe
 from .outputs import SeedOutputLayout, seed_output_layout, seed_run_manifest
 from .schema import AdaptationItem, TASK_NAMES, load_manifest
 from .train import TrainingOptions, discover_checkpoints, load_construction_manifest, train_all
@@ -12,4 +13,5 @@ __all__ = [
     "load_manifest", "make_binary_readout", "SeedOutputLayout", "seed_output_layout",
     "seed_run_manifest", "task_loss",
     "TrainingOptions", "discover_checkpoints", "load_construction_manifest", "train_all",
+    "MeaningProbeOptions", "load_meaning_manifest", "run_meaning_probe",
 ]

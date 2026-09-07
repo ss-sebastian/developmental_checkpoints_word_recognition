@@ -9,12 +9,57 @@ from pathlib import Path
 import torch
 
 from devlm.adaptation.train import (
-    TrainingOptions, discover_checkpoints, load_construction_manifest, train_all,
+    TrainingOptions, _train_head, discover_checkpoints, load_construction_manifest,
+    train_all, validate_partition_matching,
 )
 from devlm.model import CausalPhonemeGRU
 
 
 class AdaptationTrainingTests(unittest.TestCase):
+    def test_classifier_positive_control_learns_and_returns_raw_state_head(self) -> None:
+        generator = torch.Generator().manual_seed(44)
+        labels = torch.tensor(([0, 1] * 60), dtype=torch.float32)
+        representations = torch.randn(120, 4, generator=generator) * 0.15
+        representations[:, 0] += labels * 2 - 1
+        indices = {
+            "train": torch.arange(0, 60),
+            "validation": torch.arange(60, 90),
+            "test": torch.arange(90, 120),
+        }
+        head, metrics = _train_head(
+            representations, labels, indices, 4, 1729,
+            TrainingOptions(
+                learning_rate=0.05, batch_size=30, max_epochs=100,
+                patience=10, min_delta=1e-5, noise_sigma=0.0,
+                initialization_seeds=(1729,), device="cpu",
+            ),
+            torch.device("cpu"),
+        )
+        predictions = (head(representations).squeeze(-1) >= 0).long()
+        self.assertGreater(metrics["test_auc"], 0.99)
+        self.assertGreater(float((predictions == labels.long()).float().mean()), 0.99)
+
+    def test_partition_matching_guard_detects_hidden_split_confound(self) -> None:
+        rows = []
+        for split in ("train", "validation", "test"):
+            for condition, offset in (("rhyme", 0.0), ("unrelated", 0.0)):
+                for value in (3.0, 4.0, 5.0, 6.0):
+                    rows.append({
+                        "task": "Sound", "split": split, "condition": condition,
+                        "word1": "cat", "word2": "dog",
+                        "mean_content_subtlex": str(value + offset),
+                        "word1_subtlex": str(value), "word2_subtlex": str(value),
+                        "word1_n_phonemes": str(value),
+                        "word2_n_phonemes": str(value),
+                        "word1_n_syllables": "1", "word2_n_syllables": "1",
+                    })
+        validate_partition_matching(rows)
+        for row in rows:
+            if row["split"] == "test" and row["condition"] == "rhyme":
+                row["mean_content_subtlex"] = str(float(row["mean_content_subtlex"]) + 3)
+        with self.assertRaisesRegex(ValueError, "within-split nuisance matching"):
+            validate_partition_matching(rows)
+
     def _fixture(self, root: Path) -> tuple[Path, Path, Path]:
         feature_path = root / "ipa_feature_mapping.json"
         feature_path.write_text(json.dumps({

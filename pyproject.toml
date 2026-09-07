@@ -23,6 +23,7 @@ devlm-phase1 = "devlm.cli:main"
 devlm-phase2 = "devlm.phase2.cli:main"
 devlm-construct-stimuli = "devlm.stimulus_construction.cli:main"
 devlm-task-adaptation = "devlm.adaptation.cli:main"
+devlm-meaning-probe = "devlm.adaptation.meaning_probe_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

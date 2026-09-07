@@ -6,6 +6,7 @@ import json
 import random
 from copy import deepcopy
 from dataclasses import asdict, dataclass
+from itertools import combinations
 from pathlib import Path
 
 import numpy as np
@@ -56,6 +57,96 @@ def _json_phonemes(raw: str, item_id: str, field: str) -> tuple[str, ...]:
     return tuple(value)
 
 
+def _manifest_feature(row: dict[str, str], task: str, name: str) -> float:
+    if name == "mean_content_subtlex":
+        return float(row[name])
+    if name == "phoneme_count":
+        if task in {"Sound", "Meaning"}:
+            return (float(row["word1_n_phonemes"]) + float(row["word2_n_phonemes"])) / 2
+        return float(row["sentence_n_phonemes"])
+    if name == "orthographic_length":
+        return (len(row["word1"]) + len(row["word2"])) / 2
+    if name == "syllable_count":
+        return (float(row["word1_n_syllables"]) + float(row["word2_n_syllables"])) / 2
+    if name == "within_pair_frequency_difference":
+        return abs(float(row["word1_subtlex"]) - float(row["word2_subtlex"]))
+    if name == "word_count":
+        return float(len(row["sentence"].split()))
+    raise KeyError(name)
+
+
+def validate_partition_matching(rows: list[dict[str, str]], threshold: float = 0.10) -> None:
+    """Reject manifests whose nuisance matching fails inside any split.
+
+    This guard is intentionally conditional so the generic minimal manifest
+    interface and synthetic fixtures remain supported.  Full constructed
+    manifests contain the audited covariates and must pass.
+    """
+    sentence_columns = {"sentence", "sentence_n_phonemes", "mean_content_subtlex"}
+    word_columns = {
+        "word1", "word2", "word1_subtlex", "word2_subtlex",
+        "word1_n_phonemes", "word2_n_phonemes",
+        "word1_n_syllables", "word2_n_syllables", "mean_content_subtlex",
+    }
+    failures: list[tuple[float, str]] = []
+    for task in TASK_ORDER:
+        task_rows = [row for row in rows if row.get("task", "").strip() == task]
+        needed = word_columns if task in {"Sound", "Meaning"} else sentence_columns
+        if not task_rows or not needed.issubset(task_rows[0]) or any(
+            not row.get(column, "").strip() for row in task_rows for column in needed
+        ):
+            continue
+        features = ("mean_content_subtlex", "phoneme_count")
+        if task in {"Sound", "Meaning"}:
+            features += (
+                "orthographic_length", "syllable_count",
+                "within_pair_frequency_difference",
+            )
+        else:
+            features += ("word_count",)
+        for partition in PARTITIONS:
+            subset = [row for row in task_rows if row["split"].strip() == partition]
+            conditions = sorted({row.get("condition", "").strip() for row in subset})
+            for condition_a, condition_b in combinations(conditions, 2):
+                a_rows = [row for row in subset if row.get("condition", "").strip() == condition_a]
+                b_rows = [row for row in subset if row.get("condition", "").strip() == condition_b]
+                for feature in features:
+                    a = np.asarray([_manifest_feature(row, task, feature) for row in a_rows])
+                    b = np.asarray([_manifest_feature(row, task, feature) for row in b_rows])
+                    pooled = float(np.sqrt((a.var(ddof=1) + b.var(ddof=1)) / 2))
+                    smd = 0.0 if pooled == 0 and np.isclose(a.mean(), b.mean()) else (
+                        float("inf") if pooled == 0 else float((a.mean() - b.mean()) / pooled)
+                    )
+                    if not np.isfinite(smd) or abs(smd) >= threshold:
+                        failures.append((abs(smd), (
+                            f"{task}:{partition}:{condition_a} vs {condition_b}:"
+                            f"{feature} SMD={smd:.3f}"
+                        )))
+            if task not in {"Sound", "Meaning"} and {
+                "binary_label", "template_family", "subject", "number_word", "negation",
+            }.issubset(subset[0]):
+                positive = [row for row in subset if int(row["binary_label"]) == 1]
+                negative = [row for row in subset if int(row["binary_label"]) == 0]
+                for feature in ("template_family", "subject", "number_word", "negation"):
+                    for category in {row[feature] for row in subset}:
+                        difference = abs(
+                            sum(row[feature] == category for row in positive)
+                            - sum(row[feature] == category for row in negative)
+                        )
+                        if difference > 1:
+                            failures.append((float(difference), (
+                                f"{task}:{partition}:{feature}={category!r}:"
+                                f"binary-label count difference={difference}"
+                            )))
+    if failures:
+        detail = "; ".join(message for _, message in sorted(failures, reverse=True)[:12])
+        raise ValueError(
+            "Stimulus manifest fails within-split nuisance matching (continuous "
+            f"|SMD| < {threshold:.2f}; categorical binary-label count difference <= 1). "
+            f"Do not interpret checkpoint performance. {detail}"
+        )
+
+
 def load_construction_manifest(path: str | Path) -> list[AdaptationItem]:
     """Load the fixed 4-task stimulus manifest produced by stimulus construction."""
     with Path(path).open(encoding="utf-8-sig", newline="") as handle:
@@ -66,6 +157,7 @@ def load_construction_manifest(path: str | Path) -> list[AdaptationItem]:
     missing = required - rows[0].keys()
     if missing:
         raise ValueError(f"Stimulus manifest is missing columns: {', '.join(sorted(missing))}")
+    validate_partition_matching(rows)
     items: list[AdaptationItem] = []
     seen: set[str] = set()
     for row in rows:
@@ -211,7 +303,15 @@ def _train_head(
 ) -> tuple[nn.Linear, dict[str, float | int]]:
     _set_seed(initialization_seed)
     head = make_binary_readout(hidden_dim, initialization_seed).to(device)
-    x = representations.to(device)
+    train_indices = indices["train"]
+    # Fit conditioning statistics on training items only.  This does not add
+    # capacity: the affine transform is folded back into the returned raw-state
+    # Linear(hidden_dim, 1) head after fitting.
+    train_x = representations[train_indices]
+    center = train_x.mean(dim=0)
+    scale = train_x.std(dim=0, unbiased=False)
+    scale = torch.where(scale < 1e-6, torch.ones_like(scale), scale)
+    x = ((representations - center) / scale).to(device)
     y = labels.to(device)
     optimizer = torch.optim.AdamW(head.parameters(), lr=options.learning_rate, weight_decay=options.weight_decay)
     loss_fn = task_loss()
@@ -220,7 +320,6 @@ def _train_head(
     best_state = deepcopy(head.state_dict())
     stale = 0
     epochs_run = 0
-    train_indices = indices["train"]
     for epoch in range(1, options.max_epochs + 1):
         epochs_run = epoch
         generator = torch.Generator(device="cpu").manual_seed(initialization_seed + epoch)
@@ -252,7 +351,14 @@ def _train_head(
         metrics[f"{partition}_loss"] = loss
         metrics[f"{partition}_accuracy"] = accuracy
         metrics[f"{partition}_auc"] = auc
-    return head.cpu(), metrics
+    # Convert the standardized-space solution to an exactly equivalent head
+    # operating directly on raw GRU states, preserving the specified readout.
+    head = head.cpu()
+    with torch.no_grad():
+        standardized_weight = head.weight.detach().clone()
+        head.weight.copy_(standardized_weight / scale.unsqueeze(0))
+        head.bias.copy_(head.bias - (standardized_weight * center.unsqueeze(0) / scale.unsqueeze(0)).sum(dim=1))
+    return head, metrics
 
 
 def _write_metrics(path: Path, rows: list[dict[str, object]]) -> None:
