@@ -83,6 +83,18 @@ Phase 2 writes the following under its configured output directory:
 - Figures 1–4 as editable SVG, PDF, and 600-dpi TIFF;
 - `phase2_run.json`, recording the analysis definition and run counts.
 
+## Minimal word-segmentation probe
+
+[![Open segmentation probe in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ss-sebastian/developmental_checkpoints_word_recognition/blob/main/colab/word_segmentation_probe/run_all.ipynb)
+
+`devlm-segmentation-probe` compares an untrained architecture-matched M00 with
+M01–M30 using a separate `Linear(128, 1)` boundary readout at each model. It
+uses only Phase 1 validation sessions, excludes utterance transitions, and
+never presents `WORD_BOUNDARY` to the GRU. The fixed readout state is the frame
+immediately before the next phoneme becomes active. See
+`docs/word_segmentation_probe.md` for the exact data split, metrics,
+session-bootstrap onset rule, command, and output interpretation.
+
 ## Frozen-GRU task adaptation
 
 `devlm.adaptation` trains binary readouts for Sound, Meaning, Plausibility, and Grammaticality from the fixed constructed stimulus manifest. The Colab entry point is `colab/task_adaptation_training.ipynb`: upload `adaptation_all_tasks.tsv` and the Phase 1 output ZIP containing exactly 30 checkpoints plus `ipa_feature_mapping.json`.
