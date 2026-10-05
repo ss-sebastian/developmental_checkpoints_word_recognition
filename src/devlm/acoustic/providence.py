@@ -212,7 +212,8 @@ def _download_bytes(session, url: str, destination: Path) -> None:
     except Exception as exc:
         raise RuntimeError("TalkBank media/transcript download failed or timed out; check network access and try again.") from exc
     content_type = response.headers.get("Content-Type", "").lower()
-    if response.status_code >= 400 or "text/html" in content_type:
+    rejected_types = ("text/", "application/json", "application/xml", "text/xml")
+    if response.status_code >= 400 or any(marker in content_type for marker in rejected_types):
         raise RuntimeError(f"TalkBank did not return media/transcript data for {url}; verify account access and corpus permissions.")
     with destination.open("wb") as handle:
         for block in response.iter_content(1 << 20):
@@ -222,23 +223,66 @@ def _download_bytes(session, url: str, destination: Path) -> None:
 
 def _media_candidates(relative_media: str) -> list[str]:
     path = Path(relative_media)
-    if path.suffix:
-        return [path.as_posix()]
-    return [f"{path.as_posix()}{suffix}" for suffix in (".wav", ".mp3", ".mp4", ".mov")]
+    stem = path.with_suffix("").as_posix() if path.suffix else path.as_posix()
+    # CHAT may name a stale/redirecting extension. Preserve it first, then try
+    # the same base across TalkBank's usual audio/video containers.
+    candidates = [path.as_posix()] + [f"{stem}{suffix}" for suffix in (".wav", ".mp3", ".mp4", ".mov")]
+    return list(dict.fromkeys(candidates))
 
 
-def _download_media(session, relative_media: str, cache_dir: Path) -> Path:
+def _probe_decodable_audio(path: Path) -> tuple[bool, str]:
+    """Require an audio stream with positive duration before admitting a cache file."""
+    command = [
+        "ffprobe", "-v", "error", "-select_streams", "a:0", "-show_entries",
+        "stream=codec_type:format=duration", "-of", "json", str(path),
+    ]
+    try:
+        result = subprocess.run(command, check=False, capture_output=True, text=True)
+    except FileNotFoundError as exc:
+        raise RuntimeError("ffprobe is required to validate TalkBank media in Colab") from exc
+    if result.returncode != 0:
+        return False, "ffprobe could not decode file"
+    try:
+        payload = json.loads(result.stdout)
+        streams = payload.get("streams", [])
+        duration = float(payload.get("format", {}).get("duration", 0.0))
+    except (TypeError, ValueError, json.JSONDecodeError):
+        return False, "ffprobe returned invalid metadata"
+    if not streams:
+        return False, "no audio stream"
+    if not duration > 0:
+        return False, "non-positive duration"
+    return True, f"duration={duration:.3f}s"
+
+
+def _download_media(session, relative_media: str, cache_dir: Path, *, downloader=_download_bytes, probe=_probe_decodable_audio) -> Path:
+    failures: list[str] = []
     for candidate in _media_candidates(relative_media):
         cached = cache_dir / candidate.replace("/", "__")
         if cached.is_file():
-            return cached
+            valid, reason = probe(cached)
+            if valid:
+                return cached
+            cached.unlink(missing_ok=True)
+            failures.append(f"{candidate}: cached {reason}")
         url = f"{MEDIA_ROOT_URL}/{quote(candidate)}"
         try:
-            _download_bytes(session, url, cached)
-            return cached
-        except RuntimeError:
-            cached.unlink(missing_ok=True)
-    raise RuntimeError(f"No supported media file could be downloaded for {relative_media!r}")
+            downloader(session, url, cached)
+            valid, reason = probe(cached)
+            if valid:
+                return cached
+            failures.append(f"{candidate}: {reason}")
+        except RuntimeError as exc:
+            failures.append(f"{candidate}: download rejected")
+        finally:
+            # A valid return occurs before finally; all invalid/error candidates
+            # must not poison a later retry or be mistaken for media cache.
+            if cached.is_file():
+                valid, _ = probe(cached)
+                if not valid:
+                    cached.unlink(missing_ok=True)
+    detail = "; ".join(failures) if failures else "no candidates"
+    raise RuntimeError(f"No decodable TalkBank media was available for {relative_media!r}. Tried: {detail}")
 
 
 def _session_split(segments: list[ProvidenceSegment], fraction: float, seed: int) -> tuple[set[str], set[str]]:

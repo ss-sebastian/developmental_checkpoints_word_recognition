@@ -12,7 +12,7 @@ import torch
 from devlm.acoustic.config import load_config
 from devlm.acoustic.data import load_audio_manifest, split_audio_sessions
 from devlm.acoustic.features import log_mel_spectrogram
-from devlm.acoustic.providence import _frames_from_duration_ms, _request_session, parse_chat_segments, parse_providence_corpus
+from devlm.acoustic.providence import _download_media, _frames_from_duration_ms, _request_session, parse_chat_segments, parse_providence_corpus
 from devlm.acoustic.train import FRAME_MS, train
 
 
@@ -122,6 +122,23 @@ class AcousticPhase1Tests(unittest.TestCase):
         # 100 ms contains ten 10-ms hops, but an independent 25-ms window gives only eight frames.
         self.assertEqual(_frames_from_duration_ms(100), 8)
         self.assertEqual(_frames_from_duration_ms(1000), 98)
+
+    def test_providence_media_rejects_invalid_payload_and_tries_next_container(self):
+        with tempfile.TemporaryDirectory() as directory:
+            cache = Path(directory)
+            attempts: list[str] = []
+
+            def downloader(_session, url, destination):
+                attempts.append(url.rsplit("/", 1)[-1])
+                destination.write_bytes(b"not necessarily media")
+
+            def probe(path):
+                return (path.suffix == ".mov", "valid audio" if path.suffix == ".mov" else "invalid payload")
+
+            output = _download_media(None, "Ethan/001104.mp3", cache, downloader=downloader, probe=probe)
+            self.assertEqual(output.suffix, ".mov")
+            self.assertEqual(attempts, ["001104.mp3", "001104.wav", "001104.mp4", "001104.mov"])
+            self.assertEqual(list(cache.iterdir()), [output])
 
     def test_acoustic_smoke_training_writes_independent_checkpoint(self):
         with tempfile.TemporaryDirectory() as directory:
