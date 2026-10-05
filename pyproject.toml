@@ -12,6 +12,7 @@ dependencies = ["numpy>=1.26", "torch>=2.1", "tqdm>=4.66"]
 [project.optional-dependencies]
 panphon = ["panphon>=0.22"]
 colab = ["datasets>=3.0"]
+acoustic = ["requests>=2.31"]
 phase2 = ["matplotlib>=3.8", "phonemizer>=3.3"]
 stimuli = [
   "phonemizer>=3.3", "scipy>=1.13", "xlrd>=2.0,<3",
@@ -27,6 +28,7 @@ devlm-meaning-probe = "devlm.adaptation.meaning_probe_cli:main"
 devlm-segmentation-probe = "devlm.adaptation.segmentation_probe_cli:main"
 devlm-sound-probe = "devlm.adaptation.sound_probe_cli:main"
 devlm-phoneme-decoding-probe = "devlm.adaptation.phoneme_decoding_probe_cli:main"
+devlm-acoustic-phase1 = "devlm.acoustic.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

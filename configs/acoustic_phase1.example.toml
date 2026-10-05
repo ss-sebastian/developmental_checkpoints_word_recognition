@@ -1,0 +1,28 @@
+# Independent acoustic Phase 1. This does not replace [phase1] IPA training.
+# The manifest must enumerate only explicit adult/caregiver speech addressed to a child.
+[acoustic_phase1]
+audio_manifest_path = "/REPLACE/WITH/adult_cds_audio_manifest.tsv"
+output_dir = "../outputs/acoustic_phase1_50h"
+seed = 20261005
+device = "auto"
+validation_fraction = 0.1
+
+# 16,000 Hz * 10 ms = 160 samples, so each log-Mel frame has a 10-ms hop.
+sample_rate = 16000
+n_mels = 80
+n_fft = 400
+hop_length = 160
+
+hidden_size = 128
+num_layers = 1
+dropout = 0.0
+learning_rate = 0.001
+gradient_clip_norm = 1.0
+sequence_chunk_frames = 4096
+
+# Do not include horizon 1: only 30/50/100-ms future prediction is used.
+future_horizons_frames = [3, 5, 10]
+max_train_hours = 50.0
+max_validation_hours = 0.5
+normalization_max_hours = 1.0
+target_checkpoint_count = 30

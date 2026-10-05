@@ -2,6 +2,8 @@
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ss-sebastian/developmental_checkpoints_word_recognition/blob/main/colab/phase1_training.ipynb)
 
+[![Open 50-hour acoustic log-Mel pilot in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ss-sebastian/developmental_checkpoints_word_recognition/blob/main/colab/acoustic_logmel_training/run_all.ipynb)
+
 Phase 1 is a causal GRU trained solely by next-phoneme cross-entropy from noisy, continuous 10-ms articulatory-feature frames. Phase 2 evaluates the 30 frozen Phase 1 checkpoints on the OpenNeuro ds003604 Meaning Task by correlating two true-target probability measures with human trial-level RT. Phase 2 never retrains the GRU and contains no hidden-state probe, task head, classifier, RSA, MRI analysis, decision threshold, or SPRT.
 
 ## Real data preparation
