@@ -12,7 +12,8 @@ The Colab default is the public [BabySLM Providence audio archive](https://cogni
 
 This is direct evidence for a **speaker-code filter**, not evidence that every retained caregiver turn is addressed to the child. The archive manifest records `directed_to_child=corpus_context` rather than `true`. The archive is audio-only and its filenames do not provide verified child-age metadata to this implementation. Its manifest therefore stores a deterministic `exposure_order`, not invented `target_child_age_months`; checkpoints from this source must not be mapped to individual child ages. The 50h/0.5h split is still leakage-safe at the parsed session-stem level.
 
-The archive is about 13 GB and selected WAV extraction needs additional local runtime storage. The original archive is a temporary input; training outputs remain separate.
+The archive is about 13 GB and selected WAV extraction needs additional local runtime storage. The original archive is a temporary input; training outputs remain separate. A later run detects a complete
+`/content/acoustic_cds_input/babyslm_providence_caregiver_manifest.tsv`, validates every referenced WAV, and reuses it: it writes a new, seeded metadata-only repartition rather than downloading or copying audio. To avoid discarding many hours from a roughly 50-hour cache, it first selects up to two of the shortest session groups for each inferred child identifier, then adds only the shortest remaining groups needed to reach the 0.5-hour validation pool. Validation clips are then seeded round-robin before the frame cap, and training gets a seeded clip permutation. This duration-aware validation selection is deliberately not duration-representative; the JSON report records that bias, actual cached train/validation frame-hours, and insufficient child/session diversity. It never invents or duplicates clips.
 
 ## Input contract
 
@@ -21,15 +22,20 @@ supports WAV deliberately, so its audio decoder is transparent and reproducible.
 The manifest requires these columns:
 
 ```text
-audio_path	corpus_id	session_id	target_child_age_months	source_corpus	speaker_role	directed_to_child	recording_order
-recordings/corpA_s01_001.wav	corpusA	s01	18	TalkBank-Example	caregiver	true	1
+audio_path	corpus_id	session_id	target_child_age_months	exposure_order	source_corpus	speaker_role	directed_to_child	recording_order
+recordings/corpA_s01_001.wav	corpusA	s01	18		TalkBank-Example	caregiver	true	1
 ```
 
 `audio_path` is relative to the manifest (or absolute). `recording_order` is
-optional. Each row must be an adult/caregiver speaker (`adult`, `caregiver`,
+optional. Each row must provide either `target_child_age_months` or an explicit
+`exposure_order`; an audio-only release may use the latter, but it is not an
+age proxy. Each row must be an adult/caregiver speaker (`adult`, `caregiver`,
 `mother`, `father`, `parent`, `grandparent`, or `other_adult`) and must set
-`directed_to_child=true`. The loader explicitly rejects `CHI`/target-child
-speech and any row without explicit child-directed metadata.
+`directed_to_child=true` when an explicit utterance-level label exists. An
+official audio-only corpus without that label may use `corpus_context`, which
+is recorded as a limitation rather than treated as proof. The loader explicitly
+rejects `CHI`/target-child speech and any row without one of these documented
+adult-to-child inclusion values.
 
 The existing IPA-CHILDES text export is **not** an audio source and cannot be
 silently substituted. Likewise, CHILDES-Aligned is not used as a default: its
@@ -47,7 +53,7 @@ login endpoint. It downloads the official Providence transcript ZIP, selects onl
 timestamped `MOT`, `FAT`, grandparent or other adult CHAT tiers, excludes
 `CHI`, downloads only the linked media required for a 50-hour train/0.5-hour
 validation selection, and cuts PCM WAV segments with `ffmpeg`. Selection uses
-the actual 16-kHz/25-ms-window/10-ms-hop frame formula, then retains a one
+the actual 16-kHz, 25-ms-window/800-point-zero-padded-DFT, 10-ms-hop frame formula, then retains a one
 minute safety margin for per-utterance window loss. The training runner—not the
 preparer—then enforces the exact 50-hour (18,000,000-frame) cap.
 
@@ -67,9 +73,13 @@ manifest.
 ## Model and loss
 
 Waveform is resampled to 16 kHz, then converted to an 80-dimensional log-Mel
-representation using a 25-ms window and exactly a 10-ms hop. Natural recording
-silence stays in the waveform; no three-frame pause or artificial silence is
-inserted. The first run also adds no synthetic Gaussian noise.
+representation using a 25-ms Hann window and exactly a 10-ms hop. Each framed
+window is zero-padded to an 800-point DFT; this densifies the frequency grid,
+not the temporal window or its intrinsic resolution. It gives every one of the
+80 Mel filters nonzero support, which is checked by the extractor.
+Natural recording silence stays in the waveform; no three-frame pause or
+artificial silence is inserted. The first run also adds no synthetic Gaussian
+noise.
 
 At time \(t\), a causal 128-unit GRU sees only frames up to \(t\) and has
 separate linear heads for 30, 50 and 100 ms into the future:
@@ -88,9 +98,12 @@ autoregressive predictive model, not a bidirectional or masked model.
 The 50-hour pilot caps training at exactly 18,000,000 10-ms log-Mel frames. It
 processes eligible training sessions in manifest order after a deterministic
 session-level holdout split: child-age order when verified ages are supplied,
-or explicit `exposure_order` when they are not. The last recording is truncated
-at the cap if needed. Validation uses an independent session split and is capped separately
-at 0.5 hours. Its fixed per-frequency normalization is estimated from a
+or explicit `exposure_order` when they are not. The BabySLM cache-repartition
+route writes that exposure order as a recorded seeded random clip permutation;
+it is not an age order. The last recording is truncated at the cap if needed.
+Validation uses an independent session split, is seeded round-robin across
+session groups before its separate 0.5-hour cap, and reports how many sessions
+were actually sampled. Its fixed per-frequency normalization is estimated from a
 deterministic one-hour sample drawn only from the selected 50-hour training
 exposure prefix, then saved and reused unchanged for training and validation.
 With 30 requested checkpoints, evaluation/checkpointing is every approximately

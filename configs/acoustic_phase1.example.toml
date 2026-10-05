@@ -10,7 +10,11 @@ validation_fraction = 0.1
 # 16,000 Hz * 10 ms = 160 samples, so each log-Mel frame has a 10-ms hop.
 sample_rate = 16000
 n_mels = 80
-n_fft = 400
+# A 25-ms Hann analysis frame is zero-padded to an 800-point DFT. This only
+# densifies the frequency grid (it does not make the temporal window 50 ms),
+# and avoids empty low-frequency Mel filters.
+n_fft = 800
+win_length = 400
 hop_length = 160
 
 hidden_size = 128

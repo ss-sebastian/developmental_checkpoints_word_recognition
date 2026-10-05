@@ -10,6 +10,7 @@ import csv
 import json
 import random
 import shutil
+import wave
 import zipfile
 from collections import Counter
 from dataclasses import dataclass
@@ -20,6 +21,8 @@ from tqdm import tqdm
 
 BABYSLM_PROVIDENCE_AUDIO_URL = "https://cognitive-ml.fr/downloads/baby-slm/training_sets/Providence/audio.zip"
 DEFAULT_CAREGIVER_CODES = ("MOT", "FAT")
+FEATURE_WIN_LENGTH = 400
+FEATURE_HOP = 160
 
 
 @dataclass(frozen=True)
@@ -60,13 +63,146 @@ def _clip_from_name(name: str, caregiver_codes: tuple[str, ...] = DEFAULT_CAREGI
 
 def _frames_from_duration_ms(duration_ms: int) -> int:
     samples = round(duration_ms * 16_000 / 1000)
-    return max(0, 1 + (samples - 400) // 160) if samples >= 400 else 0
+    return max(0, 1 + (samples - FEATURE_WIN_LENGTH) // FEATURE_HOP) if samples >= FEATURE_WIN_LENGTH else 0
 
 
 def _minimum_duration_for_frames(frames: int) -> int:
     if frames <= 0:
         return 0
     return 25 + 10 * (frames - 1)
+
+
+def _wav_frames(path: Path) -> int:
+    with wave.open(str(path), "rb") as reader:
+        samples, rate = reader.getnframes(), reader.getframerate()
+    samples = samples if rate == 16_000 else max(1, round(samples * 16_000 / rate))
+    return max(0, 1 + (samples - FEATURE_WIN_LENGTH) // FEATURE_HOP) if samples >= FEATURE_WIN_LENGTH else 0
+
+
+def _round_robin_session_rows(rows: list[dict[str, str]], seed: int) -> list[dict[str, str]]:
+    """Interleave session groups so a capped validation pass is not prefix-biased."""
+    grouped: dict[str, list[dict[str, str]]] = {}
+    for row in rows:
+        grouped.setdefault(row["session_id"], []).append(row)
+    rng = random.Random(seed)
+    keys = sorted(grouped)
+    rng.shuffle(keys)
+    for key in keys:
+        grouped[key].sort(key=lambda row: int(row.get("recording_order", "0")))
+    result: list[dict[str, str]] = []
+    while keys:
+        next_keys: list[str] = []
+        for key in keys:
+            if grouped[key]:
+                result.append(grouped[key].pop(0))
+            if grouped[key]:
+                next_keys.append(key)
+        keys = next_keys
+    return result
+
+
+def migrate_cached_babyslm_manifest(output_dir: str | Path, *, seed: int = 20261005, validation_hours: float = 0.5) -> Path:
+    """Repartition a valid extracted BabySLM cache without downloading/duplicating WAVs.
+
+    The old initial preparation selected a deterministic archive prefix.  This
+    migration treats those already-extracted clips as a fixed pool, moves whole
+    sessions to validation, interleaves validation sessions, and writes a
+    seeded train permutation.  It never copies, synthesizes, or re-downloads a
+    WAV.  If the retained pool itself lacks enough children/sessions, the JSON
+    report records that limitation instead of pretending to add diversity.
+    """
+    root = Path(output_dir).resolve()
+    source = root / "babyslm_providence_caregiver_manifest.tsv"
+    if not source.is_file():
+        raise FileNotFoundError(source)
+    with source.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle, delimiter="\t"))
+    required = {"audio_path", "session_id", "speaker_role", "source_corpus"}
+    if not rows or not required.issubset(rows[0]):
+        raise ValueError("Existing BabySLM manifest is incomplete")
+    seen: set[Path] = set()
+    frames_by_path: dict[Path, int] = {}
+    for row in rows:
+        path = (root / row["audio_path"]).resolve()
+        if root not in path.parents or path.suffix.lower() != ".wav" or not path.is_file() or path in seen:
+            raise ValueError("Existing BabySLM cache has missing, unsafe, non-WAV, or duplicate audio paths")
+        seen.add(path)
+        frames_by_path[path] = _wav_frames(path)
+    by_session: dict[str, list[dict[str, str]]] = {}
+    for row in rows:
+        by_session.setdefault(row["session_id"], []).append(row)
+    frames_by_session = {
+        session: sum(frames_by_path[(root / row["audio_path"]).resolve()] for row in session_rows)
+        for session, session_rows in by_session.items()
+    }
+    by_child: dict[str, list[str]] = {}
+    for session in sorted(by_session):
+        by_child.setdefault(session.split("_", 1)[0], []).append(session)
+    # Existing caches can be only ~50.5 h. Holding out a fixed fraction of
+    # sessions wastes several hours. Prefer two short, session-disjoint groups
+    # per available child identifier, then add only short sessions required to
+    # fill the requested validation pool. This is intentionally duration-biased
+    # and must not be interpreted as a representative child/session sample.
+    requested_validation_frames = round(validation_hours * 3_600_000 / 10)
+    sessions_per_child_target = 2
+    validation_sessions: list[str] = []
+    for child in sorted(by_child):
+        remaining_capacity = len(by_session) - 1 - len(validation_sessions)
+        if remaining_capacity <= 0:
+            break
+        candidates = sorted(by_child[child], key=lambda session: (frames_by_session[session], session))
+        validation_sessions.extend(candidates[:min(sessions_per_child_target, len(candidates), remaining_capacity)])
+    validation_set = set(validation_sessions)
+    validation_frames = sum(frames_by_session[session] for session in validation_set)
+    remaining_sessions = sorted(
+        (session for session in by_session if session not in validation_set),
+        key=lambda session: (frames_by_session[session], session),
+    )
+    for session in remaining_sessions:
+        if validation_frames >= requested_validation_frames or len(validation_set) >= len(by_session) - 1:
+            break
+        validation_set.add(session)
+        validation_frames += frames_by_session[session]
+    validation_rows = _round_robin_session_rows([row for row in rows if row["session_id"] in validation_set], seed)
+    train_rows = [row for row in rows if row["session_id"] not in validation_set]
+    rng = random.Random(seed)
+    rng.shuffle(train_rows)
+    # Keep the source WAVs; only write a new metadata view with a deterministic
+    # clip order. Training's exact caps enforce final 50h/0.5h exposure.
+    reordered = [("train", row) for row in train_rows] + [("validation", row) for row in validation_rows]
+    for order, (split, row) in enumerate(reordered, 1):
+        row["split"] = split
+        row["exposure_order"] = str(order)
+        row["recording_order"] = str(order)
+    target = root / "babyslm_providence_repartitioned_manifest.tsv"
+    with target.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), delimiter="\t")
+        writer.writeheader()
+        writer.writerows([row for _, row in reordered])
+    train_frames = sum(frames_by_path[(root / row["audio_path"]).resolve()] for row in train_rows)
+    validation_children = sorted({session.split("_", 1)[0] for session in validation_set})
+    (root / "babyslm_repartition_manifest.json").write_text(json.dumps({
+        "source_manifest": source.name, "output_manifest": target.name, "seed": seed,
+        "train_sessions": len({row["session_id"] for row in train_rows}),
+        "validation_sessions": len(validation_set), "validation_children": validation_children,
+        "train_hours_available": train_frames * 10 / 3_600_000,
+        "validation_hours_available": validation_frames * 10 / 3_600_000,
+        "requested_validation_hours": validation_hours,
+        "requested_validation_frames": requested_validation_frames,
+        "validation_pool_meets_requested_duration": validation_frames >= requested_validation_frames,
+        "validation_selection": "duration-aware: up to two shortest session groups per inferred child identifier, then shortest remaining sessions until the requested validation duration",
+        "validation_sessions_per_child_target": sessions_per_child_target,
+        "validation_selection_duration_bias": "Validation-session selection deliberately favors shorter sessions to retain training exposure; it is not duration-representative.",
+        "validation_order": "seeded round-robin across selected session groups",
+        "training_order": "seeded random permutation of train clips",
+        "cache_action": "reused existing WAVs only; no audio was copied, fabricated, or downloaded",
+        "diversity_caveat": (
+            "The retained cache contains fewer than two child identifiers inferred from session ids; "
+            "validation is still session-disjoint and round-robin, but cannot be child-diverse without additional cached audio."
+            if len(validation_children) < 2 else None
+        ),
+    }, indent=2) + "\n", encoding="utf-8")
+    return target
 
 
 def _session_split(clips: list[BabySLMClip], validation_fraction: float, seed: int) -> tuple[set[str], set[str]]:

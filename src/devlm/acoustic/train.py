@@ -51,10 +51,10 @@ def load_item_features(item: AudioItem, config: dict) -> torch.Tensor:
     features = log_mel_spectrogram(
         waveform, source_rate,
         target_sample_rate=int(config["sample_rate"]), n_mels=int(config["n_mels"]),
-        n_fft=int(config["n_fft"]), hop_length=int(config["hop_length"]),
+        n_fft=int(config["n_fft"]), win_length=int(config["win_length"]), hop_length=int(config["hop_length"]),
     )
     if not len(features):
-        raise ValueError(f"Audio is shorter than one analysis window ({int(config['n_fft'])} samples): {item.audio_path}")
+        raise ValueError(f"Audio is shorter than one analysis window ({int(config['win_length'])} samples): {item.audio_path}")
     return features
 
 
@@ -73,13 +73,40 @@ def plan_training_exposure(items: list[AudioItem], config: dict, maximum_frames:
             break
         count = log_mel_frame_count(
             item.audio_path, target_sample_rate=int(config["sample_rate"]),
-            n_fft=int(config["n_fft"]), hop_length=int(config["hop_length"]),
+            n_fft=int(config["n_fft"]), win_length=int(config["win_length"]), hop_length=int(config["hop_length"]),
         )
         usable = min(count, remaining)
         if usable > 0:
             selected.append((item, usable))
             remaining -= usable
     return selected
+
+
+def round_robin_validation_items(items: list[AudioItem], seed: int) -> list[AudioItem]:
+    """Deterministically interleave session groups before the validation cap.
+
+    A validation cap must not turn a manifest prefix (for example, one child's
+    first recording day) into the whole evaluation set.  This is deliberately
+    only an evaluation ordering: it neither changes the session split nor
+    introduces any training data into validation.
+    """
+    grouped: dict[tuple[str, str], list[AudioItem]] = {}
+    for item in items:
+        grouped.setdefault(item.session_key, []).append(item)
+    keys = sorted(grouped)
+    random.Random(seed).shuffle(keys)
+    for key in keys:
+        grouped[key].sort(key=lambda item: item.order_key)
+    ordered: list[AudioItem] = []
+    while keys:
+        remaining: list[tuple[str, str]] = []
+        for key in keys:
+            if grouped[key]:
+                ordered.append(grouped[key].pop(0))
+            if grouped[key]:
+                remaining.append(key)
+        keys = remaining
+    return ordered
 
 
 def estimate_train_normalization(planned_items: list[tuple[AudioItem, int]], config: dict, maximum_frames: int, seed: int) -> dict:
@@ -145,7 +172,9 @@ def validate(model: CausalLogMelGRU, items: list[AudioItem], config: dict, maxim
     count_by_horizon = Counter()
     frames_seen = 0
     items_seen = 0
-    for item in tqdm(items, desc="Acoustic validation", unit="recording", leave=False, dynamic_ncols=True):
+    ordered_items = round_robin_validation_items(items, int(config["seed"]) + 20_261)
+    sessions_seen: set[tuple[str, str]] = set()
+    for item in tqdm(ordered_items, desc="Acoustic validation", unit="recording", leave=False, dynamic_ncols=True):
         if frames_seen >= maximum_frames:
             break
         features = standardize(load_item_features(item, config), normalization)
@@ -163,6 +192,7 @@ def validate(model: CausalLogMelGRU, items: list[AudioItem], config: dict, maxim
             hidden = hidden.detach()
         frames_seen += len(features)
         items_seen += 1
+        sessions_seen.add(item.session_key)
     if not count_by_horizon:
         raise ValueError("Validation audio has no frames after applying future horizons")
     per_horizon = {str(h): total_by_horizon[h] / count_by_horizon[h] for h in horizons if count_by_horizon[h]}
@@ -171,6 +201,8 @@ def validate(model: CausalLogMelGRU, items: list[AudioItem], config: dict, maxim
         "validation_future_log_mel_mse_by_horizon": per_horizon,
         "validation_frames": frames_seen,
         "validation_audio_items": items_seen,
+        "validation_sessions_sampled": len(sessions_seen),
+        "validation_sampling_order": "seeded round-robin across session groups before the frame cap",
     }
 
 
@@ -215,6 +247,8 @@ def train(config: dict) -> dict:
         "selection": f"manifest-ordered prefix of the training session split: {ordering_description}",
         "planned_frames": planned_train_frames,
         "planned_hours": planned_train_frames * FRAME_MS / 3_600_000,
+        "ordering_seed": seed,
+        "training_order": "manifest exposure order; BabySLM cache repartitioning writes a seeded random train-clip permutation",
         "items": [{"corpus_id": item.corpus_id, "session_id": item.session_id, "audio_path": str(item.audio_path), "frames_used": frames} for item, frames in planned_train_items],
     }, indent=2) + "\n", encoding="utf-8")
     source_summary = {

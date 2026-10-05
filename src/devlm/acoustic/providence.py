@@ -297,15 +297,19 @@ def _session_split(segments: list[ProvidenceSegment], fraction: float, seed: int
     return set(sessions) - validation, validation
 
 
-def _frames_from_duration_ms(duration_ms: int, *, sample_rate: int = 16_000, n_fft: int = 400, hop_length: int = 160) -> int:
+def _frames_from_duration_ms(duration_ms: int, *, sample_rate: int = 16_000, n_fft: int = 800, win_length: int = 400, hop_length: int = 160) -> int:
     samples = round(duration_ms * sample_rate / 1000)
-    return max(0, 1 + (samples - n_fft) // hop_length) if samples >= n_fft else 0
+    if win_length > n_fft:
+        raise ValueError("win_length must not exceed n_fft")
+    return max(0, 1 + (samples - win_length) // hop_length) if samples >= win_length else 0
 
 
-def _minimum_duration_for_frames(frames: int, *, sample_rate: int = 16_000, n_fft: int = 400, hop_length: int = 160) -> int:
+def _minimum_duration_for_frames(frames: int, *, sample_rate: int = 16_000, n_fft: int = 800, win_length: int = 400, hop_length: int = 160) -> int:
     if frames <= 0:
         return 0
-    samples = n_fft + (frames - 1) * hop_length
+    if win_length > n_fft:
+        raise ValueError("win_length must not exceed n_fft")
+    samples = win_length + (frames - 1) * hop_length
     return math.ceil(samples * 1000 / sample_rate)
 
 
@@ -371,8 +375,9 @@ def prepare_providence(
         if len({segment.session_id for segment in segments}) < 2:
             raise RuntimeError("Fewer than two usable Providence sessions remain after CHAT validation; cannot make a session-level train/validation split.")
         train_sessions, validation_sessions = _session_split(segments, validation_fraction, seed)
-        # Per-clip 25-ms analysis windows cost a few frames at every utterance
-        # boundary. Select with that exact frame rule and retain one extra minute;
+        # Each separately cut utterance uses the same 25-ms-window/10-ms-hop
+        # frame accounting as training; its 800-point DFT is zero-padding only.
+        # Select with that exact frame rule and retain one extra minute;
         # the trainer then truncates the actual selected WAV frames exactly at cap.
         safety_frames = 6_000
         chosen_train = _select_duration(segments, train_sessions, round(train_hours * 3_600_000 / 10) + safety_frames)

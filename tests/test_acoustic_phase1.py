@@ -12,13 +12,13 @@ import torch
 
 from devlm.acoustic.config import load_config
 from devlm.acoustic.data import load_audio_manifest, split_audio_sessions
-from devlm.acoustic.features import log_mel_spectrogram
-from devlm.acoustic.babyslm import _clip_from_name, _select_frames, _session_split as babyslm_session_split
+from devlm.acoustic.features import _mel_filterbank, log_mel_frame_count, log_mel_spectrogram
+from devlm.acoustic.babyslm import _clip_from_name, _select_frames, _session_split as babyslm_session_split, migrate_cached_babyslm_manifest
 from devlm.acoustic.providence import _download_media, _frames_from_duration_ms, _request_session, parse_chat_segments, parse_providence_corpus
-from devlm.acoustic.train import FRAME_MS, train
+from devlm.acoustic.train import FRAME_MS, round_robin_validation_items, train
 
 
-def write_wav(path: Path, seconds: float = 0.08, sample_rate: int = 16_000) -> None:
+def write_wav(path: Path, seconds: float = 0.12, sample_rate: int = 16_000) -> None:
     values = (0.1 * np.sin(2 * np.pi * 220 * np.arange(round(seconds * sample_rate)) / sample_rate) * 32767).astype("<i2")
     with wave.open(str(path), "wb") as output:
         output.setnchannels(1)
@@ -47,10 +47,11 @@ class AcousticPhase1Tests(unittest.TestCase):
 
     def test_log_mel_has_ten_ms_hop_and_no_label_input(self):
         waveform = torch.zeros(1_600)
-        features = log_mel_spectrogram(waveform, 16_000, target_sample_rate=16_000, n_mels=80, n_fft=400, hop_length=160)
+        features = log_mel_spectrogram(waveform, 16_000, target_sample_rate=16_000, n_mels=80, n_fft=800, win_length=400, hop_length=160)
         self.assertEqual(FRAME_MS, 10)
         self.assertEqual(features.shape, (8, 80))
         self.assertTrue(torch.isfinite(features).all())
+        self.assertTrue(torch.all(_mel_filterbank(16_000, 800, 80).sum(dim=1) > 0))
 
     def test_manifest_rejects_child_or_not_directed_audio(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -121,9 +122,18 @@ class AcousticPhase1Tests(unittest.TestCase):
             _request_session("user@example.org", "not-a-real-password", session_factory=Session)
 
     def test_providence_frame_accounting_reflects_window_loss(self):
-        # 100 ms contains ten 10-ms hops, but an independent 25-ms window gives only eight frames.
+        # Zero-padding each DFT must not extend the explicit 25-ms frame.
         self.assertEqual(_frames_from_duration_ms(100), 8)
         self.assertEqual(_frames_from_duration_ms(1000), 98)
+
+    def test_feature_frame_count_uses_the_25_ms_window_not_dft_length(self):
+        with tempfile.TemporaryDirectory() as directory:
+            wav = Path(directory) / "one_second.wav"
+            write_wav(wav, seconds=1.0)
+            self.assertEqual(
+                log_mel_frame_count(wav, target_sample_rate=16_000, n_fft=800, win_length=400, hop_length=160),
+                98,
+            )
 
     def test_providence_media_rejects_invalid_payload_and_tries_next_container(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -168,6 +178,76 @@ class AcousticPhase1Tests(unittest.TestCase):
             self.assertIsNone(item.target_child_age_months)
             self.assertEqual(item.exposure_order, 1)
 
+    def test_cached_babyslm_manifest_is_repartitioned_without_copying_audio(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            recordings = root / "recordings"
+            recordings.mkdir()
+            rows = []
+            # A cache with a few long sessions and several short sessions per
+            # child: the duration-aware migration should reserve the short
+            # sessions for diverse validation and retain the long training pool.
+            for child in ("Alex", "Ethan", "Lily"):
+                for session_index, seconds in enumerate((0.3, 0.4, 5.0)):
+                    session = f"{child}_{session_index:02d}"
+                    for clip_index in range(1):
+                        wav = recordings / f"{session}_{clip_index}.wav"
+                        write_wav(wav, seconds=seconds)
+                        rows.append({
+                            "audio_path": wav.relative_to(root).as_posix(), "corpus_id": "BabySLM-Providence",
+                            "session_id": session, "target_child_age_months": "", "exposure_order": str(len(rows) + 1),
+                            "source_corpus": "BabySLM Providence official audio.zip", "speaker_role": "mother",
+                            "directed_to_child": "corpus_context", "recording_order": str(clip_index + 1),
+                            "split": "train" if session_index < 2 else "validation",
+                        })
+            source = root / "babyslm_providence_caregiver_manifest.tsv"
+            with source.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=list(rows[0]), delimiter="\t")
+                writer.writeheader()
+                writer.writerows(rows)
+            original_audio = {path.relative_to(root) for path in recordings.glob("*.wav")}
+            target = migrate_cached_babyslm_manifest(root, seed=31, validation_hours=0.0001)
+            first_text = target.read_text(encoding="utf-8")
+            self.assertEqual(target, migrate_cached_babyslm_manifest(root, seed=31, validation_hours=0.0001))
+            self.assertEqual(first_text, target.read_text(encoding="utf-8"))
+            items = load_audio_manifest(target)
+            train_items, validation_items = split_audio_sessions(items, 0.1, 31)
+            self.assertTrue({item.session_key for item in train_items}.isdisjoint({item.session_key for item in validation_items}))
+            self.assertEqual({path.relative_to(root) for path in recordings.glob("*.wav")}, original_audio)
+            validation_order = [item.session_id for item in validation_items]
+            self.assertEqual(len(set(validation_order[:6])), 6)
+            report = json.loads((root / "babyslm_repartition_manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(report["cache_action"], "reused existing WAVs only; no audio was copied, fabricated, or downloaded")
+            self.assertEqual(report["validation_sessions"], 6)
+            self.assertEqual(len(report["validation_children"]), 3)
+            self.assertGreater(
+                report["train_hours_available"],
+                0.85 * (report["train_hours_available"] + report["validation_hours_available"]),
+            )
+            self.assertIn("duration-aware", report["validation_selection"])
+            self.assertIn("not duration-representative", report["validation_selection_duration_bias"])
+
+    def test_validation_order_round_robins_session_groups_before_cap(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            rows = []
+            for session in range(4):
+                for clip in range(3):
+                    wav = root / f"s{session}_{clip}.wav"
+                    write_wav(wav)
+                    rows.append({
+                        "audio_path": wav.name, "corpus_id": "synthetic", "session_id": f"s{session}",
+                        "target_child_age_months": str(12 + session), "source_corpus": "synthetic-test",
+                        "speaker_role": "caregiver", "directed_to_child": "true", "recording_order": str(clip),
+                    })
+            manifest = root / "round_robin.tsv"
+            with manifest.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=list(rows[0]), delimiter="\t")
+                writer.writeheader()
+                writer.writerows(rows)
+            ordered = round_robin_validation_items(load_audio_manifest(manifest), 42)
+            self.assertEqual(len({item.session_id for item in ordered[:4]}), 4)
+
     def test_acoustic_smoke_training_writes_independent_checkpoint(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -177,7 +257,7 @@ class AcousticPhase1Tests(unittest.TestCase):
             config_path.write_text("\n".join([
                 "[acoustic_phase1]", f'audio_manifest_path = "{manifest}"', f'output_dir = "{output_dir}"',
                 "seed = 7", 'device = "cpu"', "validation_fraction = 0.25", "sample_rate = 16000", "n_mels = 16",
-                "n_fft = 128", "hop_length = 160", "hidden_size = 8", "num_layers = 1", "dropout = 0.0",
+                "n_fft = 800", "win_length = 400", "hop_length = 160", "hidden_size = 8", "num_layers = 1", "dropout = 0.0",
                 "learning_rate = 0.001", "gradient_clip_norm = 1.0", "sequence_chunk_frames = 32",
                 "future_horizons_frames = [3, 5]", "max_train_hours = 0.00002", "max_validation_hours = 0.00002",
                 "normalization_max_hours = 0.00002", "target_checkpoint_count = 2", "",
@@ -195,12 +275,25 @@ class AcousticPhase1Tests(unittest.TestCase):
             path = Path(directory) / "bad.toml"
             path.write_text("\n".join([
                 "[acoustic_phase1]", 'audio_manifest_path = "manifest.tsv"', 'output_dir = "out"', "seed = 1", 'device = "cpu"',
-                "validation_fraction = 0.2", "sample_rate = 16000", "n_mels = 80", "n_fft = 400", "hop_length = 160",
+                "validation_fraction = 0.2", "sample_rate = 16000", "n_mels = 80", "n_fft = 800", "win_length = 400", "hop_length = 160",
                 "hidden_size = 8", "num_layers = 1", "dropout = 0.0", "learning_rate = 0.001", "gradient_clip_norm = 1.0",
                 "sequence_chunk_frames = 64", "future_horizons_frames = [1]", "max_train_hours = 1.0", "max_validation_hours = 1.0", "normalization_max_hours = 1.0",
                 "target_checkpoint_count = 1", "",
             ]), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "greater than 1"):
+                load_config(path)
+
+    def test_config_rejects_empty_mel_filters(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "bad_mel.toml"
+            path.write_text("\n".join([
+                "[acoustic_phase1]", 'audio_manifest_path = "manifest.tsv"', 'output_dir = "out"', "seed = 1", 'device = "cpu"',
+                "validation_fraction = 0.2", "sample_rate = 16000", "n_mels = 80", "n_fft = 400", "win_length = 400", "hop_length = 160",
+                "hidden_size = 8", "num_layers = 1", "dropout = 0.0", "learning_rate = 0.001", "gradient_clip_norm = 1.0",
+                "sequence_chunk_frames = 64", "future_horizons_frames = [3, 5]", "max_train_hours = 1.0", "max_validation_hours = 1.0", "normalization_max_hours = 1.0",
+                "target_checkpoint_count = 1", "",
+            ]), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "empty bins"):
                 load_config(path)
 
 

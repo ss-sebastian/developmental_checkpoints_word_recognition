@@ -3,10 +3,12 @@ from __future__ import annotations
 import tomllib
 from pathlib import Path
 
+from .features import _mel_filterbank
+
 
 REQUIRED = {
     "audio_manifest_path", "output_dir", "seed", "device",
-    "validation_fraction", "sample_rate", "n_mels", "n_fft", "hop_length",
+    "validation_fraction", "sample_rate", "n_mels", "n_fft", "win_length", "hop_length",
     "hidden_size", "num_layers", "dropout", "learning_rate",
     "gradient_clip_norm", "future_horizons_frames", "sequence_chunk_frames",
     "max_train_hours", "max_validation_hours", "normalization_max_hours", "target_checkpoint_count",
@@ -35,4 +37,11 @@ def load_config(path: str | Path) -> dict:
     config["future_horizons_frames"] = sorted(set(horizons))
     if int(config["hop_length"]) * 1000 != int(config["sample_rate"]) * 10:
         raise ValueError("hop_length must represent exactly 10 ms at sample_rate")
+    if int(config["win_length"]) * 1000 != int(config["sample_rate"]) * 25:
+        raise ValueError("win_length must represent exactly a 25-ms analysis window at sample_rate")
+    if int(config["n_fft"]) < int(config["win_length"]):
+        raise ValueError("n_fft must be at least win_length")
+    # Fail before an hours-long run if the requested FFT/Mel geometry would
+    # silently create all-zero Mel dimensions.
+    _mel_filterbank(int(config["sample_rate"]), int(config["n_fft"]), int(config["n_mels"]))
     return config

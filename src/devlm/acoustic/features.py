@@ -35,12 +35,16 @@ def load_wav_mono(path: str | Path) -> tuple[torch.Tensor, int]:
     return waveform, sample_rate
 
 
-def log_mel_frame_count(path: str | Path, *, target_sample_rate: int, n_fft: int, hop_length: int) -> int:
+def log_mel_frame_count(path: str | Path, *, target_sample_rate: int, n_fft: int, hop_length: int, win_length: int) -> int:
     """Return the exact frame count implied by WAV metadata and extractor rules."""
     with wave.open(str(path), "rb") as reader:
         source_rate, samples = reader.getframerate(), reader.getnframes()
     resampled_samples = samples if source_rate == target_sample_rate else max(1, round(samples * target_sample_rate / source_rate))
-    return max(0, 1 + (resampled_samples - n_fft) // hop_length) if resampled_samples >= n_fft else 0
+    if win_length > n_fft:
+        raise ValueError("win_length must not exceed n_fft")
+    # The 800-point DFT is zero-padding *within* every explicit 25-ms frame;
+    # it must never change the frame support or duration accounting.
+    return max(0, 1 + (resampled_samples - win_length) // hop_length) if resampled_samples >= win_length else 0
 
 
 def resample_linear(waveform: torch.Tensor, source_rate: int, target_rate: int) -> torch.Tensor:
@@ -70,28 +74,33 @@ def _mel_filterbank(sample_rate: int, n_fft: int, n_mels: int) -> torch.Tensor:
             bank[index, left:center] = torch.arange(left, center, dtype=torch.float32).sub(left).div(center - left)
         if right > center:
             bank[index, center:right] = torch.arange(center, right, dtype=torch.float32).sub(right).neg().div(right - center)
+    if torch.any(bank.sum(dim=1) <= 0):
+        empty = torch.nonzero(bank.sum(dim=1) <= 0).flatten().tolist()
+        raise ValueError(f"Mel filterbank has empty bins {empty}; increase n_fft while retaining the requested win_length")
     return bank
 
 
 def log_mel_spectrogram(
     waveform: torch.Tensor, sample_rate: int, *, target_sample_rate: int = 16_000,
-    n_mels: int = 80, n_fft: int = 400, hop_length: int = 160,
+    n_mels: int = 80, n_fft: int = 800, win_length: int = 400, hop_length: int = 160,
 ) -> torch.Tensor:
     """Return [frames, n_mels] natural-log power Mel features at a 10-ms hop.
 
-    ``center=False`` makes every frame causal with respect to its end sample;
-    model training itself remains causal because state t only predicts frames
-    after t.  Real recording silence stays in the signal; no pauses are added.
+    Each explicit 25-ms Hann-windowed frame is zero-padded to an 800-point DFT;
+    this does not extend its temporal support or change its 10-ms hop. Model
+    state t predicts only later frames. Real recording silence stays in the
+    signal; no pauses are added. The longer DFT grid is intentional: with 80
+    filters it avoids empty Mel bands while retaining a 25-ms analysis window.
     """
     if hop_length * 1000 != target_sample_rate * 10:
         raise ValueError("log-Mel hop must be exactly 10 ms")
     waveform = resample_linear(waveform.float(), sample_rate, target_sample_rate)
-    if len(waveform) < n_fft:
+    if win_length > n_fft:
+        raise ValueError("win_length must not exceed n_fft")
+    if len(waveform) < win_length:
         return torch.empty(0, n_mels, dtype=torch.float32)
-    spectrum = torch.stft(
-        waveform, n_fft=n_fft, hop_length=hop_length, win_length=n_fft,
-        window=torch.hann_window(n_fft, dtype=waveform.dtype), center=False,
-        return_complex=True,
-    ).abs().square()
+    frames = waveform.unfold(0, win_length, hop_length)
+    window = torch.hann_window(win_length, dtype=waveform.dtype, device=waveform.device)
+    spectrum = torch.fft.rfft(frames * window, n=n_fft, dim=-1).abs().square()
     mel = _mel_filterbank(target_sample_rate, n_fft, n_mels).to(spectrum)
-    return torch.log(torch.clamp(mel @ spectrum, min=1e-10)).transpose(0, 1).contiguous()
+    return torch.log(torch.clamp(spectrum @ mel.transpose(0, 1), min=1e-10)).contiguous()
