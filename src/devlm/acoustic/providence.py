@@ -19,6 +19,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import quote
 
+from tqdm import tqdm
+
 
 LOGIN_URL = "https://sla2.talkbank.org/logInUser"
 TRANSCRIPT_ZIP_URL = "https://talkbank.org/data/phon/Eng-NA/Providence?f=zip"
@@ -159,14 +161,20 @@ def _request_session(email: str, password: str, *, session_factory=None):
     except ImportError as exc:  # pragma: no cover - documented installation path
         raise RuntimeError("Providence preparation requires requests; install the acoustic optional dependency") from exc
     session = (session_factory or requests.Session)()
-    response = session.post(LOGIN_URL, json={"email": email, "pswd": password}, timeout=60)
+    try:
+        response = session.post(LOGIN_URL, json={"email": email, "pswd": password}, timeout=60)
+    except requests.RequestException as exc:
+        raise RuntimeError("TalkBank login request failed or timed out; check network access and try again.") from exc
     if response.status_code >= 400 or not _login_succeeded(response) or not session.cookies:
         raise RuntimeError("TalkBank login failed. Check credentials/account access; no credentials were saved.")
     return session
 
 
 def _download_bytes(session, url: str, destination: Path) -> None:
-    response = session.get(url, stream=True, timeout=120)
+    try:
+        response = session.get(url, stream=True, timeout=120)
+    except Exception as exc:
+        raise RuntimeError("TalkBank media/transcript download failed or timed out; check network access and try again.") from exc
     content_type = response.headers.get("Content-Type", "").lower()
     if response.status_code >= 400 or "text/html" in content_type:
         raise RuntimeError(f"TalkBank did not return media/transcript data for {url}; verify account access and corpus permissions.")
@@ -247,10 +255,13 @@ def prepare_providence(
         raise ValueError("train_hours and validation_hours must be positive")
     output_dir = Path(output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
+    print("Providence 1/5: authenticating to TalkBank...", flush=True)
     session = _request_session(email, password)
+    print("Providence 1/5 complete: login accepted.", flush=True)
     with tempfile.TemporaryDirectory(prefix="devlm-providence-") as temporary:
         temporary_path = Path(temporary)
         transcript_zip = temporary_path / "providence.zip"
+        print("Providence 2/5: downloading official transcript archive...", flush=True)
         _download_bytes(session, TRANSCRIPT_ZIP_URL, transcript_zip)
         if not zipfile.is_zipfile(transcript_zip):
             raise RuntimeError("TalkBank transcript endpoint did not return a ZIP archive; verify access and current endpoint.")
@@ -258,9 +269,16 @@ def prepare_providence(
         transcript_root.mkdir()
         with zipfile.ZipFile(transcript_zip) as archive:
             _safe_extract(archive, transcript_root)
-        segments = [segment for chat in transcript_root.rglob("*.cha") for segment in parse_chat_segments(chat, transcript_root)]
+        chat_files = sorted(transcript_root.rglob("*.cha"))
+        print(f"Providence 3/5: parsing {len(chat_files):,} CHAT transcripts for timestamped adult tiers...", flush=True)
+        segments = [segment for chat in chat_files for segment in parse_chat_segments(chat, transcript_root)]
         if not segments:
             raise RuntimeError("No timestamped adult/caregiver Providence CHAT tiers were found; corpus layout may have changed.")
+        print(
+            f"Providence 3/5 complete: {len(segments):,} adult/caregiver segments from "
+            f"{len({segment.session_id for segment in segments}):,} sessions; CHI segments excluded.",
+            flush=True,
+        )
         train_sessions, validation_sessions = _session_split(segments, validation_fraction, seed)
         # Per-clip 25-ms analysis windows cost a few frames at every utterance
         # boundary. Select with that exact frame rule and retain one extra minute;
@@ -270,37 +288,56 @@ def prepare_providence(
         chosen_validation = _select_duration(segments, validation_sessions, round(validation_hours * 3_600_000 / 10) + safety_frames)
         if not chosen_train or not chosen_validation:
             raise RuntimeError("Providence selection yielded empty train or validation audio")
+        selected = [("train", segment, duration) for segment, duration in chosen_train] + [("validation", segment, duration) for segment, duration in chosen_validation]
+        expected_train_frames = sum(_frames_from_duration_ms(duration) for _, duration in chosen_train)
+        expected_validation_frames = sum(_frames_from_duration_ms(duration) for _, duration in chosen_validation)
+        print(
+            f"Providence 4/5: selected {len(chosen_train):,} train segments "
+            f"(~{expected_train_frames * 10 / 3_600_000:.3f} h) and {len(chosen_validation):,} validation segments "
+            f"(~{expected_validation_frames * 10 / 3_600_000:.3f} h). Downloading and cutting media...",
+            flush=True,
+        )
         cache = temporary_path / "media"
         cache.mkdir()
         audio_dir = output_dir / "recordings"
         audio_dir.mkdir(exist_ok=True)
         rows: list[dict[str, str]] = []
         source_cache: dict[str, Path] = {}
-        for split, selected in (("train", chosen_train), ("validation", chosen_validation)):
-            for index, (segment, duration_ms) in enumerate(selected, 1):
-                source = source_cache.get(segment.media_relative_path)
-                if source is None:
-                    source = _download_media(session, segment.media_relative_path, cache)
-                    source_cache[segment.media_relative_path] = source
-                destination = audio_dir / f"{split}_{len(rows):07d}.wav"
-                command = [
-                    "ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", f"{segment.start_ms / 1000:.3f}",
-                    "-i", str(source), "-t", f"{duration_ms / 1000:.3f}", "-ac", "1", "-ar", "16000", "-c:a", "pcm_s16le", str(destination),
-                ]
-                try:
-                    subprocess.run(command, check=True, capture_output=True, text=True)
-                except FileNotFoundError as exc:
-                    raise RuntimeError("ffmpeg is required to cut Providence media in Colab") from exc
-                except subprocess.CalledProcessError as exc:
-                    raise RuntimeError(f"ffmpeg failed while cutting Providence media; stderr: {exc.stderr[-500:]}") from exc
-                rows.append({
-                    "audio_path": destination.relative_to(output_dir).as_posix(), "corpus_id": "Providence",
-                    "session_id": segment.session_id, "target_child_age_months": f"{segment.target_child_age_months:.3f}",
-                    "source_corpus": "TalkBank Providence", "speaker_role": segment.speaker_role,
-                    # Providence is a parent-child naturalistic corpus; this is corpus-context metadata, not a claim
-                    # that CHAT codes addressee for every individual utterance.
-                    "directed_to_child": "true", "recording_order": str(index), "split": split,
-                })
+        completed_frames = 0
+        progress = tqdm(selected, desc="Providence 5/5: cutting adult CDS WAV", unit="segment", dynamic_ncols=True)
+        split_orders: Counter[str] = Counter()
+        for split, segment, duration_ms in progress:
+            split_orders[split] += 1
+            index = split_orders[split]
+            source = source_cache.get(segment.media_relative_path)
+            if source is None:
+                source = _download_media(session, segment.media_relative_path, cache)
+                source_cache[segment.media_relative_path] = source
+            destination = audio_dir / f"{split}_{len(rows):07d}.wav"
+            command = [
+                "ffmpeg", "-nostdin", "-v", "error", "-y", "-ss", f"{segment.start_ms / 1000:.3f}",
+                "-i", str(source), "-t", f"{duration_ms / 1000:.3f}", "-ac", "1", "-ar", "16000", "-c:a", "pcm_s16le", str(destination),
+            ]
+            try:
+                subprocess.run(command, check=True, capture_output=True, text=True)
+            except FileNotFoundError as exc:
+                raise RuntimeError("ffmpeg is required to cut Providence media in Colab") from exc
+            except subprocess.CalledProcessError as exc:
+                raise RuntimeError(f"ffmpeg failed while cutting Providence media; stderr: {exc.stderr[-500:]}") from exc
+            rows.append({
+                "audio_path": destination.relative_to(output_dir).as_posix(), "corpus_id": "Providence",
+                "session_id": segment.session_id, "target_child_age_months": f"{segment.target_child_age_months:.3f}",
+                "source_corpus": "TalkBank Providence", "speaker_role": segment.speaker_role,
+                # Providence is a parent-child corpus; CHAT has no utterance-level addressee code.
+                "directed_to_child": "true", "recording_order": str(index), "split": split,
+            })
+            completed_frames += _frames_from_duration_ms(duration_ms)
+            progress.set_postfix(
+                split=split,
+                prepared_hours=f"{completed_frames * 10 / 3_600_000:.3f}",
+                source=Path(segment.media_relative_path).name[:28],
+            )
+        print(f"Providence 5/5 complete: prepared {len(rows):,} PCM WAV segments (~{completed_frames * 10 / 3_600_000:.3f} h before final training cap).", flush=True)
     manifest = output_dir / "providence_adult_cds_manifest.tsv"
     with manifest.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]), delimiter="\t")

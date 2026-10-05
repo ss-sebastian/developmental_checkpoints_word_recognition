@@ -27,10 +27,15 @@ The existing IPA-CHILDES text export is **not** an audio source and cannot be
 silently substituted. Likewise, CHILDES-Aligned is not used as a default: its
 official release is child-speech-only and would change the exposure population.
 The Colab notebook's default `SOURCE_MODE = 'providence'` is a direct,
-runtime-only preparation route for the TalkBank Providence corpus. It prompts
-for a TalkBank email and password using `getpass`, POSTs them only to the
-TalkBank login endpoint, and never prints, stores, logs or archives credentials
-or cookies. It downloads the official Providence transcript ZIP, selects only
+runtime-only preparation route for the TalkBank Providence corpus. Before
+running it, add `TALK_BANK_EMAIL` and `TALK_BANK_PASSWORD` in the Colab Secrets
+sidebar; these are fetched only into the live runtime. This avoids terminal
+`getpass`, which can appear to hang or be invisible in Colab. If Secrets are
+missing or denied, the notebook displays a masked `ipywidgets.Password` field;
+click its Continue button and rerun that preparation cell. Credentials/cookies
+are never printed, written to disk, logged, placed in configuration, or put in
+the downloadable archive. The notebook POSTs credentials only to the TalkBank
+login endpoint. It downloads the official Providence transcript ZIP, selects only
 timestamped `MOT`, `FAT`, grandparent or other adult CHAT tiers, excludes
 `CHI`, downloads only the linked media required for a 50-hour train/0.5-hour
 validation selection, and cuts PCM WAV segments with `ffmpeg`. Selection uses
