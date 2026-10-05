@@ -6,6 +6,14 @@ predictive learning can acquire from raw adult/caregiver child-directed speech
 without being given IPA symbols, phoneme boundaries, word boundaries, a feature
 table, artificial phoneme timing, or extra Gaussian noise.
 
+## Default public source: BabySLM Providence
+
+The Colab default is the public [BabySLM Providence audio archive](https://cognitive-ml.fr/downloads/baby-slm/training_sets/Providence/audio.zip), not TalkBank login. At inspection time it contains WAV clips in paths such as `audio/Alex_MOT/...` and also many non-MOT/FAT speaker-code folders. The preparer accepts only `MOT` and `FAT` folders, excludes every other code, and groups clips by the archive filename's recording/session stem before a deterministic session-disjoint split.
+
+This is direct evidence for a **speaker-code filter**, not evidence that every retained caregiver turn is addressed to the child. The archive manifest records `directed_to_child=corpus_context` rather than `true`. The archive is audio-only and its filenames do not provide verified child-age metadata to this implementation. Its manifest therefore stores a deterministic `exposure_order`, not invented `target_child_age_months`; checkpoints from this source must not be mapped to individual child ages. The 50h/0.5h split is still leakage-safe at the parsed session-stem level.
+
+The archive is about 13 GB and selected WAV extraction needs additional local runtime storage. The original archive is a temporary input; training outputs remain separate.
+
 ## Input contract
 
 Give the runner a TSV or CSV manifest and PCM WAV files. The first pilot only
@@ -26,7 +34,7 @@ speech and any row without explicit child-directed metadata.
 The existing IPA-CHILDES text export is **not** an audio source and cannot be
 silently substituted. Likewise, CHILDES-Aligned is not used as a default: its
 official release is child-speech-only and would change the exposure population.
-The Colab notebook's default `SOURCE_MODE = 'providence'` is a direct,
+`SOURCE_MODE = 'providence'` is an optional direct,
 runtime-only preparation route for the TalkBank Providence corpus. Before
 running it, add `TALK_BANK_EMAIL` and `TALK_BANK_PASSWORD` in the Colab Secrets
 sidebar; these are fetched only into the live runtime. This avoids terminal
@@ -78,9 +86,10 @@ autoregressive predictive model, not a bidirectional or masked model.
 ## Exposure and outputs
 
 The 50-hour pilot caps training at exactly 18,000,000 10-ms log-Mel frames. It
-processes eligible training sessions in age order after a deterministic
-session-level holdout split; the last recording is truncated at the cap if
-needed. Validation uses an independent session split and is capped separately
+processes eligible training sessions in manifest order after a deterministic
+session-level holdout split: child-age order when verified ages are supplied,
+or explicit `exposure_order` when they are not. The last recording is truncated
+at the cap if needed. Validation uses an independent session split and is capped separately
 at 0.5 hours. Its fixed per-frequency normalization is estimated from a
 deterministic one-hour sample drawn only from the selected 50-hour training
 exposure prefix, then saved and reused unchanged for training and validation.

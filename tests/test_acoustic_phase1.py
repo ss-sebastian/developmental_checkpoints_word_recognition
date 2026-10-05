@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import tempfile
 import unittest
 import wave
@@ -12,6 +13,7 @@ import torch
 from devlm.acoustic.config import load_config
 from devlm.acoustic.data import load_audio_manifest, split_audio_sessions
 from devlm.acoustic.features import log_mel_spectrogram
+from devlm.acoustic.babyslm import _clip_from_name, _select_frames, _session_split as babyslm_session_split
 from devlm.acoustic.providence import _download_media, _frames_from_duration_ms, _request_session, parse_chat_segments, parse_providence_corpus
 from devlm.acoustic.train import FRAME_MS, train
 
@@ -53,7 +55,7 @@ class AcousticPhase1Tests(unittest.TestCase):
     def test_manifest_rejects_child_or_not_directed_audio(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            with self.assertRaisesRegex(ValueError, "not explicitly child-directed"):
+            with self.assertRaisesRegex(ValueError, "unsupported directed_to_child"):
                 load_audio_manifest(self.manifest(root, child_directed="false"))
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -140,6 +142,32 @@ class AcousticPhase1Tests(unittest.TestCase):
             self.assertEqual(attempts, ["001104.mp3", "001104.wav", "001104.mp4", "001104.mov"])
             self.assertEqual(list(cache.iterdir()), [output])
 
+    def test_babyslm_filename_filter_only_accepts_mot_fat_and_groups_session(self):
+        mot = _clip_from_name("audio/Alex_MOT/Alex_010427_05_02_2002_MOT_10888_15525.wav")
+        fat = _clip_from_name("audio/Alex_FAT/Alex_010427_05_02_2002_FAT_15525_19516.wav")
+        self.assertIsNotNone(mot)
+        self.assertIsNotNone(fat)
+        self.assertEqual(mot.session_id, fat.session_id)
+        self.assertIsNone(_clip_from_name("audio/Alex_CHI/Alex_010427_05_02_2002_CHI_1_2.wav"))
+        train_sessions, validation_sessions = babyslm_session_split([mot, fat, _clip_from_name("audio/Lily_MOT/Lily_020001_01_01_2003_MOT_0_1000.wav")], 0.5, 4)
+        self.assertTrue(train_sessions.isdisjoint(validation_sessions))
+        self.assertTrue(_select_frames([mot, fat], {mot.session_id}, 10))
+
+    def test_audio_manifest_allows_explicit_exposure_order_when_age_is_absent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            wav = root / "a.wav"
+            write_wav(wav)
+            manifest = root / "manifest.tsv"
+            manifest.write_text(
+                "audio_path\tcorpus_id\tsession_id\tsource_corpus\tspeaker_role\tdirected_to_child\texposure_order\n"
+                "a.wav\tBabySLM-Providence\tsession-1\tBabySLM\tmother\ttrue\t1\n",
+                encoding="utf-8",
+            )
+            item = load_audio_manifest(manifest)[0]
+            self.assertIsNone(item.target_child_age_months)
+            self.assertEqual(item.exposure_order, 1)
+
     def test_acoustic_smoke_training_writes_independent_checkpoint(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -159,6 +187,8 @@ class AcousticPhase1Tests(unittest.TestCase):
             self.assertTrue(list(output.glob("acoustic_checkpoint_step_*.pt")))
             self.assertTrue((output / "acoustic_run_manifest.json").is_file())
             self.assertEqual(metrics["future_horizons_ms"], [30, 50])
+            exposure = json.loads((output / "audio_training_exposure.json").read_text(encoding="utf-8"))
+            self.assertIn("child-age order", exposure["selection"])
 
     def test_config_disallows_only_next_frame_objective(self):
         with tempfile.TemporaryDirectory() as directory:

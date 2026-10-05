@@ -11,23 +11,35 @@ class AudioItem:
     audio_path: Path
     corpus_id: str
     session_id: str
-    target_child_age_months: float
+    target_child_age_months: float | None
     recording_order: int
     source_corpus: str
     speaker_role: str
+    directed_to_child: str
     preassigned_split: str | None = None
+    exposure_order: int | None = None
 
     @property
     def session_key(self) -> tuple[str, str]:
         return self.corpus_id, self.session_id
+
+    @property
+    def order_key(self) -> tuple[float, int, str, str, int]:
+        # Some official audio-only releases do not ship child-age metadata. They
+        # must supply an explicit deterministic exposure order instead; we never
+        # infer age from filenames.
+        age = self.target_child_age_months if self.target_child_age_months is not None else float("inf")
+        exposure = self.exposure_order if self.exposure_order is not None else self.recording_order
+        return age, exposure, self.corpus_id, self.session_id, self.recording_order
 
 
 def load_audio_manifest(path: str | Path) -> list[AudioItem]:
     """Read a local WAV manifest without ever reading linguistic labels.
 
     Required columns are ``audio_path``, ``corpus_id``, ``session_id``,
-    ``target_child_age_months``, ``source_corpus``, ``speaker_role`` and
-    ``directed_to_child``. Only explicitly adult/caregiver-to-child clips are
+    ``source_corpus``, ``speaker_role`` and ``directed_to_child``. Supply
+    ``target_child_age_months`` or, for an official audio-only release without
+    ages, an explicit ``exposure_order``. Only adult/caregiver clips are
     accepted. ``recording_order`` is optional and defaults to source-row order.
     Audio paths may be relative to the manifest.
     """
@@ -38,7 +50,7 @@ def load_audio_manifest(path: str | Path) -> list[AudioItem]:
     with path.open(encoding="utf-8", newline="") as handle:
         rows = list(csv.DictReader(handle, delimiter=delimiter))
     required = {
-        "audio_path", "corpus_id", "session_id", "target_child_age_months",
+        "audio_path", "corpus_id", "session_id",
         "source_corpus", "speaker_role", "directed_to_child",
     }
     if not rows:
@@ -65,10 +77,17 @@ def load_audio_manifest(path: str | Path) -> list[AudioItem]:
                 "target-child/CHI speech is intentionally excluded"
             )
         child_directed = str(row["directed_to_child"]).strip().lower()
-        if child_directed not in {"1", "true", "yes", "y"}:
+        if child_directed not in {"1", "true", "yes", "y", "corpus_context"}:
             raise ValueError(
-                f"Audio manifest row {row_number} is not explicitly child-directed; "
-                "set directed_to_child=true only for adult/caregiver speech addressed to a child"
+                f"Audio manifest row {row_number} has unsupported directed_to_child={child_directed!r}; "
+                "use true for explicit adult/caregiver-to-child metadata, or corpus_context only when the source lacks per-utterance addressee labels"
+            )
+        raw_age = str(row.get("target_child_age_months", "")).strip()
+        raw_exposure_order = str(row.get("exposure_order", "")).strip()
+        if not raw_age and not raw_exposure_order:
+            raise ValueError(
+                f"Audio manifest row {row_number} must provide target_child_age_months or explicit exposure_order; "
+                "do not infer child age from a filename"
             )
         preassigned_split = str(row.get("split", "")).strip().lower() or None
         if preassigned_split not in {None, "train", "validation"}:
@@ -77,13 +96,15 @@ def load_audio_manifest(path: str | Path) -> list[AudioItem]:
             audio_path=audio_path,
             corpus_id=str(row["corpus_id"]),
             session_id=str(row["session_id"]),
-            target_child_age_months=float(row["target_child_age_months"]),
+            target_child_age_months=float(raw_age) if raw_age else None,
             recording_order=int(row.get("recording_order") or row_number),
             source_corpus=str(row["source_corpus"]),
             speaker_role=speaker_role,
+            directed_to_child=child_directed,
             preassigned_split=preassigned_split,
+            exposure_order=int(raw_exposure_order) if raw_exposure_order else None,
         ))
-    return sorted(items, key=lambda item: (item.target_child_age_months, item.corpus_id, item.session_id, item.recording_order))
+    return sorted(items, key=lambda item: item.order_key)
 
 
 def split_audio_sessions(items: list[AudioItem], validation_fraction: float, seed: int) -> tuple[list[AudioItem], list[AudioItem]]:

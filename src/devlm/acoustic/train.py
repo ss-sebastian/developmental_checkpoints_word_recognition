@@ -65,7 +65,7 @@ def standardize(features: torch.Tensor, normalization: dict) -> torch.Tensor:
 
 
 def plan_training_exposure(items: list[AudioItem], config: dict, maximum_frames: int) -> list[tuple[AudioItem, int]]:
-    """Choose the age-ordered audio prefix; never inspect later training audio."""
+    """Choose the manifest-ordered audio prefix; never inspect later training audio."""
     selected: list[tuple[AudioItem, int]] = []
     remaining = maximum_frames
     for item in items:
@@ -206,8 +206,13 @@ def train(config: dict) -> dict:
             f"the requested {float(config['max_train_hours']):.3f} h cap cannot be reached.",
             flush=True,
         )
+    ordering_description = (
+        "child-age order from target_child_age_months, then recording order"
+        if all(item.target_child_age_months is not None for item in train_items)
+        else "explicit manifest exposure_order (not interpreted as child age)"
+    )
     (output_dir / "audio_training_exposure.json").write_text(json.dumps({
-        "selection": "age-ordered prefix of the training session split",
+        "selection": f"manifest-ordered prefix of the training session split: {ordering_description}",
         "planned_frames": planned_train_frames,
         "planned_hours": planned_train_frames * FRAME_MS / 3_600_000,
         "items": [{"corpus_id": item.corpus_id, "session_id": item.session_id, "audio_path": str(item.audio_path), "frames_used": frames} for item, frames in planned_train_items],
@@ -215,7 +220,8 @@ def train(config: dict) -> dict:
     source_summary = {
         "source_corpora": dict(sorted(Counter(item.source_corpus for item in items).items())),
         "speaker_roles": dict(sorted(Counter(item.speaker_role for item in items).items())),
-        "speaker_filter": "Only explicit adult/caregiver child-directed audio; target-child/CHI speech rejected by manifest validation.",
+        "directed_to_child_evidence": dict(sorted(Counter(item.directed_to_child for item in items).items())),
+        "speaker_filter": "Only adult/caregiver speaker roles are accepted; target-child/CHI speech is rejected by manifest validation.",
         "audio_format": "PCM WAV only",
         "input_labels_used_for_training": "none",
     }
