@@ -26,6 +26,7 @@ devlm-task-adaptation = "devlm.adaptation.cli:main"
 devlm-meaning-probe = "devlm.adaptation.meaning_probe_cli:main"
 devlm-segmentation-probe = "devlm.adaptation.segmentation_probe_cli:main"
 devlm-sound-probe = "devlm.adaptation.sound_probe_cli:main"
+devlm-phoneme-decoding-probe = "devlm.adaptation.phoneme_decoding_probe_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
