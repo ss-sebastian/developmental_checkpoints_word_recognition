@@ -12,7 +12,7 @@ import torch
 from devlm.acoustic.config import load_config
 from devlm.acoustic.data import load_audio_manifest, split_audio_sessions
 from devlm.acoustic.features import log_mel_spectrogram
-from devlm.acoustic.providence import _frames_from_duration_ms, _request_session, parse_chat_segments
+from devlm.acoustic.providence import _frames_from_duration_ms, _request_session, parse_chat_segments, parse_providence_corpus
 from devlm.acoustic.train import FRAME_MS, train
 
 
@@ -82,6 +82,25 @@ class AcousticPhase1Tests(unittest.TestCase):
             self.assertEqual([segment.speaker_role for segment in segments], ["mother", "father"])
             self.assertTrue(all(segment.target_child_age_months == 18 for segment in segments))
             self.assertTrue(all(segment.media_relative_path == "sample" for segment in segments))
+
+    def test_providence_corpus_skips_missing_age_file_and_retains_valid_segments(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "valid.cha").write_text(
+                "@Begin:\n@Participants:\tCHI Target_Child, MOT Mother\n"
+                "@ID:\teng|Providence|CHI|2;00.00|female|||Target_Child|||\n"
+                "@Media:\tvalid, audio\n*MOT:\tgood . \x150_1000\x15\n@End:\n",
+                encoding="utf-8",
+            )
+            (root / "missing_age.cha").write_text(
+                "@Begin:\n@Participants:\tMOT Mother\n@Media:\tmissing, audio\n"
+                "*MOT:\tgood . \x150_1000\x15\n@End:\n",
+                encoding="utf-8",
+            )
+            segments, skipped, first_paths = parse_providence_corpus(root)
+            self.assertEqual(len(segments), 1)
+            self.assertEqual(skipped["missing_chi_age"], 1)
+            self.assertEqual(first_paths["missing_chi_age"], "missing_age.cha")
 
     def test_providence_login_rejects_http_200_json_failure_even_with_cookie(self):
         class Response:

@@ -46,6 +46,14 @@ class ProvidenceSegment:
         return self.end_ms - self.start_ms
 
 
+class ChatMetadataError(ValueError):
+    """A single unusable CHAT file; callers may skip it without guessing metadata."""
+
+    def __init__(self, reason: str, message: str):
+        super().__init__(message)
+        self.reason = reason
+
+
 def _age_months(value: str) -> float | None:
     match = re.search(r"(\d+);(\d+)", value)
     return int(match.group(1)) * 12 + int(match.group(2)) if match else None
@@ -87,7 +95,7 @@ def _metadata(lines: list[str]) -> tuple[float, dict[str, str], str | None]:
             if value:
                 media = value
     if child_age is None:
-        raise ValueError("Providence CHAT file has no parseable CHI age")
+        raise ChatMetadataError("missing_chi_age", "Providence CHAT file has no parseable CHI age")
     return child_age, roles, media
 
 
@@ -97,7 +105,7 @@ def parse_chat_segments(path: str | Path, transcript_root: str | Path, *, minimu
     lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
     child_age, roles, media = _metadata(lines)
     if media is None:
-        return []
+        raise ChatMetadataError("missing_media", "Providence CHAT file has no @Media declaration")
     current_code: str | None = None
     current_text: list[str] = []
     tiers: list[tuple[str, str]] = []
@@ -122,18 +130,46 @@ def parse_chat_segments(path: str | Path, transcript_root: str | Path, *, minimu
     relative_media = "/".join(part for part in (relative_parent, media_name) if part)
     session_id = path.relative_to(transcript_root).with_suffix("").as_posix()
     segments: list[ProvidenceSegment] = []
+    adult_tier_count = 0
+    timestamped_adult_tier_count = 0
     for order, (code, text) in enumerate(tiers, 1):
         role = _speaker_role(code, roles.get(code, ""))
         if role is None or code == "CHI":
             continue
+        adult_tier_count += 1
         timestamps = TIMESTAMP.findall(text)
         if not timestamps:
             continue
+        timestamped_adult_tier_count += 1
         start_ms, end_ms = (int(value) for value in timestamps[-1])
         if end_ms - start_ms < minimum_duration_ms:
             continue
         segments.append(ProvidenceSegment(session_id, child_age, role, relative_media, start_ms, end_ms, order))
+    if not adult_tier_count:
+        raise ChatMetadataError("no_eligible_adult_tier", "Providence CHAT file has no MOT/FAT/eligible adult tier")
+    if not timestamped_adult_tier_count:
+        raise ChatMetadataError("missing_adult_timestamps", "Providence CHAT file has no timestamped eligible adult tier")
     return segments
+
+
+def parse_providence_corpus(transcript_root: str | Path) -> tuple[list[ProvidenceSegment], Counter[str], dict[str, str]]:
+    """Parse a corpus defensively: malformed individual files never end a run."""
+    transcript_root = Path(transcript_root)
+    skipped: Counter[str] = Counter()
+    first_path: dict[str, str] = {}
+    segments: list[ProvidenceSegment] = []
+    for chat in sorted(transcript_root.rglob("*.cha")):
+        relative = chat.relative_to(transcript_root).as_posix()
+        try:
+            segments.extend(parse_chat_segments(chat, transcript_root))
+        except ChatMetadataError as exc:
+            skipped[exc.reason] += 1
+            first_path.setdefault(exc.reason, relative)
+        except (UnicodeError, ValueError):
+            # Do not manufacture a child age or media mapping from a filename.
+            skipped["malformed_chat"] += 1
+            first_path.setdefault("malformed_chat", relative)
+    return segments, skipped, first_path
 
 
 def _safe_extract(archive: zipfile.ZipFile, destination: Path) -> None:
@@ -271,14 +307,25 @@ def prepare_providence(
             _safe_extract(archive, transcript_root)
         chat_files = sorted(transcript_root.rglob("*.cha"))
         print(f"Providence 3/5: parsing {len(chat_files):,} CHAT transcripts for timestamped adult tiers...", flush=True)
-        segments = [segment for chat in chat_files for segment in parse_chat_segments(chat, transcript_root)]
+        segments, skipped_chats, first_skipped_path = parse_providence_corpus(transcript_root)
+        if skipped_chats:
+            skip_report = "; ".join(
+                f"{reason}={count} (first: {first_skipped_path[reason]})"
+                for reason, count in sorted(skipped_chats.items())
+            )
+            print(f"Providence 3/5: skipped unusable CHAT files: {skip_report}", flush=True)
         if not segments:
-            raise RuntimeError("No timestamped adult/caregiver Providence CHAT tiers were found; corpus layout may have changed.")
+            raise RuntimeError(
+                "No usable timestamped adult/caregiver Providence CHAT tiers remain after skipping unusable files. "
+                "Check corpus access/layout; no child age or media mapping was inferred from filenames."
+            )
         print(
             f"Providence 3/5 complete: {len(segments):,} adult/caregiver segments from "
             f"{len({segment.session_id for segment in segments}):,} sessions; CHI segments excluded.",
             flush=True,
         )
+        if len({segment.session_id for segment in segments}) < 2:
+            raise RuntimeError("Fewer than two usable Providence sessions remain after CHAT validation; cannot make a session-level train/validation split.")
         train_sessions, validation_sessions = _session_split(segments, validation_fraction, seed)
         # Per-clip 25-ms analysis windows cost a few frames at every utterance
         # boundary. Select with that exact frame rule and retain one extra minute;
