@@ -1,0 +1,86 @@
+{
+  "source_manifest": "/Users/seb/Desktop/polyu/phd_side/01_developmental_checkpoints_word_recognition/data/task_adaptation_stimuli/sound/final_all.tsv",
+  "output_manifest": "/Users/seb/Desktop/polyu/phd_side/01_developmental_checkpoints_word_recognition/data/sound_representation_probe/primary_manifest.tsv",
+  "selection_is_model_blind": true,
+  "total_items": 392,
+  "by_split": {
+    "train": {
+      "condition_counts": {
+        "onset": 55,
+        "rhyme": 55,
+        "unrelated": 110
+      },
+      "items": 220,
+      "unique_words": 274,
+      "max_word_reuse": 28,
+      "component_count": 54,
+      "max_component_words": 35,
+      "source_attested_candidates": {
+        "unrelated": 121,
+        "rhyme": 55,
+        "onset": 59
+      },
+      "nuisance_standardized_mean_differences": {
+        "onset_vs_unrelated:mean_content_subtlex": -0.1331807860505356,
+        "rhyme_vs_unrelated:mean_content_subtlex": -0.3450043261040416,
+        "onset_vs_unrelated:mean_phoneme_count": 0.1826776683496473,
+        "rhyme_vs_unrelated:mean_phoneme_count": -0.0934433720390826,
+        "onset_vs_unrelated:mean_orthographic_length": 0.008187917002734265,
+        "rhyme_vs_unrelated:mean_orthographic_length": -0.11492803839350102
+      },
+      "model_blind_selection_objective": 0.20085142628614255
+    },
+    "validation": {
+      "condition_counts": {
+        "onset": 18,
+        "rhyme": 18,
+        "unrelated": 36
+      },
+      "items": 72,
+      "unique_words": 107,
+      "max_word_reuse": 15,
+      "component_count": 35,
+      "max_component_words": 16,
+      "source_attested_candidates": {
+        "unrelated": 40,
+        "rhyme": 18,
+        "onset": 21
+      },
+      "nuisance_standardized_mean_differences": {
+        "onset_vs_unrelated:mean_content_subtlex": -0.0437571627329488,
+        "rhyme_vs_unrelated:mean_content_subtlex": -0.0357336496764299,
+        "onset_vs_unrelated:mean_phoneme_count": -0.15206530959078524,
+        "rhyme_vs_unrelated:mean_phoneme_count": 0.8322276726853978,
+        "onset_vs_unrelated:mean_orthographic_length": -0.125657328473557,
+        "rhyme_vs_unrelated:mean_orthographic_length": 0.2498020878228963
+      },
+      "model_blind_selection_objective": 0.8012045149565238
+    },
+    "test": {
+      "condition_counts": {
+        "onset": 25,
+        "rhyme": 25,
+        "unrelated": 50
+      },
+      "items": 100,
+      "unique_words": 128,
+      "max_word_reuse": 26,
+      "component_count": 31,
+      "max_component_words": 39,
+      "source_attested_candidates": {
+        "unrelated": 51,
+        "rhyme": 37,
+        "onset": 29
+      },
+      "nuisance_standardized_mean_differences": {
+        "onset_vs_unrelated:mean_content_subtlex": 0.3244157684786458,
+        "rhyme_vs_unrelated:mean_content_subtlex": 0.5138462085306291,
+        "onset_vs_unrelated:mean_phoneme_count": -0.05711560626540855,
+        "rhyme_vs_unrelated:mean_phoneme_count": -0.14432989690721598,
+        "onset_vs_unrelated:mean_orthographic_length": 0.29603715996910407,
+        "rhyme_vs_unrelated:mean_orthographic_length": -0.06982565352753406
+      },
+      "model_blind_selection_objective": 0.4944467004523259
+    }
+  }
+}
