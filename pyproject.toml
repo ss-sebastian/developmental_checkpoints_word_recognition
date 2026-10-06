@@ -29,6 +29,7 @@ devlm-segmentation-probe = "devlm.adaptation.segmentation_probe_cli:main"
 devlm-sound-probe = "devlm.adaptation.sound_probe_cli:main"
 devlm-phoneme-decoding-probe = "devlm.adaptation.phoneme_decoding_probe_cli:main"
 devlm-acoustic-phase1 = "devlm.acoustic.cli:main"
+devlm-acoustic-aspiration-probe = "devlm.acoustic_aspiration_probe.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
